@@ -1,10 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app id="app">
+      <v-app-bar dark color="#2c3653" dense app>
+        <v-toolbar-title class="mr-4">
+          <v-img src="/assets/ktm.png"/>
+            Know the Meta
+        </v-toolbar-title>
+        <v-toolbar-items>
+          <v-btn depressed color="#2c3653">
+            <router-link to="Meta" tag="span">
+              Uprising
+            </router-link>
+          </v-btn>
+        </v-toolbar-items>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn depressed color="#2c3653">
+            <router-link to="MWL" tag="span">
+              MWL
+            </router-link>
+          </v-btn>
+          <v-btn depressed color="#2c3653">
+            <router-link to="Rotation" tag="span">
+              Rotation
+            </router-link>
+          </v-btn>
+        </v-toolbar-items>
+      </v-app-bar>
+      <router-view/>
+    </v-app>
   </div>
 </template>
 
