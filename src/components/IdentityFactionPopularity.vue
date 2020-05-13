@@ -4,10 +4,10 @@
       <v-card-title class="d-md-none">Popularity</v-card-title>
       <v-card-text class="text-center">
         <v-row>
-          <v-col col="6">
-            <div ref="chart"/>
+          <v-col cols="6" class="offset-3 offset-sm-0 offset-md-3 offset-lg-0">
+            <popularity-chart :meta-data="sideData"/>
           </v-col>
-          <v-col col="6">
+          <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6">
             <v-simple-table v-if="sideData" style="max-width: 350px; margin: 0 auto" class="pt-2">
               <tbody>
                 <tr v-for="(identity, index) in sideData" :key="identity.title">
@@ -21,7 +21,7 @@
                 </tr>
               </tbody>
             </v-simple-table>
-            <v-btn class="mt-4" @click="showMax = showMax + change" v-if="showMax < sideData.length">More</v-btn>
+            <v-btn class="mt-4" @click="changeListed(change)" v-if="showMax < sideData.length">More</v-btn>
           </v-col>
         </v-row>
       </v-card-text>
@@ -31,11 +31,15 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
+import PopularityChart from '@/components/PopularityChart.vue'
 export default {
   name: 'IdentityFactionPopularity',
   props: {
     side: String,
     sideData: Array
+  },
+  components: {
+    PopularityChart
   },
   data: () => ({
     showMax: 6,
@@ -55,7 +59,9 @@ export default {
       }
       return title.substring(0, title.indexOf(':'))
     },
-    drawChart: function () {
+    changeListed: function (change) {
+      console.log(this.$vuetify.breakpoint)
+      this.showMax = this.showMax + change
     }
   }
 }

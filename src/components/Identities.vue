@@ -51,7 +51,6 @@ export default {
     tab: 'runner' // default tab
   }),
   mounted () {
-    console.log(this.$vuetify.breakpoint)
   }
 }
 </script>
