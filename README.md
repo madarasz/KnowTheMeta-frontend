@@ -1,5 +1,7 @@
 # know-the-meta-frontend
 
+New, revamped version, being built. Coming whenever.
+
 ## Project setup
 ```
 yarn install
