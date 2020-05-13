@@ -2,9 +2,13 @@
   <div id="app">
     <v-app id="app">
       <v-app-bar dark color="#2c3653" dense app>
+        <!-- <v-app-bar-nav-icon>
+        </v-app-bar-nav-icon> -->
+        <v-toolbar-side-icon class="mr-4">
+          <v-img :src="require('./assets/ktm.png')" width="24px"/>
+        </v-toolbar-side-icon>
         <v-toolbar-title class="mr-4">
-          <v-img src="/assets/ktm.png"/>
-            Know the Meta
+          Know the Meta
         </v-toolbar-title>
         <v-toolbar-items>
           <v-btn depressed color="#2c3653">
