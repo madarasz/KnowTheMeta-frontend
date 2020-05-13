@@ -2,7 +2,7 @@
   <div>
     <v-content>
       <v-card>
-        <v-tabs height="40px" v-model="tab">
+        <v-tabs height="40px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
           <v-tab href="#ids">
             Identities
           </v-tab>
@@ -14,10 +14,10 @@
           </v-tab>
         </v-tabs>
       </v-card>
-      <v-container fluid>
+      <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="ids" :transition="false" :reverse-transition="false">
-            <h1>Identities</h1>
+            <identities/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
             <h1>Decks</h1>
@@ -32,7 +32,11 @@
 </template>
 
 <script>
+import Identities from '@/components/Identities.vue'
 export default {
+  components: {
+    Identities
+  },
   data: () => ({
     tab: 'ids' // default tab
   })

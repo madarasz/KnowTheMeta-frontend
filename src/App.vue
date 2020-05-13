@@ -4,9 +4,9 @@
       <v-app-bar dark color="#2c3653" dense app>
         <!-- <v-app-bar-nav-icon>
         </v-app-bar-nav-icon> -->
-        <v-toolbar-side-icon class="mr-4">
+        <div class="mr-4">
           <v-img :src="require('./assets/ktm.png')" width="24px"/>
-        </v-toolbar-side-icon>
+        </div>
         <v-toolbar-title class="mr-4">
           Know the Meta
         </v-toolbar-title>
