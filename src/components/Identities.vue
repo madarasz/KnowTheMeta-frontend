@@ -1,26 +1,13 @@
 <template>
   <div>
     <!-- for big screens -->
-    <v-row class="d-none d-md-flex">
+    <h3 class="d-none d-md-block">Popularity</h3>
+    <v-row class="d-none d-md-flex ml-2 mr-2">
       <v-col cols="6">
-        <v-card>
-          <v-card-title>
-            Runner
-          </v-card-title>
-          <v-card-text>
-            <identity-faction side="runner"/>
-          </v-card-text>
-        </v-card>
+        <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
       </v-col>
       <v-col cols="6">
-        <v-card>
-          <v-card-title>
-            Corporation
-          </v-card-title>
-          <v-card-text>
-            <identity-faction side="corporation"/>
-          </v-card-text>
-        </v-card>
+        <identity-faction-popularity side="corporation" :side-data="metaData.identities.corp"/>
       </v-col>
     </v-row>
     <!-- for small screens -->
@@ -39,10 +26,10 @@
       <!-- tab items -->
       <v-tabs-items v-model="tab">
         <v-tab-item :key="1" value="runner">
-          <identity-faction side="runner"/>
+          <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
         </v-tab-item>
         <v-tab-item :key="2" value="corp">
-          <identity-faction side="corp"/>
+          <identity-faction-popularity side="corp" :side-data="metaData.identities.corp"/>
         </v-tab-item>
       </v-tabs-items>
     </div>
@@ -50,15 +37,17 @@
 </template>
 
 <script>
-import IdentityFaction from '@/components/IdentityFaction.vue'
+import IdentityFactionPopularity from '@/components/IdentityFactionPopularity.vue'
+import metaData from '@/assets/json/uprising.json'
 export default {
   name: 'Identities',
   props: {
   },
   components: {
-    IdentityFaction
+    IdentityFactionPopularity
   },
   data: () => ({
+    metaData,
     tab: 'runner' // default tab
   }),
   mounted () {
