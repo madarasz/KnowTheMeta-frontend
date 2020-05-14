@@ -10,7 +10,8 @@
                 <v-img :src="'https://alwaysberunning.net/img/ids/'+identity.code+'.png'" height="40px" width="40px"/>
               </td>
               <td class="text-left" v-if="index < showMax">
-                {{ shortenIdentity(identity.title) }}
+                <span class="d-none d-lg-inline">{{ shortenIdentity(identity.title) }}</span>
+                <span class="d-inline d-lg-none">{{ shortestIdentity(identity.title) }}</span>
               </td>
               <td v-if="index < showMax && maximumValue > 0">
                 <single-bar-chart :color="factionCodeToColor(identity.faction)" :title="identity.title" :value="winrate(identity)" :max="maximumValue"
@@ -60,6 +61,7 @@ export default {
   },
   methods: {
     shortenIdentity: transform.shortenIdentity,
+    shortestIdentity: transform.shortestIdentity,
     winrate: transform.winrate,
     factionCodeToColor: transform.factionCodeToColor,
     changeListed: function (change) {

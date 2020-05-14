@@ -5,6 +5,16 @@ const winrate = function (identity) {
   return Math.round((identity.wins / (identity.wins + identity.draws + identity.losses)) * 1000) / 10
 }
 
+const shortenIdentity = function (title) {
+  if (typeof title !== 'string') {
+    return ''
+  }
+  if (title.indexOf('Haas-Bioroid') > -1 || title.indexOf('Jinteki') > -1 || title.indexOf('NBN') > -1 || title.indexOf('Weyland Consortium') > -1) {
+    return title.substring(title.indexOf(':') + 1)
+  }
+  return title.substring(0, title.indexOf(':'))
+}
+
 export default {
   factionCodeToColor: function (factionCode) {
     switch (factionCode) {
@@ -32,14 +42,23 @@ export default {
         return '#aaaaaa'
     }
   },
-  shortenIdentity: function (title) {
-    if (typeof title !== 'string') {
-      return ''
+  shortenIdentity: shortenIdentity,
+  shortestIdentity: function (title) {
+    const result = this.shortenIdentity(title)
+    // CtM has its own shorthand
+    if (result.indexOf('Controlling the Message') > -1) {
+      return 'CtM'
     }
-    if (title.indexOf('Haas-Bioroid') > -1 || title.indexOf('Jinteki') > -1 || title.indexOf('NBN') > -1 || title.indexOf('Weyland Consortium') > -1) {
-      return title.substring(title.indexOf(':') + 1)
+    // get nickname between "s
+    if (result.indexOf('"') > -1) {
+      return result.substring(result.indexOf('"') + 1, result.lastIndexOf('"'))
     }
-    return title.substring(0, title.indexOf(':'))
+    // if it's one word only
+    if (result.indexOf(' ') === -1) {
+      return result
+    }
+    // get first word
+    return result.substring(0, result.indexOf(' '))
   },
   winrate: winrate,
   compareWinrates: function (a, b) {
