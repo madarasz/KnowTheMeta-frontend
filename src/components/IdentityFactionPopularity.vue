@@ -4,9 +4,11 @@
       <v-card-title class="d-md-none">Popularity</v-card-title>
       <v-card-text class="text-center">
         <v-row>
+          <!-- Chart -->
           <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
             <popularity-chart :meta-data="sideData"/>
           </v-col>
+          <!-- Table -->
           <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6">
             <v-simple-table v-if="sideData" style="max-width: 350px; margin: 0 auto" class="pt-2">
               <tbody>
@@ -32,6 +34,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 import PopularityChart from '@/components/PopularityChart.vue'
+import transform from '@/netrunnerTransformations.js'
 export default {
   name: 'IdentityFactionPopularity',
   props: {
@@ -53,12 +56,7 @@ export default {
   mounted () {
   },
   methods: {
-    shortenIdentity: function (title) {
-      if (title.indexOf('Haas-Bioroid') > -1 || title.indexOf('Jinteki') > -1 || title.indexOf('NBN') > -1 || title.indexOf('Weyland Consortium') > -1) {
-        return title.substring(title.indexOf(':') + 1)
-      }
-      return title.substring(0, title.indexOf(':'))
-    },
+    shortenIdentity: transform.shortenIdentity,
     changeListed: function (change) {
       console.log(this.$vuetify.breakpoint)
       this.showMax = this.showMax + change

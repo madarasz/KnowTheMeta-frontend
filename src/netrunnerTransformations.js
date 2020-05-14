@@ -1,3 +1,10 @@
+const winrate = function (identity) {
+  if (identity === undefined || identity.wins === undefined || identity.draws === undefined || identity.losses === undefined) {
+    return 0
+  }
+  return Math.round((identity.wins / (identity.wins + identity.draws + identity.losses)) * 1000) / 10
+}
+
 export default {
   factionCodeToColor: function (factionCode) {
     switch (factionCode) {
@@ -24,5 +31,23 @@ export default {
       default:
         return '#aaaaaa'
     }
+  },
+  shortenIdentity: function (title) {
+    if (typeof title !== 'string') {
+      return ''
+    }
+    if (title.indexOf('Haas-Bioroid') > -1 || title.indexOf('Jinteki') > -1 || title.indexOf('NBN') > -1 || title.indexOf('Weyland Consortium') > -1) {
+      return title.substring(title.indexOf(':') + 1)
+    }
+    return title.substring(0, title.indexOf(':'))
+  },
+  winrate: winrate,
+  compareWinrates: function (a, b) {
+    const winrateA = winrate(a)
+    const winrateB = winrate(b)
+    if (winrateA > winrateB) {
+      return -1
+    }
+    return 0
   }
 }

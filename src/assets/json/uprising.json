@@ -86,15 +86,6 @@
                 "losses": 130
             },
             {
-                "title": "The Masque: Cyber General",
-                "code": "00006",
-                "faction": "neutral-runner",
-                "used": 61,
-                "wins": 44,
-                "draws": 0,
-                "losses": 26
-            },
-            {
                 "title": "Sunny Lebeau: Security Specialist",
                 "code": "09045",
                 "faction": "sunny-lebeau",
@@ -419,15 +410,6 @@
                 "wins": 118,
                 "draws": 0,
                 "losses": 81
-            },
-            {
-                "title": "The Shadow: Pulling the Strings",
-                "code": "00005",
-                "faction": "neutral-corp",
-                "used": 60,
-                "wins": 53,
-                "draws": 0,
-                "losses": 16
             },
             {
                 "title": "The Outfit: Family Owned and Operated",
