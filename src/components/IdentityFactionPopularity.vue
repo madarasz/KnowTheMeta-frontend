@@ -4,7 +4,7 @@
       <v-card-title class="d-md-none">Popularity</v-card-title>
       <v-card-text class="text-center">
         <v-row>
-          <v-col cols="6" class="offset-3 offset-sm-0 offset-md-3 offset-lg-0">
+          <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
             <popularity-chart :meta-data="sideData"/>
           </v-col>
           <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6">

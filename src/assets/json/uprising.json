@@ -16,6 +16,7 @@
             {
                 "title": "Hoshiko Shiro: Untold Protagonist",
                 "code": "26066",
+                "faction": "anarch",
                 "used": 197,
                 "wins": 272,
                 "draws": 0,
@@ -24,6 +25,7 @@
             {
                 "title": "419: Amoral Scammer",
                 "code": "21063",
+                "faction": "criminal",
                 "used": 154,
                 "wins": 265,
                 "draws": 0,
@@ -32,6 +34,7 @@
             {
                 "title": "Hayley Kaplan: Universal Scholar",
                 "code": "08025",
+                "faction": "shaper",
                 "used": 83,
                 "wins": 128,
                 "draws": 0,
@@ -40,6 +43,7 @@
             {
                 "title": "Armand \"Geist\" Walker: Tech Lord",
                 "code": "08063",
+                "faction": "criminal",
                 "used": 83,
                 "wins": 132,
                 "draws": 0,
@@ -48,6 +52,7 @@
             {
                 "title": "Ele \"Smoke\" Scovak: Cynosure of the Net",
                 "code": "11066",
+                "faction": "shaper",
                 "used": 72,
                 "wins": 68,
                 "draws": 0,
@@ -56,6 +61,7 @@
             {
                 "title": "Valencia Estevez: The Angel of Cayambe",
                 "code": "07030",
+                "faction": "anarch",
                 "used": 69,
                 "wins": 114,
                 "draws": 0,
@@ -64,6 +70,7 @@
             {
                 "title": "Leela Patel: Trained Pragmatist",
                 "code": "25021",
+                "faction": "criminal",
                 "used": 63,
                 "wins": 93,
                 "draws": 1,
@@ -72,6 +79,7 @@
             {
                 "title": "Adam: Compulsive Hacker",
                 "code": "09037",
+                "faction": "adam",
                 "used": 63,
                 "wins": 78,
                 "draws": 0,
@@ -80,6 +88,7 @@
             {
                 "title": "The Masque: Cyber General",
                 "code": "00006",
+                "faction": "neutral-runner",
                 "used": 61,
                 "wins": 44,
                 "draws": 0,
@@ -88,6 +97,7 @@
             {
                 "title": "Sunny Lebeau: Security Specialist",
                 "code": "09045",
+                "faction": "sunny-lebeau",
                 "used": 43,
                 "wins": 53,
                 "draws": 0,
@@ -96,6 +106,7 @@
             {
                 "title": "Kabonesa Wu: Netspace Thrillseeker",
                 "code": "21025",
+                "faction": "shaper",
                 "used": 41,
                 "wins": 50,
                 "draws": 0,
@@ -104,6 +115,7 @@
             {
                 "title": "Rielle \"Kit\" Peddler: Transhuman",
                 "code": "25041",
+                "faction": "shaper",
                 "used": 38,
                 "wins": 45,
                 "draws": 0,
@@ -112,6 +124,7 @@
             {
                 "title": "MaxX: Maximum Punk Rock",
                 "code": "07029",
+                "faction": "anarch",
                 "used": 34,
                 "wins": 49,
                 "draws": 0,
@@ -120,6 +133,7 @@
             {
                 "title": "Az McCaffrey: Mechanical Prodigy",
                 "code": "26010",
+                "faction": "criminal",
                 "used": 31,
                 "wins": 33,
                 "draws": 0,
@@ -128,6 +142,7 @@
             {
                 "title": "Freedom Khumalo: Crypto-Anarchist",
                 "code": "21081",
+                "faction": "anarch",
                 "used": 30,
                 "wins": 51,
                 "draws": 0,
@@ -136,6 +151,7 @@
             {
                 "title": "Ken \"Express\" Tenma: Disappeared Clone",
                 "code": "05029",
+                "faction": "criminal",
                 "used": 29,
                 "wins": 32,
                 "draws": 0,
@@ -144,6 +160,7 @@
             {
                 "title": "Lat: Ethical Freelancer",
                 "code": "26019",
+                "faction": "shaper",
                 "used": 26,
                 "wins": 26,
                 "draws": 0,
@@ -152,6 +169,7 @@
             {
                 "title": "Alice Merchant: Clan Agitator",
                 "code": "12061",
+                "faction": "anarch",
                 "used": 17,
                 "wins": 27,
                 "draws": 0,
@@ -160,6 +178,7 @@
             {
                 "title": "Null: Whistleblower",
                 "code": "11002",
+                "faction": "anarch",
                 "used": 16,
                 "wins": 16,
                 "draws": 0,
@@ -168,6 +187,7 @@
             {
                 "title": "Edward Kim: Humanity's Hammer",
                 "code": "07028",
+                "faction": "anarch",
                 "used": 16,
                 "wins": 14,
                 "draws": 0,
@@ -176,6 +196,7 @@
             {
                 "title": "Gabriel Santiago: Consummate Professional",
                 "code": "25020",
+                "faction": "criminal",
                 "used": 16,
                 "wins": 15,
                 "draws": 0,
@@ -184,6 +205,7 @@
             {
                 "title": "Nathaniel \"Gnat\" Hall: One-of-a-Kind",
                 "code": "22001",
+                "faction": "anarch",
                 "used": 13,
                 "wins": 12,
                 "draws": 0,
@@ -192,6 +214,7 @@
             {
                 "title": "Apex: Invasive Predator",
                 "code": "09029",
+                "faction": "apex",
                 "used": 12,
                 "wins": 12,
                 "draws": 0,
@@ -200,6 +223,7 @@
             {
                 "title": "Omar Keung: Conspiracy Theorist",
                 "code": "11043",
+                "faction": "anarch",
                 "used": 11,
                 "wins": 16,
                 "draws": 0,
@@ -208,6 +232,7 @@
             {
                 "title": "Los: Data Hijacker",
                 "code": "12025",
+                "faction": "criminal",
                 "used": 11,
                 "wins": 12,
                 "draws": 0,
@@ -216,6 +241,7 @@
             {
                 "title": "Reina Roja: Freedom Fighter",
                 "code": "25001",
+                "faction": "anarch",
                 "used": 10,
                 "wins": 10,
                 "draws": 0,
@@ -224,6 +250,7 @@
             {
                 "title": "Jesminder Sareen: Girl Behind the Curtain",
                 "code": "10006",
+                "faction": "shaper",
                 "used": 8,
                 "wins": 8,
                 "draws": 0,
@@ -232,6 +259,7 @@
             {
                 "title": "Akiko Nisei: Head Case",
                 "code": "22015",
+                "faction": "shaper",
                 "used": 7,
                 "wins": 5,
                 "draws": 0,
@@ -240,6 +268,7 @@
             {
                 "title": "Iain Stirling: Retired Spook",
                 "code": "05028",
+                "faction": "criminal",
                 "used": 4,
                 "wins": 4,
                 "draws": 0,
@@ -248,6 +277,7 @@
             {
                 "title": "Chaos Theory: Wünderkind",
                 "code": "25040",
+                "faction": "shaper",
                 "used": 4,
                 "wins": 1,
                 "draws": 0,
@@ -256,6 +286,7 @@
             {
                 "title": "Quetzal: Free Spirit",
                 "code": "25002",
+                "faction": "anarch",
                 "used": 4,
                 "wins": 6,
                 "draws": 0,
@@ -264,6 +295,7 @@
             {
                 "title": "Khan: Savvy Skiptracer",
                 "code": "11027",
+                "faction": "criminal",
                 "used": 3,
                 "wins": 4,
                 "draws": 0,
@@ -272,6 +304,7 @@
             {
                 "title": "Silhouette: Stealth Operative",
                 "code": "05030",
+                "faction": "criminal",
                 "used": 3,
                 "wins": 1,
                 "draws": 0,
@@ -280,6 +313,7 @@
             {
                 "title": "Laramy Fisk: Savvy Investor",
                 "code": "08104",
+                "faction": "criminal",
                 "used": 2,
                 "wins": 1,
                 "draws": 0,
@@ -288,6 +322,7 @@
             {
                 "title": "Nero Severn: Information Broker",
                 "code": "10040",
+                "faction": "criminal",
                 "used": 1,
                 "wins": 2,
                 "draws": 0,
@@ -298,6 +333,7 @@
             {
                 "title": "Azmari EdTech: Shaping the Future",
                 "code": "21054",
+                "faction": "nbn",
                 "used": 100,
                 "wins": 265,
                 "draws": 0,
@@ -306,6 +342,7 @@
             {
                 "title": "Earth Station: SEA Headquarters",
                 "code": "26120",
+                "faction": "weyland-consortium",
                 "used": 100,
                 "wins": 197,
                 "draws": 0,
@@ -314,6 +351,7 @@
             {
                 "title": "Argus Security: Protection Guaranteed",
                 "code": "07001",
+                "faction": "weyland-consortium",
                 "used": 88,
                 "wins": 198,
                 "draws": 0,
@@ -322,6 +360,7 @@
             {
                 "title": "Asa Group: Security Through Vigilance",
                 "code": "21009",
+                "faction": "haas-bioroid",
                 "used": 83,
                 "wins": 206,
                 "draws": 0,
@@ -330,6 +369,7 @@
             {
                 "title": "Sportsmetal: Go Big or Go Home",
                 "code": "22026",
+                "faction": "haas-bioroid",
                 "used": 80,
                 "wins": 168,
                 "draws": 0,
@@ -338,6 +378,7 @@
             {
                 "title": "GameNET: Where Dreams are Real",
                 "code": "26113",
+                "faction": "nbn",
                 "used": 80,
                 "wins": 146,
                 "draws": 0,
@@ -346,6 +387,7 @@
             {
                 "title": "Titan Transnational: Investing In Your Future",
                 "code": "07003",
+                "faction": "weyland-consortium",
                 "used": 70,
                 "wins": 185,
                 "draws": 1,
@@ -354,6 +396,7 @@
             {
                 "title": "Pālanā Foods: Sustainable Growth",
                 "code": "10030",
+                "faction": "jinteki",
                 "used": 69,
                 "wins": 144,
                 "draws": 0,
@@ -362,6 +405,7 @@
             {
                 "title": "NBN: Controlling the Message",
                 "code": "11017",
+                "faction": "nbn",
                 "used": 65,
                 "wins": 113,
                 "draws": 0,
@@ -370,6 +414,7 @@
             {
                 "title": "MirrorMorph: Endless Iteration",
                 "code": "26031",
+                "faction": "haas-bioroid",
                 "used": 62,
                 "wins": 118,
                 "draws": 0,
@@ -378,6 +423,7 @@
             {
                 "title": "The Shadow: Pulling the Strings",
                 "code": "00005",
+                "faction": "neutral-corp",
                 "used": 60,
                 "wins": 53,
                 "draws": 0,
@@ -386,6 +432,7 @@
             {
                 "title": "The Outfit: Family Owned and Operated",
                 "code": "22050",
+                "faction": "weyland-consortium",
                 "used": 56,
                 "wins": 115,
                 "draws": 0,
@@ -394,6 +441,7 @@
             {
                 "title": "Jinteki: Personal Evolution",
                 "code": "25084",
+                "faction": "jinteki",
                 "used": 49,
                 "wins": 92,
                 "draws": 0,
@@ -402,6 +450,7 @@
             {
                 "title": "Jinteki: Replicating Perfection",
                 "code": "25085",
+                "faction": "jinteki",
                 "used": 36,
                 "wins": 54,
                 "draws": 0,
@@ -410,6 +459,7 @@
             {
                 "title": "Blue Sun: Powering the Future",
                 "code": "25123",
+                "faction": "weyland-consortium",
                 "used": 31,
                 "wins": 70,
                 "draws": 0,
@@ -418,6 +468,7 @@
             {
                 "title": "SSO Industries: Fueling Innovation",
                 "code": "21077",
+                "faction": "weyland-consortium",
                 "used": 29,
                 "wins": 55,
                 "draws": 0,
@@ -426,6 +477,7 @@
             {
                 "title": "AgInfusion: New Miracles for a New World",
                 "code": "12052",
+                "faction": "jinteki",
                 "used": 21,
                 "wins": 52,
                 "draws": 0,
@@ -434,6 +486,7 @@
             {
                 "title": "Gagarin Deep Space: Expanding the Horizon",
                 "code": "07002",
+                "faction": "weyland-consortium",
                 "used": 19,
                 "wins": 50,
                 "draws": 0,
@@ -442,6 +495,7 @@
             {
                 "title": "Weyland Consortium: Builder of Nations",
                 "code": "11038",
+                "faction": "weyland-consortium",
                 "used": 19,
                 "wins": 36,
                 "draws": 0,
@@ -450,6 +504,7 @@
             {
                 "title": "Saraswati Mnemonics: Endless Exploration",
                 "code": "22034",
+                "faction": "jinteki",
                 "used": 18,
                 "wins": 24,
                 "draws": 0,
@@ -458,6 +513,7 @@
             {
                 "title": "Haas-Bioroid: Architects of Tomorrow",
                 "code": "11072",
+                "faction": "haas-bioroid",
                 "used": 18,
                 "wins": 26,
                 "draws": 0,
@@ -466,6 +522,7 @@
             {
                 "title": "Jinteki Biotech: Life Imagined",
                 "code": "08012",
+                "faction": "jinteki",
                 "used": 18,
                 "wins": 38,
                 "draws": 0,
@@ -474,6 +531,7 @@
             {
                 "title": "Jemison Astronautics: Sacrifice. Audacity. Success.",
                 "code": "12016",
+                "faction": "weyland-consortium",
                 "used": 15,
                 "wins": 19,
                 "draws": 0,
@@ -482,6 +540,7 @@
             {
                 "title": "Chronos Protocol: Selective Mind-mapping",
                 "code": "08111",
+                "faction": "jinteki",
                 "used": 13,
                 "wins": 28,
                 "draws": 0,
@@ -490,6 +549,7 @@
             {
                 "title": "Acme Consulting: The Truth You Need",
                 "code": "22042",
+                "faction": "nbn",
                 "used": 13,
                 "wins": 22,
                 "draws": 0,
@@ -498,6 +558,7 @@
             {
                 "title": "Tennin Institute: The Secrets Within",
                 "code": "05003",
+                "faction": "jinteki",
                 "used": 8,
                 "wins": 11,
                 "draws": 0,
@@ -506,6 +567,7 @@
             {
                 "title": "SYNC: Everything, Everywhere",
                 "code": "09001",
+                "faction": "nbn",
                 "used": 8,
                 "wins": 11,
                 "draws": 0,
@@ -514,6 +576,7 @@
             {
                 "title": "Spark Agency: Worldswide Reach",
                 "code": "25105",
+                "faction": "nbn",
                 "used": 8,
                 "wins": 7,
                 "draws": 0,
@@ -522,6 +585,7 @@
             {
                 "title": "Weyland Consortium: Building a Better World",
                 "code": "25122",
+                "faction": "weyland-consortium",
                 "used": 7,
                 "wins": 6,
                 "draws": 0,
@@ -530,6 +594,7 @@
             {
                 "title": "NBN: Making News",
                 "code": "25104",
+                "faction": "nbn",
                 "used": 6,
                 "wins": 15,
                 "draws": 0,
@@ -538,6 +603,7 @@
             {
                 "title": "Seidr Laboratories: Destiny Defined",
                 "code": "25067",
+                "faction": "haas-bioroid",
                 "used": 5,
                 "wins": 3,
                 "draws": 0,
@@ -546,6 +612,7 @@
             {
                 "title": "Haas-Bioroid: Stronger Together",
                 "code": "25066",
+                "faction": "haas-bioroid",
                 "used": 4,
                 "wins": 1,
                 "draws": 0,
@@ -554,6 +621,7 @@
             {
                 "title": "Hyoubu Institute: Absolute Clarity",
                 "code": "26039",
+                "faction": "jinteki",
                 "used": 4,
                 "wins": 4,
                 "draws": 0,
@@ -562,6 +630,7 @@
             {
                 "title": "Nisei Division: The Next Generation",
                 "code": "05002",
+                "faction": "jinteki",
                 "used": 4,
                 "wins": 10,
                 "draws": 0,
@@ -570,6 +639,7 @@
             {
                 "title": "Haarpsichord Studios: Entertainment Unleashed",
                 "code": "08092",
+                "faction": "nbn",
                 "used": 4,
                 "wins": 4,
                 "draws": 0,
@@ -578,6 +648,7 @@
             {
                 "title": "Harishchandra Ent.: Where You're the Star",
                 "code": "10107",
+                "faction": "nbn",
                 "used": 2,
                 "wins": 0,
                 "draws": 0,
@@ -586,6 +657,7 @@
             {
                 "title": "Jinteki: Potential Unleashed",
                 "code": "11054",
+                "faction": "jinteki",
                 "used": 1,
                 "wins": 3,
                 "draws": 0,
@@ -594,6 +666,7 @@
             {
                 "title": "New Angeles Sol: Your News",
                 "code": "09002",
+                "faction": "nbn",
                 "used": 1,
                 "wins": 1,
                 "draws": 0,
@@ -602,6 +675,7 @@
             {
                 "title": "Cybernetics Division: Humanity Upgraded",
                 "code": "08050",
+                "faction": "haas-bioroid",
                 "used": 1,
                 "wins": 0,
                 "draws": 0,
