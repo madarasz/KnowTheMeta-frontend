@@ -22,13 +22,15 @@ export default {
           },
           ticks: {
             beginAtZero: true
-          },
-          pointlabels: {
-            callback: function (value) {
-              return (value / 100).toLocaleString('de-DE', { style: 'percent' })
-            }
           }
         }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function (tooltipItem, data) {
+            return data.datasets[0].tooltips[tooltipItem.index]
+          }
+        }
       }
     }
   }),
@@ -55,9 +57,10 @@ export default {
         labels: this.metaData.map(x => { return transform.shortestIdentity(x.title) }),
         datasets: [{
           data: this.metaData.map(x => { return transform.winrate(x) }),
+          tooltips: this.metaData.map(x => { return x.wins + '/' + transform.matchCount(x) }), // store values here, read with tooltip callback later
           backgroundColor: this.metaData.map(x => { return transform.factionCodeToColor(x.faction) }),
           errorBars: this.errordata.errors,
-          borderColor: 'rgba(0, 0, 0, 0.3)' // error bar color
+          borderColor: 'rgba(50, 50, 50, 0.6)' // error bar color
         }]
       }
     }

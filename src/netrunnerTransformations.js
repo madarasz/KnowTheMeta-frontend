@@ -97,7 +97,8 @@ const compareWinrates = function (a, b) {
 }
 
 const winrateError = function (identity) {
-  return Math.sqrt(winrate(identity) * (1 - winrate(identity) / matchCount(identity)))
+  const wr = winrate(identity) / 100
+  return Math.sqrt(wr * (1 - wr) / matchCount(identity)) * 100
 }
 
 export default {
