@@ -39,6 +39,8 @@ const shortestIdentity = function (title) {
       return 'PE'
     case 'Replicating Perfection':
       return 'RP'
+    case 'Ken "Express" Tenma':
+      return 'Ken' // instead of 'Express'
   }
   // if it's short enough return it
   if (result.length < 14) {
