@@ -96,11 +96,16 @@ const compareWinrates = function (a, b) {
   return 0
 }
 
+const winrateError = function (identity) {
+  return Math.sqrt(winrate(identity) * (1 - winrate(identity) / matchCount(identity)))
+}
+
 export default {
   factionCodeToColor: factionCodeToColor,
   shortenIdentity: shortenIdentity,
   shortestIdentity: shortestIdentity,
   winrate: winrate,
+  winrateError: winrateError,
   matchCount: matchCount,
   compareWinrates: compareWinrates
 }
