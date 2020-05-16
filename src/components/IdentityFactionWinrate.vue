@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <v-card>
-      <v-card-title class="d-md-none">Win rates</v-card-title>
-      <v-card-text class="text-center">
-        <winrate-chart :meta-data="sortedData" v-if="sortedData.length > 0"/>
-      </v-card-text>
-    </v-card>
-  </div>
+  <winrate-chart :meta-data="sortedData" v-if="sortedData.length > 0"/>
 </template>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
