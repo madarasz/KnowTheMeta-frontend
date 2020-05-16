@@ -22,7 +22,7 @@ export default {
   computed: {
     chartdata: function () {
       return {
-        labels: this.metaData.map(x => { return x.title }),
+        labels: this.metaData.map(x => { return transform.shortestIdentity(x.title) }),
         datasets: [{
           data: this.metaData.map(x => { return x.used }),
           backgroundColor: this.metaData.map(x => { return transform.factionCodeToColor(x.faction) }),
