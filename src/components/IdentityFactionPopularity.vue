@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-card>
+    <!-- <v-card>
       <v-card-title class="d-md-none">Popularity</v-card-title>
-      <v-card-text class="text-center">
+      <v-card-text class="text-center"> -->
         <v-row>
           <!-- Chart -->
           <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
@@ -27,8 +27,8 @@
             <v-btn class="mt-4 ml-2" @click="changeListed(-change)" v-if="showMax > 10">Less</v-btn>
           </v-col>
         </v-row>
-      </v-card-text>
-    </v-card>
+      <!-- </v-card-text>
+    </v-card> -->
   </div>
 </template>
 
