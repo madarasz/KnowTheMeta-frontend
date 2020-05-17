@@ -2,7 +2,7 @@
   <v-row>
     <!-- Chart -->
     <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
-      <popularity-chart :meta-data="sideData"/>
+      <popularity-chart :meta-data="sideData" :max-entries="showMax"/>
     </v-col>
     <!-- Table -->
     <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6">
