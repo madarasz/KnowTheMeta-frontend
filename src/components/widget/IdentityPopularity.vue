@@ -27,7 +27,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
-import PopularityChart from '@/components/PopularityChart.vue'
+import PopularityChart from '@/components/chart/PopularityChart.vue'
 import transform from '@/netrunnerTransformations.js'
 export default {
   name: 'IdentityFactionPopularity',

@@ -4,7 +4,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
-import WinrateChart from '@/components/WinrateChart.vue'
+import WinrateChart from '@/components/chart/WinrateChart.vue'
 import transform from '@/netrunnerTransformations.js'
 export default {
   name: 'IdentityFactionWinRate',

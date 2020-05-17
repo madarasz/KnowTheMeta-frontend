@@ -62,10 +62,10 @@
 </template>
 
 <script>
-import IdentityFactionPopularity from '@/components/IdentityFactionPopularity.vue'
-import IdentityFactionWinrate from '@/components/IdentityFactionWinrate.vue'
-import DesktopCard from '@/components/DesktopCard.vue'
-import MobilePanel from '@/components/MobilePanel.vue'
+import IdentityFactionPopularity from '@/components/widget/IdentityPopularity.vue'
+import IdentityFactionWinrate from '@/components/widget/IdentityWinrate.vue'
+import DesktopCard from '@/components/header/DesktopCard.vue'
+import MobilePanel from '@/components/header/MobilePanel.vue'
 import metaData from '@/assets/json/uprising.json'
 export default {
   name: 'Identities',

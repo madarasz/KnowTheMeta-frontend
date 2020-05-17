@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Identities from '@/components/Identities.vue'
+import Identities from '@/components/subview/Identities.vue'
 export default {
   components: {
     Identities
