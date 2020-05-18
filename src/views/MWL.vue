@@ -5,47 +5,16 @@
       <desktop-card :title="mwlDataCurrent.name" :subtitle="getSubtitle">
         <!-- Banned -->
         <template v-slot:pretext>
-          <v-card-title class="card-subtitle">
-            <div class="overline">Banned</div>
-          </v-card-title>
+          <desktop-card-subtitle subtitle="Banned"/>
         </template>
-        <v-row>
-          <v-col cols="6" class="divider-on-right">
-            <card-lister :card-list="bannedRunner"/>
-          </v-col>
-          <v-col>
-            <card-lister :card-list="bannedCorp"/>
-          </v-col>
-        </v-row>
+        <cards-in-two-wrapper :runner-cards="bannedRunner" :corp-cards="bannedCorp"/>
         <template v-slot:posttext>
           <!-- Restricted -->
-          <v-card-title class="card-subtitle">
-            <div class="overline">Restricted</div>
-          </v-card-title>
-          <v-card-text class="pb-0">
-            <v-row>
-              <v-col cols="6" class="divider-on-right">
-                <card-lister :card-list="restrictedRunner"/>
-              </v-col>
-              <v-col>
-                <card-lister :card-list="restrictedCorp"/>
-              </v-col>
-            </v-row>
-          </v-card-text>
+          <desktop-card-subtitle subtitle="Restricted"/>
+          <cards-in-two-wrapper in-card-text :runner-cards="restrictedRunner" :corp-cards="restrictedCorp"/>
           <!-- Removed from MWL -->
-          <v-card-title class="card-subtitle">
-            <div class="overline">Removed from MWL</div>
-          </v-card-title>
-          <v-card-text class="pb-0">
-            <v-row>
-              <v-col cols="6" class="divider-on-right">
-                <card-lister :card-list="removedRunner"/>
-              </v-col>
-              <v-col>
-                <card-lister :card-list="removedCorp"/>
-              </v-col>
-            </v-row>
-          </v-card-text>
+          <desktop-card-subtitle subtitle="Removed from MWL"/>
+          <cards-in-two-wrapper in-card-text :runner-cards="removedRunner" :corp-cards="removedCorp"/>
         </template>
       </desktop-card>
     </div>
@@ -55,12 +24,16 @@
 <script>
 import axios from 'axios'
 import DesktopCard from '@/components/header/DesktopCard.vue'
-import CardLister from '@/components/widget/CardLister.vue'
+// import CardLister from '@/components/widget/CardLister.vue'
+import CardsInTwoWrapper from '@/components/widget/CardsInTwoWrapper.vue'
+import DesktopCardSubtitle from '@/components/header/DesktopCardSubtitle.vue'
 
 export default {
   components: {
     DesktopCard,
-    CardLister
+    // CardLister,
+    CardsInTwoWrapper,
+    DesktopCardSubtitle
   },
   data: () => ({
     mwlDataCurrent: {},
@@ -97,20 +70,20 @@ export default {
         this.imageUrlTemplate = response.data.imageUrlTemplate
         this.cardData = response.data.data.map(x => this.simplifyCardData(x))
         this.mwlLifted = this.getMWLLifted(this.mwlDataCurrent.cards, this.previousMWLCards)
-        this.sortBannedAndRestricted()
+        this.sortBannedAndRestricted(this.currentBanned, this.currentRestricted)
       }).catch(() => {
         // TODO: error handling
       })
     },
-    sortBannedAndRestricted: function () {
+    sortBannedAndRestricted: function (bannedList, restrictedList) {
       for (const prop in this.mwlDataCurrent.cards) {
         if (Object.prototype.hasOwnProperty.call(this.mwlDataCurrent.cards, prop)) {
           const card = this.mwlDataCurrent.cards[prop]
           if (('deck_limit' in card) && card.deck_limit === 0) {
-            this.currentBanned.push(this.cardData.filter(x => { return x.code === prop })[0])
+            bannedList.push(this.cardData.filter(x => { return x.code === prop })[0])
           }
           if (('is_restricted' in card) && card.is_restricted === 1) {
-            this.currentRestricted.push(this.cardData.filter(x => { return x.code === prop })[0])
+            restrictedList.push(this.cardData.filter(x => { return x.code === prop })[0])
           }
         }
       }
