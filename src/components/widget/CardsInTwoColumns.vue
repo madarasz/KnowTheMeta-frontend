@@ -1,5 +1,5 @@
 <template>
-  <v-row v-if="!inCardText">
+  <v-row>
     <v-col cols="6" class="divider-on-right">
       <card-lister :card-list="runnerCards"/>
     </v-col>

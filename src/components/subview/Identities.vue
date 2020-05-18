@@ -1,61 +1,45 @@
 <template>
   <div>
     <!-- Small screens -->
-    <div class="d-md-none">
-      <!-- runner / corp tabs -->
-      <v-card>
-        <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
-          <v-tab href="#runner">
-            Runner
-          </v-tab>
-          <v-tab href="#corp">
-            Corporation
-          </v-tab>
-        </v-tabs>
-      </v-card>
-      <!-- tab items -->
-      <v-tabs-items v-model="tab">
-        <v-tab-item :key="1" value="runner">
-          <mobile-panel title="Popularity" :subtitle="popSubtitle">
-            <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
-          </mobile-panel>
-          <mobile-panel title="Win rates" :subtitle="winSubtitle">
-            <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
-          </mobile-panel>
-        </v-tab-item>
-        <v-tab-item :key="2" value="corp">
-          <mobile-panel title="Popularity" :subtitle="popSubtitle">
-            <identity-faction-popularity side="corp" :side-data="metaData.identities.corp"/>
-          </mobile-panel>
-          <mobile-panel title="Win rates" :subtitle="winSubtitle">
-            <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
-          </mobile-panel>
-        </v-tab-item>
-      </v-tabs-items>
-    </div>
+    <runner-corp-tabs>
+      <!-- Runner -->
+      <template v-slot:runner>
+        <mobile-panel title="Popularity" :subtitle="popSubtitle">
+          <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
+        </mobile-panel>
+        <mobile-panel title="Win rates" :subtitle="winSubtitle">
+          <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
+        </mobile-panel>
+      </template>
+      <!-- Corp -->
+      <template v-slot:corp>
+        <mobile-panel title="Popularity" :subtitle="popSubtitle">
+          <identity-faction-popularity side="corp" :side-data="metaData.identities.corp"/>
+        </mobile-panel>
+        <mobile-panel title="Win rates" :subtitle="winSubtitle">
+          <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
+        </mobile-panel>
+      </template>
+    </runner-corp-tabs>
     <!-- Desktop screens -->
     <div class="mr-4 ml-4 d-none d-md-block">
       <!-- Popularity card -->
       <desktop-card title="Popularity" :subtitle="popSubtitle">
-        <v-row dense>
-          <v-col cols="6" class="divider-on-right">
-            <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
-          </v-col>
-          <v-col cols="6">
-            <identity-faction-popularity side="corporation" :side-data="metaData.identities.corp"/>
-          </v-col>
-        </v-row>
+        <template v-slot:left>
+          <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
+        </template>
+        <template v-slot:right>
+          <identity-faction-popularity side="corporation" :side-data="metaData.identities.corp"/>
+        </template>
       </desktop-card>
       <!-- Win rates -->
       <desktop-card title="Win rates" :subtitle="winSubtitle">
-        <v-row class="d-none d-md-flex ml-2 mr-2">
-          <v-col cols="6" class="divider-on-right">
-            <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
-          </v-col>
-          <v-col cols="6">
-            <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
-          </v-col>
-        </v-row>
+        <template v-slot:left>
+          <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
+        </template>
+        <template v-slot:right>
+          <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
+        </template>
       </desktop-card>
     </div>
   </div>
@@ -67,6 +51,7 @@ import IdentityFactionWinrate from '@/components/widget/IdentityWinrate.vue'
 import DesktopCard from '@/components/header/DesktopCard.vue'
 import MobilePanel from '@/components/header/MobilePanel.vue'
 import metaData from '@/assets/json/uprising.json'
+import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'
 export default {
   name: 'Identities',
   props: {
@@ -75,11 +60,11 @@ export default {
     IdentityFactionPopularity,
     IdentityFactionWinrate,
     DesktopCard,
-    MobilePanel
+    MobilePanel,
+    RunnerCorpTabs
   },
   data: () => ({
-    metaData,
-    tab: 'runner' // default tab
+    metaData
   }),
   computed: {
     popSubtitle: function () {

@@ -9,7 +9,14 @@
     </v-card-title>
     <slot name="pretext"></slot>
     <v-card-text class="pb-0">
-      <slot></slot>
+      <v-row>
+        <v-col cols="6" class="divider-on-right">
+          <slot name="left"></slot>
+        </v-col>
+        <v-col cols="6">
+          <slot name="right"></slot>
+        </v-col>
+      </v-row>
     </v-card-text>
     <slot name="posttext"></slot>
   </v-card>

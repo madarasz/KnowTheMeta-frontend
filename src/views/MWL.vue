@@ -1,13 +1,18 @@
 <template>
   <v-content>
     <!-- Desktop screens -->
-    <div class="mr-4 ml-4 d-none d-md-block">
+    <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <desktop-card :title="mwlDataCurrent.name" :subtitle="getSubtitle">
         <!-- Banned -->
         <template v-slot:pretext>
           <desktop-card-subtitle subtitle="Banned"/>
         </template>
-        <cards-in-two-wrapper :runner-cards="bannedRunner" :corp-cards="bannedCorp"/>
+        <template v-slot:left>
+          <card-lister :card-list="bannedRunner"/>
+        </template>
+        <template v-slot:right>
+          <card-lister :card-list="bannedCorp"/>
+        </template>
         <template v-slot:posttext>
           <!-- Restricted -->
           <desktop-card-subtitle subtitle="Restricted"/>
@@ -18,22 +23,53 @@
         </template>
       </desktop-card>
     </div>
+    <!-- Mobile screens -->
+    <div v-if="$vuetify.breakpoint.smAndDown">
+      <runner-corp-tabs>
+        <template v-slot:runner>
+          <mobile-panel title="Banned">
+            <card-lister :card-list="bannedRunner"/>
+          </mobile-panel>
+          <mobile-panel title="Restricted">
+            <card-lister :card-list="restrictedRunner"/>
+          </mobile-panel>
+          <mobile-panel title="Removed from MWL">
+            <card-lister :card-list="removedRunner"/>
+          </mobile-panel>
+        </template>
+        <template v-slot:corp>
+          <mobile-panel title="Banned">
+            <card-lister :card-list="bannedCorp"/>
+          </mobile-panel>
+          <mobile-panel title="Restricted">
+            <card-lister :card-list="restrictedCorp"/>
+          </mobile-panel>
+          <mobile-panel title="Removed from MWL">
+            <card-lister :card-list="removedCorp"/>
+          </mobile-panel>
+        </template>
+      </runner-corp-tabs>
+    </div>
   </v-content>
 </template>
 
 <script>
 import axios from 'axios'
 import DesktopCard from '@/components/header/DesktopCard.vue'
-// import CardLister from '@/components/widget/CardLister.vue'
+import CardLister from '@/components/widget/CardLister.vue'
 import CardsInTwoWrapper from '@/components/widget/CardsInTwoWrapper.vue'
 import DesktopCardSubtitle from '@/components/header/DesktopCardSubtitle.vue'
+import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'
+import MobilePanel from '@/components/header/MobilePanel.vue'
 
 export default {
   components: {
     DesktopCard,
-    // CardLister,
+    CardLister,
     CardsInTwoWrapper,
-    DesktopCardSubtitle
+    DesktopCardSubtitle,
+    RunnerCorpTabs,
+    MobilePanel
   },
   data: () => ({
     mwlDataCurrent: {},
