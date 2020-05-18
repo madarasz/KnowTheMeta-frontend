@@ -1,0 +1,19 @@
+/* NetrunnerCard widget */
+.card-title {
+  font-size: .75rem;
+  line-height: 1rem;
+  height: 2rem;
+}
+.divider-on-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+.card-subtitle {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 4px 16px !important;
+  justify-content: center;
+}
+
+/* card badge border fix */
+.v-badge--bordered .v-badge__badge:after {
+  transform: scale(1) !important;
+}

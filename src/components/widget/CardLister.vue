@@ -1,8 +1,10 @@
 <template>
-  <v-row>
+  <v-row class="text-center">
     <v-col v-for="card in cardList" :key="card.code" class="text-center pa-1">
       <netrunner-card :card="card"/>
     </v-col>
+    <!-- empty message -->
+    <v-col v-if="cardList.length === 0" class="overline mt-10">no cards</v-col>
   </v-row>
 </template>
 
@@ -18,11 +20,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.pop-table tbody tr td {
-  padding: 2px;
-  border-bottom: 0 !important;
-  height: 36px;
-}
-</style>

@@ -35,3 +35,7 @@
     </v-app>
   </div>
 </template>
+
+<style scoped>
+  @import './assets/main.css';
+</style>
