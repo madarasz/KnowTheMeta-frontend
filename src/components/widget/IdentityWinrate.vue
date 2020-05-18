@@ -2,7 +2,6 @@
   <winrate-chart :meta-data="sortedData" v-if="sortedData.length > 0"/>
 </template>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 import WinrateChart from '@/components/chart/WinrateChart.vue'
 import transform from '@/netrunnerTransformations.js'
@@ -21,7 +20,7 @@ export default {
   }),
   mounted () {
     // filter out entries below match count
-    this.sortedData = [...this.sideData].filter(x => { return transform.matchCount(x) > this.minimumMatches})
+    this.sortedData = [...this.sideData].filter(x => { return transform.matchCount(x) > this.minimumMatches })
     // sort by winrate
     this.sortedData.sort(transform.compareWinrates)
   }

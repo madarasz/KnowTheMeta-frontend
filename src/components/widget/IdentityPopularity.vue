@@ -25,7 +25,6 @@
   </v-row>
 </template>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 import PopularityChart from '@/components/chart/PopularityChart.vue'
 import transform from '@/netrunnerTransformations.js'
