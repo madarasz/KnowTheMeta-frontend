@@ -7,9 +7,11 @@
         {{ subtitle }}
       </span>
     </v-card-title>
+    <slot name="pretext"></slot>
     <v-card-text class="pb-0">
       <slot></slot>
     </v-card-text>
+    <slot name="posttext"></slot>
   </v-card>
 </template>
 
