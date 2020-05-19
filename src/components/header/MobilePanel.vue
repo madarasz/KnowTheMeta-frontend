@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panels v-model="openedIndex" class="square-border">
   <v-expansion-panel class="square-border">
-    <v-expansion-panel-header class="mobile-panel" :color="color" :hide-actions="hideActions">
+    <v-expansion-panel-header class="mobile-panel" :color="color" :hide-actions="hideActions" :class="{ 'thin-panel': thin }">
       {{ title }}
       <v-spacer/>
       <span class="overline text-right">
@@ -25,7 +25,8 @@ export default {
       type: String,
       default: 'secondary'
     },
-    hideActions: Boolean
+    hideActions: Boolean,
+    thin: Boolean
   },
   data: () => ({
     openedIndex: 0

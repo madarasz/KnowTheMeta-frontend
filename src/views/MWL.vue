@@ -30,24 +30,24 @@
           <mobile-panel :title="mwlDataCurrent.name" :subtitle="getSubtitle" hide-actions/>
         </template>
         <template v-slot:runner>
-          <mobile-panel title="Banned" color="accent">
+          <mobile-panel title="Banned" color="accent" thin>
             <card-lister :card-list="bannedRunner"/>
           </mobile-panel>
-          <mobile-panel title="Restricted" color="accent">
+          <mobile-panel title="Restricted" color="accent" thin>
             <card-lister :card-list="restrictedRunner"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL" color="accent">
+          <mobile-panel title="Removed from MWL" color="accent" thin>
             <card-lister :card-list="removedRunner"/>
           </mobile-panel>
         </template>
         <template v-slot:corp>
-          <mobile-panel title="Banned" color="accent">
+          <mobile-panel title="Banned" color="accent" thin>
             <card-lister :card-list="bannedCorp"/>
           </mobile-panel>
-          <mobile-panel title="Restricted" color="accent">
+          <mobile-panel title="Restricted" color="accent" thin>
             <card-lister :card-list="restrictedCorp"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL" color="accent">
+          <mobile-panel title="Removed from MWL" color="accent" thin>
             <card-lister :card-list="removedCorp"/>
           </mobile-panel>
         </template>

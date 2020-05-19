@@ -20,6 +20,11 @@
 .square-border {
   border-radius: 0 !important;
 }
+.thin-panel {
+  height: 24px; 
+  padding: 4px 24px !important;
+}
+
 .v-expansion-panel-content__wrap {
   padding-bottom: 0 !important;
 }
