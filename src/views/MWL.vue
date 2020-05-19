@@ -25,26 +25,27 @@
     </div>
     <!-- Mobile screens -->
     <div v-if="$vuetify.breakpoint.smAndDown">
+      <mobile-panel :title="mwlDataCurrent.name" :subtitle="getSubtitle" hide-actions/>
       <runner-corp-tabs>
         <template v-slot:runner>
-          <mobile-panel title="Banned">
+          <mobile-panel title="Banned" color="accent">
             <card-lister :card-list="bannedRunner"/>
           </mobile-panel>
-          <mobile-panel title="Restricted">
+          <mobile-panel title="Restricted" color="accent">
             <card-lister :card-list="restrictedRunner"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL">
+          <mobile-panel title="Removed from MWL" color="accent">
             <card-lister :card-list="removedRunner"/>
           </mobile-panel>
         </template>
         <template v-slot:corp>
-          <mobile-panel title="Banned">
+          <mobile-panel title="Banned" color="accent">
             <card-lister :card-list="bannedCorp"/>
           </mobile-panel>
-          <mobile-panel title="Restricted">
+          <mobile-panel title="Restricted" color="accent">
             <card-lister :card-list="restrictedCorp"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL">
+          <mobile-panel title="Removed from MWL" color="accent">
             <card-lister :card-list="removedCorp"/>
           </mobile-panel>
         </template>

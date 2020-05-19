@@ -31,10 +31,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.desktop-card {
-  background-color: rgba(53, 149, 185, 0.5);
-  padding: 4px 16px;
-}
-</style>

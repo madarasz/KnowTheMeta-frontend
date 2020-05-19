@@ -1,8 +1,7 @@
-/* NetrunnerCard widget */
-.card-title {
-  font-size: .75rem;
-  line-height: 1rem;
-  height: 2rem;
+/* DesktopCard widget */
+.desktop-card {
+  background-color: rgba(53, 149, 185, 0.5);
+  padding: 4px 16px !important;
 }
 .divider-on-right {
   border-right: 1px solid rgba(0, 0, 0, 0.12);
@@ -11,6 +10,25 @@
   background-color: rgba(0, 0, 0, 0.1);
   padding: 4px 16px !important;
   justify-content: center;
+}
+
+/* Mobile panel widget */
+.mobile-panel {
+  padding: 4px 16px;
+  min-height: 40px !important;
+}
+.square-border {
+  border-radius: 0 !important;
+}
+.v-expansion-panel-content__wrap {
+  padding-bottom: 0 !important;
+}
+
+/* NetrunnerCard widget */
+.card-title {
+  font-size: .75rem;
+  line-height: 1rem;
+  height: 2rem;
 }
 
 /* card badge border fix */
