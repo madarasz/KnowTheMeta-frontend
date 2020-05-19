@@ -25,8 +25,10 @@
     </div>
     <!-- Mobile screens -->
     <div v-if="$vuetify.breakpoint.smAndDown">
-      <mobile-panel :title="mwlDataCurrent.name" :subtitle="getSubtitle" hide-actions/>
       <runner-corp-tabs>
+        <template v-slot:between>
+          <mobile-panel :title="mwlDataCurrent.name" :subtitle="getSubtitle" hide-actions/>
+        </template>
         <template v-slot:runner>
           <mobile-panel title="Banned" color="accent">
             <card-lister :card-list="bannedRunner"/>

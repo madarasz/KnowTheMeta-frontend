@@ -11,6 +11,7 @@
         </v-tab>
       </v-tabs>
     </v-card>
+    <slot name="between"></slot>
     <v-tabs-items v-model="tab">
       <v-tab-item :key="1" value="runner">
         <slot name="runner"></slot>

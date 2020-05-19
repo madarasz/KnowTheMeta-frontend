@@ -7,7 +7,7 @@
         <div class="mr-4">
           <v-img :src="require('./assets/ktm.png')" width="24px"/>
         </div>
-        <v-toolbar-title class="mr-4">
+        <v-toolbar-title class="mr-4 d-none d-sm-flex">
           Know the Meta
         </v-toolbar-title>
         <v-toolbar-items>
