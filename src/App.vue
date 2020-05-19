@@ -11,7 +11,7 @@
           Know the Meta
         </v-toolbar-title>
         <v-toolbar-items>
-          <v-btn depressed color="primary">
+          <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'">
             <router-link to="Meta" tag="span">
               Uprising
             </router-link>
@@ -19,12 +19,12 @@
         </v-toolbar-items>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn depressed color="primary">
+          <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'">
             <router-link to="MWL" tag="span">
               MWL
             </router-link>
           </v-btn>
-          <v-btn depressed color="primary">
+          <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'">
             <router-link to="Rotation" tag="span">
               Rotation
             </router-link>
