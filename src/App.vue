@@ -61,6 +61,10 @@ export default {
     getMetas: function () {
       axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
         this.metaData = response.data
+        // forward to latest meta from root
+        if (this.$route.name === 'Root') {
+          this.$router.push('/Meta/' + this.getMetaPath(this.metaData[0].file))
+        }
       }).catch(() => {
         // TODO: error handling
       })
