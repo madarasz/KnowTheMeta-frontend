@@ -13,14 +13,14 @@
         <v-toolbar-items>
           <v-menu bottom left>
             <template v-slot:activator="{ on }">
-              <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'" class="pr-2">
-                Uprising
-                <v-icon icon v-on="on">{{ mdiMenuDown }}</v-icon>
+              <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on">
+                {{ $route.params.title }}
+                <v-icon icon>{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
             <v-list>
               <v-list-item v-for="(meta, i) in metaData" :key="i">
-                <router-link :to="'/Meta/' + getMetaPath(meta.file)">
+                <router-link :to="{ name: 'Meta', params: { metaname: getMetaPath(meta.file) ,title: meta.title } }" tag="span">
                   <v-list-item-title>{{ meta.title }}</v-list-item-title>
                 </router-link>
               </v-list-item>
@@ -63,7 +63,7 @@ export default {
         this.metaData = response.data
         // forward to latest meta from root
         if (this.$route.name === 'Root') {
-          this.$router.push('/Meta/' + this.getMetaPath(this.metaData[0].file))
+          this.$router.push({ name: 'Meta', params: { metaname: this.getMetaPath(this.metaData[0].file), title: this.metaData[0].title } })
         }
       }).catch(() => {
         // TODO: error handling
