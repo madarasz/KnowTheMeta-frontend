@@ -10,6 +10,7 @@ export default {
   },
   data: () => ({
     options: {
+      animation: false,
       plugins: [pluginErrorBars],
       legend: {
         display: false
@@ -35,10 +36,18 @@ export default {
     }
   }),
   mounted () {
-    this.options.scales.xAxes[0].ticks.suggestedMax = this.errordata.maxValue
-    this.renderChart(this.chartdata, this.options)
+    this.renderData()
   },
   methods: {
+    renderData: function () {
+      this.options.scales.xAxes[0].ticks.suggestedMax = this.errordata.maxValue
+      this.renderChart(this.chartdata, this.options)
+    }
+  },
+  watch: {
+    metaData: function () {
+      this.renderData()
+    }
   },
   computed: {
     errordata: function () {

@@ -5,19 +5,19 @@
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
-          <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
+          <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle">
-          <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
+          <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
       </template>
       <!-- Corp -->
       <template v-slot:corp>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
-          <identity-faction-popularity side="corp" :side-data="metaData.identities.corp"/>
+          <identity-popularity side="corp" :side-data="metaData.identities.corp"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle">
-          <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
+          <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
       </template>
     </runner-corp-tabs>
@@ -26,19 +26,19 @@
       <!-- Popularity card -->
       <desktop-card title="Popularity" :subtitle="popSubtitle">
         <template v-slot:left>
-          <identity-faction-popularity side="runner" :side-data="metaData.identities.runner"/>
+          <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
         </template>
         <template v-slot:right>
-          <identity-faction-popularity side="corporation" :side-data="metaData.identities.corp"/>
+          <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
         </template>
       </desktop-card>
       <!-- Win rates -->
       <desktop-card title="Win rates" :subtitle="winSubtitle">
         <template v-slot:left>
-          <identity-faction-winrate side="runner" :side-data="metaData.identities.runner"/>
+          <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </template>
         <template v-slot:right>
-          <identity-faction-winrate side="corporation" :side-data="metaData.identities.corp"/>
+          <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </template>
       </desktop-card>
     </div>
@@ -46,32 +46,34 @@
 </template>
 
 <script>
-import IdentityFactionPopularity from '@/components/widget/IdentityPopularity.vue'
-import IdentityFactionWinrate from '@/components/widget/IdentityWinrate.vue'
+import IdentityPopularity from '@/components/widget/IdentityPopularity.vue'
+import IdentityWinrate from '@/components/widget/IdentityWinrate.vue'
 import DesktopCard from '@/components/header/DesktopCard.vue'
 import MobilePanel from '@/components/header/MobilePanel.vue'
-import metaData from '@/assets/json/uprising.json'
 import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'
 export default {
   name: 'Identities',
   props: {
+    metaData: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    }
   },
   components: {
-    IdentityFactionPopularity,
-    IdentityFactionWinrate,
+    IdentityPopularity,
+    IdentityWinrate,
     DesktopCard,
     MobilePanel,
     RunnerCorpTabs
   },
-  data: () => ({
-    metaData
-  }),
   computed: {
     popSubtitle: function () {
-      return Math.round(metaData.meta.standings) + ' players'
+      return Math.round(this.metaData.meta.standings) + ' players'
     },
     winSubtitle: function () {
-      return metaData.meta.matches + ' matches'
+      return this.metaData.meta.matches + ' matches'
     }
   }
 }

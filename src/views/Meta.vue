@@ -17,7 +17,7 @@
       <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="ids" :transition="false" :reverse-transition="false">
-            <identities/>
+            <identities :meta-data="metaData" v-if="metaData != null"/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
             <h1>Decks</h1>
@@ -33,12 +33,32 @@
 
 <script>
 import Identities from '@/components/subview/Identities.vue'
+import axios from 'axios'
+
 export default {
   components: {
     Identities
   },
   data: () => ({
+    metaData: null,
     tab: 'ids' // default tab
-  })
+  }),
+  mounted: function () {
+    this.getMetaData(this.$route.params.metaname)
+  },
+  watch: {
+    '$route.params.metaname' (newMetaname) {
+      this.getMetaData(newMetaname)
+    }
+  },
+  methods: {
+    getMetaData: function (metaname) {
+      axios.get('https://alwaysberunning.net/ktm/' + metaname.toLowerCase() + '.json').then((response) => {
+        this.metaData = response.data
+      }).catch(() => {
+        // TODO: error handling
+      })
+    }
+  }
 }
 </script>

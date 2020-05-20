@@ -19,10 +19,20 @@ export default {
     sortedData: []
   }),
   mounted () {
-    // filter out entries below match count
-    this.sortedData = [...this.sideData].filter(x => { return transform.matchCount(x) > this.minimumMatches })
-    // sort by winrate
-    this.sortedData.sort(transform.compareWinrates)
+    this.prepareData()
+  },
+  watch: {
+    sideData: function () {
+      this.prepareData()
+    }
+  },
+  methods: {
+    prepareData: function () {
+      // filter out entries below match count
+      this.sortedData = [...this.sideData].filter(x => { return transform.matchCount(x) > this.minimumMatches })
+      // sort by winrate
+      this.sortedData.sort(transform.compareWinrates)
+    }
   }
 }
 </script>

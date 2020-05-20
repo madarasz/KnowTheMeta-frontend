@@ -11,21 +11,31 @@
           Know the Meta
         </v-toolbar-title>
         <v-toolbar-items>
-          <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'">
-            <router-link to="Meta" tag="span">
-              Uprising
-            </router-link>
-          </v-btn>
+          <v-menu bottom left>
+            <template v-slot:activator="{ on }">
+              <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'" class="pr-2">
+                Uprising
+                <v-icon icon v-on="on">{{ mdiMenuDown }}</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item v-for="(meta, i) in metaData" :key="i">
+                <router-link :to="'/Meta/' + getMetaPath(meta.file)">
+                  <v-list-item-title>{{ meta.title }}</v-list-item-title>
+                </router-link>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-toolbar-items>
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'">
-            <router-link to="MWL" tag="span">
+            <router-link to="/MWL" tag="span">
               MWL
             </router-link>
           </v-btn>
           <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'">
-            <router-link to="Rotation" tag="span">
+            <router-link to="/Rotation" tag="span">
               Rotation
             </router-link>
           </v-btn>
@@ -35,6 +45,32 @@
     </v-app>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+import { mdiMenuDown } from '@mdi/js'
+export default {
+  data: () => ({
+    metaData: [],
+    mdiMenuDown
+  }),
+  mounted: function () {
+    this.getMetas()
+  },
+  methods: {
+    getMetas: function () {
+      axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
+        this.metaData = response.data
+      }).catch(() => {
+        // TODO: error handling
+      })
+    },
+    getMetaPath: function (filename) {
+      return filename[0].toUpperCase() + filename.slice(1, -5) // capitalize, remove ".json" from the end
+    }
+  }
+}
+</script>
 
 <style scoped>
   @import './assets/main.css';

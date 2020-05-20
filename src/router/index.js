@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/meta',
+    path: '/meta/:metaname',
     name: 'Meta',
     component: () => import(/* webpackChunkName: "meta" */ '../views/Meta.vue')
   },

@@ -97,8 +97,8 @@ export default {
     },
     getMWLData: function () {
       axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
-        this.mwlDataCurrent = response.data.data[response.data.data.length - 2]
-        this.previousMWLCards = response.data.data[response.data.data.length - 3].cards
+        this.mwlDataCurrent = response.data.data[response.data.data.length - 1]
+        this.previousMWLCards = response.data.data[response.data.data.length - 2].cards
         this.getCardData()
       }).catch(() => {
         // TODO: error handling
