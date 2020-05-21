@@ -12,9 +12,9 @@
         <v-toolbar-items>
           <v-menu bottom left v-if="loaded">
             <template v-slot:activator="{ on }">
-              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" v-if="currentMetaTitle">
-                {{ currentMetaTitle }}
-                <v-icon icon id="icon-meta-select">{{ mdiMenuDown }}</v-icon>
+              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on">
+                {{ currentMetaTitle ? currentMetaTitle : 'loading' }}
+                <v-icon icon id="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
             <v-list class="pa-0">
