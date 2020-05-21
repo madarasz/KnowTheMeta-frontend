@@ -17,7 +17,7 @@
       <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="ids" :transition="false" :reverse-transition="false">
-            <identities :meta-data="metaData" v-if="metaData != null"/>
+            <identities :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
             <h1>Decks</h1>
@@ -33,14 +33,14 @@
 
 <script>
 import Identities from '@/components/subview/Identities.vue'
-import axios from 'axios'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
     Identities
   },
   data: () => ({
-    metaData: null,
+    loaded: false,
     tab: 'ids' // default tab
   }),
   mounted: function () {
@@ -53,13 +53,22 @@ export default {
   },
   methods: {
     getMetaData: function (metacode) {
-      console.log('getting:' + metacode)
-      axios.get('https://alwaysberunning.net/ktm/' + metacode.toLowerCase() + '.json').then((response) => {
-        this.metaData = response.data
+      this.loaded = false
+      this.setCurrentMetaCode(metacode)
+      this.$store.dispatch('metas/getMetaData', metacode).then((response) => {
+        this.loaded = true
       }).catch(() => {
         // TODO: error handling
       })
-    }
+    },
+    ...mapMutations({
+      setCurrentMetaCode: 'metas/setCurrentMetaCode'
+    })
+  },
+  computed: {
+    ...mapGetters({
+      getCurrentMeta: 'metas/getCurrentMeta'
+    })
   }
 }
 </script>

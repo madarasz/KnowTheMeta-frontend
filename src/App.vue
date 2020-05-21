@@ -2,25 +2,24 @@
   <div id="app">
     <v-app id="app">
       <v-app-bar dark color="primary" dense app>
-        <!-- <v-app-bar-nav-icon>
-        </v-app-bar-nav-icon> -->
         <div class="mr-4">
           <v-img :src="require('./assets/ktm.png')" width="24px"/>
         </div>
         <v-toolbar-title class="mr-4 d-none d-sm-flex">
           Know the Meta
         </v-toolbar-title>
+        <!-- Meta selector -->
         <v-toolbar-items>
-          <v-menu bottom left>
+          <v-menu bottom left v-if="loaded">
             <template v-slot:activator="{ on }">
-              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" v-if="getCurrentMeta">
-                {{ getCurrentMeta.title }}
+              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" v-if="currentMetaTitle">
+                {{ currentMetaTitle }}
                 <v-icon icon>{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
             <v-list class="pa-0">
               <template v-for="(meta, i) in metas.metaList">
-                <router-link :to="{ name: 'Meta', params: { metacode: getMetaCode(meta.file) } }" tag="v-list-item" :key="i">
+                <router-link :to="'/meta/' + meta.code" tag="v-list-item" :key="i">
                   <v-list-item-content class="pa-3 d-block">
                     <v-list-item-title>{{ meta.title }}</v-list-item-title>
                     <v-list-item-subtitle>{{ meta.mwl }}</v-list-item-subtitle>
@@ -31,6 +30,7 @@
           </v-menu>
         </v-toolbar-items>
         <v-spacer></v-spacer>
+        <!-- Other menu items -->
         <v-toolbar-items>
           <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'">
             <router-link to="/MWL" tag="span">
@@ -55,7 +55,8 @@ import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   data: () => ({
-    mdiMenuDown
+    mdiMenuDown,
+    loaded: false
   }),
   mounted: function () {
     this.getMetas()
@@ -63,13 +64,14 @@ export default {
   methods: {
     getMetas: function () {
       this.$store.dispatch('metas/getMetaList').then(() => {
-        // if there is no selected meta, the latest meta will be selected
-        if (this.metas.currentMetaCode == null) {
+        this.loaded = true
+        // if not on a meta page and there is no previously selected meta, then the latest meta will be selected
+        if (this.metas.currentMetaCode == null && this.$route.path.indexOf('meta') === 0) {
           this.fallbackToLatestMeta()
         }
         // if on the root, forward to the latest meta
         if (this.$route.name === 'Root') {
-          this.$router.push('/meta/' + this.getLatestMetaCode).catch(err => {
+          this.$router.push('/meta/' + this.latestMetaCode).catch(err => {
             console.error('Could not navigate to latest meta: ' + err)
           })
         }
@@ -82,9 +84,8 @@ export default {
   computed: {
     ...mapState(['metas']),
     ...mapGetters({
-      getMetaCode: 'metas/getMetaCode',
-      getLatestMetaCode: 'metas/getLatestMetaCode',
-      getCurrentMeta: 'metas/getCurrentMeta'
+      latestMetaCode: 'metas/getLatestMetaCode',
+      currentMetaTitle: 'metas/getCurrentMetaTitle'
     })
   }
 }
