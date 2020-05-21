@@ -44,7 +44,7 @@ export default {
     tab: 'ids' // default tab
   }),
   mounted: function () {
-    this.getMetaData(this.$route.params.metaname)
+    this.getMetaData(this.$route.params.metacode)
   },
   watch: {
     '$route.params.metaname' (newMetaname) {

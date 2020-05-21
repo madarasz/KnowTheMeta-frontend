@@ -13,17 +13,20 @@
         <v-toolbar-items>
           <v-menu bottom left>
             <template v-slot:activator="{ on }">
-              <v-btn depressed :color="$route.path.indexOf('Meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on">
-                {{ $route.params.title }}
+              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" v-if="getCurrentMeta">
+                {{ getCurrentMeta.title }}
                 <v-icon icon>{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
-            <v-list>
-              <v-list-item v-for="(meta, i) in metaData" :key="i">
-                <router-link :to="{ name: 'Meta', params: { metaname: getMetaPath(meta.file) ,title: meta.title } }" tag="span">
-                  <v-list-item-title>{{ meta.title }}</v-list-item-title>
+            <v-list class="pa-0">
+              <template v-for="(meta, i) in metas.metaList">
+                <router-link :to="{ name: 'Meta', params: { metacode: getMetaCode(meta.file) } }" tag="v-list-item-two-line" :key="i">
+                  <v-list-item-content class="pa-3 d-block">
+                    <v-list-item-title>{{ meta.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ meta.mwl }}</v-list-item-subtitle>
+                  </v-list-item-content>
                 </router-link>
-              </v-list-item>
+              </template>
             </v-list>
           </v-menu>
         </v-toolbar-items>
@@ -47,11 +50,11 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mdiMenuDown } from '@mdi/js'
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   data: () => ({
-    metaData: [],
     mdiMenuDown
   }),
   mounted: function () {
@@ -59,19 +62,25 @@ export default {
   },
   methods: {
     getMetas: function () {
-      axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
-        this.metaData = response.data
-        // forward to latest meta from root
-        if (this.$route.name === 'Root') {
-          this.$router.push({ name: 'Meta', params: { metaname: this.getMetaPath(this.metaData[0].file), title: this.metaData[0].title } })
+      this.$store.dispatch('metas/getMetaList').then(() => {
+        // if there is no selected meta, the first meta will be selected
+        if (this.metas.currentMetaCode == null) {
+          this.$store.commit('metas/fallbackToFirstMeta')
         }
-      }).catch(() => {
-        // TODO: error handling
-      })
-    },
-    getMetaPath: function (filename) {
-      return filename[0].toUpperCase() + filename.slice(1, -5) // capitalize, remove ".json" from the end
+        // if on the root, forward to the first meta
+        if (this.$route.name === 'Root') {
+          this.$router.push({ name: 'Meta', params: { metacode: this.metas.getFirstMetaCode } })
+        }
+      }).catch()
     }
+  },
+  computed: {
+    ...mapState(['metas']),
+    ...mapGetters({
+      getMetaCode: 'metas/getMetaCode',
+      getFirstMetaCode: 'metas/getFirstMetaCode',
+      getCurrentMeta: 'metas/getCurrentMeta'
+    })
   }
 }
 </script>
