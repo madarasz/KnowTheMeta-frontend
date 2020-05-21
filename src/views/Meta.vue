@@ -47,13 +47,14 @@ export default {
     this.getMetaData(this.$route.params.metacode)
   },
   watch: {
-    '$route.params.metaname' (newMetaname) {
-      this.getMetaData(newMetaname)
+    '$route.params.metacode' (newMetacode) {
+      this.getMetaData(newMetacode)
     }
   },
   methods: {
-    getMetaData: function (metaname) {
-      axios.get('https://alwaysberunning.net/ktm/' + metaname.toLowerCase() + '.json').then((response) => {
+    getMetaData: function (metacode) {
+      console.log('getting:' + metacode)
+      axios.get('https://alwaysberunning.net/ktm/' + metacode.toLowerCase() + '.json').then((response) => {
         this.metaData = response.data
       }).catch(() => {
         // TODO: error handling

@@ -20,7 +20,7 @@
             </template>
             <v-list class="pa-0">
               <template v-for="(meta, i) in metas.metaList">
-                <router-link :to="{ name: 'Meta', params: { metacode: getMetaCode(meta.file) } }" tag="v-list-item-two-line" :key="i">
+                <router-link :to="{ name: 'Meta', params: { metacode: getMetaCode(meta.file) } }" tag="v-list-item" :key="i">
                   <v-list-item-content class="pa-3 d-block">
                     <v-list-item-title>{{ meta.title }}</v-list-item-title>
                     <v-list-item-subtitle>{{ meta.mwl }}</v-list-item-subtitle>
@@ -51,7 +51,7 @@
 
 <script>
 import { mdiMenuDown } from '@mdi/js'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   data: () => ({
@@ -63,22 +63,27 @@ export default {
   methods: {
     getMetas: function () {
       this.$store.dispatch('metas/getMetaList').then(() => {
-        // if there is no selected meta, the first meta will be selected
+        // if there is no selected meta, the latest meta will be selected
         if (this.metas.currentMetaCode == null) {
-          this.$store.commit('metas/fallbackToFirstMeta')
+          this.fallbackToLatestMeta()
         }
-        // if on the root, forward to the first meta
+        // if on the root, forward to the latest meta
         if (this.$route.name === 'Root') {
-          this.$router.push({ name: 'Meta', params: { metacode: this.metas.getFirstMetaCode } })
+          this.$router.push('/meta/' + this.getLatestMetaCode).catch(err => {
+            console.error('Could not navigate to latest meta: ' + err)
+          })
         }
       }).catch()
-    }
+    },
+    ...mapMutations({
+      fallbackToLatestMeta: 'metas/fallbackToLatestMeta'
+    })
   },
   computed: {
     ...mapState(['metas']),
     ...mapGetters({
       getMetaCode: 'metas/getMetaCode',
-      getFirstMetaCode: 'metas/getFirstMetaCode',
+      getLatestMetaCode: 'metas/getLatestMetaCode',
       getCurrentMeta: 'metas/getCurrentMeta'
     })
   }

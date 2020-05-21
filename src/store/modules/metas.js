@@ -11,13 +11,12 @@ export const metas = {
     getMetaCode: (state) => (filename) => {
       return filename.slice(0, -5) // remove ".json" from the end
     },
-    getFirstMetaCode: (state, getters) => {
-      return getters.getMetaCode(state.metaList[0])
+    getLatestMetaCode: (state, getters) => {
+      return getters.getMetaCode(state.metaList[0].file)
     },
     getCurrentMeta: (state, getters) => {
       // if the metaData details are not available fall back to the metalist
       if (state.metaData[state.currentMetaCode] === undefined) {
-        console.log('falling back to list for code: ' + state.currentMetaCode)
         return state.metaList.filter(x => { return getters.getMetaCode(x.file) === state.currentMetaCode })[0]
       }
       return state.metaData[state.currentMetaCode]
@@ -36,8 +35,9 @@ export const metas = {
     }
   },
   mutations: {
-    // makes the first meta in the list the active meta
-    fallbackToFirstMeta (state) {
+    // makes the active meta the latest meta in the list (first element)
+    fallbackToLatestMeta (state) {
+      console.log('falling back to latest meta')
       state.currentMetaCode = state.metaList[0].file.slice(0, -5)
     },
     setCurrentMetaCode (state, metacode) {
