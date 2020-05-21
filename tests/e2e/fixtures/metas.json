@@ -1,0 +1,67 @@
+[
+    {
+        "title": "Uprising",
+        "code": "uprising",
+        "cardpool": "Uprising",
+        "mwl": "Standard MWL 3.4b",
+        "newCards": true,
+        "tournaments": 123,
+        "standings": 2768,
+        "decks": 595,
+        "matches": 9347,
+        "file": "uprising.json",
+        "lastUpdate": "2020-05-21 14:52:19"
+    },
+    {
+        "title": "Uprising Booster Pack",
+        "code": "uprising-booster-pack",
+        "cardpool": "Uprising Booster Pack",
+        "mwl": "Standard MWL 3.4",
+        "newCards": true,
+        "tournaments": 94,
+        "standings": 2662,
+        "decks": 679,
+        "matches": 7209,
+        "file": "uprising-booster-pack.json",
+        "lastUpdate": "2020-05-21 14:52:45"
+    },
+    {
+        "title": "Downfall + MWL 3.3",
+        "code": "downfall-mwl-3-3",
+        "cardpool": "Downfall",
+        "mwl": "Standard MWL 3.3",
+        "newCards": false,
+        "tournaments": 78,
+        "standings": 1758,
+        "decks": 463,
+        "matches": 4219,
+        "file": "downfall-mwl-3-3.json",
+        "lastUpdate": "2020-05-21 14:53:24"
+    },
+    {
+        "title": "Downfall + MWL 3.2",
+        "code": "downfall-mwl-3-2",
+        "cardpool": "Downfall",
+        "mwl": "Standard MWL 3.2",
+        "newCards": false,
+        "tournaments": 81,
+        "standings": 1742,
+        "decks": 444,
+        "matches": 4074,
+        "file": "downfall-mwl-3-2.json",
+        "lastUpdate": "2020-05-21 14:53:46"
+    },
+    {
+        "title": "Downfall",
+        "code": "downfall",
+        "cardpool": "Downfall",
+        "mwl": "Standard MWL 3.1",
+        "newCards": true,
+        "tournaments": 109,
+        "standings": 1942,
+        "decks": 513,
+        "matches": 4931,
+        "file": "downfall.json",
+        "lastUpdate": "2020-05-21 14:54:11"
+    }
+]

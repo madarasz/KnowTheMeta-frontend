@@ -7,9 +7,14 @@ import { store } from './store/'
 
 Vue.config.productionTip = false
 
-new Vue({
+const app = new Vue({
   vuetify,
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// for testing, only available during E2E tests
+if (window.Cypress) {
+  window.app = app
+}
