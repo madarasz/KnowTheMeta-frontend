@@ -4,7 +4,21 @@
 
 describe('Meta Switching', () => {
 
+  beforeEach (() => {
+    cy.clearLocalStorage()
+  })
+
   const getStore = () => cy.window().its('app.$store')
+
+  // checks meta data on identities
+  function checkMetaIdentityData() {
+    cy.get('[data-testid=table-popularity-runner]').find('tr').its('length').should('be.at.least', 6)
+    cy.get('[data-testid=table-popularity-corporation]').find('tr').its('length').should('be.at.least', 6)
+    cy.get('[data-testid=chart-popularity-runner] > #pie-chart')
+    cy.get('[data-testid=chart-popularity-corporation] > #pie-chart')
+    cy.get('[data-testid=chart-winrate-runner] > #horizontalbar-chart')
+    cy.get('[data-testid=chart-winrate-corporation] > #horizontalbar-chart')
+  }
 
   it('root visit gets forwarded to latest meta', () => {
     // stub metas.json
@@ -22,17 +36,25 @@ describe('Meta Switching', () => {
     getStore().its('state.metas.metaData').should('not.have.key', undefined)
     getStore().its('state.metas.metaData').should('have.key', 'uprising')
     // check data
-    cy.get('#table-popularity-runner').find('tr').its('length').should('be.at.least', 6)
-    cy.get('#table-popularity-corporation').find('tr').its('length').should('be.at.least', 6)
-    cy.get('#chart-popularity-runner > #pie-chart')
-    cy.get('#chart-popularity-corporation > #pie-chart')
-    cy.get('#chart-winrate-runner > #horizontalbar-chart')
-    cy.get('#chart-winrate-corporation > #horizontalbar-chart')
+    checkMetaIdentityData()
   }),
 
   it('Can change meta', () => {
     cy.visit('/')
-    cy.get('#icon-meta-select')
-      .click()
+    // check forwarding works
+    cy.url().should('include', '/meta/')
+    // save top popularity value
+    cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cell) => {
+      // navigate to second meta
+      cy.get('[data-testid=icon-meta-select]')
+        .click()
+      cy.get('[data-testid=list-metas] > :nth-child(2)')
+        .click()
+        cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cellSecond) => {
+          // check that the values are different for different metas
+          expect($cellSecond.text()).not.to.eq($cell.text())
+          checkMetaIdentityData()
+        })
+    })
   })
 })
