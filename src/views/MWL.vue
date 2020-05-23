@@ -58,6 +58,7 @@
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 import DesktopCard from '@/components/header/DesktopCard.vue'
 import CardLister from '@/components/widget/CardLister.vue'
 import CardsInTwoWrapper from '@/components/widget/CardsInTwoWrapper.vue'
@@ -85,6 +86,7 @@ export default {
   }),
   mounted: function () {
     this.getMWLData()
+    this.getNetunnerDBData()
   },
   methods: {
     simplifyCardData: function (card) {
@@ -94,6 +96,12 @@ export default {
         runner: card.side_code === 'runner',
         image_url: 'image_url' in card ? card.image_url : this.imageUrlTemplate.replace('{code}', card.code)
       }
+    },
+    getNetunnerDBData: function () {
+      this.$store.dispatch('netrunnerdb/getCardData').then(() => {
+        this.$store.dispatch('netrunnerdb/getMwl').then(() => {
+        })
+      })
     },
     getMWLData: function () {
       axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
@@ -155,6 +163,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['netrunnerdb']),
     getSubtitle: function () {
       return 'latest mwl, from: ' + this.mwlDataCurrent.date_start
     },
