@@ -8,7 +8,7 @@ describe('Meta Switching', () => {
       cy.route('GET', 'https://alwaysberunning.net/ktm/uprising.json', 'fixture:uprising.json')
       cy.route('GET', 'https://alwaysberunning.net/ktm/uprising-booster-pack.json', 'fixture:uprising-booster-pack.json')
       // screen size
-      // cy.viewport(1920, 1080)
+      cy.viewport(1000, 660)
     })
 
     it('Popularity more / less buttons working', () => {

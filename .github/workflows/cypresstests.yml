@@ -22,4 +22,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
-        path: "**/__diff_output__/*.png"
+        name: imagediffs
+        path: tests/e2e/snapshots/**/__diff_output__/*.png
