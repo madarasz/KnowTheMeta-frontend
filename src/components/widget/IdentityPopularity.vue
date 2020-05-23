@@ -19,8 +19,8 @@
           </tr>
         </tbody>
       </v-simple-table>
-      <v-btn class="mt-4" @click="changeListed(change)" v-if="showMax < sideData.length">More</v-btn>
-      <v-btn class="mt-4 ml-2" @click="changeListed(-change)" v-if="showMax > 10">Less</v-btn>
+      <v-btn class="mt-4" @click="changeListed(change)" v-if="showMax < sideData.length" :data-testid="'button-pop-more-'+side">More</v-btn>
+      <v-btn class="mt-4 ml-2" @click="changeListed(-change)" v-if="showMax > 10" :data-testid="'button-pop-less-'+side">Less</v-btn>
     </v-col>
   </v-row>
 </template>

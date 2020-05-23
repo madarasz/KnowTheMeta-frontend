@@ -42,9 +42,7 @@ describe('Meta Switching', () => {
   }),
 
   it('Can change meta, meta is remembered', () => {
-    cy.visit('/')
-    // check forwarding works
-    cy.url().should('include', '/meta/')
+    cy.visit('/meta/uprising')
     // save top popularity value
     cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cell) => {
       // navigate to second meta
