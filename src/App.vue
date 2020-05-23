@@ -12,7 +12,7 @@
         <v-toolbar-items>
           <v-menu bottom left v-if="loaded">
             <template v-slot:activator="{ on }">
-              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on">
+              <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" data-testid="current-meta">
                 {{ currentMetaTitle ? currentMetaTitle : 'loading' }}
                 <v-icon icon data-testid="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
               </v-btn>
@@ -66,7 +66,7 @@ export default {
       this.$store.dispatch('metas/getMetaList').then(() => {
         this.loaded = true
         // if not on a meta page and there is no previously selected meta, then the latest meta will be selected
-        if (this.metas.currentMetaCode == null && this.$route.path.indexOf('meta') === 0) {
+        if (this.metas.currentMetaCode == null && this.$route.path.indexOf('meta') === -1) {
           this.fallbackToLatestMeta()
         }
         // if on the root, forward to the latest meta

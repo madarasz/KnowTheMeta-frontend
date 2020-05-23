@@ -24,7 +24,7 @@ describe('Meta Switching', () => {
     cy.get(`[data-testid=chart-winrate-${side}] > #horizontalbar-chart`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
   }
 
-  it('root visit gets forwarded to latest meta', () => {
+  it('Root visit gets forwarded to latest meta', () => {
     // visit /
     cy.visit('/')
     cy.contains('div', 'Know the Meta')
@@ -41,7 +41,7 @@ describe('Meta Switching', () => {
     checkMetaIdentityData('corporation', 'uprising')
   }),
 
-  it('Can change meta', () => {
+  it('Can change meta, meta is remembered', () => {
     cy.visit('/')
     // check forwarding works
     cy.url().should('include', '/meta/')
@@ -58,6 +58,16 @@ describe('Meta Switching', () => {
           checkMetaIdentityData('runner', 'uprising-booster-pack')
           checkMetaIdentityData('corporation', 'uprising-booster-pack')
         })
+    })
+    // check if selected meta is remembered
+    cy.visit('/mwl')
+    cy.contains('[data-testid=current-meta]', 'Uprising Booster Pack')
+  })
+
+  it('If non-meta page is visited first, meta will be latest', () => {
+    cy.visit('/mwl')
+    cy.get('[data-testid=current-meta] > .v-btn__content').then(($title) => {
+      expect($title.text()).to.eq(' Uprising ')
     })
   })
 })
