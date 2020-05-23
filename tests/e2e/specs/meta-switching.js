@@ -6,24 +6,25 @@ describe('Meta Switching', () => {
 
   beforeEach (() => {
     cy.clearLocalStorage()
+    // stub metas
+    cy.server()
+    cy.route('GET', 'https://alwaysberunning.net/ktm/metas.json', 'fixture:metas.json')
+    cy.route('GET', 'https://alwaysberunning.net/ktm/uprising.json', 'fixture:uprising.json')
+    cy.route('GET', 'https://alwaysberunning.net/ktm/uprising-booster-pack.json', 'fixture:uprising-booster-pack.json')
+    // screen size
+    // cy.viewport(1920, 1080)
   })
 
   const getStore = () => cy.window().its('app.$store')
 
   // checks meta data on identities
-  function checkMetaIdentityData() {
-    cy.get('[data-testid=table-popularity-runner]').find('tr').its('length').should('be.at.least', 6)
-    cy.get('[data-testid=table-popularity-corporation]').find('tr').its('length').should('be.at.least', 6)
-    cy.get('[data-testid=chart-popularity-runner] > #pie-chart')
-    cy.get('[data-testid=chart-popularity-corporation] > #pie-chart')
-    cy.get('[data-testid=chart-winrate-runner] > #horizontalbar-chart')
-    cy.get('[data-testid=chart-winrate-corporation] > #horizontalbar-chart')
+  function checkMetaIdentityData(side, meta) {
+    cy.get(`[data-testid=table-popularity-${side}]`).find('tr').its('length').should('be.at.least', 6)
+    cy.get(`[data-testid=chart-popularity-${side}] > #pie-chart`).matchImageSnapshot(`chart-popularity-${side}-${meta}`)
+    cy.get(`[data-testid=chart-winrate-${side}] > #horizontalbar-chart`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
   }
 
   it('root visit gets forwarded to latest meta', () => {
-    // stub metas.json
-    cy.server()
-    cy.route('GET', 'https://alwaysberunning.net/ktm/metas.json', 'fixture:metas.json')
     // visit /
     cy.visit('/')
     cy.contains('div', 'Know the Meta')
@@ -36,7 +37,8 @@ describe('Meta Switching', () => {
     getStore().its('state.metas.metaData').should('not.have.key', undefined)
     getStore().its('state.metas.metaData').should('have.key', 'uprising')
     // check data
-    checkMetaIdentityData()
+    checkMetaIdentityData('runner', 'uprising')
+    checkMetaIdentityData('corporation', 'uprising')
   }),
 
   it('Can change meta', () => {
@@ -53,7 +55,8 @@ describe('Meta Switching', () => {
         cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cellSecond) => {
           // check that the values are different for different metas
           expect($cellSecond.text()).not.to.eq($cell.text())
-          checkMetaIdentityData()
+          checkMetaIdentityData('runner', 'uprising-booster-pack')
+          checkMetaIdentityData('corporation', 'uprising-booster-pack')
         })
     })
   })

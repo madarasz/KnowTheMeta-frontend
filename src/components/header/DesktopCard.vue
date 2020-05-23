@@ -1,6 +1,6 @@
 <template>
   <v-card class="mt-4">
-    <v-card-title class="desktop-card">
+    <v-card-title class="desktop-card" :data-testid="'desktop-card-' + title">
       {{ title }}
       <v-spacer/>
       <span class="overline">
