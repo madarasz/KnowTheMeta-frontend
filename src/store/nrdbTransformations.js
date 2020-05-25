@@ -1,4 +1,9 @@
 const mwlTypes = ['banned', 'restricted']
+const hiddenCycles = ['Magnum Opus Reprint', 'NAPD Multiplayer', 'Draft']
+
+const filterCycles = function (cycleData) {
+  return cycleData.filter(x => { return !hiddenCycles.includes(x.name) })
+}
 
 const transformPackData = function (cycleData, packData) {
   const results = []
@@ -7,6 +12,9 @@ const transformPackData = function (cycleData, packData) {
       code: packData[i].code,
       cycle_code: packData[i].cycle_code,
       name: packData[i].name,
+      size: packData[i].size,
+      date_release: packData[i].date_release,
+      legal_reprints: [],
       rotated: cycleData.find(x => { return x.code === packData[i].cycle_code }).rotated
     })
   }
@@ -22,6 +30,11 @@ const transformCardData = function (cardData, packData, imgUrlTemplate) {
     if (cardData[i].title in cards) {
       // reprint
       cards[cardData[i].title].image_url = 'image_url' in cardData[i] ? cardData[i].image_url : imgUrlTemplate.replace('{code}', cardData[i].code) // keep image fresh
+      if (legal) {
+        for (let u = 0; u < cards[cardData[i].title].in_pack.length; u++) {
+          packData.find(x => { return x.code === cards[cardData[i].title].in_pack[u] }).legal_reprints.push(cardData[i].title)
+        }
+      }
       cards[cardData[i].title].in_pack.push(cardData[i].pack_code)
       cards[cardData[i].title].legal = legal
     } else {
@@ -92,10 +105,19 @@ const addBadgesToMwl = function (latestMwl, previousMwl) {
   })
 }
 
+const compareReleaseDates = function (a, b) {
+  if (a.date_release > b.date_release) {
+    return -1
+  }
+  return 0
+}
+
 export default {
   mwlTypes: mwlTypes,
   transformPackData: transformPackData,
   transformCardData: transformCardData,
   sortMwlData: sortMwlData,
-  addBadgesToMwl: addBadgesToMwl
+  addBadgesToMwl: addBadgesToMwl,
+  filterCycles: filterCycles,
+  compareReleaseDates: compareReleaseDates
 }
