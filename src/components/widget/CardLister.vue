@@ -1,5 +1,5 @@
 <template>
-  <v-row class="text-center">
+  <v-row class="text-center" :data-testid="testId">
     <v-col v-for="card in cardList" :key="card.code" class="text-center pa-1">
       <netrunner-card :card="card"/>
     </v-col>
@@ -13,7 +13,8 @@ import NetrunnerCard from '@/components/widget/NetrunnerCard.vue'
 export default {
   name: 'CardLister',
   props: {
-    cardList: Array
+    cardList: Array,
+    testId: String
   },
   components: {
     NetrunnerCard

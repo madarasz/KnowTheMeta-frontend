@@ -8,18 +8,20 @@
           <desktop-card-subtitle subtitle="Banned"/>
         </template>
         <template v-slot:left>
-          <card-lister :card-list="bannedRunner"/>
+          <card-lister :card-list="bannedRunner" test-id="list-runner-banned"/>
         </template>
         <template v-slot:right>
-          <card-lister :card-list="bannedCorp"/>
+          <card-lister :card-list="bannedCorp" test-id="list-corp-banned"/>
         </template>
         <template v-slot:posttext>
           <!-- Restricted -->
           <desktop-card-subtitle subtitle="Restricted"/>
-          <cards-in-two-wrapper in-card-text :runner-cards="restrictedRunner" :corp-cards="restrictedCorp"/>
+          <cards-in-two-wrapper in-card-text :runner-cards="restrictedRunner" :corp-cards="restrictedCorp"
+              runner-test-id="list-runner-restricted" corp-test-id="list-corp-restricted"/>
           <!-- Removed from MWL -->
           <desktop-card-subtitle subtitle="Removed from MWL"/>
-          <cards-in-two-wrapper in-card-text :runner-cards="removedRunner" :corp-cards="removedCorp"/>
+          <cards-in-two-wrapper in-card-text :runner-cards="removedRunner" :corp-cards="removedCorp"
+              runner-test-id="list-runner-removed" corp-test-id="list-corp-removed"/>
         </template>
       </desktop-card>
     </div>
@@ -31,24 +33,24 @@
         </template>
         <template v-slot:runner>
           <mobile-panel title="Banned" color="accent" thin>
-            <card-lister :card-list="bannedRunner"/>
+            <card-lister :card-list="bannedRunner" test-id="list-runner-banned"/>
           </mobile-panel>
           <mobile-panel title="Restricted" color="accent" thin>
-            <card-lister :card-list="restrictedRunner"/>
+            <card-lister :card-list="restrictedRunner" test-id="list-runner-restricted"/>
           </mobile-panel>
           <mobile-panel title="Removed from MWL" color="accent" thin>
-            <card-lister :card-list="removedRunner"/>
+            <card-lister :card-list="removedRunner" test-id="list-runner-removed"/>
           </mobile-panel>
         </template>
         <template v-slot:corp>
           <mobile-panel title="Banned" color="accent" thin>
-            <card-lister :card-list="bannedCorp"/>
+            <card-lister :card-list="bannedCorp" test-id="list-corp-banned"/>
           </mobile-panel>
           <mobile-panel title="Restricted" color="accent" thin>
-            <card-lister :card-list="restrictedCorp"/>
+            <card-lister :card-list="restrictedCorp" test-id="list-corp-restricted"/>
           </mobile-panel>
           <mobile-panel title="Removed from MWL" color="accent" thin>
-            <card-lister :card-list="removedCorp"/>
+            <card-lister :card-list="removedCorp" test-id="list-corp-removed"/>
           </mobile-panel>
         </template>
       </runner-corp-tabs>
@@ -98,9 +100,7 @@ export default {
       }
     },
     getNetunnerDBData: function () {
-      this.$store.dispatch('netrunnerdb/getCardData').then(() => {
-        this.$store.dispatch('netrunnerdb/getMwl').then(() => {
-        })
+      this.$store.dispatch('netrunnerdb/getCardData', true).then(() => {
       })
     },
     getMWLData: function () {

@@ -13,7 +13,7 @@
     </v-row>
     <v-row dense>
       <v-col class="card-title pt-0">
-        <span>{{ shorten(card.title) }}</span>
+        <span :badge="card.badge">{{ shorten(card.title) }}</span>
       </v-col>
     </v-row>
   </div>
