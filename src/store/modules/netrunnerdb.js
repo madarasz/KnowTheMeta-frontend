@@ -67,7 +67,10 @@ export const netrunnerdb = {
     },
     // adds an mwl data
     addMwl (state, mwlData) {
-      state.mwl.push(transform.sortMwlData(mwlData.cards, state.cards, state.prints))
+      const mwl = transform.sortMwlData(mwlData.cards, state.cards, state.prints)
+      mwl.name = mwlData.name
+      mwl.date_start = mwlData.date_start
+      state.mwl.push(mwl)
     },
     // compares latest MWL and the previous, adds badge data to latest MWL
     compareMwls (state) {
