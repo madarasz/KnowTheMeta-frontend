@@ -27,11 +27,12 @@ describe('MWL', () => {
                 cy.contains(`[data-testid=list-${side}-${list}] .card-title > span`, card)
               } else {
                 // with badge
-                cy.contains(`[data-testid=list-${side}-${list}] .card-title > span[badge=${card.badge}]`, card.title)
+                cy.contains(`[data-testid=list-${side}-${list}] .card-title > span[badge='${card.badge}']`, card.title)
               }
             })
           } else {
             // empty list
+            cy.contains(`[data-testid=list-${side}-${list}] > .overline`, 'no cards')
           }
         })
       })

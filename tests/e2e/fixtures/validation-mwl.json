@@ -32,7 +32,10 @@
             "Rumor Mill",
             "Tech Trader"
         ],
-        "removed": []
+        "removed": [
+            { "title": "419", "badge": "from restricted" },
+            { "title": "Rezeki", "badge": "from banned" }
+        ]
     },
     "corp": {
         "banned": [

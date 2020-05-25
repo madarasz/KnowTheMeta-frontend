@@ -1149,11 +1149,17 @@
             "id": 14,
             "date_creation": "2019-09-09T18:14:27+00:00",
             "date_update": "2020-01-07T11:15:33+00:00",
-            "code": "standard-mwl-3-4",
-            "name": "Standard MWL 3.4",
+            "code": "standard-mwl-3-4-test",
+            "name": "Standard MWL 3.4 FOR TEST",
             "active": false,
             "date_start": "2019-09-20",
             "cards": {
+                "21063": {
+                    "is_restricted": 1
+                },
+                "26026": {
+                    "deck_limit": 0
+                },
                 "10018": {
                     "is_restricted": 1
                 },
