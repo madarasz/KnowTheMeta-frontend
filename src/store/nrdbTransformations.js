@@ -1,3 +1,5 @@
+const mwlTypes = ['banned', 'restricted']
+
 const transformPackData = function (cycleData, packData) {
   const results = []
   for (let i = 0; i < packData.length; i++) {
@@ -55,51 +57,43 @@ const sortMwlData = function (mwlData, cardData, printData) {
   return result
 }
 
-const addBadgesToMwl = function (latestMwl, previousMwl) {
-  for (const prop in latestMwl.banned) {
-    if (Object.prototype.hasOwnProperty.call(latestMwl.banned, prop)) {
-      if (prop in previousMwl.banned) {
+function compareMwls (latestMwl, previousMwl, type) {
+  const otherType = mwlTypes.find(x => x !== type)
+  for (const prop in latestMwl[type]) {
+    if (Object.prototype.hasOwnProperty.call(latestMwl[type], prop)) {
+      if (prop in previousMwl[type]) {
         continue
       }
-      if (prop in previousMwl.restricted) {
-        latestMwl.banned[prop].badge = 'from restricted'
+      if (prop in previousMwl[otherType]) {
+        latestMwl[type][prop].badge = 'from ' + otherType
         continue
       }
-      latestMwl.banned[prop].badge = 'new'
+      latestMwl[type][prop].badge = 'new'
     }
   }
-  for (const prop in latestMwl.restricted) {
-    if (Object.prototype.hasOwnProperty.call(latestMwl.restricted, prop)) {
-      if (prop in previousMwl.restricted) {
-        continue
-      }
-      if (prop in previousMwl.banned) {
-        latestMwl.restricted[prop].badge = 'from banned'
-        continue
-      }
-      latestMwl.restricted[prop].badge = 'new'
-    }
-  }
-  latestMwl.removed = {}
-  for (const prop in previousMwl.restricted) {
-    if (Object.prototype.hasOwnProperty.call(previousMwl.restricted, prop)) {
-      if ((!(prop in latestMwl.banned)) && (!(prop in latestMwl.restricted)) && previousMwl.restricted[prop].legal) {
-        latestMwl.removed[prop] = previousMwl.restricted[prop]
-        latestMwl.removed[prop].badge = 'from restricted'
-      }
-    }
-  }
-  for (const prop in previousMwl.banned) {
-    if (Object.prototype.hasOwnProperty.call(previousMwl.banned, prop)) {
-      if ((!(prop in latestMwl.banned)) && (!(prop in latestMwl.restricted)) && previousMwl.banned[prop].legal) {
-        latestMwl.removed[prop] = previousMwl.banned[prop]
-        latestMwl.removed[prop].badge = 'from banned'
+}
+
+function getRemoved (latestMwl, previousMwl, type) {
+  for (const prop in previousMwl[type]) {
+    if (Object.prototype.hasOwnProperty.call(previousMwl[type], prop)) {
+      if ((!(prop in latestMwl.banned)) && (!(prop in latestMwl.restricted)) && previousMwl[type][prop].legal) {
+        latestMwl.removed[prop] = previousMwl[type][prop]
+        latestMwl.removed[prop].badge = 'from ' + type
       }
     }
   }
 }
 
+const addBadgesToMwl = function (latestMwl, previousMwl) {
+  latestMwl.removed = {}
+  mwlTypes.forEach(type => {
+    compareMwls(latestMwl, previousMwl, type)
+    getRemoved(latestMwl, previousMwl, type)
+  })
+}
+
 export default {
+  mwlTypes: mwlTypes,
   transformPackData: transformPackData,
   transformCardData: transformCardData,
   sortMwlData: sortMwlData,

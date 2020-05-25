@@ -84,12 +84,12 @@ export default {
       this.$store.dispatch('netrunnerdb/getCardData', true).then(() => {
       })
     },
-    cardsetToArray: function (cardSet) {
+    cardsetToArray: function (cardSet, runner) {
       return Object.keys(cardSet).map(title => {
         const arrayElement = cardSet[title]
         arrayElement.title = title
         return arrayElement
-      })
+      }).filter(x => { return x.runner === runner })
     }
   },
   computed: {
@@ -98,22 +98,22 @@ export default {
       return 'latest mwl, from: ' + this.netrunnerdb.mwl[0].date_start
     },
     bannedRunner: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned).filter(x => { return x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, true)
     },
     bannedCorp: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned).filter(x => { return !x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, false)
     },
     restrictedRunner: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted).filter(x => { return x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, true)
     },
     restrictedCorp: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted).filter(x => { return !x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, false)
     },
     removedRunner: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed).filter(x => { return x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, true)
     },
     removedCorp: function () {
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed).filter(x => { return !x.runner })
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, false)
     }
   }
 }

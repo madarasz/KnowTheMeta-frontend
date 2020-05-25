@@ -21,6 +21,7 @@ describe('MWL', () => {
         Object.keys(validation[side]).forEach(list => {
           // iterate card list
           if (validation[side][list].length > 0) {
+            // validate card title
             validation[side][list].forEach(card => {
               if (typeof card === 'string') {
                 // without badge
@@ -30,6 +31,8 @@ describe('MWL', () => {
                 cy.contains(`[data-testid=list-${side}-${list}] .card-title > span[badge='${card.badge}']`, card.title)
               }
             })
+            // check card count
+            cy.get(`[data-testid=list-${side}-${list}] .card-title > span`).its('length').should('eq', validation[side][list].length)
           } else {
             // empty list
             cy.contains(`[data-testid=list-${side}-${list}] > .overline`, 'no cards')
