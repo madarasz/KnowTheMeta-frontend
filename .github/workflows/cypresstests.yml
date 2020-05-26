@@ -17,9 +17,16 @@ jobs:
           wait-on: http://localhost:8080/
           config_file: cypress.json
           spec: "tests/e2e/**/*"
+          browser: chrome
+          env: failOnSnapshotDiff=false # temp solution
       env:
           CYPRESS_baseUrl: http://localhost:8080
-          failOnSnapshotDiff: false # temp solution
+    - name: Upload failure screenshots
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: cypress-screenshots
+        path: tests/e2e/screenshots
     - name: Upload image diffs
       uses: actions/upload-artifact@v2
       with:
