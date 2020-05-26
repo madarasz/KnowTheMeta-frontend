@@ -48,6 +48,14 @@
         </v-toolbar-items>
       </v-app-bar>
       <router-view/>
+      <!-- snackbar messages -->
+      <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="snackbar.timeout"
+          :left="snackbar.left" :right="snackbar.right"
+          :bottom="snackbar.bottom" :top="snackbar.bottom"
+          data-testid="snackbar">
+        {{ snackbar.message }}
+        <v-btn dark text @click="closeSnackbar">Close</v-btn>
+      </v-snackbar>
     </v-app>
   </div>
 </template>
@@ -79,14 +87,19 @@ export default {
             console.error('Could not navigate to latest meta: ' + err)
           })
         }
-      }).catch()
+      }).catch((err) => {
+        console.error(err)
+        this.showError('Could not load metas')
+      })
     },
     ...mapMutations({
-      fallbackToLatestMeta: 'metas/fallbackToLatestMeta'
+      fallbackToLatestMeta: 'metas/fallbackToLatestMeta',
+      showError: 'snackbar/showError',
+      closeSnackbar: 'snackbar/closeSnackbar'
     })
   },
   computed: {
-    ...mapState(['metas']),
+    ...mapState(['metas', 'snackbar']),
     ...mapGetters({
       latestMetaCode: 'metas/getLatestMetaCode',
       currentMetaTitle: 'metas/getCurrentMetaTitle'

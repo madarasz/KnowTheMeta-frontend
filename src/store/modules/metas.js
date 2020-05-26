@@ -26,8 +26,9 @@ export const metas = {
   actions: {
     getMetaList ({ commit }) {
       return axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
+        console.log('got meta list - store')
         commit('setMetaList', response.data)
-      })
+      }) // .catch((err) => { console.error(err) })
     },
     getMetaData ({ commit }, metacode) {
       return axios.get(`https://alwaysberunning.net/ktm/${metacode}.json`).then((response) => {
