@@ -61,11 +61,15 @@
 </template>
 
 <script>
+import { VListItem } from 'vuetify/lib'
 import { mdiMenuDown } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
 
 export default {
+  components: {
+    VListItem // eslint-disable-line vue/no-unused-components
+  },
   data: () => ({
     mdiMenuDown,
     loaded: false

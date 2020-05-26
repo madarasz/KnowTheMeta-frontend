@@ -1,9 +1,13 @@
 // src/plugins/vuetify.js
 
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
+import Vuetify, { VListItem } from 'vuetify/lib'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  components: {
+    VListItem
+  }
+})
 
 const opts = {
   icons: {
