@@ -5,10 +5,10 @@
       <!-- Legal -->
       <desktop-card-divided left-title="Legal" right-title="Rotated">
         <template v-slot:left>
-          <cycle-lister :cycle-list="legalCycles"/>
+          <cycle-lister :cycle-list="legalCycles" test-id="rotation-legal"/>
         </template>
         <template v-slot:right>
-          <cycle-lister :cycle-list="rotatedCycles" legal-reprints/>
+          <cycle-lister :cycle-list="rotatedCycles" legal-reprints test-id="rotation-rotated"/>
         </template>
       </desktop-card-divided>
     </div>
@@ -29,10 +29,10 @@
       <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="legal" :transition="false" :reverse-transition="false">
-            <cycle-lister :cycle-list="legalCycles"/>
+            <cycle-lister :cycle-list="legalCycles" test-id="rotation-legal"/>
           </v-tab-item>
           <v-tab-item :key="2" value="rotated" :transition="false" :reverse-transition="false">
-            <cycle-lister :cycle-list="rotatedCycles" legal-reprints/>
+            <cycle-lister :cycle-list="rotatedCycles" legal-reprints test-id="rotation-rotated"/>
           </v-tab-item>
         </v-tabs-items>
       </v-container>

@@ -1,4 +1,5 @@
 # know-the-meta-frontend
+![Cypress e2e tests](https://github.com/madarasz/KnowTheMeta-frontend/workflows/Cypress%20e2e%20tests/badge.svg)
 
 New, revamped version, being built. Coming whenever.
 

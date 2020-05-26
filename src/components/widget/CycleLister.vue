@@ -1,17 +1,18 @@
 <template>
-  <div>
+  <div :data-testid="testId">
     <template v-for="cycle in cycleList">
       <div :key="cycle.code">
         <desktop-card-subtitle :subtitle="cycle.name"/>
         <template v-for="pack in getPacks(cycle.code)">
           <!-- legal -->
-          <v-row align="center" :key="pack.name" class="rotation-content bordered-bottom" v-if="!legalReprints">
+          <v-row align="center" :key="pack.name" class="rotation-content bordered-bottom"
+              v-if="!legalReprints" :data-testid="testId + '-' + pack.code">
             <v-col>{{ pack.name }}</v-col>
             <v-col class="text-right">{{ pack.size }} cards</v-col>
             <v-col class="text-right">{{ pack.date_release }}</v-col>
           </v-row>
           <!-- rotated -->
-          <v-expansion-panels :key="pack.name" v-if="legalReprints" flat>
+          <v-expansion-panels :key="pack.name" v-if="legalReprints" flat :data-testid="testId + '-' + pack.code">
             <v-expansion-panel>
               <!-- header -->
               <v-expansion-panel-header class="rotation-content bordered-bottom pt-0 pb-0 pl-3 pr-3" style="line-height: 21px">
@@ -27,7 +28,7 @@
               </v-expansion-panel-header>
               <!-- legal cardlist -->
               <v-expansion-panel-content class="bordered-bottom pb-2">
-                <small v-if="pack.legal_reprints.length">
+                <small v-if="pack.legal_reprints.length" :data-testid="'legal-list-' + pack.code">
                   <strong>legal cards: </strong>
                   <em v-for="(reprint, index) in pack.legal_reprints" :key="reprint">
                     {{ reprint }}<span v-if="index !== pack.legal_reprints.length - 1">, </span>
@@ -54,7 +55,8 @@ export default {
   name: 'CycleLister',
   props: {
     cycleList: Array,
-    legalReprints: Boolean
+    legalReprints: Boolean,
+    testId: String
   },
   components: {
     DesktopCardSubtitle
