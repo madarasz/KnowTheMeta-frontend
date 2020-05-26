@@ -13,11 +13,11 @@ describe('Meta Switching', () => {
 
     it('Popularity more / less buttons working', () => {
         cy.visit('/meta/uprising')
-        cy.get(`[data-testid=chart-popularity-runner] > #pie-chart`).matchImageSnapshot(`chart-popularity-runner-uprising`)
+        cy.get('#chart-popularity-runner').matchImageSnapshot(`chart-popularity-runner-uprising`)
         cy.get('[data-testid=button-pop-more-runner]').click()
-        cy.get(`[data-testid=chart-popularity-runner] > #pie-chart`).matchImageSnapshot(`chart-popularity-runner-uprising-more`)
+        cy.get('#chart-popularity-runner').matchImageSnapshot(`chart-popularity-runner-uprising-more`)
         cy.get('[data-testid=button-pop-less-runner]').click()
-        cy.get(`[data-testid=chart-popularity-runner] > #pie-chart`).matchImageSnapshot(`chart-popularity-runner-uprising`)
+        cy.get('#chart-popularity-runner').matchImageSnapshot(`chart-popularity-runner-uprising`)
     })
 
 })

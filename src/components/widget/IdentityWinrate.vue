@@ -1,5 +1,5 @@
 <template>
-  <winrate-chart :meta-data="sortedData" v-if="sortedData.length > 0" :data-testid="'chart-winrate-' + side"/>
+  <winrate-chart :meta-data="sortedData" v-if="sortedData.length > 0" :chart-id="'chart-winrate-' + side"/>
 </template>
 
 <script>

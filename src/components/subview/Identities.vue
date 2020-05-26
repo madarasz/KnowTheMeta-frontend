@@ -22,7 +22,7 @@
       </template>
     </runner-corp-tabs>
     <!-- Desktop screens -->
-    <div class="mr-4 ml-4 d-none d-md-block">
+    <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <!-- Popularity card -->
       <desktop-card title="Popularity" :subtitle="popSubtitle">
         <template v-slot:left>
