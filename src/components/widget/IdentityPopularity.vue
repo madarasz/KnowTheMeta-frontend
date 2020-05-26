@@ -10,7 +10,8 @@
         <tbody>
           <tr v-for="(identity, index) in sideData" :key="identity.title">
             <td v-if="index < showMax">
-              <v-img :src="'https://alwaysberunning.net/img/ids/'+identity.code+'.png'" height="30px" width="30px"/>
+              <v-img :src="'https://alwaysberunning.net/img/ids/'+identity.code+'.png'" height="30px" width="30px"
+                :lazy-src="'/img/' + side + '-color.png'"/>
             </td>
             <td class="text-left" v-if="index < showMax">
               {{ shortenIdentity(identity.title) }}

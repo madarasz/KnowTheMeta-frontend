@@ -3,7 +3,8 @@
     <v-row dense>
       <v-col class="text-center pa-1 pb-0">
         <div class="d-inline-flex">
-          <v-img :src="card.image_url" width="100px" height="140px">
+          <v-img :src="card.image_url" width="100px" height="140px"
+              :lazy-src="'/img/' + (card.runner ? 'runner' : 'corp') + '-card-back-small.png'">
             <v-badge v-if="card.badge" class="badge-border-fix" bordered overlap
                 :content="card.badge" :label="card.badge"
                 :color="card.badge === 'new' ? 'green': 'blue'"
