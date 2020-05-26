@@ -58,6 +58,27 @@ const shortestIdentity = function (title) {
   return result.substring(0, result.indexOf(' '))
 }
 
+const shortenMeta = function (metaname) {
+  if (!metaname || metaname.length === 0) {
+    return 'loading'
+  }
+  if (metaname.length < 10) {
+    return metaname
+  }
+  let shortName = metaname
+  // TODO: invonve pack code
+  if (shortName.indexOf('Uprising') > -1) {
+    shortName = shortName.replace('Uprising', 'U R')
+  }
+  if (shortName.indexOf('Booster Pack') > -1) {
+    shortName = shortName.replace('Booster Pack', 'B P')
+  }
+  if (shortName.indexOf('Downfall ') > -1) {
+    shortName = shortName.replace('Downfall ', 'D F ')
+  }
+  return shortName.replace(/ /g, '')
+}
+
 // returns RGB code for faction
 const factionCodeToColor = function (factionCode) {
   switch (factionCode) {
@@ -108,5 +129,6 @@ export default {
   winrate: winrate,
   winrateError: winrateError,
   matchCount: matchCount,
-  compareWinrates: compareWinrates
+  compareWinrates: compareWinrates,
+  shortenMeta: shortenMeta
 }

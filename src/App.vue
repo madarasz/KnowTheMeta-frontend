@@ -11,12 +11,15 @@
         <!-- Meta selector -->
         <v-toolbar-items>
           <v-menu bottom left v-if="loaded">
+            <!-- Meta name -->
             <template v-slot:activator="{ on }">
               <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" data-testid="current-meta">
-                {{ currentMetaTitle ? currentMetaTitle : 'loading' }}
+                <span class="d-none d-sm-block">{{ currentMetaTitle ? currentMetaTitle : 'loading' }}</span>
+                <span class="d-flex d-sm-none">{{ shortMetaTitle }}</span>
                 <v-icon icon data-testid="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
+            <!-- Meta list -->
             <v-list data-testid="list-metas">
               <template v-for="(meta, i) in metas.metaList">
                 <router-link :to="'/meta/' + meta.code" tag="v-list-item" :key="i">
@@ -52,6 +55,7 @@
 <script>
 import { mdiMenuDown } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
+import transform from '@/netrunnerTransformations.js'
 
 export default {
   data: () => ({
@@ -86,7 +90,10 @@ export default {
     ...mapGetters({
       latestMetaCode: 'metas/getLatestMetaCode',
       currentMetaTitle: 'metas/getCurrentMetaTitle'
-    })
+    }),
+    shortMetaTitle: function () {
+      return transform.shortenMeta(this.currentMetaTitle)
+    }
   }
 }
 </script>
