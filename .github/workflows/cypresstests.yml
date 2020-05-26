@@ -19,8 +19,8 @@ jobs:
           spec: "tests/e2e/**/*"
       env:
           CYPRESS_baseUrl: http://localhost:8080
-          updateSnapshots: true # temp solution
-    - name: Upload a Build Artifact
+          failOnSnapshotDiff: false # temp solution
+    - name: Upload image diffs
       uses: actions/upload-artifact@v2
       with:
         name: imagediffs
