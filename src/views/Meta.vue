@@ -23,7 +23,7 @@
             <h1>Decks</h1>
           </v-tab-item>
           <v-tab-item :key="3" value="cards" :transition="false" :reverse-transition="false">
-            <h1>Cards</h1>
+            <cards :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
           </v-tab-item>
         </v-tabs-items>
       </v-container>
@@ -33,11 +33,13 @@
 
 <script>
 import Identities from '@/components/subview/Identities.vue'
+import Cards from '@/components/subview/Cards.vue'
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
-    Identities
+    Identities,
+    Cards
   },
   data: () => ({
     loaded: false,

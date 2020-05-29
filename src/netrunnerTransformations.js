@@ -95,6 +95,13 @@ const compareWinrates = function (a, b) {
   }
   return 0
 }
+// compare function for popularity
+const comparePopularity = function (a, b) {
+  if (a.used > b.used) {
+    return -1
+  }
+  return 0
+}
 
 const winrateError = function (identity) {
   const wr = winrate(identity) / 100
@@ -108,5 +115,6 @@ export default {
   winrate: winrate,
   winrateError: winrateError,
   matchCount: matchCount,
-  compareWinrates: compareWinrates
+  compareWinrates: compareWinrates,
+  comparePopularity: comparePopularity
 }
