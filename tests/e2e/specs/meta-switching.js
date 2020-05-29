@@ -20,8 +20,8 @@ describe('Meta Switching', () => {
   // checks meta data on identities
   function checkMetaIdentityData(side, meta) {
     cy.get(`[data-testid=table-popularity-${side}]`).find('tr').its('length').should('be.at.least', 6)
-    cy.get(`[data-testid=chart-popularity-${side}] > #pie-chart`).matchImageSnapshot(`chart-popularity-${side}-${meta}`)
-    cy.get(`[data-testid=chart-winrate-${side}] > #horizontalbar-chart`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
+    cy.get(`#chart-popularity-${side}`).matchImageSnapshot(`chart-popularity-${side}-${meta}`)
+    cy.get(`#chart-winrate-${side}`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
   }
 
   it('Root visit gets forwarded to latest meta', () => {
@@ -64,8 +64,6 @@ describe('Meta Switching', () => {
 
   it('If non-meta page is visited first, meta will be latest', () => {
     cy.visit('/mwl')
-    cy.get('[data-testid=current-meta] > .v-btn__content').then(($title) => {
-      expect($title.text()).to.eq(' Uprising ')
-    })
+    cy.contains('[data-testid=current-meta] > .v-btn__content', 'Uprising')
   })
 })

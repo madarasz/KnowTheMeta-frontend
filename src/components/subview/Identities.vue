@@ -14,7 +14,7 @@
       <!-- Corp -->
       <template v-slot:corp>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
-          <identity-popularity side="corp" :side-data="metaData.identities.corp"/>
+          <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle">
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
@@ -22,7 +22,7 @@
       </template>
     </runner-corp-tabs>
     <!-- Desktop screens -->
-    <div class="mr-4 ml-4 d-none d-md-block">
+    <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <!-- Popularity card -->
       <desktop-card title="Popularity" :subtitle="popSubtitle">
         <template v-slot:left>

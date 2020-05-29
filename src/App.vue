@@ -11,12 +11,15 @@
         <!-- Meta selector -->
         <v-toolbar-items>
           <v-menu bottom left v-if="loaded">
+            <!-- Meta name -->
             <template v-slot:activator="{ on }">
               <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" data-testid="current-meta">
-                {{ currentMetaTitle ? currentMetaTitle : 'loading' }}
+                <span class="d-none d-sm-block">{{ currentMetaTitle ? currentMetaTitle : 'loading' }}</span>
+                <span class="d-flex d-sm-none">{{ shortMetaTitle }}</span>
                 <v-icon icon data-testid="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
               </v-btn>
             </template>
+            <!-- Meta list -->
             <v-list data-testid="list-metas">
               <template v-for="(meta, i) in metas.metaList">
                 <router-link :to="'/meta/' + meta.code" tag="v-list-item" :key="i">
@@ -45,15 +48,28 @@
         </v-toolbar-items>
       </v-app-bar>
       <router-view/>
+      <!-- snackbar messages -->
+      <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="snackbar.timeout"
+          :left="snackbar.left" :right="snackbar.right"
+          :bottom="snackbar.bottom" :top="snackbar.bottom"
+          data-testid="snackbar">
+        {{ snackbar.message }}
+        <v-btn dark text @click="closeSnackbar">Close</v-btn>
+      </v-snackbar>
     </v-app>
   </div>
 </template>
 
 <script>
+import { VListItem } from 'vuetify/lib'
 import { mdiMenuDown } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
+import transform from '@/netrunnerTransformations.js'
 
 export default {
+  components: {
+    VListItem // eslint-disable-line vue/no-unused-components
+  },
   data: () => ({
     mdiMenuDown,
     loaded: false
@@ -75,18 +91,26 @@ export default {
             console.error('Could not navigate to latest meta: ' + err)
           })
         }
-      }).catch()
+      }).catch((err) => {
+        console.error(err)
+        this.showError('Could not load metas')
+      })
     },
     ...mapMutations({
-      fallbackToLatestMeta: 'metas/fallbackToLatestMeta'
+      fallbackToLatestMeta: 'metas/fallbackToLatestMeta',
+      showError: 'snackbar/showError',
+      closeSnackbar: 'snackbar/closeSnackbar'
     })
   },
   computed: {
-    ...mapState(['metas']),
+    ...mapState(['metas', 'snackbar']),
     ...mapGetters({
       latestMetaCode: 'metas/getLatestMetaCode',
       currentMetaTitle: 'metas/getCurrentMetaTitle'
-    })
+    }),
+    shortMetaTitle: function () {
+      return transform.shortenMeta(this.currentMetaTitle)
+    }
   }
 }
 </script>

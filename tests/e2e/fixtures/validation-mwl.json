@@ -1,0 +1,63 @@
+{
+    "runner": {
+        "banned": [
+            "Aaron Marrón",
+            "Bloo Moose",
+            "Crowdfunding",
+            "Faust",
+            "Hyperdriver",
+            { "title": "Liza Talking Thunder", "badge": "new" },
+            "Laamb",
+            "Mars for Martians",
+            "Salvaged Vanadis Armory",
+            "Şifr",
+            "Tapwrm",
+            "Temüjin Contract",
+            "Watch the World Burn",
+            "Zer0",
+            "Employee Strike",
+            "GPI Net Tap"
+        ],
+        "restricted": [
+            "Aesop's Pawnshop",
+            "Corporate \"Grant\"",
+            "Dorm Computer",
+            "Engolo",
+            "Film Critic",
+            "Gang Sign",
+            "Inversificator",
+            "Labor Rights",
+            "Mad Dash",
+            "Paperclip",
+            "Rumor Mill",
+            "Tech Trader"
+        ],
+        "removed": [
+            { "title": "419", "badge": "from restricted" },
+            { "title": "Rezeki", "badge": "from banned" }
+        ]
+    },
+    "corp": {
+        "banned": [
+            "24/7 News Cycle",
+            "Bryan Stinson",
+            "Clone Suffrage Movement",
+            "Friends in High Places",
+            "Hired Help",
+            "Potential Unleashed",
+            "Museum of History",
+            "Mumbad City Hall",
+            "Mti Mwekundu",
+            "Sensie Actors Union",
+            "Zealous Judge"
+        ],
+        "restricted": [
+            "Bio-Ethics Association",
+            "Global Food Initiative",
+            "Mumba Temple",
+            "Obokata Protocol",
+            "Whampoa Reclamation"
+        ],
+        "removed": []
+    }
+}

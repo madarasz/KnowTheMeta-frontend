@@ -2,15 +2,16 @@
   <v-row>
     <!-- Chart -->
     <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
-      <popularity-chart :meta-data="sideData" :max-entries="showMax" :data-testid="'chart-popularity-' + side"/>
+      <popularity-chart :meta-data="sideData" :max-entries="showMax" :chart-id="'chart-popularity-' + side"/>
     </v-col>
     <!-- Table -->
-    <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6">
+    <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6 text-center">
       <v-simple-table v-if="sideData" style="max-width: 350px; margin: 0 auto" class="pt-2 pop-table" :data-testid="'table-popularity-' + side">
         <tbody>
           <tr v-for="(identity, index) in sideData" :key="identity.title">
             <td v-if="index < showMax">
-              <v-img :src="'https://alwaysberunning.net/img/ids/'+identity.code+'.png'" height="30px" width="30px"/>
+              <v-img :src="'https://alwaysberunning.net/img/ids/'+identity.code+'.png'" height="30px" width="30px"
+                :lazy-src="'/img/' + side + '-color.png'"/>
             </td>
             <td class="text-left" v-if="index < showMax">
               {{ shortenIdentity(identity.title) }}
