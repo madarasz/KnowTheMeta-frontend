@@ -61,7 +61,7 @@
 <script>
 import { mapState } from 'vuex'
 import DesktopCard from '@/components/header/DesktopCard.vue'
-import CardLister from '@/components/widget/CardLister.vue'
+import CardLister from '@/components/lister/CardLister.vue'
 import CardsInTwoWrapper from '@/components/widget/CardsInTwoWrapper.vue'
 import DesktopCardSubtitle from '@/components/header/DesktopCardSubtitle.vue'
 import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'

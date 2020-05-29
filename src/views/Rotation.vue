@@ -43,7 +43,7 @@
 <script>
 import { mapState } from 'vuex'
 import DesktopCardDivided from '@/components/header/DesktopCardDivided.vue'
-import CycleLister from '@/components/widget/CycleLister.vue'
+import CycleLister from '@/components/lister/CycleLister.vue'
 import transform from '@/store/nrdbTransformations'
 
 export default {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CardLister from '@/components/widget/CardLister.vue'
+import CardLister from '@/components/lister/CardLister.vue'
 export default {
   name: 'CardsInTwoColumns',
   props: {

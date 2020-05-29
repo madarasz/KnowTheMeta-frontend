@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import NetrunnerStatCard from '@/components/widget/NetrunnerStatCard.vue'
+import NetrunnerStatCard from '@/components/cards/NetrunnerStatCard.vue'
 export default {
   name: 'CardStatLister',
   props: {
