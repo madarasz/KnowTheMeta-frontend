@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'CardLister',
+  name: 'LastUpdate',
   props: {
     metaInfo: Object
   }

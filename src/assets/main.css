@@ -40,3 +40,22 @@
 .v-badge--bordered .v-badge__badge:after {
   transform: scale(1) !important;
 }
+
+/* hide data table group buttons */
+tr.v-row-group__header > td > button {
+  display: none !important;
+}
+/* data table mobile view */
+.v-data-table .v-data-table__mobile-row {
+  min-height: unset;
+}
+.v-data-table__mobile-table-row :nth-child(1) :nth-child(2) {
+  font-weight: 600;
+}
+.v-data-table__mobile-row__header {
+  font-weight: unset;
+}
+
+.mb--4 {
+  margin-bottom: -4px;
+}
