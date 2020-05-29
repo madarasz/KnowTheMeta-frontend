@@ -41,6 +41,7 @@
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </template>
       </desktop-card>
+      <last-update :meta-info="metaData.meta"/>
     </div>
   </div>
 </template>
@@ -51,6 +52,7 @@ import IdentityWinrate from '@/components/widget/IdentityWinrate.vue'
 import DesktopCard from '@/components/header/DesktopCard.vue'
 import MobilePanel from '@/components/header/MobilePanel.vue'
 import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'
+import LastUpdate from '@/components/widget/LastUpdate.vue'
 export default {
   name: 'Identities',
   props: {
@@ -66,7 +68,8 @@ export default {
     IdentityWinrate,
     DesktopCard,
     MobilePanel,
-    RunnerCorpTabs
+    RunnerCorpTabs,
+    LastUpdate
   },
   computed: {
     popSubtitle: function () {
