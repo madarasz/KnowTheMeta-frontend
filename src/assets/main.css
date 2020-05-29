@@ -56,6 +56,12 @@ tr.v-row-group__header > td > button {
   font-weight: unset;
 }
 
+/* minus bottom margin */
 .mb--4 {
   margin-bottom: -4px;
+}
+/*tooltip icon adjust */
+.icon-left {
+  justify-content: start !important;
+  flex-grow: 0 !important;
 }

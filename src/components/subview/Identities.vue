@@ -7,7 +7,7 @@
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
           <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
-        <mobile-panel title="Win rates" :subtitle="winSubtitle">
+        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
       </template>
@@ -16,7 +16,7 @@
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
           <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
-        <mobile-panel title="Win rates" :subtitle="winSubtitle">
+        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
       </template>
@@ -33,7 +33,7 @@
         </template>
       </desktop-card>
       <!-- Win rates -->
-      <desktop-card title="Win rates" :subtitle="winSubtitle">
+      <desktop-card title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
         <template v-slot:left>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </template>

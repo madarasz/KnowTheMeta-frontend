@@ -10,7 +10,7 @@
         <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle">
           <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
         </mobile-panel>
-        <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle">
+        <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
           <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
         </mobile-panel>
       </template>
@@ -22,7 +22,7 @@
         <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle">
           <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
         </mobile-panel>
-        <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle">
+        <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
           <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
         </mobile-panel>
       </template>
@@ -48,7 +48,7 @@
         </template>
       </desktop-card>
       <!-- Winning -->
-      <desktop-card title="Impressive winrates" :subtitle="subtitle">
+      <desktop-card title="Impressive winrates" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
           <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
         </template>

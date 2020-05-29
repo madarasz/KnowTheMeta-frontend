@@ -2,8 +2,12 @@
   <v-expansion-panels v-model="openedIndex" class="square-border">
   <v-expansion-panel class="square-border">
     <v-expansion-panel-header class="mobile-panel" :color="color" :hide-actions="hideActions" :class="{ 'thin-panel': thin }">
+      <!-- Title -->
       {{ title }}
+      <!-- Tooltip -->
+      <tooltip :text="tooltip" v-if="tooltip"/>
       <v-spacer/>
+      <!-- Subtitle -->
       <span class="overline text-right">
         {{ subtitle }}
       </span>
@@ -16,6 +20,8 @@
 </template>
 
 <script>
+import Tooltip from '@/components/widget/Tooltip.vue'
+
 export default {
   name: 'MobilePanel',
   props: {
@@ -26,7 +32,11 @@ export default {
       default: 'secondary'
     },
     hideActions: Boolean,
-    thin: Boolean
+    thin: Boolean,
+    tooltip: String
+  },
+  components: {
+    Tooltip
   },
   data: () => ({
     openedIndex: 0
