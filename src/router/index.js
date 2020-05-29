@@ -9,7 +9,7 @@ const routes = [
     name: 'Root'
   },
   {
-    path: '/meta/:metacode',
+    path: '/meta/:metacode/:subview',
     name: 'Meta',
     component: () => import(/* webpackChunkName: "meta" */ '../views/Meta.vue')
   },

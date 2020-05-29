@@ -3,13 +3,13 @@
     <v-content>
       <v-card>
         <v-tabs height="40px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
-          <v-tab href="#ids">
+          <v-tab href="#ids" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/ids' })">
             Identities
           </v-tab>
-          <v-tab href="#decks">
+          <v-tab href="#decks" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/decks' })">
             Decks
           </v-tab>
-          <v-tab href="#cards">
+          <v-tab href="#cards" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/cards' })">
             Cards
           </v-tab>
         </v-tabs>
@@ -41,10 +41,12 @@ export default {
     Identities,
     Cards
   },
-  data: () => ({
-    loaded: false,
-    tab: 'ids' // default tab
-  }),
+  data: function () {
+    return {
+      loaded: false,
+      tab: this.$route.params.subview // default tab
+    }
+  },
   mounted: function () {
     this.getMetaData(this.$route.params.metacode)
   },
