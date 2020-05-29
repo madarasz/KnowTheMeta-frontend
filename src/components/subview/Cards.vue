@@ -4,10 +4,10 @@
     <runner-corp-tabs>
       <!-- Runner -->
       <template v-slot:runner>
-        <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle">
+        <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
           <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
         </mobile-panel>
-        <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle">
+        <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
           <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
@@ -16,11 +16,11 @@
       </template>
       <!-- Corp -->
       <template v-slot:corp>
-        <mobile-panel :title="popularTitle" :subtitle="corpSubtitle">
+        <mobile-panel :title="popularTitle" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
           <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
         </mobile-panel>
-        <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle">
-          <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
+        <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
+          <card-table :card-list="ice" test-id="table-icebreakers"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
           <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
@@ -30,7 +30,7 @@
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <!-- Popular in pack -->
-      <desktop-card :title="popularTitle" :subtitle="subtitle">
+      <desktop-card :title="popularTitle" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
           <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
         </template>
@@ -39,7 +39,7 @@
         </template>
       </desktop-card>
       <!-- Breakers / ICE -->
-      <desktop-card title="Breakers / ICE" :subtitle="subtitle">
+      <desktop-card title="Breakers / ICE" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
           <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
         </template>
@@ -82,7 +82,7 @@ export default {
     }
   },
   data: () => ({
-    maxCardsPerWidget: 12,
+    maxCardsPerWidget: 14,
     loaded: false
   }),
   components: {

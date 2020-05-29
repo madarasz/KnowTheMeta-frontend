@@ -1,6 +1,6 @@
 <template>
-  <v-row class="text-center" :data-testid="testId">
-    <v-col v-for="card in cardList" :key="card.code" class="text-center pa-1">
+  <v-row class="text-center justify-center" :data-testid="testId">
+    <v-col v-for="card in cardList" :key="card.code" class="text-center pl-3 pr-3 pa-1 flex-grow-0">
       <netrunner-card :card="card"/>
     </v-col>
     <!-- empty message -->
