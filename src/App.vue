@@ -117,4 +117,5 @@ export default {
 
 <style scoped>
   @import './assets/main.css';
+  @import './assets/netrunnerfont.css'
 </style>

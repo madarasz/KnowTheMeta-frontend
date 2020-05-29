@@ -82,7 +82,7 @@ export default {
     }
   },
   data: () => ({
-    maxCardsPerWidget: 10,
+    maxCardsPerWidget: 12,
     loaded: false
   }),
   components: {
