@@ -1,5 +1,7 @@
 <script>
 import { HorizontalBar } from 'vue-chartjs'
+import * as annotation from 'chartjs-plugin-annotation'
+
 export default {
   extends: HorizontalBar,
   name: 'SideWinrateChart',
@@ -11,11 +13,27 @@ export default {
   data: () => ({
     options: {
       maintainAspectRatio: false,
+      plugins: [annotation],
+      annotation: {
+        drawTime: 'afterDraw',
+        events: [],
+        annotations: [{
+          drawTime: 'afterDraw',
+          type: 'line',
+          mode: 'vertical',
+          scaleID: 'x-axis-0',
+          value: '50',
+          borderColor: 'grey',
+          borderDash: [6, 4],
+          borderWidth: 3
+        }]
+      },
       layout: {
         padding: 0
       },
       legend: {
-        display: true
+        display: true,
+        onClick: (e) => e.stopPropagation() // turn click function off
       },
       scales: {
         xAxes: [{
@@ -27,7 +45,12 @@ export default {
         }]
       },
       tooltips: {
-        enabled: true // TODO: enable
+        enabled: true,
+        callbacks: {
+          label: function (tooltipItem, data) {
+            return data.datasets[tooltipItem.datasetIndex].label + ': ' + data.datasets[tooltipItem.datasetIndex].data[0] + '%'
+          }
+        }
       }
     }
   }),

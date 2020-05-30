@@ -65,3 +65,8 @@ tr.v-row-group__header > td > button {
   justify-content: start !important;
   flex-grow: 0 !important;
 }
+
+.thin-hr {
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
+  border-top: 0;
+}

@@ -41,7 +41,7 @@
         <template v-slot:pretext>
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
             :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
-            <hr/>
+            <hr class="thin-hr"/>
         </template>
         <template v-slot:left>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
