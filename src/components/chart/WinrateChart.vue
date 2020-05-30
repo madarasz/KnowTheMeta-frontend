@@ -66,7 +66,7 @@ export default {
         labels: this.metaData.map(x => { return transform.shortestIdentity(x.title) }),
         datasets: [{
           data: this.metaData.map(x => { return transform.winrate(x) }),
-          tooltips: this.metaData.map(x => { return x.wins + '/' + transform.matchCount(x) }), // store values here, read with tooltip callback later
+          tooltips: this.metaData.map(x => { return transform.winrate(x) + '% (' + x.wins + '/' + transform.matchCount(x) + ')' }), // store values here, read with tooltip callback later
           backgroundColor: this.metaData.map(x => { return transform.factionCodeToColor(x.faction) }),
           errorBars: this.errordata.errors,
           borderColor: 'rgba(50, 50, 50, 0.6)' // error bar color

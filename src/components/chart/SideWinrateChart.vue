@@ -15,10 +15,10 @@ export default {
       maintainAspectRatio: false,
       plugins: [annotation],
       annotation: {
-        drawTime: 'afterDraw',
+        drawTime: 'afterDatasetsDraw',
         events: [],
         annotations: [{
-          drawTime: 'afterDraw',
+          drawTime: 'afterDatasetsDraw',
           type: 'line',
           mode: 'vertical',
           scaleID: 'x-axis-0',
