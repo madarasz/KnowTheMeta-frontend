@@ -4,7 +4,7 @@
     <cards-in-two-columns :runner-cards="runnerCards" :corp-cards="corpCards" v-if="!inCardText"
         :runner-test-id="runnerTestId" :corp-test-id="corpTestId"/>
     <!-- with wrapping -->
-    <v-card-text class="pb-0" v-if="inCardText">
+    <v-card-text class="pb-0 pt-0" v-if="inCardText">
       <cards-in-two-columns :runner-cards="runnerCards" :corp-cards="corpCards"
           :runner-test-id="runnerTestId" :corp-test-id="corpTestId"/>
     </v-card-text>

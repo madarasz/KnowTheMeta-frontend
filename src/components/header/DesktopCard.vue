@@ -13,7 +13,7 @@
     </v-card-title>
     <!-- Pretext -->
     <slot name="pretext"></slot>
-    <v-card-text class="pb-0">
+    <v-card-text class="pb-0 pt-0">
       <v-row>
         <v-col cols="6" class="divider-on-right">
           <!-- Left -->

@@ -8,6 +8,8 @@
           <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+          <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
       </template>
@@ -17,6 +19,8 @@
           <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+          <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
       </template>
@@ -34,6 +38,11 @@
       </desktop-card>
       <!-- Win rates -->
       <desktop-card title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+        <template v-slot:pretext>
+          <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
+            <hr/>
+        </template>
         <template v-slot:left>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </template>
@@ -49,6 +58,7 @@
 <script>
 import IdentityPopularity from '@/components/widget/IdentityPopularity.vue'
 import IdentityWinrate from '@/components/widget/IdentityWinrate.vue'
+import SideWinrateChart from '@/components/chart/SideWinrateChart.vue'
 import DesktopCard from '@/components/header/DesktopCard.vue'
 import MobilePanel from '@/components/header/MobilePanel.vue'
 import RunnerCorpTabs from '@/components/widget/RunnerCorpTabs.vue'
@@ -69,7 +79,8 @@ export default {
     DesktopCard,
     MobilePanel,
     RunnerCorpTabs,
-    LastUpdate
+    LastUpdate,
+    SideWinrateChart
   },
   computed: {
     popSubtitle: function () {
