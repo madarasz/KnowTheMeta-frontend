@@ -5,25 +5,25 @@
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
+          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
         </mobile-panel>
         <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
           <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
+          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
         </mobile-panel>
       </template>
       <!-- Corp -->
       <template v-slot:corp>
         <mobile-panel :title="popularTitle" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
+          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
         </mobile-panel>
         <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
           <card-table :card-list="ice" test-id="table-icebreakers"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
+          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
         </mobile-panel>
       </template>
     </runner-corp-tabs>
@@ -32,10 +32,10 @@
       <!-- Popular in pack -->
       <desktop-card :title="popularTitle" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
-          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
+          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
         </template>
         <template v-slot:right>
-          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
+          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
         </template>
       </desktop-card>
       <!-- Breakers / ICE -->
@@ -50,10 +50,10 @@
       <!-- Winning -->
       <desktop-card title="Impressive winrates" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
-          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="loaded"/>
+          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
         </template>
         <template v-slot:right>
-          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="loaded"/>
+          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
         </template>
       </desktop-card>
       <last-update :meta-info="metaData.meta"/>
@@ -82,8 +82,7 @@ export default {
     }
   },
   data: () => ({
-    maxCardsPerWidget: 14,
-    loaded: false
+    maxCardsPerWidget: 14
   }),
   components: {
     DesktopCard,
@@ -99,30 +98,12 @@ export default {
   methods: {
     getNetunnerDBData: function () {
       this.$store.dispatch('netrunnerdb/getCardData', false).then(() => {
-        this.loaded = true
       })
     },
     addImageUrl: function (card) {
       card.image_url = this.netrunnerdb.cards[card.title].image_url
       return card
     },
-    // sortIntoTypes: function (cardList) {
-    //   const result = {}
-    //   for (let i = 0; i < cardList.length; i++) {
-    //     let tag = cardList[i].tags
-    //     if (tag.indexOf(',') > -1) {
-    //       tag = tag.split(',').find(x => { return x.indexOf('ice') > -1 })
-    //     }
-    //     if (tag.indexOf('-') > -1) {
-    //       tag = tag.split('-')[1]
-    //     }
-    //     if (result[tag] === undefined) {
-    //       result[tag] = []
-    //     }
-    //     result[tag].push(cardList[i])
-    //   }
-    //   return result
-    // }
     sortIntoTypes: function (cardList) {
       for (let i = 0; i < cardList.length; i++) {
         let tag = cardList[i].tags
@@ -173,13 +154,13 @@ export default {
     iceBreakers: function () {
       return this.sortIntoTypes(
         this.metaData.cards.runner.filter(x => { return x.tags.includes('icebreaker') })
-          .sort(transform.comparePopularity).map(x => this.addImageUrl(x))
+          .sort(transform.comparePopularity)
       )
     },
     ice: function () {
       return this.sortIntoTypes(
         this.metaData.cards.corp.filter(x => { return x.tags.includes('ice') })
-          .sort(transform.comparePopularity).map(x => this.addImageUrl(x))
+          .sort(transform.comparePopularity)
       )
     }
   }
