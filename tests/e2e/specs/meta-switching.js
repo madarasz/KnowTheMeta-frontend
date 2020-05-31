@@ -22,6 +22,7 @@ describe('Meta Switching', () => {
     cy.get(`[data-testid=table-popularity-${side}]`).find('tr').its('length').should('be.at.least', 6)
     cy.get(`#chart-popularity-${side}`).matchImageSnapshot(`chart-popularity-${side}-${meta}`)
     cy.get(`#chart-winrate-${side}`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
+    cy.get(`#chart-side-winrate`).matchImageSnapshot(`chart-side-winrate-${meta}`)
   }
 
   it('Root visit gets forwarded to latest meta', () => {
@@ -42,7 +43,7 @@ describe('Meta Switching', () => {
   }),
 
   it('Can change meta, meta is remembered', () => {
-    cy.visit('/meta/uprising')
+    cy.visit('/meta/uprising/ids')
     // save top popularity value
     cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cell) => {
       // navigate to second meta
@@ -60,6 +61,13 @@ describe('Meta Switching', () => {
     // check if selected meta is remembered
     cy.visit('/mwl')
     cy.contains('[data-testid=current-meta]', 'Uprising Booster Pack')
+  })
+
+  it('Can change meta, subview is remembered', () => {
+    cy.visit('/meta/uprising/cards')
+    cy.get('[data-testid=icon-meta-select]').click()
+    cy.get('[data-testid=list-metas] > :nth-child(2)').click()
+    cy.url().should('include', '/meta/uprising-booster-pack/cards')
   })
 
   it('If non-meta page is visited first, meta will be latest', () => {

@@ -9,7 +9,7 @@
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
-            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate-r"/>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
         </mobile-panel>
       </template>
@@ -20,7 +20,7 @@
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
-            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate-c"/>
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
         </mobile-panel>
       </template>
@@ -40,7 +40,7 @@
       <desktop-card title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
         <template v-slot:pretext>
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
-            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2"/>
+            :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate"/>
             <hr class="thin-hr"/>
         </template>
         <template v-slot:left>

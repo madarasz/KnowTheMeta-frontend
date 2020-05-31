@@ -1,0 +1,184 @@
+{
+    "uprising": {
+        "popular": {
+            "runner": [
+                {
+                    "title": "Daily Casts",
+                    "popularity": "74.6%",
+                    "winrate": "48.4%"
+                },
+                {
+                    "title": "Boomerang",
+                    "popularity": "40.3%",
+                    "winrate": "47%"
+                },
+                {
+                    "title": "Simulchip",
+                    "popularity": "35.6%",
+                    "winrate": "44%"
+                }
+            ],
+            "corp": [
+                {
+                    "title": "Gold Farmer",
+                    "popularity": "25.2%",
+                    "winrate": "70.9%"
+                },
+                {
+                    "title": "Bellona",
+                    "popularity": "23.2%",
+                    "winrate": "72.1%"
+                },
+                {
+                    "title": "Drafter",
+                    "popularity": "18.5%",
+                    "winrate": "68.7%"
+                }
+            ]
+        },
+        "breakers": [
+            {
+                "title": "Aumakua",
+                "popularity": "27.4%",
+                "winrate": "52.9%",
+                "avg": "2.58"
+            },
+            {
+                "title": "Black Orchestra",
+                "popularity": "28.1%",
+                "winrate": "49.4%",
+                "avg": "2.19"
+            },
+            {
+                "title": "Grappling Hook",
+                "popularity": "8.3%",
+                "winrate": "40.4%",
+                "avg": "3.00"
+            }
+        ],
+        "ice": [
+            {
+                "title": "Border Control",
+                "popularity": "50.8%",
+                "winrate": "69.2%",
+                "avg": "2.60"
+            },
+            {
+                "title": "Slot Machine",
+                "popularity": "34.0%",
+                "winrate": "72.5%",
+                "avg": "2.58"
+            },
+            {
+                "title": "Surveyor",
+                "popularity": "29.4%",
+                "winrate": "70.4%",
+                "avg": "2.39"
+            }
+        ],
+        "breaker-types": [
+            "type: AI", "type: Decoder", "type: Fracter", "type: hardware", "type: Killer", "type: program", "type: resource"
+        ],
+        "ice-types": [
+            "type: Barrier", "type: Code Gate", "type: Sentry"
+        ],
+        "winning": {
+            "runner": [
+                {
+                    "title": "Corporate \"Grant\"",
+                    "popularity": "12.9%",
+                    "winrate": "62.7%"
+                },
+                {
+                    "title": "Citadel Sanctuary",
+                    "popularity": "14.5%",
+                    "winrate": "58.1%"
+                },
+                {
+                    "title": "Aesop's Pawnshop",
+                    "popularity": "9.2%",
+                    "winrate": "56.5%"
+                }
+            ],
+            "corp": [
+                {
+                    "title": "News Hound",
+                    "popularity": "7.9%",
+                    "winrate": "76.8%"
+                },
+                {
+                    "title": "Economic Warfare",
+                    "popularity": "20.9%",
+                    "winrate": "75.7%"
+                },
+                {
+                    "title": "High-Profile Target",
+                    "popularity": "16.2%",
+                    "winrate": "75.5%"
+                }
+            ]
+        }
+    },
+    "uprising-booster-pack": {
+        "popular": {
+            "runner": [
+                {
+                    "title": "Mystic Maemi",
+                    "popularity": "11.2%",
+                    "winrate": "56.6%"
+                }
+            ],
+            "corp": [
+                {
+                    "title": "Digital Rights Management",
+                    "popularity": "12.6%",
+                    "winrate": "56.7%"
+                }
+            ]
+        },
+        "breakers": [
+            {
+                "title": "Aumakua",
+                "popularity": "38.3%",
+                "winrate": "58.4%",
+                "avg": "2.42"
+            },
+            {
+                "title": "D4v1d",
+                "popularity": "23.3%",
+                "winrate": "59.2%",
+                "avg": "1.54"
+            }
+        ],
+        "ice": [
+            {
+                "title": "Endless EULA",
+                "popularity": "5.6%",
+                "winrate": "71.2%",
+                "avg": "1.63"
+            }
+        ],
+        "breaker-types": [
+            "type: AI", "type: Decoder", "type: Fracter", "type: Killer", "type: program"
+        ],
+        "ice-types": [
+            "type: Barrier", "type: Code Gate", "type: Sentry", "type: Mythic"
+        ],
+        "winning": {
+            "runner": [
+                {
+                    "title": "Wanton Destruction",
+                    "popularity": "18%",
+                    "winrate": "69.7%"
+                }
+            ],
+            "corp": [
+                {
+                    "title": "Degree Mill",
+                    "popularity": "7.1%",
+                    "winrate": "74.4%"
+                }
+            ]
+        }
+    }
+}

@@ -5,12 +5,15 @@
         "cardpool": "Uprising",
         "mwl": "Standard MWL 3.4b",
         "newCards": true,
-        "tournaments": 123,
-        "standings": 2768,
-        "decks": 595,
-        "matches": 9347,
+        "tournaments": 127,
+        "standings": 2858,
+        "runnerDecks": 303,
+        "corpDecks": 302,
+        "matches": 9663,
+        "runnerWinRate": 0.3987996688741722,
+        "corpWinRate": 0.6009933774834437,
         "file": "uprising.json",
-        "lastUpdate": "2020-05-21 14:52:19"
+        "lastUpdate": "2020-05-29 08:46:00"
     },
     {
         "title": "Uprising Booster Pack",
@@ -20,10 +23,13 @@
         "newCards": true,
         "tournaments": 94,
         "standings": 2662,
-        "decks": 679,
+        "runnerDecks": 339,
+        "corpDecks": 340,
         "matches": 7209,
+        "runnerWinRate": 0.4940360610263523,
+        "corpWinRate": 0.5051317614424411,
         "file": "uprising-booster-pack.json",
-        "lastUpdate": "2020-05-21 14:52:45"
+        "lastUpdate": "2020-05-29 08:43:52"
     },
     {
         "title": "Downfall + MWL 3.3",
@@ -33,10 +39,13 @@
         "newCards": false,
         "tournaments": 78,
         "standings": 1758,
-        "decks": 463,
+        "runnerDecks": 231,
+        "corpDecks": 232,
         "matches": 4219,
+        "runnerWinRate": 0.46161137440758293,
+        "corpWinRate": 0.5360189573459716,
         "file": "downfall-mwl-3-3.json",
-        "lastUpdate": "2020-05-21 14:53:24"
+        "lastUpdate": "2020-05-29 08:42:48"
     },
     {
         "title": "Downfall + MWL 3.2",
@@ -46,10 +55,13 @@
         "newCards": false,
         "tournaments": 81,
         "standings": 1742,
-        "decks": 444,
+        "runnerDecks": 221,
+        "corpDecks": 223,
         "matches": 4074,
+        "runnerWinRate": 0.47789783889980353,
+        "corpWinRate": 0.5196463654223968,
         "file": "downfall-mwl-3-2.json",
-        "lastUpdate": "2020-05-21 14:53:46"
+        "lastUpdate": "2020-05-29 08:42:06"
     },
     {
         "title": "Downfall",
@@ -59,9 +71,12 @@
         "newCards": true,
         "tournaments": 109,
         "standings": 1942,
-        "decks": 513,
+        "runnerDecks": 256,
+        "corpDecks": 257,
         "matches": 4931,
+        "runnerWinRate": 0.45030425963488846,
+        "corpWinRate": 0.5383367139959432,
         "file": "downfall.json",
-        "lastUpdate": "2020-05-21 14:54:11"
+        "lastUpdate": "2020-05-29 08:38:35"
     }
 ]
