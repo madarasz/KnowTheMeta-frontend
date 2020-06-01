@@ -1,5 +1,12 @@
 <template>
   <v-content>
+    <!-- Alerts -->
+    <v-alert type="error" v-if="netrunnerdb.mwl && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
+      Currently banned by '{{ netrunnerdb.mwl[0].name }}'
+    </v-alert>
+    <v-alert type="warning" v-if="netrunnerdb.mwl && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
+      Currently restricted by '{{ netrunnerdb.mwl[0].name }}'
+    </v-alert>
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <v-row>

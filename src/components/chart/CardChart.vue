@@ -91,7 +91,7 @@ export default {
             borderWidth: 0,
             borderColor: 'rgba(0,0,0,0)', // hide completely
             label: {
-              backgroundColor: 'red',
+              backgroundColor: '#ff5252',
               content: 'Banned',
               enabled: true,
               xAdjust: i === 0 ? -30 : (i === this.metaList.length - 1 ? 30 : 0) // move label if it's the last or first meta
@@ -109,7 +109,7 @@ export default {
             borderWidth: 0,
             borderColor: 'rgba(0,0,0,0)', // hide completely
             label: {
-              backgroundColor: 'blue',
+              backgroundColor: '#fb8c00',
               content: 'Restricted',
               enabled: true,
               xAdjust: i === 0 ? -40 : (i === this.metaList.length - 1 ? 40 : 0) // move label if it's the last or first meta
