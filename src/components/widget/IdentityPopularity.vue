@@ -16,7 +16,7 @@
             <td class="text-left" v-if="index < showMax">
               {{ shortenIdentity(identity.title) }}
             </td>
-            <td class="text-right" v-if="index < showMax">{{ Math.round((identity.used / factionSum)*1000)/10 }}%</td>
+            <td class="text-right" v-if="index < showMax">{{ (identity.used / standingCount * 200).toFixed(1) }}%</td>
           </tr>
         </tbody>
       </v-simple-table>
@@ -33,7 +33,8 @@ export default {
   name: 'IdentityFactionPopularity',
   props: {
     side: String,
-    sideData: Array
+    sideData: Array,
+    standingCount: Number
   },
   components: {
     PopularityChart
@@ -42,11 +43,6 @@ export default {
     showMax: 10,
     change: 6
   }),
-  computed: {
-    factionSum: function () {
-      return this.sideData.reduce((a, b) => { return a + b.used }, 0)
-    }
-  },
   mounted () {
   },
   methods: {

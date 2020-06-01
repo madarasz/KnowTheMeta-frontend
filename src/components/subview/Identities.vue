@@ -5,7 +5,7 @@
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
-          <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
+          <identity-popularity side="runner" :side-data="metaData.identities.runner" :standing-count="metaData.meta.standings"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
@@ -16,7 +16,7 @@
       <!-- Corp -->
       <template v-slot:corp>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
-          <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
+          <identity-popularity side="corporation" :side-data="metaData.identities.corp" :standing-count="metaData.meta.standings"/>
         </mobile-panel>
         <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
@@ -30,10 +30,10 @@
       <!-- Popularity card -->
       <desktop-card title="Popularity" :subtitle="popSubtitle">
         <template v-slot:left>
-          <identity-popularity side="runner" :side-data="metaData.identities.runner"/>
+          <identity-popularity side="runner" :side-data="metaData.identities.runner" :standing-count="metaData.meta.standings"/>
         </template>
         <template v-slot:right>
-          <identity-popularity side="corporation" :side-data="metaData.identities.corp"/>
+          <identity-popularity side="corporation" :side-data="metaData.identities.corp" :standing-count="metaData.meta.standings"/>
         </template>
       </desktop-card>
       <!-- Win rates -->
