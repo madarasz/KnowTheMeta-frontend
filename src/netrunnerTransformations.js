@@ -129,6 +129,10 @@ const winrateError = function (identity) {
   return Math.sqrt(wr * (1 - wr) / matchCount(identity)) * 100
 }
 
+const cardUrl = function (card) {
+  return '/card/' + card.code + '-' + card.title.toLowerCase().replace(/\s/g, ' ').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')
+}
+
 export default {
   factionCodeToColor: factionCodeToColor,
   shortenIdentity: shortenIdentity,
@@ -138,5 +142,6 @@ export default {
   matchCount: matchCount,
   compareWinrates: compareWinrates,
   comparePopularity: comparePopularity,
-  shortenMeta: shortenMeta
+  shortenMeta: shortenMeta,
+  cardUrl: cardUrl
 }

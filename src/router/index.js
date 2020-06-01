@@ -22,6 +22,11 @@ const routes = [
     path: '/rotation',
     name: 'Rotation',
     component: () => import(/* webpackChunkName: "rotation" */ '../views/Rotation.vue')
+  },
+  {
+    path: '/card/:cardcode',
+    name: 'Card statistics',
+    component: () => import(/* webpackChunkName: "rotation" */ '../views/CardStat.vue')
   }
 ]
 

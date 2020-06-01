@@ -3,15 +3,17 @@
     <v-row dense>
       <v-col class="text-center pa-1 pb-0">
         <div class="d-inline-flex">
-          <v-img :src="card.image_url" width="100px" height="140px"
-              :lazy-src="'/img/' + (runner ? 'runner' : 'corp') + '-card-back-small.png'">
-          </v-img>
+          <a :href="cardUrl">
+            <v-img :src="card.image_url" width="100px" height="140px"
+                :lazy-src="'/img/' + (runner ? 'runner' : 'corp') + '-card-back-small.png'">
+            </v-img>
+          </a>
         </div>
       </v-col>
     </v-row>
     <v-row dense>
       <v-col class="card-title pt-0">
-        <span>{{ shorten(card.title) }}</span>
+        <a :href="cardUrl">{{ shorten(card.title) }}</a>
       </v-col>
     </v-row>
     <v-row dense class="mb--4">
@@ -48,6 +50,9 @@ export default {
   computed: {
     winrate: function () {
       return transform.winrate(this.card)
+    },
+    cardUrl: function () {
+      return transform.cardUrl(this.card)
     }
   }
 }

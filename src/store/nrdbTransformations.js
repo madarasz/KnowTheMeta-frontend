@@ -56,6 +56,7 @@ const sortMwlData = function (mwlData, cardData, printData) {
     if (Object.prototype.hasOwnProperty.call(mwlData, prop)) {
       const mwlcard = mwlData[prop]
       const card = cardData[printData[prop]]
+      card.code = prop // adding code for linking card stats
       const title = printData[prop]
       // banned
       if (('deck_limit' in mwlcard) && mwlcard.deck_limit === 0) {
