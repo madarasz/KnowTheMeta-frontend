@@ -3,9 +3,15 @@
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <v-row>
+        <v-col cols="6">
+          <print-lister :prints="cardStats.prints" :is-runner="isRunner" />
+        </v-col>
+      </v-row>
+      <v-row>
         <v-col>
-          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" v-if="cardStats.metaData && metas.metaList.length"
-            :is-runner="cardStats.card.side_code === 'runner'" chart-id="card-chart" style="height: 300px"/>
+          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
+            v-if="cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
+            :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
         </v-col>
       </v-row>
     </div>
@@ -16,6 +22,7 @@
 </template>
 
 <script>
+import PrintLister from '@/components/lister/PrintLister.vue'
 import CardChart from '@/components/chart/CardChart.vue'
 import { mapState } from 'vuex'
 import axios from 'axios'
@@ -27,11 +34,12 @@ export default {
     }
   },
   components: {
-    CardChart
+    CardChart,
+    PrintLister
   },
   mounted: function () {
     this.getCardStats()
-    this.getMetaData()
+    this.getMwlData()
   },
   methods: {
     getCardStats: function () {
@@ -39,13 +47,19 @@ export default {
         this.cardStats = response.data
       })
     },
-    getMetaData: function (metacode) {
-      this.$store.dispatch('metas/getMetaData', metacode).then((response) => {
+    getMwlData: function () {
+      this.$store.dispatch('netrunnerdb/getCardData', true).then(() => {
       })
     }
   },
   computed: {
-    ...mapState(['metas'])
+    ...mapState(['metas', 'netrunnerdb']),
+    isRunner: function () {
+      if (!this.cardStats.card) {
+        return undefined
+      }
+      return this.cardStats.card.side_code === 'runner'
+    }
   }
 }
 </script>

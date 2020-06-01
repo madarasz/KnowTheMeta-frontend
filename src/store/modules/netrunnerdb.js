@@ -40,8 +40,9 @@ export const netrunnerdb = {
     getMwl ({ commit }) {
       return axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
         commit('resetMwl')
-        commit('addMwl', response.data.data[response.data.data.length - 1]) // current MWL
-        commit('addMwl', response.data.data[response.data.data.length - 2]) // previous MWL
+        for (let i = response.data.data.length - 1; i >= 0; i--) {
+          commit('addMwl', response.data.data[i])
+        }
         commit('compareMwls')
       })
     }
