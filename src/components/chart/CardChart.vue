@@ -60,6 +60,26 @@ export default {
     this.renderChart(this.chartdata, this.options)
   },
   methods: {
+    generateAnnotation ({ value, backgroundColor, label, fontStyle, yAdjust, isDataOnBorder }) {
+      const annotation = {
+        drawTime: 'beforeDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: value,
+        borderWidth: 0,
+        borderColor: 'rgba(0,0,0,0)', // hide completely
+        label: {
+          backgroundColor: backgroundColor,
+          content: label,
+          enabled: true,
+          xAdjust: isDataOnBorder * (15 + 2.5 * label.length) // move label if it's the last or first meta
+        }
+      }
+      if (fontStyle) annotation.label.fontStyle = fontStyle
+      if (yAdjust) annotation.label.yAdjust = yAdjust
+      return annotation
+    },
     getAnnotations: function () {
       const annotations = []
       const lowDataErrorThreshold = 7 // popularity below this will be flagged as "low data"
@@ -68,62 +88,47 @@ export default {
         const mwlName = this.metaList[i].mwl
         const mwl = this.mwl.find(x => { return x.name === mwlName })
         const metaTitle = this.metaList[i].title
-        const used = this.metaData[metaTitle].used
-        // low data
-        if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold && used > 0) {
-          annotations.push({
-            drawTime: 'beforeDatasetsDraw',
-            type: 'line',
-            mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: this.metaList[i].title,
-            borderWidth: 0,
-            borderColor: 'rgba(0,0,0,0)', // hide completely
-            label: {
-              backgroundColor: 'orange',
-              content: 'low data',
-              enabled: true,
+        if (this.metaData[metaTitle]) { // metaData might be not available
+          const used = this.metaData[metaTitle].used
+          const isDataOnBorder = i === 0 ? -1 : (i === this.metaList.length - 1 ? 1 : 0)
+          // low data
+          if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold * 1.5 && used > 0) {
+            annotations.push(this.generateAnnotation({
+              value: this.metaList[i].title,
+              backgroundColor: '#B56503',
+              label: 'very low data',
               fontStyle: 'italic',
               yAdjust: 70,
-              xAdjust: i === 0 ? -35 : (i === this.metaList.length - 1 ? 35 : 0) // move label if it's the last or first meta
-            }
-          })
-        }
-        // banned
-        if (this.cardTitle in mwl.banned) {
-          annotations.push({
-            drawTime: 'beforeDatasetsDraw',
-            type: 'line',
-            mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: this.metaList[i].title,
-            borderWidth: 0,
-            borderColor: 'rgba(0,0,0,0)', // hide completely
-            label: {
+              isDataOnBorder
+            }))
+          } else if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold && used > 0) {
+            annotations.push(this.generateAnnotation({
+              value: this.metaList[i].title,
+              backgroundColor: '#B56503',
+              label: 'low data',
+              fontStyle: 'italic',
+              yAdjust: 70,
+              isDataOnBorder
+            }))
+          }
+          // banned
+          if (this.cardTitle in mwl.banned) {
+            annotations.push(this.generateAnnotation({
+              value: this.metaList[i].title,
               backgroundColor: '#ff5252',
-              content: 'Banned',
-              enabled: true,
-              xAdjust: i === 0 ? -30 : (i === this.metaList.length - 1 ? 30 : 0) // move label if it's the last or first meta
-            }
-          })
-        }
-        // restricted
-        if (this.cardTitle in mwl.restricted) {
-          annotations.push({
-            drawTime: 'beforeDatasetsDraw',
-            type: 'line',
-            mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: this.metaList[i].title,
-            borderWidth: 0,
-            borderColor: 'rgba(0,0,0,0)', // hide completely
-            label: {
+              label: 'Banned',
+              isDataOnBorder
+            }))
+          }
+          // restricted
+          if (this.cardTitle in mwl.restricted) {
+            annotations.push(this.generateAnnotation({
+              value: this.metaList[i].title,
               backgroundColor: '#fb8c00',
-              content: 'Restricted',
-              enabled: true,
-              xAdjust: i === 0 ? -40 : (i === this.metaList.length - 1 ? 40 : 0) // move label if it's the last or first meta
-            }
-          })
+              label: 'Restricted',
+              isDataOnBorder
+            }))
+          }
         }
       }
       return annotations
@@ -151,7 +156,7 @@ export default {
       const side = this.isRunner ? 'runner' : 'corp'
       const avgProp = this.isIdentity ? 'WinRate' : 'DeckWinRate'
       return {
-        labels: Object.entries(this.metaData).map(x => { return x[0] }).reverse(),
+        labels: Object.entries(this.metaData).map(x => { return x[0] }).reverse().slice(0, Object.keys(this.metaData).length),
         datasets: [
           {
             data: Object.entries(this.metaData).map(x => { return transform.winrate(x[1]) }).reverse(),
@@ -163,7 +168,7 @@ export default {
             fill: false
           },
           {
-            data: this.metaList.map(x => { return (x[side + avgProp] * 100).toFixed(1) }).reverse(),
+            data: this.metaList.map(x => { return (x[side + avgProp] * 100).toFixed(1) }).reverse().slice(0, Object.keys(this.metaData).length),
             borderColor: 'rgba(170,113,34,0.5)',
             backgroundColor: 'rgba(170,113,34,1)',
             borderWidth: 2,
