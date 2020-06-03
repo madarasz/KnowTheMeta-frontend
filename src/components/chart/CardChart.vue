@@ -1,6 +1,7 @@
 <script>
 import { Line } from 'vue-chartjs'
 import * as annotation from 'chartjs-plugin-annotation'
+import * as pluginErrorBars from 'chartjs-plugin-error-bars'
 import transform from '@/netrunnerTransformations.js'
 export default {
   extends: Line,
@@ -16,7 +17,7 @@ export default {
   data: function () {
     return {
       options: {
-        plugins: [annotation],
+        plugins: [annotation, pluginErrorBars],
         annotation: {
           drawTime: 'afterDatasetsDraw',
           events: [],
@@ -30,6 +31,10 @@ export default {
         },
         scales: {
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: '%'
+            },
             ticks: {
               suggestedMin: 0
             }
@@ -39,8 +44,12 @@ export default {
           enabled: true,
           callbacks: {
             label: function (tooltipItem, data) {
-              console.log(tooltipItem, data)
-              return data.datasets[tooltipItem.datasetIndex].label + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%'
+              const label = data.datasets[tooltipItem.datasetIndex].label + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%'
+              if (tooltipItem.datasetIndex === 0) {
+                // display standard error as well for winrate
+                return label + ' (+/-' + data.datasets[0].errorBars[data.labels[tooltipItem.index]].plus.toFixed(1) + '%)'
+              }
+              return label
             }
           }
         }
@@ -53,15 +62,15 @@ export default {
   methods: {
     getAnnotations: function () {
       const annotations = []
-      const deckProp = this.isRunner ? 'runnerDecks' : 'corpDecks'
-      const lowDataThreshold = 0.05 // popularity below this will be flagged as "low data"
+      const lowDataErrorThreshold = 7 // popularity below this will be flagged as "low data"
+      const metaDataArray = Object.entries(this.metaData)
       for (let i = 0; i < this.metaList.length; i++) {
         const mwlName = this.metaList[i].mwl
         const mwl = this.mwl.find(x => { return x.name === mwlName })
         const metaTitle = this.metaList[i].title
         const used = this.metaData[metaTitle].used
         // low data
-        if ((used / this.metaList[i][deckProp]) < lowDataThreshold && used > 0) {
+        if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold && used > 0) {
           annotations.push({
             drawTime: 'beforeDatasetsDraw',
             type: 'line',
@@ -129,26 +138,37 @@ export default {
       const deckProp = this.isRunner ? 'runnerDecks' : 'corpDecks'
       return Object.fromEntries(this.metaList.map(x => { return [x.title, x[deckProp]] }))
     },
+    winrateErrorBars: function () {
+      const result = {}
+      const metaDataArray = Object.entries(this.metaData)
+      for (let i = 0; i < metaDataArray.length; i++) {
+        const stdError = transform.winrateError(metaDataArray[i][1])
+        result[metaDataArray[i][0]] = { plus: stdError, minus: -stdError }
+      }
+      return result
+    },
     chartdata: function () {
       const side = this.isRunner ? 'runner' : 'corp'
+      const avgProp = this.isIdentity ? 'WinRate' : 'DeckWinRate'
       return {
         labels: Object.entries(this.metaData).map(x => { return x[0] }).reverse(),
         datasets: [
           {
             data: Object.entries(this.metaData).map(x => { return transform.winrate(x[1]) }).reverse(),
+            errorBars: this.winrateErrorBars,
             borderColor: 'rgba(186,85,211,1)',
             backgroundColor: 'rgba(186,85,211,1)',
             borderWidth: 2,
-            label: 'winrate',
+            label: transform.shortenIdentity(this.cardTitle) + ' win rate',
             fill: false
           },
           {
-            data: this.metaList.map(x => { return (x[side + 'WinRate'] * 100).toFixed(1) }).reverse(),
-            borderColor: 'rgba(186,85,211,0.5)',
-            backgroundColor: 'rgba(186,85,211,1)',
+            data: this.metaList.map(x => { return (x[side + avgProp] * 100).toFixed(1) }).reverse(),
+            borderColor: 'rgba(170,113,34,0.5)',
+            backgroundColor: 'rgba(170,113,34,1)',
             borderWidth: 2,
             borderDash: [6, 4],
-            label: 'avg. ' + side + ' winrate',
+            label: 'avg. ' + side + (this.isIdentity ? ' win rate' : ' deck win rate'),
             fill: false
           },
           {
