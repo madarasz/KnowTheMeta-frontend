@@ -49,10 +49,10 @@
       </v-btn>
     </v-toolbar-items>
     <!-- Card stat app bar -->
-    <v-btn icon class="hidden-xs-only" @click="$router.go(-1)" v-if="$route.name === 'Card statistics'">
+    <v-btn icon @click="$router.go(-1)" v-if="$route.name === 'Card statistics'">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
-    <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle">
+    <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle">
       {{ cards.currentCardTitle }}
     </v-toolbar-title>
   </v-app-bar>
