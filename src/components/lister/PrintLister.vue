@@ -1,10 +1,10 @@
 <template>
-  <v-row class="text-center justify-center">
-    <v-col v-for="print in prints" :key="print.code" class="text-center flex-grow-0">
+  <v-carousel :show-arrows="prints.length > 1" hide-delimiters style="margin-bottom: -32px" :continuous="false">
+    <v-carousel-item v-for="print in prints" :key="print.code" class="text-center">
       <v-row dense>
         <v-col class="text-center">
-          <div class="inline-flex">
-            <v-img :src="print.image_url" width="300px" height="420px"
+          <div class="d-inline-flex">
+          <v-img :src="print.image_url" width="300px" height="420px"
                 :lazy-src="'/img/' + (isRunner ? 'runner' : 'corp') + '-card-back-small.png'" />
           </div>
         </v-col>
@@ -14,8 +14,8 @@
           <em>{{ print.pack_title }}</em>
         </v-col>
       </v-row>
-    </v-col>
-  </v-row>
+    </v-carousel-item>
+  </v-carousel>
 </template>
 
 <script>
