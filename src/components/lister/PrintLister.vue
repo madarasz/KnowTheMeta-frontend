@@ -1,5 +1,5 @@
 <template>
-  <v-carousel :show-arrows="prints.length > 1" hide-delimiters style="margin-bottom: -32px" :continuous="false">
+  <v-carousel v-if="prints" :show-arrows="prints.length > 1" hide-delimiters style="margin-bottom: -32px" :continuous="false">
     <v-carousel-item v-for="print in prints" :key="print.code" class="text-center">
       <v-row dense>
         <v-col class="text-center">
