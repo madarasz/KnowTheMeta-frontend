@@ -126,6 +126,7 @@ export default {
           }
           // banned
           if (this.cardTitle in mwl.banned) {
+            this.metaData[this.metaList[i].title].used = NaN // remove entry from popularity
             annotations.push(this.generateAnnotation({
               value: this.metaList[i].title,
               backgroundColor: '#ff5252',

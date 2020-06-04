@@ -20,7 +20,7 @@
             <identities :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
-            <h1>Decks</h1>
+            <h1 class="pa-4">Section under construction</h1>
           </v-tab-item>
           <v-tab-item :key="3" value="cards" :transition="false" :reverse-transition="false">
             <cards :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
