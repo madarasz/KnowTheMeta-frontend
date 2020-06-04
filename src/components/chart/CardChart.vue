@@ -163,7 +163,12 @@ export default {
       const metaDataArray = Object.entries(this.metaData)
       for (let i = 0; i < metaDataArray.length; i++) {
         const stdError = transform.winrateError(metaDataArray[i][1])
-        result[metaDataArray[i][0]] = { plus: stdError, minus: -stdError }
+        const winrate = transform.winrate(metaDataArray[i][1])
+        result[metaDataArray[i][0]] = {
+          // not going above 100% and below 0%
+          plus: winrate < 100 ? stdError : 0,
+          minus: winrate > 0 ? -stdError : 0
+        }
       }
       return result
     },
