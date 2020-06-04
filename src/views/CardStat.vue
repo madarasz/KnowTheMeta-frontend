@@ -1,23 +1,23 @@
 <template>
   <v-content>
     <!-- Alerts -->
-    <v-alert type="error" v-if="netrunnerdb.mwl && cardStats.card && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
+    <v-alert type="error" v-if="netrunnerdb.mwl && cardStats && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
       Currently banned by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
-    <v-alert type="warning" v-if="netrunnerdb.mwl && cardStats.card && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
+    <v-alert type="warning" v-if="netrunnerdb.mwl && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
       Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <v-row>
         <v-col cols="6" class="pb-0">
-          <print-lister :prints="cardStats.prints" :is-runner="isRunner" />
+          <print-lister :prints="cardStats.prints" :is-runner="isRunner" v-if="cardStats"/>
         </v-col>
       </v-row>
       <v-row>
         <v-col>
           <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
-            v-if="cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
+            v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
             :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
         </v-col>
       </v-row>
@@ -43,15 +43,9 @@
 <script>
 import PrintLister from '@/components/lister/PrintLister.vue'
 import CardChart from '@/components/chart/CardChart.vue'
-import { mapState } from 'vuex'
-import axios from 'axios'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  data: function () {
-    return {
-      cardStats: {}
-    }
-  },
   components: {
     CardChart,
     PrintLister
@@ -62,8 +56,7 @@ export default {
   },
   methods: {
     getCardStats: function () {
-      axios.get(`https://alwaysberunning.net/ktm/cards/${this.$route.params.cardcode}.json`).then((response) => {
-        this.cardStats = response.data
+      this.$store.dispatch('cards/getCardStat', this.$route.params.cardcode).then(() => {
       })
     },
     getMwlData: function () {
@@ -72,7 +65,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['metas', 'netrunnerdb']),
+    ...mapState(['metas', 'netrunnerdb', 'cards']),
+    ...mapGetters({
+      cardStats: 'cards/getCurrentStat'
+    }),
     isRunner: function () {
       if (!this.cardStats.card) {
         return undefined
