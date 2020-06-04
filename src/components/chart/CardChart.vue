@@ -34,12 +34,11 @@ export default {
         },
         scales: {
           yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: '%'
-            },
             ticks: {
-              suggestedMin: 0
+              suggestedMin: 0,
+              callback: function (value, index, values) {
+                return value + '%'
+              }
             }
           }]
         },

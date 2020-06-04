@@ -37,7 +37,12 @@ export default {
       },
       scales: {
         xAxes: [{
-          stacked: true
+          stacked: true,
+          ticks: {
+            callback: function (value, index, values) {
+              return value + '%'
+            }
+          }
         }],
         yAxes: [{
           display: false,
