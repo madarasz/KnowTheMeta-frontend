@@ -3,6 +3,7 @@ import { Line } from 'vue-chartjs'
 import * as annotation from 'chartjs-plugin-annotation'
 import * as pluginErrorBars from 'chartjs-plugin-error-bars'
 import transform from '@/netrunnerTransformations.js'
+import { mapMutations } from 'vuex'
 
 export default {
   extends: Line,
@@ -106,6 +107,7 @@ export default {
           if ((winrateError > lowDataErrorThreshold * 1.5 ||
               winrate > 99 || winrate < 1) && // when all the decks are winning or losing
               used > 0) {
+            this.setLowDataWarning(this.cardTitle)
             annotations.push(this.generateAnnotation({
               value: this.metaList[i].title,
               backgroundColor: '#B56503',
@@ -115,6 +117,7 @@ export default {
               isDataOnBorder
             }))
           } else if (winrateError > lowDataErrorThreshold && used > 0) {
+            this.setLowDataWarning(this.cardTitle)
             annotations.push(this.generateAnnotation({
               value: this.metaList[i].title,
               backgroundColor: '#B56503',
@@ -146,7 +149,10 @@ export default {
         }
       }
       return annotations
-    }
+    },
+    ...mapMutations({
+      setLowDataWarning: 'cards/setLowDataWarning'
+    })
   },
   computed: {
     // number of data items. for identities it's number of standings; for non-identity cards it's number of decks

@@ -26,6 +26,10 @@ export const cards = {
     },
     setCardStats (state, { data, title }) {
       state.stats[title] = data
+      state.stats[title].lowData = false
+    },
+    setLowDataWarning (state, title) {
+      state.stats[title].lowData = true
     }
   }
 }

@@ -7,36 +7,29 @@
     <v-alert type="warning" v-if="netrunnerdb.mwl && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
       Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
-    <!-- Desktop screens -->
-    <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
-      <v-row>
-        <v-col cols="6" class="pb-0">
-          <print-lister :prints="cardStats.prints" :is-runner="isRunner" v-if="cardStats"/>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
-            v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
-            :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
-        </v-col>
-      </v-row>
-    </div>
-    <!-- Mobile screens -->
-    <div v-if="$vuetify.breakpoint.smAndDown">
-      <v-row>
-        <v-col class="pb-0">
-          <print-lister :prints="cardStats.prints" :is-runner="isRunner" />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
-            v-if="cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
-            :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
-        </v-col>
-      </v-row>
-    </div>
+    <!-- Print carousel -->
+    <v-row>
+      <v-col class="pb-0 col-md-6">
+        <print-lister v-if="cardStats" :prints="cardStats.prints" :is-runner="isRunner"/>
+      </v-col>
+    </v-row>
+    <!-- low data warning -->
+    <v-row justify="center" v-if="cardStats && cardStats.lowData">
+      <v-col cols="auto pb-0">
+        <v-alert border="left" colored-border color="#B56503" elevation="1"
+            class="ml-2 mr-2 mb-0 pa-2 pl-4 pr-4 caption text-center" dismissible>
+          This chart has metas with low amounts of win rate data. These statistics could be misleading.
+        </v-alert>
+      </v-col>
+    </v-row>
+    <!-- Card Chart -->
+    <v-row class="mb--4">
+      <v-col class="pt-0">
+        <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
+          v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
+          :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
+      </v-col>
+    </v-row>
   </v-content>
 </template>
 
