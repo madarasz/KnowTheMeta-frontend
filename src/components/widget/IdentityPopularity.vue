@@ -14,7 +14,7 @@
                 :lazy-src="'/img/' + side + '-color.png'"/>
             </td>
             <td class="text-left" v-if="index < showMax">
-              {{ shortenIdentity(identity.title) }}
+              <a :href="cardUrl(identity)">{{ shortenIdentity(identity.title) }}</a>
             </td>
             <td class="text-right" v-if="index < showMax">{{ (identity.used / standingCount * 200).toFixed(1) }}%</td>
           </tr>
@@ -29,6 +29,7 @@
 <script>
 import PopularityChart from '@/components/chart/PopularityChart.vue'
 import transform from '@/netrunnerTransformations.js'
+
 export default {
   name: 'IdentityFactionPopularity',
   props: {
@@ -50,6 +51,9 @@ export default {
     changeListed: function (change) {
       console.log(this.$vuetify.breakpoint)
       this.showMax = this.showMax + change
+    },
+    cardUrl: function (card) {
+      return transform.cardUrl(card)
     }
   }
 }
