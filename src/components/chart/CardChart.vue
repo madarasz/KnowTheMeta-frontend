@@ -91,8 +91,12 @@ export default {
         if (this.metaData[metaTitle]) { // metaData might be not available
           const used = this.metaData[metaTitle].used
           const isDataOnBorder = i === 0 ? -1 : (i === this.metaList.length - 1 ? 1 : 0)
+          const winrateError = transform.winrateError(metaDataArray[i][1])
+          const winrate = transform.winrate(metaDataArray[i][1])
           // low data
-          if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold * 1.5 && used > 0) {
+          if ((winrateError > lowDataErrorThreshold * 1.5 ||
+              winrate > 99 || winrate < 1) && // when all the decks are winning or losing
+              used > 0) {
             annotations.push(this.generateAnnotation({
               value: this.metaList[i].title,
               backgroundColor: '#B56503',
@@ -101,7 +105,7 @@ export default {
               yAdjust: 70,
               isDataOnBorder
             }))
-          } else if (transform.winrateError(metaDataArray[i][1]) > lowDataErrorThreshold && used > 0) {
+          } else if (winrateError > lowDataErrorThreshold && used > 0) {
             annotations.push(this.generateAnnotation({
               value: this.metaList[i].title,
               backgroundColor: '#B56503',

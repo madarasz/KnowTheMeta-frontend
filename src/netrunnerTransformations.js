@@ -1,14 +1,14 @@
 // sums up matches for identity
-const matchCount = function (identity) {
-  return identity.wins + identity.draws + identity.losses
+const matchCount = function (entry) {
+  return entry.wins + entry.draws + entry.losses
 }
 
 // calculates winrate for identity
-const winrate = function (identity) {
-  if (identity === undefined || identity.wins === undefined || identity.draws === undefined || identity.losses === undefined) {
+const winrate = function (entry) {
+  if (entry === undefined || entry.wins === undefined || entry.draws === undefined || entry.losses === undefined) {
     return 0
   }
-  return Math.round((identity.wins / (matchCount(identity))) * 1000) / 10
+  return Math.round((entry.wins / (matchCount(entry))) * 1000) / 10
 }
 
 // shortens identity title
@@ -124,9 +124,13 @@ const comparePopularity = function (a, b) {
   return 0
 }
 
-const winrateError = function (identity) {
-  const wr = winrate(identity) / 100
-  return Math.sqrt(wr * (1 - wr) / matchCount(identity)) * 100
+const winrateError = function (entry) {
+  let wr = winrate(entry) / 100
+  // adding some error to ALL win / ALL lose decks
+  if (wr === 0) wr = 0.0049
+  if (wr === 1) wr = 0.995
+  // the actual math
+  return Math.sqrt(wr * (1 - wr) / matchCount(entry)) * 100
 }
 
 const cardUrl = function (card) {
