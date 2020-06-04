@@ -2,15 +2,15 @@
   <v-content>
     <!-- Alerts -->
     <v-alert type="error" v-if="netrunnerdb.mwl && cardStats.card && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
-      Currently banned by '{{ netrunnerdb.mwl[0].name }}'
+      Currently banned by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
     <v-alert type="warning" v-if="netrunnerdb.mwl && cardStats.card && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
-      Currently restricted by '{{ netrunnerdb.mwl[0].name }}'
+      Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <v-row>
-        <v-col cols="6">
+        <v-col cols="6" class="pb-0">
           <print-lister :prints="cardStats.prints" :is-runner="isRunner" />
         </v-col>
       </v-row>
@@ -24,6 +24,18 @@
     </div>
     <!-- Mobile screens -->
     <div v-if="$vuetify.breakpoint.smAndDown">
+      <v-row>
+        <v-col class="pb-0">
+          <print-lister :prints="cardStats.prints" :is-runner="isRunner" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
+            v-if="cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
+            :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
+        </v-col>
+      </v-row>
     </div>
   </v-content>
 </template>
