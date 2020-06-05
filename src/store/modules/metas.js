@@ -9,6 +9,9 @@ export const metas = {
   },
   getters: {
     getLatestMetaCode: (state) => {
+      if (state.metaList.length === 0) {
+        return ''
+      }
       return state.metaList[0].code
     },
     getCurrentMetaTitle: (state) => {
