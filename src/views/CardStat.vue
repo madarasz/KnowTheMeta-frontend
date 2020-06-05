@@ -27,7 +27,8 @@
       <v-col class="pt-0">
         <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
           v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl.length"
-          :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"/>
+          :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"
+          :style="Object.keys(cardStats.metaData).length === 1 ? 'max-width: 600px; margin: 0 auto' : ''"/>
       </v-col>
     </v-row>
   </v-content>

@@ -45,6 +45,9 @@ export default {
                 return value + '%'
               }
             }
+          }],
+          xAxes: [{
+            offset: Object.keys(this.metaData).length === 1
           }]
         },
         tooltips: {
@@ -177,7 +180,7 @@ export default {
               color: '#FFF',
               backgroundColor: function (context) {
                 const error = context.dataset.errors[context.dataIndex].plus - context.dataset.errors[context.dataIndex].minus
-                if (error > 14 || error === 0) return '#B56503'
+                if (error > 14 || (error === 0 && context.dataset.data[context.dataIndex] > 0)) return '#B56503'
                 return 'rgba(0,0,0,0)'
               },
               align: 'end',
