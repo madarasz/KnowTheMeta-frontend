@@ -102,11 +102,15 @@ export default {
           plus: winrate < 100 ? stdError : 0,
           minus: winrate > 0 ? -stdError : 0
         }
+        if (stdError > 7 || stdError === 0) {
+          this.setLowDataWarning(this.cardTitle)
+        }
       }
       return result
     },
     // get banned/restricted data
     isBannedRestricted: function () {
+      if (!this.mwl) return []
       const result = []
       const metaDataArray = Object.entries(this.metaData)
       for (let i = 0; i < metaDataArray.length; i++) {
@@ -122,7 +126,6 @@ export default {
     // get x-axis label rotation of chart
     labelRotation: function () {
       if (this.$data._chart) {
-        console.log(this.$data._chart.scales['x-axis-0'].labelRotation)
         return this.$data._chart.scales['x-axis-0'].labelRotation
       }
       return 0
@@ -130,7 +133,9 @@ export default {
     // chart data
     chartdata: function () {
       const side = this.isRunner ? 'runner' : 'corp'
+      const sideColor = this.isRunner ? '255,0,0' : '0,0,255'
       const avgProp = this.isIdentity ? 'WinRate' : 'DeckWinRate'
+      const cardTitle = this.isIdentity ? transform.shortenIdentity(this.cardTitle) : this.cardTitle
       return {
         labels: Object.entries(this.metaData).map(x => { return x[0] }).reverse().slice(0, Object.keys(this.metaData).length),
         datasets: [
@@ -141,7 +146,7 @@ export default {
             borderColor: 'rgba(186,85,211,1)',
             backgroundColor: 'rgba(186,85,211,1)',
             borderWidth: 2,
-            label: transform.shortenIdentity(this.cardTitle) + ' win rate',
+            label: cardTitle + ' win rate',
             fill: false,
             datalabels: {
               display: false
@@ -150,8 +155,8 @@ export default {
           {
             // average side/side-deck winrates
             data: this.metaList.map(x => { return (x[side + avgProp] * 100).toFixed(1) }).reverse().slice(0, Object.keys(this.metaData).length),
-            borderColor: 'rgba(170,113,34,0.5)',
-            backgroundColor: 'rgba(170,113,34,1)',
+            borderColor: `rgba(${sideColor},0.3)`,
+            backgroundColor: `rgba(${sideColor},1)`,
             borderWidth: 2,
             borderDash: [6, 4],
             label: 'avg. ' + side + (this.isIdentity ? ' win rate' : ' deck win rate'),
@@ -163,13 +168,18 @@ export default {
           {
             // popularity
             data: Object.entries(this.metaData).map(x => { return (x[1].used / this.metaTotalCounts[x[0]] * 100).toFixed(1) }).reverse(),
+            errors: this.metaList.map(x => { return this.winrateErrorBars[x.title] }).slice(0, Object.keys(this.metaData).length).reverse(), // for low data labels
             borderColor: 'rgba(0,128,128,1)',
             backgroundColor: 'rgba(0,128,128,1)',
             label: 'popularity',
             fill: false,
             datalabels: {
               color: '#FFF',
-              backgroundColor: '#B56503',
+              backgroundColor: function (context) {
+                const error = context.dataset.errors[context.dataIndex].plus - context.dataset.errors[context.dataIndex].minus
+                if (error > 14 || error === 0) return '#B56503'
+                return 'rgba(0,0,0,0)'
+              },
               align: 'end',
               anchor: 'end',
               offset: 7,
@@ -180,7 +190,10 @@ export default {
               },
               clamp: true,
               formatter: function (value, context) {
-                return 'low data'
+                const error = context.dataset.errors[context.dataIndex].plus - context.dataset.errors[context.dataIndex].minus
+                if (error > 28 || error === 0) return 'very low data'
+                if (error > 14) return 'low data'
+                return ''
               }
             }
           },

@@ -125,10 +125,7 @@ const comparePopularity = function (a, b) {
 }
 
 const winrateError = function (entry) {
-  let wr = winrate(entry) / 100
-  // adding some error to ALL win / ALL lose decks
-  if (wr === 0) wr = 0.0049
-  if (wr === 1) wr = 0.995
+  const wr = winrate(entry) / 100
   // the actual math
   return Math.sqrt(wr * (1 - wr) / matchCount(entry)) * 100
 }
