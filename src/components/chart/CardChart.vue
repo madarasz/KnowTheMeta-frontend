@@ -1,7 +1,7 @@
 <script>
 import { Line } from 'vue-chartjs'
-import * as annotation from 'chartjs-plugin-annotation'
 import * as pluginErrorBars from 'chartjs-plugin-error-bars'
+import * as pluginDataLabels from 'chartjs-plugin-datalabels'
 import transform from '@/netrunnerTransformations.js'
 import { mapMutations } from 'vuex'
 
@@ -20,17 +20,22 @@ export default {
     return {
       // chart options
       options: {
-        plugins: [annotation, pluginErrorBars],
-        annotation: {
-          drawTime: 'afterDatasetsDraw',
-          events: [],
-          annotations: this.getAnnotations()
+        plugins: [pluginErrorBars, pluginDataLabels],
+        datalabels: {
+          formatter: function (value, context) {
+            return ' '
+          }
         },
         maintainAspectRatio: false,
         responsive: true,
         animation: false,
         legend: {
-          display: true
+          display: true,
+          labels: {
+            filter: function (legendItem, data) {
+              return legendItem.datasetIndex !== 3 // hide legend for last item
+            }
+          }
         },
         scales: {
           yAxes: [{
@@ -47,6 +52,9 @@ export default {
           callbacks: {
             label: function (tooltipItem, data) {
               const label = data.datasets[tooltipItem.datasetIndex].label + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%'
+              if (tooltipItem.datasetIndex === 3) {
+                return '' // filler data set, to be hidden
+              }
               if (tooltipItem.datasetIndex === 0) {
                 // display standard error as well for winrate
                 return label + ' (+/-' + data.datasets[0].errorBars[data.labels[tooltipItem.index]].plus.toFixed(1) + '%)'
@@ -62,96 +70,15 @@ export default {
     this.renderChart(this.chartdata, this.options)
   },
   methods: {
-    // generates a single chart annotation
-    generateAnnotation ({ value, backgroundColor, label, fontStyle, yAdjust, isDataOnBorder }) {
-      const annotation = {
-        drawTime: 'beforeDatasetsDraw',
-        type: 'line',
-        mode: 'vertical',
-        scaleID: 'x-axis-0',
-        value: value,
-        borderWidth: 0,
-        borderColor: 'rgba(0,0,0,0)', // hide completely
-        label: {
-          backgroundColor: backgroundColor,
-          content: label,
-          enabled: true,
-          xAdjust: isDataOnBorder * (15 + 2.5 * label.length) // move label if it's the last or first meta
-        }
-      }
-      if (fontStyle) annotation.label.fontStyle = fontStyle
-      if (yAdjust) annotation.label.yAdjust = yAdjust
-      return annotation
-    },
-    // calculates all the annotations
-    getAnnotations: function () {
-      const annotations = []
-      const lowDataErrorThreshold = 7 // popularity below this will be flagged as "low data"
-      const metaDataArray = Object.entries(this.metaData)
-
-      // iterate on metas
-      for (let i = 0; i < this.metaList.length; i++) {
-        const mwlName = this.metaList[i].mwl
-        const mwl = this.mwl.find(x => { return x.name === mwlName })
-        const metaTitle = this.metaList[i].title
-
-        // metaData might be not available if a card was recently created
-        if (this.metaData[metaTitle]) {
-          const used = this.metaData[metaTitle].used
-          const isDataOnBorder = i === 0 ? -1 : (i === this.metaList.length - 1 ? 1 : 0)
-          const winrateError = transform.winrateError(metaDataArray[i][1])
-          const winrate = transform.winrate(metaDataArray[i][1])
-
-          // low data
-          if ((winrateError > lowDataErrorThreshold * 1.5 ||
-              winrate > 99 || winrate < 1) && // when all the decks are winning or losing
-              used > 0) {
-            this.setLowDataWarning(this.cardTitle)
-            annotations.push(this.generateAnnotation({
-              value: this.metaList[i].title,
-              backgroundColor: '#B56503',
-              label: 'very low data',
-              fontStyle: 'italic',
-              yAdjust: 70,
-              isDataOnBorder
-            }))
-          } else if (winrateError > lowDataErrorThreshold && used > 0) {
-            this.setLowDataWarning(this.cardTitle)
-            annotations.push(this.generateAnnotation({
-              value: this.metaList[i].title,
-              backgroundColor: '#B56503',
-              label: 'low data',
-              fontStyle: 'italic',
-              yAdjust: 70,
-              isDataOnBorder
-            }))
-          }
-          // banned
-          if (this.cardTitle in mwl.banned) {
-            this.metaData[this.metaList[i].title].used = NaN // remove entry from popularity
-            annotations.push(this.generateAnnotation({
-              value: this.metaList[i].title,
-              backgroundColor: '#ff5252',
-              label: 'Banned',
-              isDataOnBorder
-            }))
-          }
-          // restricted
-          if (this.cardTitle in mwl.restricted) {
-            annotations.push(this.generateAnnotation({
-              value: this.metaList[i].title,
-              backgroundColor: '#fb8c00',
-              label: 'Restricted',
-              isDataOnBorder
-            }))
-          }
-        }
-      }
-      return annotations
-    },
     ...mapMutations({
       setLowDataWarning: 'cards/setLowDataWarning'
     })
+  },
+  watch: {
+    // redraw chart if label rotation changes. this is to rotate restricted/banned tags as well
+    labelRotation: function (val) {
+      this.renderChart(this.chartdata, this.options)
+    }
   },
   computed: {
     // number of data items. for identities it's number of standings; for non-identity cards it's number of decks
@@ -178,6 +105,28 @@ export default {
       }
       return result
     },
+    // get banned/restricted data
+    isBannedRestricted: function () {
+      const result = []
+      const metaDataArray = Object.entries(this.metaData)
+      for (let i = 0; i < metaDataArray.length; i++) {
+        const metaTitle = metaDataArray[i][0]
+        const mwlName = this.metaList.find(x => { return x.title === metaTitle }).mwl
+        const mwl = this.mwl.find(x => { return x.name === mwlName })
+        if (this.cardTitle in mwl.banned) result.push('banned')
+        else if (this.cardTitle in mwl.restricted) result.push('restricted')
+        else result.push('')
+      }
+      return result.reverse()
+    },
+    // get x-axis label rotation of chart
+    labelRotation: function () {
+      if (this.$data._chart) {
+        console.log(this.$data._chart.scales['x-axis-0'].labelRotation)
+        return this.$data._chart.scales['x-axis-0'].labelRotation
+      }
+      return 0
+    },
     // chart data
     chartdata: function () {
       const side = this.isRunner ? 'runner' : 'corp'
@@ -193,7 +142,10 @@ export default {
             backgroundColor: 'rgba(186,85,211,1)',
             borderWidth: 2,
             label: transform.shortenIdentity(this.cardTitle) + ' win rate',
-            fill: false
+            fill: false,
+            datalabels: {
+              display: false
+            }
           },
           {
             // average side/side-deck winrates
@@ -203,7 +155,10 @@ export default {
             borderWidth: 2,
             borderDash: [6, 4],
             label: 'avg. ' + side + (this.isIdentity ? ' win rate' : ' deck win rate'),
-            fill: false
+            fill: false,
+            datalabels: {
+              display: false
+            }
           },
           {
             // popularity
@@ -211,7 +166,54 @@ export default {
             borderColor: 'rgba(0,128,128,1)',
             backgroundColor: 'rgba(0,128,128,1)',
             label: 'popularity',
-            fill: false
+            fill: false,
+            datalabels: {
+              color: '#FFF',
+              backgroundColor: '#B56503',
+              align: 'end',
+              anchor: 'end',
+              offset: 7,
+              padding: 5,
+              borderRadius: 5,
+              font: {
+                style: 'italic'
+              },
+              clamp: true,
+              formatter: function (value, context) {
+                return 'low data'
+              }
+            }
+          },
+          {
+            // just a filler for labeling x axes
+            data: Array(Object.keys(this.metaData).length).fill(0),
+            dataLabels: this.isBannedRestricted,
+            borderColor: 'rgba(0,0,0,0)',
+            backgroundColor: 'rgba(0,0,0,0)',
+            label: 'filler',
+            fill: false,
+            datalabels: {
+              color: '#FFF',
+              backgroundColor: function (context) {
+                const label = context.dataset.dataLabels[context.dataIndex]
+                if (label === 'restricted') return '#fb8c00'
+                if (label === 'banned') return '#ff5252'
+                return 'rgba(0,0,0,0)'
+              },
+              align: this.labelRotation !== 0 ? 180 - this.labelRotation : 'left',
+              anchor: 'center',
+              offset: this.labelRotation !== 0 ? 5 : 5,
+              padding: 1,
+              rotation: -this.labelRotation,
+              borderRadius: 5,
+              font: {
+                style: 'italic'
+              },
+              clamp: true,
+              formatter: function (value, context) {
+                return context.dataset.dataLabels[context.dataIndex]
+              }
+            }
           }
         ]
       }
