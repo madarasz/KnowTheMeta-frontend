@@ -1,4 +1,5 @@
 import axios from 'axios'
+import transform from '@/netrunnerTransformations.js'
 
 export const cards = {
   namespaced: true,
@@ -9,6 +10,28 @@ export const cards = {
   getters: {
     getCurrentStat: (state) => {
       return state.stats[state.currentCardTitle]
+    },
+    isRunner: (state, getters) => {
+      if (!getters.getCurrentStat) {
+        return undefined
+      }
+      return getters.getCurrentStat.card.side_code === 'runner'
+    },
+    isIdentity: (state, getters) => {
+      if (!getters.getCurrentStat) {
+        return undefined
+      }
+      return getters.getCurrentStat.card.type_code === 'identity'
+    },
+    getCardTitle: (state, getters) => {
+      if (!getters.getCurrentStat) {
+        return ''
+      }
+      const title = getters.getCurrentStat.card.title
+      if (getters.isIdentity) {
+        return transform.shortenIdentity(title)
+      }
+      return title
     }
   },
   actions: {

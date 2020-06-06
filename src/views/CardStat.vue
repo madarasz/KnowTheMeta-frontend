@@ -31,18 +31,22 @@
           :style="Object.keys(cardStats.metaData).length === 1 ? 'max-width: 600px; margin: 0 auto' : ''"/>
       </v-col>
     </v-row>
+    <!-- explain chart -->
+    <explain-card-chart/>
   </v-content>
 </template>
 
 <script>
 import PrintLister from '@/components/lister/PrintLister.vue'
 import CardChart from '@/components/chart/CardChart.vue'
+import ExplainCardChart from '@/components/widget/ExplainCardChart.vue'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
     CardChart,
-    PrintLister
+    PrintLister,
+    ExplainCardChart
   },
   mounted: function () {
     this.getCardStats()
@@ -61,14 +65,9 @@ export default {
   computed: {
     ...mapState(['metas', 'netrunnerdb', 'cards']),
     ...mapGetters({
-      cardStats: 'cards/getCurrentStat'
-    }),
-    isRunner: function () {
-      if (!this.cardStats.card) {
-        return undefined
-      }
-      return this.cardStats.card.side_code === 'runner'
-    }
+      cardStats: 'cards/getCurrentStat',
+      isRunner: 'cards/isRunner'
+    })
   }
 }
 </script>
