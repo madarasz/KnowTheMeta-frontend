@@ -74,7 +74,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setLowDataWarning: 'cards/setLowDataWarning'
+      setLowDataWarning: 'cards/setLowDataWarning',
+      setMwlWarning: 'cards/setMwlWarning'
     })
   },
   watch: {
@@ -116,13 +117,21 @@ export default {
       if (!this.mwl) return []
       const result = []
       const metaDataArray = Object.entries(this.metaData)
+      let mwlWarning = false
       for (let i = 0; i < metaDataArray.length; i++) {
         const metaTitle = metaDataArray[i][0]
         const mwlName = this.metaList.find(x => { return x.title === metaTitle }).mwl
         const mwl = this.mwl.find(x => { return x.name === mwlName })
-        if (this.cardTitle in mwl.banned) result.push('banned')
-        else if (this.cardTitle in mwl.restricted) result.push('restricted')
-        else result.push('')
+        if (this.cardTitle in mwl.banned) {
+          result.push('banned')
+          mwlWarning = true
+        } else if (this.cardTitle in mwl.restricted) {
+          result.push('restricted')
+          mwlWarning = true
+        } else result.push('')
+      }
+      if (mwlWarning) {
+        this.setMwlWarning(this.cardTitle)
       }
       return result.reverse()
     },
