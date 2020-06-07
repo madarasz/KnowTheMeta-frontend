@@ -1,0 +1,2447 @@
+{
+    "meta": {
+        "title": "Downfall + MWL 3.3",
+        "code": "downfall-mwl-3-3",
+        "cardpool": "Downfall",
+        "mwl": "Standard MWL 3.3",
+        "newCards": false,
+        "tournaments": 78,
+        "standings": 1702,
+        "runnerDecks": 231,
+        "corpDecks": 232,
+        "matches": 4219,
+        "runnerWinRate": 0.46161137440758293,
+        "corpWinRate": 0.5360189573459716,
+        "runnerDeckWinRate": 0.5756630265210608,
+        "corpDeckWinRate": 0.6346749226006192,
+        "file": "downfall-mwl-3-3.json",
+        "lastUpdate": "2020-06-03 14:06:38"
+    },
+    "factions": null,
+    "identities": {
+        "runner": [
+            {
+                "title": "Kabonesa Wu: Netspace Thrillseeker",
+                "code": "21025",
+                "faction": "shaper",
+                "used": 115,
+                "wins": 134,
+                "draws": 0,
+                "losses": 139
+            },
+            {
+                "title": "Valencia Estevez: The Angel of Cayambe",
+                "code": "07030",
+                "faction": "anarch",
+                "used": 92,
+                "wins": 103,
+                "draws": 1,
+                "losses": 113
+            },
+            {
+                "title": "Hayley Kaplan: Universal Scholar",
+                "code": "08025",
+                "faction": "shaper",
+                "used": 81,
+                "wins": 110,
+                "draws": 0,
+                "losses": 90
+            },
+            {
+                "title": "MaxX: Maximum Punk Rock",
+                "code": "07029",
+                "faction": "anarch",
+                "used": 81,
+                "wins": 86,
+                "draws": 1,
+                "losses": 97
+            },
+            {
+                "title": "419: Amoral Scammer",
+                "code": "21063",
+                "faction": "criminal",
+                "used": 65,
+                "wins": 82,
+                "draws": 0,
+                "losses": 75
+            },
+            {
+                "title": "Ele \"Smoke\" Scovak: Cynosure of the Net",
+                "code": "11066",
+                "faction": "shaper",
+                "used": 62,
+                "wins": 67,
+                "draws": 0,
+                "losses": 82
+            },
+            {
+                "title": "Leela Patel: Trained Pragmatist",
+                "code": "25021",
+                "faction": "criminal",
+                "used": 62,
+                "wins": 87,
+                "draws": 0,
+                "losses": 90
+            },
+            {
+                "title": "Freedom Khumalo: Crypto-Anarchist",
+                "code": "21081",
+                "faction": "anarch",
+                "used": 62,
+                "wins": 56,
+                "draws": 0,
+                "losses": 87
+            },
+            {
+                "title": "Adam: Compulsive Hacker",
+                "code": "09037",
+                "faction": "adam",
+                "used": 51,
+                "wins": 66,
+                "draws": 0,
+                "losses": 64
+            },
+            {
+                "title": "Alice Merchant: Clan Agitator",
+                "code": "12061",
+                "faction": "anarch",
+                "used": 25,
+                "wins": 26,
+                "draws": 1,
+                "losses": 29
+            },
+            {
+                "title": "Edward Kim: Humanity's Hammer",
+                "code": "07028",
+                "faction": "anarch",
+                "used": 20,
+                "wins": 19,
+                "draws": 0,
+                "losses": 37
+            },
+            {
+                "title": "Sunny Lebeau: Security Specialist",
+                "code": "09045",
+                "faction": "sunny-lebeau",
+                "used": 17,
+                "wins": 13,
+                "draws": 0,
+                "losses": 25
+            },
+            {
+                "title": "Jesminder Sareen: Girl Behind the Curtain",
+                "code": "10006",
+                "faction": "shaper",
+                "used": 15,
+                "wins": 8,
+                "draws": 1,
+                "losses": 29
+            },
+            {
+                "title": "Lat: Ethical Freelancer",
+                "code": "26019",
+                "faction": "shaper",
+                "used": 12,
+                "wins": 8,
+                "draws": 0,
+                "losses": 14
+            },
+            {
+                "title": "Apex: Invasive Predator",
+                "code": "09029",
+                "faction": "apex",
+                "used": 11,
+                "wins": 5,
+                "draws": 0,
+                "losses": 11
+            },
+            {
+                "title": "Rielle \"Kit\" Peddler: Transhuman",
+                "code": "25041",
+                "faction": "shaper",
+                "used": 11,
+                "wins": 14,
+                "draws": 0,
+                "losses": 20
+            },
+            {
+                "title": "Akiko Nisei: Head Case",
+                "code": "22015",
+                "faction": "shaper",
+                "used": 7,
+                "wins": 4,
+                "draws": 0,
+                "losses": 11
+            },
+            {
+                "title": "Liza Talking Thunder: Prominent Legislator",
+                "code": "22008",
+                "faction": "criminal",
+                "used": 6,
+                "wins": 9,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "Chaos Theory: Wünderkind",
+                "code": "25040",
+                "faction": "shaper",
+                "used": 6,
+                "wins": 7,
+                "draws": 0,
+                "losses": 10
+            },
+            {
+                "title": "Az McCaffrey: Mechanical Prodigy",
+                "code": "26010",
+                "faction": "criminal",
+                "used": 6,
+                "wins": 3,
+                "draws": 0,
+                "losses": 7
+            },
+            {
+                "title": "Nathaniel \"Gnat\" Hall: One-of-a-Kind",
+                "code": "22001",
+                "faction": "anarch",
+                "used": 6,
+                "wins": 7,
+                "draws": 0,
+                "losses": 9
+            },
+            {
+                "title": "Reina Roja: Freedom Fighter",
+                "code": "25001",
+                "faction": "anarch",
+                "used": 5,
+                "wins": 5,
+                "draws": 0,
+                "losses": 6
+            },
+            {
+                "title": "Gabriel Santiago: Consummate Professional",
+                "code": "25020",
+                "faction": "criminal",
+                "used": 5,
+                "wins": 7,
+                "draws": 0,
+                "losses": 4
+            },
+            {
+                "title": "Iain Stirling: Retired Spook",
+                "code": "05028",
+                "faction": "criminal",
+                "used": 4,
+                "wins": 5,
+                "draws": 0,
+                "losses": 10
+            },
+            {
+                "title": "Omar Keung: Conspiracy Theorist",
+                "code": "11043",
+                "faction": "anarch",
+                "used": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "Ken \"Express\" Tenma: Disappeared Clone",
+                "code": "05029",
+                "faction": "criminal",
+                "used": 4,
+                "wins": 5,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Quetzal: Free Spirit",
+                "code": "25002",
+                "faction": "anarch",
+                "used": 4,
+                "wins": 5,
+                "draws": 0,
+                "losses": 4
+            },
+            {
+                "title": "Laramy Fisk: Savvy Investor",
+                "code": "08104",
+                "faction": "criminal",
+                "used": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 7
+            },
+            {
+                "title": "Nasir Meidan: Cyber Explorer",
+                "code": "06017",
+                "faction": "shaper",
+                "used": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Silhouette: Stealth Operative",
+                "code": "05030",
+                "faction": "criminal",
+                "used": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Exile: Streethawk",
+                "code": "03030",
+                "faction": "shaper",
+                "used": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "The Professor: Keeper of Knowledge",
+                "code": "03029",
+                "faction": "shaper",
+                "used": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Null: Whistleblower",
+                "code": "11002",
+                "faction": "anarch",
+                "used": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "Ayla \"Bios\" Rahim: Simulant Specialist",
+                "code": "13012",
+                "faction": "shaper",
+                "used": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1
+            },
+            {
+                "title": "Nero Severn: Information Broker",
+                "code": "10040",
+                "faction": "criminal",
+                "used": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "Armand \"Geist\" Walker: Tech Lord",
+                "code": "08063",
+                "faction": "criminal",
+                "used": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1
+            },
+            {
+                "title": "Los: Data Hijacker",
+                "code": "12025",
+                "faction": "criminal",
+                "used": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2
+            },
+            {
+                "title": "Hoshiko Shiro: Untold Protagonist",
+                "code": "26066",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Steve Cambridge: Master Grifter",
+                "code": "13001",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Khan: Savvy Skiptracer",
+                "code": "11027",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Andromeda: Dispossessed Ristie",
+                "code": "02083",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Whizzard: Master Gamer",
+                "code": "02001",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Kate \"Mac\" McCaffrey: Digital Tinker",
+                "code": "01033",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Noise: Hacker Extraordinaire",
+                "code": "01001",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Jamie \"Bzzz\" Micken: Techno Savant",
+                "code": "00009",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Boris \"Syfr\" Kovac: Crafty Veteran",
+                "code": "00008",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Wyvern: Chemically Enhanced",
+                "code": "00007",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            }
+        ],
+        "corp": [
+            {
+                "title": "Argus Security: Protection Guaranteed",
+                "code": "07001",
+                "faction": "weyland-consortium",
+                "used": 93,
+                "wins": 125,
+                "draws": 0,
+                "losses": 105
+            },
+            {
+                "title": "The Outfit: Family Owned and Operated",
+                "code": "22050",
+                "faction": "weyland-consortium",
+                "used": 81,
+                "wins": 92,
+                "draws": 2,
+                "losses": 90
+            },
+            {
+                "title": "Pālanā Foods: Sustainable Growth",
+                "code": "10030",
+                "faction": "jinteki",
+                "used": 68,
+                "wins": 106,
+                "draws": 1,
+                "losses": 74
+            },
+            {
+                "title": "Gagarin Deep Space: Expanding the Horizon",
+                "code": "07002",
+                "faction": "weyland-consortium",
+                "used": 61,
+                "wins": 106,
+                "draws": 2,
+                "losses": 57
+            },
+            {
+                "title": "Titan Transnational: Investing In Your Future",
+                "code": "07003",
+                "faction": "weyland-consortium",
+                "used": 46,
+                "wins": 55,
+                "draws": 0,
+                "losses": 48
+            },
+            {
+                "title": "Blue Sun: Powering the Future",
+                "code": "25123",
+                "faction": "weyland-consortium",
+                "used": 45,
+                "wins": 58,
+                "draws": 0,
+                "losses": 53
+            },
+            {
+                "title": "Sportsmetal: Go Big or Go Home",
+                "code": "22026",
+                "faction": "haas-bioroid",
+                "used": 43,
+                "wins": 40,
+                "draws": 0,
+                "losses": 51
+            },
+            {
+                "title": "Azmari EdTech: Shaping the Future",
+                "code": "21054",
+                "faction": "nbn",
+                "used": 43,
+                "wins": 67,
+                "draws": 0,
+                "losses": 46
+            },
+            {
+                "title": "Jinteki: Personal Evolution",
+                "code": "25084",
+                "faction": "jinteki",
+                "used": 41,
+                "wins": 34,
+                "draws": 0,
+                "losses": 48
+            },
+            {
+                "title": "AgInfusion: New Miracles for a New World",
+                "code": "12052",
+                "faction": "jinteki",
+                "used": 33,
+                "wins": 47,
+                "draws": 0,
+                "losses": 39
+            },
+            {
+                "title": "Jinteki: Replicating Perfection",
+                "code": "25085",
+                "faction": "jinteki",
+                "used": 31,
+                "wins": 34,
+                "draws": 0,
+                "losses": 40
+            },
+            {
+                "title": "Industrial Genomics: Growing Solutions",
+                "code": "06105",
+                "faction": "jinteki",
+                "used": 27,
+                "wins": 45,
+                "draws": 0,
+                "losses": 29
+            },
+            {
+                "title": "Acme Consulting: The Truth You Need",
+                "code": "22042",
+                "faction": "nbn",
+                "used": 23,
+                "wins": 19,
+                "draws": 0,
+                "losses": 30
+            },
+            {
+                "title": "MirrorMorph: Endless Iteration",
+                "code": "26031",
+                "faction": "haas-bioroid",
+                "used": 21,
+                "wins": 17,
+                "draws": 0,
+                "losses": 21
+            },
+            {
+                "title": "Near-Earth Hub: Broadcast Center",
+                "code": "06005",
+                "faction": "nbn",
+                "used": 19,
+                "wins": 36,
+                "draws": 0,
+                "losses": 18
+            },
+            {
+                "title": "NBN: Controlling the Message",
+                "code": "11017",
+                "faction": "nbn",
+                "used": 16,
+                "wins": 26,
+                "draws": 0,
+                "losses": 26
+            },
+            {
+                "title": "SSO Industries: Fueling Innovation",
+                "code": "21077",
+                "faction": "weyland-consortium",
+                "used": 15,
+                "wins": 24,
+                "draws": 0,
+                "losses": 19
+            },
+            {
+                "title": "NEXT Design: Guarding the Net",
+                "code": "03003",
+                "faction": "haas-bioroid",
+                "used": 14,
+                "wins": 17,
+                "draws": 0,
+                "losses": 15
+            },
+            {
+                "title": "Asa Group: Security Through Vigilance",
+                "code": "21009",
+                "faction": "haas-bioroid",
+                "used": 13,
+                "wins": 5,
+                "draws": 0,
+                "losses": 11
+            },
+            {
+                "title": "Jemison Astronautics: Sacrifice. Audacity. Success.",
+                "code": "12016",
+                "faction": "weyland-consortium",
+                "used": 13,
+                "wins": 10,
+                "draws": 0,
+                "losses": 19
+            },
+            {
+                "title": "Saraswati Mnemonics: Endless Exploration",
+                "code": "22034",
+                "faction": "jinteki",
+                "used": 12,
+                "wins": 12,
+                "draws": 0,
+                "losses": 18
+            },
+            {
+                "title": "Chronos Protocol: Selective Mind-mapping",
+                "code": "08111",
+                "faction": "jinteki",
+                "used": 10,
+                "wins": 13,
+                "draws": 0,
+                "losses": 13
+            },
+            {
+                "title": "Weyland Consortium: Building a Better World",
+                "code": "25122",
+                "faction": "weyland-consortium",
+                "used": 9,
+                "wins": 6,
+                "draws": 0,
+                "losses": 15
+            },
+            {
+                "title": "Haas-Bioroid: Architects of Tomorrow",
+                "code": "11072",
+                "faction": "haas-bioroid",
+                "used": 9,
+                "wins": 10,
+                "draws": 0,
+                "losses": 17
+            },
+            {
+                "title": "Jinteki Biotech: Life Imagined",
+                "code": "08012",
+                "faction": "jinteki",
+                "used": 9,
+                "wins": 15,
+                "draws": 0,
+                "losses": 11
+            },
+            {
+                "title": "Haarpsichord Studios: Entertainment Unleashed",
+                "code": "08092",
+                "faction": "nbn",
+                "used": 9,
+                "wins": 6,
+                "draws": 0,
+                "losses": 12
+            },
+            {
+                "title": "Spark Agency: Worldswide Reach",
+                "code": "25105",
+                "faction": "nbn",
+                "used": 8,
+                "wins": 9,
+                "draws": 0,
+                "losses": 11
+            },
+            {
+                "title": "Tennin Institute: The Secrets Within",
+                "code": "05003",
+                "faction": "jinteki",
+                "used": 4,
+                "wins": 5,
+                "draws": 0,
+                "losses": 4
+            },
+            {
+                "title": "Nisei Division: The Next Generation",
+                "code": "05002",
+                "faction": "jinteki",
+                "used": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "Custom Biotics: Engineered for Success",
+                "code": "03002",
+                "faction": "haas-bioroid",
+                "used": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "Hyoubu Institute: Absolute Clarity",
+                "code": "26039",
+                "faction": "jinteki",
+                "used": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "The Foundry: Refining the Process",
+                "code": "06021",
+                "faction": "haas-bioroid",
+                "used": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 8
+            },
+            {
+                "title": "Harmony Medtech: Biomedical Pioneer",
+                "code": "05001",
+                "faction": "jinteki",
+                "used": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "Cybernetics Division: Humanity Upgraded",
+                "code": "08050",
+                "faction": "haas-bioroid",
+                "used": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Harishchandra Ent.: Where You're the Star",
+                "code": "10107",
+                "faction": "nbn",
+                "used": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 5
+            },
+            {
+                "title": "SYNC: Everything, Everywhere",
+                "code": "09001",
+                "faction": "nbn",
+                "used": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1
+            },
+            {
+                "title": "Weyland Consortium: Builder of Nations",
+                "code": "11038",
+                "faction": "weyland-consortium",
+                "used": 2,
+                "wins": 4,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "New Angeles Sol: Your News",
+                "code": "09002",
+                "faction": "nbn",
+                "used": 2,
+                "wins": 3,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "Seidr Laboratories: Destiny Defined",
+                "code": "25067",
+                "faction": "haas-bioroid",
+                "used": 1,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1
+            },
+            {
+                "title": "Cerebral Imaging: Infinite Frontiers",
+                "code": "03001",
+                "faction": "haas-bioroid",
+                "used": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 3
+            },
+            {
+                "title": "NBN: Making News",
+                "code": "25104",
+                "faction": "nbn",
+                "used": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2
+            },
+            {
+                "title": "Mti Mwekundu: Life Improved",
+                "code": "21114",
+                "faction": "jinteki",
+                "used": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Earth Station: SEA Headquarters",
+                "code": "26120",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "GameNET: Where Dreams are Real",
+                "code": "26113",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Skorpios Defense Systems: Persuasive Power",
+                "code": "13041",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Jinteki: Potential Unleashed",
+                "code": "11054",
+                "faction": "jinteki",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "GRNDL: Power Unleashed",
+                "code": "04097",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "NBN: The World is Yours*",
+                "code": "02114",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Weyland Consortium: Because We Built It",
+                "code": "02076",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Haas-Bioroid: Stronger Together",
+                "code": "25066",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Haas-Bioroid: Engineering the Future",
+                "code": "01054",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Fringe Applications: Tomorrow, Today",
+                "code": "00013",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Information Dynamics: All You Need To Know",
+                "code": "00012",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Synthetic Systems: The World Re-imagined",
+                "code": "00011",
+                "faction": "jinteki",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Strategic Innovations: Future Forward",
+                "code": "00010",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            }
+        ]
+    },
+    "cards": {
+        "runner": [
+            {
+                "title": "Mining Accident",
+                "code": "12101",
+                "faction": "anarch",
+                "used": 14,
+                "wins": 23,
+                "draws": 0,
+                "losses": 6,
+                "avgPerDeck": 3,
+                "tags": "winning"
+            },
+            {
+                "title": "Notoriety",
+                "code": "25044",
+                "faction": "shaper",
+                "used": 13,
+                "wins": 25,
+                "draws": 0,
+                "losses": 14,
+                "avgPerDeck": 1.0769231,
+                "tags": "winning"
+            },
+            {
+                "title": "Amped Up",
+                "code": "07031",
+                "faction": "anarch",
+                "used": 12,
+                "wins": 24,
+                "draws": 0,
+                "losses": 13,
+                "avgPerDeck": 1.3333334,
+                "tags": "winning"
+            },
+            {
+                "title": "Inti",
+                "code": "03048",
+                "faction": "shaper",
+                "used": 16,
+                "wins": 30,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 1,
+                "tags": "icebreaker-Fracter"
+            },
+            {
+                "title": "Ika",
+                "code": "22019",
+                "faction": "shaper",
+                "used": 14,
+                "wins": 20,
+                "draws": 0,
+                "losses": 19,
+                "avgPerDeck": 1,
+                "tags": "icebreaker-Killer"
+            },
+            {
+                "title": "Retrieval Run",
+                "code": "25005",
+                "faction": "anarch",
+                "used": 15,
+                "wins": 24,
+                "draws": 0,
+                "losses": 17,
+                "avgPerDeck": 1.2666667,
+                "tags": "winning"
+            },
+            {
+                "title": "Ice Carver",
+                "code": "25016",
+                "faction": "anarch",
+                "used": 19,
+                "wins": 34,
+                "draws": 0,
+                "losses": 18,
+                "avgPerDeck": 1,
+                "tags": "winning"
+            },
+            {
+                "title": "Switchblade",
+                "code": "06077",
+                "faction": "criminal",
+                "used": 15,
+                "wins": 22,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 1,
+                "tags": "icebreaker-Killer"
+            },
+            {
+                "title": "Refractor",
+                "code": "06057",
+                "faction": "shaper",
+                "used": 15,
+                "wins": 17,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 1.2,
+                "tags": "icebreaker-Decoder"
+            },
+            {
+                "title": "Mad Dash",
+                "code": "12008",
+                "faction": "neutral-runner",
+                "used": 12,
+                "wins": 17,
+                "draws": 0,
+                "losses": 11,
+                "avgPerDeck": 1.8333334,
+                "tags": "winning"
+            },
+            {
+                "title": "Atman",
+                "code": "25051",
+                "faction": "shaper",
+                "used": 13,
+                "wins": 23,
+                "draws": 0,
+                "losses": 14,
+                "avgPerDeck": 1,
+                "tags": "winning,icebreaker-AI"
+            },
+            {
+                "title": "Trickster Taka",
+                "code": "26009",
+                "faction": "anarch",
+                "used": 12,
+                "wins": 12,
+                "draws": 0,
+                "losses": 19,
+                "avgPerDeck": 1.0833334,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "Rejig",
+                "code": "26029",
+                "faction": "neutral-runner",
+                "used": 15,
+                "wins": 19,
+                "draws": 0,
+                "losses": 17,
+                "avgPerDeck": 1.7333333,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "Citadel Sanctuary",
+                "code": "11070",
+                "faction": "neutral-runner",
+                "used": 26,
+                "wins": 42,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 1.5,
+                "tags": "winning"
+            },
+            {
+                "title": "Logic Bomb",
+                "code": "21089",
+                "faction": "adam",
+                "used": 18,
+                "wins": 32,
+                "draws": 0,
+                "losses": 21,
+                "avgPerDeck": 3,
+                "tags": "winning"
+            },
+            {
+                "title": "Multithreader",
+                "code": "09040",
+                "faction": "adam",
+                "used": 17,
+                "wins": 28,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 2.8823528,
+                "tags": "winning"
+            },
+            {
+                "title": "Emergent Creativity",
+                "code": "21028",
+                "faction": "adam",
+                "used": 19,
+                "wins": 34,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 2.8421052,
+                "tags": "winning"
+            },
+            {
+                "title": "Interdiction",
+                "code": "11087",
+                "faction": "neutral-runner",
+                "used": 19,
+                "wins": 34,
+                "draws": 0,
+                "losses": 24,
+                "avgPerDeck": 1.9473684,
+                "tags": "winning"
+            },
+            {
+                "title": "Brain Chip",
+                "code": "09039",
+                "faction": "adam",
+                "used": 18,
+                "wins": 32,
+                "draws": 0,
+                "losses": 21,
+                "avgPerDeck": 2.5555556,
+                "tags": "winning"
+            },
+            {
+                "title": "Paragon",
+                "code": "25032",
+                "faction": "criminal",
+                "used": 36,
+                "wins": 63,
+                "draws": 0,
+                "losses": 40,
+                "avgPerDeck": 1.9722222,
+                "tags": "winning"
+            },
+            {
+                "title": "Leprechaun",
+                "code": "06019",
+                "faction": "shaper",
+                "used": 26,
+                "wins": 52,
+                "draws": 0,
+                "losses": 23,
+                "avgPerDeck": 1.2307693,
+                "tags": "winning"
+            },
+            {
+                "title": "Scavenge",
+                "code": "03034",
+                "faction": "shaper",
+                "used": 22,
+                "wins": 39,
+                "draws": 0,
+                "losses": 25,
+                "avgPerDeck": 2.5,
+                "tags": "winning"
+            },
+            {
+                "title": "Turntable",
+                "code": "08043",
+                "faction": "anarch",
+                "used": 41,
+                "wins": 85,
+                "draws": 0,
+                "losses": 41,
+                "avgPerDeck": 1.2926829,
+                "tags": "winning"
+            },
+            {
+                "title": "Paricia",
+                "code": "03045",
+                "faction": "shaper",
+                "used": 36,
+                "wins": 75,
+                "draws": 0,
+                "losses": 36,
+                "avgPerDeck": 2.0555556,
+                "tags": "winning"
+            },
+            {
+                "title": "Aesop's Pawnshop",
+                "code": "25056",
+                "faction": "shaper",
+                "used": 29,
+                "wins": 58,
+                "draws": 0,
+                "losses": 29,
+                "avgPerDeck": 2.9310346,
+                "tags": "winning"
+            },
+            {
+                "title": "Imp",
+                "code": "25013",
+                "faction": "anarch",
+                "used": 13,
+                "wins": 26,
+                "draws": 0,
+                "losses": 13,
+                "avgPerDeck": 1.2307693,
+                "tags": "winning"
+            },
+            {
+                "title": "Pelangi",
+                "code": "26025",
+                "faction": "shaper",
+                "used": 28,
+                "wins": 42,
+                "draws": 0,
+                "losses": 31,
+                "avgPerDeck": 1.5714285,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "Cerberus \"Lady\" H1",
+                "code": "06099",
+                "faction": "shaper",
+                "used": 25,
+                "wins": 47,
+                "draws": 0,
+                "losses": 28,
+                "avgPerDeck": 1.44,
+                "tags": "winning,icebreaker-Fracter"
+            },
+            {
+                "title": "Feedback Filter",
+                "code": "03037",
+                "faction": "shaper",
+                "used": 59,
+                "wins": 105,
+                "draws": 0,
+                "losses": 60,
+                "avgPerDeck": 1,
+                "tags": "winning"
+            },
+            {
+                "title": "Akamatsu Mem Chip",
+                "code": "25048",
+                "faction": "shaper",
+                "used": 59,
+                "wins": 94,
+                "draws": 0,
+                "losses": 65,
+                "avgPerDeck": 2,
+                "tags": "winning"
+            },
+            {
+                "title": "Professional Contacts",
+                "code": "25058",
+                "faction": "shaper",
+                "used": 30,
+                "wins": 61,
+                "draws": 0,
+                "losses": 40,
+                "avgPerDeck": 2.9666667,
+                "tags": "winning"
+            },
+            {
+                "title": "Khusyuk",
+                "code": "26021",
+                "faction": "shaper",
+                "used": 38,
+                "wins": 55,
+                "draws": 0,
+                "losses": 36,
+                "avgPerDeck": 2.6842105,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Cache",
+                "code": "06037",
+                "faction": "criminal",
+                "used": 31,
+                "wins": 60,
+                "draws": 0,
+                "losses": 32,
+                "avgPerDeck": 3,
+                "tags": "winning"
+            },
+            {
+                "title": "Clot",
+                "code": "08001",
+                "faction": "anarch",
+                "used": 52,
+                "wins": 99,
+                "draws": 0,
+                "losses": 49,
+                "avgPerDeck": 1,
+                "tags": "winning"
+            },
+            {
+                "title": "Astrolabe",
+                "code": "06079",
+                "faction": "shaper",
+                "used": 61,
+                "wins": 115,
+                "draws": 0,
+                "losses": 52,
+                "avgPerDeck": 1.5081967,
+                "tags": "winning"
+            },
+            {
+                "title": "Engolo",
+                "code": "21108",
+                "faction": "shaper",
+                "used": 91,
+                "wins": 156,
+                "draws": 0,
+                "losses": 118,
+                "avgPerDeck": 1.1208792,
+                "tags": "icebreaker-Decoder"
+            },
+            {
+                "title": "Na'Not'K",
+                "code": "12088",
+                "faction": "shaper",
+                "used": 37,
+                "wins": 69,
+                "draws": 0,
+                "losses": 41,
+                "avgPerDeck": 1.027027,
+                "tags": "winning,icebreaker-Killer"
+            },
+            {
+                "title": "Utopia Shard",
+                "code": "06100",
+                "faction": "neutral-runner",
+                "used": 16,
+                "wins": 30,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 1,
+                "tags": "winning"
+            },
+            {
+                "title": "Wanton Destruction",
+                "code": "07035",
+                "faction": "anarch",
+                "used": 24,
+                "wins": 39,
+                "draws": 0,
+                "losses": 27,
+                "avgPerDeck": 2.3333333,
+                "tags": "winning"
+            },
+            {
+                "title": "Paperclip",
+                "code": "11024",
+                "faction": "anarch",
+                "used": 51,
+                "wins": 84,
+                "draws": 0,
+                "losses": 58,
+                "avgPerDeck": 2.3137255,
+                "tags": "winning,icebreaker-Fracter"
+            },
+            {
+                "title": "Embezzle",
+                "code": "21084",
+                "faction": "criminal",
+                "used": 14,
+                "wins": 24,
+                "draws": 0,
+                "losses": 17,
+                "avgPerDeck": 1.7857143,
+                "tags": "winning"
+            },
+            {
+                "title": "Blueberry!™ Diesel",
+                "code": "26012",
+                "faction": "criminal",
+                "used": 17,
+                "wins": 27,
+                "draws": 0,
+                "losses": 27,
+                "avgPerDeck": 2.4117646,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "Corporate \"Grant\"",
+                "code": "21044",
+                "faction": "criminal",
+                "used": 22,
+                "wins": 38,
+                "draws": 0,
+                "losses": 21,
+                "avgPerDeck": 2.9545455,
+                "tags": "winning"
+            },
+            {
+                "title": "Hunting Grounds",
+                "code": "09035",
+                "faction": "apex",
+                "used": 55,
+                "wins": 106,
+                "draws": 0,
+                "losses": 51,
+                "avgPerDeck": 1.1454545,
+                "tags": "winning"
+            },
+            {
+                "title": "PAD Tap",
+                "code": "21106",
+                "faction": "criminal",
+                "used": 66,
+                "wins": 114,
+                "draws": 0,
+                "losses": 72,
+                "avgPerDeck": 2.939394,
+                "tags": "winning"
+            },
+            {
+                "title": "Aumakua",
+                "code": "12104",
+                "faction": "criminal",
+                "used": 67,
+                "wins": 107,
+                "draws": 0,
+                "losses": 80,
+                "avgPerDeck": 2.1343284,
+                "tags": "icebreaker-AI"
+            },
+            {
+                "title": "Amina",
+                "code": "21104",
+                "faction": "criminal",
+                "used": 33,
+                "wins": 53,
+                "draws": 0,
+                "losses": 41,
+                "avgPerDeck": 1.3939394,
+                "tags": "icebreaker-Decoder"
+            },
+            {
+                "title": "Bukhgalter",
+                "code": "26016",
+                "faction": "criminal",
+                "used": 48,
+                "wins": 83,
+                "draws": 0,
+                "losses": 57,
+                "avgPerDeck": 1.4166666,
+                "tags": "popular-in-pack,winning,icebreaker-Killer"
+            },
+            {
+                "title": "The Class Act",
+                "code": "26018",
+                "faction": "criminal",
+                "used": 43,
+                "wins": 72,
+                "draws": 0,
+                "losses": 50,
+                "avgPerDeck": 2.0465117,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Diversion of Funds",
+                "code": "21105",
+                "faction": "criminal",
+                "used": 46,
+                "wins": 78,
+                "draws": 0,
+                "losses": 52,
+                "avgPerDeck": 2.8043478,
+                "tags": "winning"
+            },
+            {
+                "title": "Stargate",
+                "code": "26004",
+                "faction": "anarch",
+                "used": 63,
+                "wins": 105,
+                "draws": 0,
+                "losses": 70,
+                "avgPerDeck": 1.5555556,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Surfer",
+                "code": "08102",
+                "faction": "anarch",
+                "used": 28,
+                "wins": 41,
+                "draws": 0,
+                "losses": 27,
+                "avgPerDeck": 1.1428572,
+                "tags": "winning"
+            },
+            {
+                "title": "Laamb",
+                "code": "21086",
+                "faction": "shaper",
+                "used": 29,
+                "wins": 41,
+                "draws": 0,
+                "losses": 27,
+                "avgPerDeck": 1.8275862,
+                "tags": "winning,icebreaker-Fracter"
+            },
+            {
+                "title": "Self-modifying Code",
+                "code": "26090",
+                "faction": "shaper",
+                "used": 87,
+                "wins": 142,
+                "draws": 0,
+                "losses": 98,
+                "avgPerDeck": 2.770115,
+                "tags": "winning"
+            },
+            {
+                "title": "Misdirection",
+                "code": "11085",
+                "faction": "shaper",
+                "used": 86,
+                "wins": 148,
+                "draws": 0,
+                "losses": 97,
+                "avgPerDeck": 1.0116279,
+                "tags": "winning"
+            },
+            {
+                "title": "Beth Kilrain-Chang",
+                "code": "11030",
+                "faction": "shaper",
+                "used": 78,
+                "wins": 131,
+                "draws": 0,
+                "losses": 78,
+                "avgPerDeck": 1.2307693,
+                "tags": "winning"
+            },
+            {
+                "title": "Rezeki",
+                "code": "26026",
+                "faction": "shaper",
+                "used": 63,
+                "wins": 95,
+                "draws": 0,
+                "losses": 58,
+                "avgPerDeck": 2.7460318,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Yusuf",
+                "code": "21002",
+                "faction": "anarch",
+                "used": 15,
+                "wins": 19,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 2.4666667,
+                "tags": "icebreaker-Fracter"
+            },
+            {
+                "title": "D4v1d",
+                "code": "06033",
+                "faction": "anarch",
+                "used": 51,
+                "wins": 86,
+                "draws": 0,
+                "losses": 53,
+                "avgPerDeck": 1.3333334,
+                "tags": "winning,icebreaker-program"
+            },
+            {
+                "title": "Hippo",
+                "code": "21103",
+                "faction": "anarch",
+                "used": 51,
+                "wins": 77,
+                "draws": 0,
+                "losses": 54,
+                "avgPerDeck": 2.7058823,
+                "tags": "winning"
+            },
+            {
+                "title": "Earthrise Hotel",
+                "code": "25063",
+                "faction": "neutral-runner",
+                "used": 72,
+                "wins": 116,
+                "draws": 0,
+                "losses": 77,
+                "avgPerDeck": 2.5138888,
+                "tags": "winning"
+            },
+            {
+                "title": "Inject",
+                "code": "06073",
+                "faction": "anarch",
+                "used": 62,
+                "wins": 102,
+                "draws": 0,
+                "losses": 68,
+                "avgPerDeck": 2.951613,
+                "tags": "winning"
+            },
+            {
+                "title": "Hacktivist Meeting",
+                "code": "08021",
+                "faction": "anarch",
+                "used": 65,
+                "wins": 112,
+                "draws": 0,
+                "losses": 80,
+                "avgPerDeck": 2.7846153,
+                "tags": "winning"
+            },
+            {
+                "title": "Black Orchestra",
+                "code": "11042",
+                "faction": "anarch",
+                "used": 68,
+                "wins": 111,
+                "draws": 0,
+                "losses": 78,
+                "avgPerDeck": 2.264706,
+                "tags": "winning,icebreaker-Decoder"
+            },
+            {
+                "title": "Corroder",
+                "code": "25010",
+                "faction": "anarch",
+                "used": 90,
+                "wins": 152,
+                "draws": 0,
+                "losses": 102,
+                "avgPerDeck": 1.3666667,
+                "tags": "winning,icebreaker-Fracter"
+            },
+            {
+                "title": "Daily Casts",
+                "code": "26094",
+                "faction": "neutral-runner",
+                "used": 182,
+                "wins": 300,
+                "draws": 0,
+                "losses": 213,
+                "avgPerDeck": 2.9175825,
+                "tags": "winning"
+            },
+            {
+                "title": "Stimhack",
+                "code": "25007",
+                "faction": "anarch",
+                "used": 149,
+                "wins": 250,
+                "draws": 0,
+                "losses": 167,
+                "avgPerDeck": 2.2416108,
+                "tags": "winning"
+            },
+            {
+                "title": "The Turning Wheel",
+                "code": "10085",
+                "faction": "neutral-runner",
+                "used": 111,
+                "wins": 185,
+                "draws": 0,
+                "losses": 133,
+                "avgPerDeck": 1.8648648,
+                "tags": "winning"
+            },
+            {
+                "title": "Career Fair",
+                "code": "25022",
+                "faction": "criminal",
+                "used": 62,
+                "wins": 99,
+                "draws": 0,
+                "losses": 71,
+                "avgPerDeck": 2.6451614,
+                "tags": "winning"
+            },
+            {
+                "title": "Liberated Account",
+                "code": "25017",
+                "faction": "anarch",
+                "used": 94,
+                "wins": 153,
+                "draws": 0,
+                "losses": 103,
+                "avgPerDeck": 2.9255319,
+                "tags": "winning"
+            },
+            {
+                "title": "MKUltra",
+                "code": "11081",
+                "faction": "anarch",
+                "used": 70,
+                "wins": 113,
+                "draws": 0,
+                "losses": 80,
+                "avgPerDeck": 2.0428572,
+                "tags": "winning,icebreaker-Killer"
+            }
+        ],
+        "corp": [
+            {
+                "title": "Seidr Adaptive Barrier",
+                "code": "12029",
+                "faction": "haas-bioroid",
+                "used": 12,
+                "wins": 13,
+                "draws": 0,
+                "losses": 8,
+                "avgPerDeck": 2.6666667,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Corporate Sales Team",
+                "code": "10037",
+                "faction": "neutral-corp",
+                "used": 14,
+                "wins": 20,
+                "draws": 0,
+                "losses": 10,
+                "avgPerDeck": 2,
+                "tags": "winning"
+            },
+            {
+                "title": "BOOM!",
+                "code": "11058",
+                "faction": "weyland-consortium",
+                "used": 14,
+                "wins": 22,
+                "draws": 0,
+                "losses": 7,
+                "avgPerDeck": 1.2857143,
+                "tags": "winning"
+            },
+            {
+                "title": "Project Yagi-Uda",
+                "code": "26040",
+                "faction": "jinteki",
+                "used": 15,
+                "wins": 30,
+                "draws": 0,
+                "losses": 11,
+                "avgPerDeck": 2.6666667,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Orion",
+                "code": "07015",
+                "faction": "weyland-consortium",
+                "used": 12,
+                "wins": 22,
+                "draws": 0,
+                "losses": 18,
+                "avgPerDeck": 1.8333334,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Chiyashi",
+                "code": "11112",
+                "faction": "jinteki",
+                "used": 18,
+                "wins": 24,
+                "draws": 0,
+                "losses": 23,
+                "avgPerDeck": 2.5,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Aiki",
+                "code": "11032",
+                "faction": "jinteki",
+                "used": 24,
+                "wins": 43,
+                "draws": 0,
+                "losses": 23,
+                "avgPerDeck": 2.1666667,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Fairchild 3.0",
+                "code": "11049",
+                "faction": "haas-bioroid",
+                "used": 25,
+                "wins": 35,
+                "draws": 0,
+                "losses": 27,
+                "avgPerDeck": 2.48,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Architect",
+                "code": "06061",
+                "faction": "haas-bioroid",
+                "used": 25,
+                "wins": 28,
+                "draws": 0,
+                "losses": 26,
+                "avgPerDeck": 2.32,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Eli 1.0",
+                "code": "25073",
+                "faction": "haas-bioroid",
+                "used": 18,
+                "wins": 25,
+                "draws": 0,
+                "losses": 24,
+                "avgPerDeck": 2.4444444,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Paywall Implementation",
+                "code": "06028",
+                "faction": "weyland-consortium",
+                "used": 24,
+                "wins": 51,
+                "draws": 0,
+                "losses": 21,
+                "avgPerDeck": 2.0833333,
+                "tags": "winning"
+            },
+            {
+                "title": "Commercial Bankers Group",
+                "code": "10054",
+                "faction": "weyland-consortium",
+                "used": 30,
+                "wins": 65,
+                "draws": 0,
+                "losses": 29,
+                "avgPerDeck": 2.9333334,
+                "tags": "winning"
+            },
+            {
+                "title": "Drudge Work",
+                "code": "22052",
+                "faction": "weyland-consortium",
+                "used": 25,
+                "wins": 55,
+                "draws": 0,
+                "losses": 23,
+                "avgPerDeck": 2.04,
+                "tags": "winning"
+            },
+            {
+                "title": "Contract Killer",
+                "code": "25127",
+                "faction": "weyland-consortium",
+                "used": 24,
+                "wins": 49,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 1.9166666,
+                "tags": "winning"
+            },
+            {
+                "title": "Hades Fragment",
+                "code": "06071",
+                "faction": "neutral-corp",
+                "used": 21,
+                "wins": 39,
+                "draws": 0,
+                "losses": 19,
+                "avgPerDeck": 1,
+                "tags": "winning"
+            },
+            {
+                "title": "Zealous Judge",
+                "code": "10111",
+                "faction": "weyland-consortium",
+                "used": 23,
+                "wins": 50,
+                "draws": 0,
+                "losses": 20,
+                "avgPerDeck": 3,
+                "tags": "winning"
+            },
+            {
+                "title": "Surveyor",
+                "code": "21118",
+                "faction": "weyland-consortium",
+                "used": 53,
+                "wins": 94,
+                "draws": 0,
+                "losses": 59,
+                "avgPerDeck": 2.7924528,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Enigma",
+                "code": "25143",
+                "faction": "neutral-corp",
+                "used": 31,
+                "wins": 45,
+                "draws": 0,
+                "losses": 32,
+                "avgPerDeck": 2.064516,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Tour Guide",
+                "code": "08118",
+                "faction": "weyland-consortium",
+                "used": 37,
+                "wins": 75,
+                "draws": 0,
+                "losses": 29,
+                "avgPerDeck": 2.8648648,
+                "tags": "winning,ice-Sentry"
+            },
+            {
+                "title": "Archer",
+                "code": "25130",
+                "faction": "weyland-consortium",
+                "used": 48,
+                "wins": 98,
+                "draws": 0,
+                "losses": 48,
+                "avgPerDeck": 1.5,
+                "tags": "winning,ice-Sentry"
+            },
+            {
+                "title": "Economic Warfare",
+                "code": "21036",
+                "faction": "weyland-consortium",
+                "used": 59,
+                "wins": 126,
+                "draws": 0,
+                "losses": 59,
+                "avgPerDeck": 2.8474576,
+                "tags": "winning"
+            },
+            {
+                "title": "Ice Wall",
+                "code": "25134",
+                "faction": "weyland-consortium",
+                "used": 16,
+                "wins": 27,
+                "draws": 0,
+                "losses": 14,
+                "avgPerDeck": 2.1875,
+                "tags": "winning,ice-Barrier"
+            },
+            {
+                "title": "Vanilla",
+                "code": "10095",
+                "faction": "neutral-corp",
+                "used": 21,
+                "wins": 27,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 2.3333333,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Turtlebacks",
+                "code": "06106",
+                "faction": "jinteki",
+                "used": 41,
+                "wins": 85,
+                "draws": 0,
+                "losses": 35,
+                "avgPerDeck": 2.9756098,
+                "tags": "winning"
+            },
+            {
+                "title": "Hostile Infrastructure",
+                "code": "06083",
+                "faction": "jinteki",
+                "used": 25,
+                "wins": 52,
+                "draws": 0,
+                "losses": 24,
+                "avgPerDeck": 2.32,
+                "tags": "winning"
+            },
+            {
+                "title": "Crick",
+                "code": "08034",
+                "faction": "jinteki",
+                "used": 12,
+                "wins": 19,
+                "draws": 0,
+                "losses": 9,
+                "avgPerDeck": 1.5833334,
+                "tags": "winning,ice-Code Gate"
+            },
+            {
+                "title": "Genotyping",
+                "code": "21014",
+                "faction": "jinteki",
+                "used": 14,
+                "wins": 34,
+                "draws": 0,
+                "losses": 14,
+                "avgPerDeck": 2.7857144,
+                "tags": "winning"
+            },
+            {
+                "title": "Fetal AI",
+                "code": "25086",
+                "faction": "jinteki",
+                "used": 14,
+                "wins": 32,
+                "draws": 0,
+                "losses": 13,
+                "avgPerDeck": 1.2857143,
+                "tags": "winning"
+            },
+            {
+                "title": "Urban Renewal",
+                "code": "21018",
+                "faction": "weyland-consortium",
+                "used": 30,
+                "wins": 71,
+                "draws": 0,
+                "losses": 28,
+                "avgPerDeck": 2.7666667,
+                "tags": "winning"
+            },
+            {
+                "title": "Ronin",
+                "code": "25090",
+                "faction": "jinteki",
+                "used": 14,
+                "wins": 28,
+                "draws": 0,
+                "losses": 14,
+                "avgPerDeck": 2.0714285,
+                "tags": "winning"
+            },
+            {
+                "title": "Mausolus",
+                "code": "11097",
+                "faction": "weyland-consortium",
+                "used": 56,
+                "wins": 105,
+                "draws": 0,
+                "losses": 53,
+                "avgPerDeck": 2.267857,
+                "tags": "winning,ice-Code Gate"
+            },
+            {
+                "title": "City Works Project",
+                "code": "21078",
+                "faction": "weyland-consortium",
+                "used": 18,
+                "wins": 24,
+                "draws": 0,
+                "losses": 11,
+                "avgPerDeck": 2.6111112,
+                "tags": "winning"
+            },
+            {
+                "title": "Bulwark",
+                "code": "11078",
+                "faction": "weyland-consortium",
+                "used": 14,
+                "wins": 18,
+                "draws": 0,
+                "losses": 10,
+                "avgPerDeck": 2.2142856,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Trebuchet",
+                "code": "26060",
+                "faction": "weyland-consortium",
+                "used": 14,
+                "wins": 18,
+                "draws": 0,
+                "losses": 9,
+                "avgPerDeck": 1.9285715,
+                "tags": "popular-in-pack,winning,ice-Sentry"
+            },
+            {
+                "title": "High-Profile Target",
+                "code": "21119",
+                "faction": "weyland-consortium",
+                "used": 72,
+                "wins": 143,
+                "draws": 0,
+                "losses": 67,
+                "avgPerDeck": 2.0138888,
+                "tags": "winning"
+            },
+            {
+                "title": "Slot Machine",
+                "code": "28004",
+                "faction": "nbn",
+                "used": 48,
+                "wins": 88,
+                "draws": 0,
+                "losses": 51,
+                "avgPerDeck": 2.4375,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Data Raven",
+                "code": "25112",
+                "faction": "nbn",
+                "used": 51,
+                "wins": 99,
+                "draws": 0,
+                "losses": 53,
+                "avgPerDeck": 2.8235295,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Hard-Hitting News",
+                "code": "11016",
+                "faction": "nbn",
+                "used": 97,
+                "wins": 190,
+                "draws": 0,
+                "losses": 95,
+                "avgPerDeck": 2.6391752,
+                "tags": "winning"
+            },
+            {
+                "title": "Wraparound",
+                "code": "25116",
+                "faction": "nbn",
+                "used": 15,
+                "wins": 28,
+                "draws": 0,
+                "losses": 15,
+                "avgPerDeck": 1.6666666,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Tollbooth",
+                "code": "25115",
+                "faction": "nbn",
+                "used": 22,
+                "wins": 26,
+                "draws": 0,
+                "losses": 29,
+                "avgPerDeck": 1.4090909,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Daily Quest",
+                "code": "26048",
+                "faction": "nbn",
+                "used": 26,
+                "wins": 45,
+                "draws": 0,
+                "losses": 26,
+                "avgPerDeck": 2.4230769,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "IP Block",
+                "code": "11094",
+                "faction": "nbn",
+                "used": 51,
+                "wins": 83,
+                "draws": 0,
+                "losses": 62,
+                "avgPerDeck": 2.509804,
+                "tags": "ice-Barrier"
+            },
+            {
+                "title": "Consulting Visit",
+                "code": "10094",
+                "faction": "weyland-consortium",
+                "used": 93,
+                "wins": 180,
+                "draws": 0,
+                "losses": 88,
+                "avgPerDeck": 1.2473118,
+                "tags": "winning"
+            },
+            {
+                "title": "SEA Source",
+                "code": "25119",
+                "faction": "nbn",
+                "used": 16,
+                "wins": 30,
+                "draws": 0,
+                "losses": 13,
+                "avgPerDeck": 1.625,
+                "tags": "winning"
+            },
+            {
+                "title": "Cortex Lock",
+                "code": "08014",
+                "faction": "jinteki",
+                "used": 20,
+                "wins": 40,
+                "draws": 0,
+                "losses": 21,
+                "avgPerDeck": 2.1,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Thimblerig",
+                "code": "22039",
+                "faction": "jinteki",
+                "used": 41,
+                "wins": 76,
+                "draws": 0,
+                "losses": 43,
+                "avgPerDeck": 1.6585366,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Tithonium",
+                "code": "12098",
+                "faction": "weyland-consortium",
+                "used": 29,
+                "wins": 60,
+                "draws": 0,
+                "losses": 24,
+                "avgPerDeck": 1.5172414,
+                "tags": "winning,ice-Barrier"
+            },
+            {
+                "title": "SDS Drone Deployment",
+                "code": "26056",
+                "faction": "weyland-consortium",
+                "used": 53,
+                "wins": 107,
+                "draws": 0,
+                "losses": 51,
+                "avgPerDeck": 2.9245284,
+                "tags": "popular-in-pack,winning"
+            },
+            {
+                "title": "Excalibur",
+                "code": "06111",
+                "faction": "neutral-corp",
+                "used": 68,
+                "wins": 115,
+                "draws": 0,
+                "losses": 69,
+                "avgPerDeck": 1.4411764,
+                "tags": "ice-Mythic"
+            },
+            {
+                "title": "Afshar",
+                "code": "26058",
+                "faction": "weyland-consortium",
+                "used": 62,
+                "wins": 108,
+                "draws": 0,
+                "losses": 60,
+                "avgPerDeck": 1.2741935,
+                "tags": "popular-in-pack,ice-Code Gate"
+            },
+            {
+                "title": "Oaktown Renovation",
+                "code": "25125",
+                "faction": "weyland-consortium",
+                "used": 27,
+                "wins": 61,
+                "draws": 0,
+                "losses": 24,
+                "avgPerDeck": 1.4444444,
+                "tags": "winning"
+            },
+            {
+                "title": "Project Atlas",
+                "code": "25126",
+                "faction": "weyland-consortium",
+                "used": 60,
+                "wins": 115,
+                "draws": 0,
+                "losses": 60,
+                "avgPerDeck": 2.8333333,
+                "tags": "winning"
+            },
+            {
+                "title": "Gatekeeper",
+                "code": "22029",
+                "faction": "haas-bioroid",
+                "used": 15,
+                "wins": 18,
+                "draws": 0,
+                "losses": 11,
+                "avgPerDeck": 2.0666666,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Dedication Ceremony",
+                "code": "10017",
+                "faction": "weyland-consortium",
+                "used": 28,
+                "wins": 44,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 2.642857,
+                "tags": "winning"
+            },
+            {
+                "title": "Hortum",
+                "code": "25133",
+                "faction": "weyland-consortium",
+                "used": 83,
+                "wins": 159,
+                "draws": 0,
+                "losses": 85,
+                "avgPerDeck": 1.939759,
+                "tags": "ice-Code Gate"
+            },
+            {
+                "title": "Red Level Clearance",
+                "code": "26037",
+                "faction": "haas-bioroid",
+                "used": 25,
+                "wins": 29,
+                "draws": 0,
+                "losses": 25,
+                "avgPerDeck": 2.52,
+                "tags": "popular-in-pack"
+            },
+            {
+                "title": "DNA Tracker",
+                "code": "11053",
+                "faction": "jinteki",
+                "used": 24,
+                "wins": 43,
+                "draws": 0,
+                "losses": 22,
+                "avgPerDeck": 1.5,
+                "tags": "winning,ice-Code Gate"
+            },
+            {
+                "title": "Anansi",
+                "code": "21051",
+                "faction": "jinteki",
+                "used": 50,
+                "wins": 90,
+                "draws": 0,
+                "losses": 48,
+                "avgPerDeck": 2.3,
+                "tags": "ice-Sentry"
+            },
+            {
+                "title": "Kakugo",
+                "code": "12013",
+                "faction": "jinteki",
+                "used": 49,
+                "wins": 96,
+                "draws": 0,
+                "losses": 48,
+                "avgPerDeck": 2.9387755,
+                "tags": "winning,ice-Barrier"
+            },
+            {
+                "title": "Rashida Jaheem",
+                "code": "21080",
+                "faction": "neutral-corp",
+                "used": 195,
+                "wins": 367,
+                "draws": 0,
+                "losses": 189,
+                "avgPerDeck": 2.8871794,
+                "tags": "winning"
+            },
+            {
+                "title": "The Future Perfect",
+                "code": "05007",
+                "faction": "jinteki",
+                "used": 35,
+                "wins": 71,
+                "draws": 0,
+                "losses": 35,
+                "avgPerDeck": 1.6285714,
+                "tags": "winning"
+            },
+            {
+                "title": "Data Loop",
+                "code": "12095",
+                "faction": "nbn",
+                "used": 33,
+                "wins": 74,
+                "draws": 0,
+                "losses": 30,
+                "avgPerDeck": 2.1818182,
+                "tags": "winning,ice-Barrier"
+            },
+            {
+                "title": "Border Control",
+                "code": "28005",
+                "faction": "weyland-consortium",
+                "used": 143,
+                "wins": 273,
+                "draws": 0,
+                "losses": 140,
+                "avgPerDeck": 2.4055943,
+                "tags": "winning,ice-Barrier"
+            },
+            {
+                "title": "Obokata Protocol",
+                "code": "12070",
+                "faction": "jinteki",
+                "used": 49,
+                "wins": 96,
+                "draws": 0,
+                "losses": 50,
+                "avgPerDeck": 2.9795918,
+                "tags": "winning"
+            },
+            {
+                "title": "Breached Dome",
+                "code": "12113",
+                "faction": "jinteki",
+                "used": 45,
+                "wins": 91,
+                "draws": 0,
+                "losses": 45,
+                "avgPerDeck": 2.4,
+                "tags": "winning"
+            }
+        ]
+    }
+}

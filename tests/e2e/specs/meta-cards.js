@@ -12,7 +12,7 @@ describe('Meta Cards', () => {
     })
 
     function cardCheck(testid, card) {
-        cy.contains(`[data-testid=${testid}] > div > div > :nth-child(2) > .card-title > span`, card.title)
+        cy.contains(`[data-testid=${testid}] > div > div > :nth-child(2) > .card-title > a`, card.title)
         cy.contains(`[data-testid=${testid}] > div > div > .mb--4 > .text-center > em`, card.popularity)
         cy.contains(`[data-testid=${testid}] > div > div > :nth-child(4)> .text-center > em`, card.winrate)
     }

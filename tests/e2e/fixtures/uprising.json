@@ -5,15 +5,17 @@
         "cardpool": "Uprising",
         "mwl": "Standard MWL 3.4b",
         "newCards": true,
-        "tournaments": 127,
-        "standings": 2858,
+        "tournaments": 128,
+        "standings": 2745,
         "runnerDecks": 303,
         "corpDecks": 302,
-        "matches": 9663,
-        "runnerWinRate": 0.3987996688741722,
-        "corpWinRate": 0.6009933774834437,
+        "matches": 9687,
+        "runnerWinRate": 0.3988439306358382,
+        "corpWinRate": 0.6009496284062759,
+        "runnerDeckWinRate": 0.4722932651321398,
+        "corpDeckWinRate": 0.6709401709401709,
         "file": "uprising.json",
-        "lastUpdate": "2020-05-29 08:46:00"
+        "lastUpdate": "2020-06-03 13:19:51"
     },
     "factions": null,
     "identities": {
@@ -22,10 +24,10 @@
                 "title": "Hoshiko Shiro: Untold Protagonist",
                 "code": "26066",
                 "faction": "anarch",
-                "used": 220,
-                "wins": 317,
+                "used": 223,
+                "wins": 322,
                 "draws": 0,
-                "losses": 453
+                "losses": 457
             },
             {
                 "title": "419: Amoral Scammer",
@@ -49,10 +51,10 @@
                 "title": "Armand \"Geist\" Walker: Tech Lord",
                 "code": "08063",
                 "faction": "criminal",
-                "used": 91,
+                "used": 92,
                 "wins": 139,
                 "draws": 0,
-                "losses": 192
+                "losses": 195
             },
             {
                 "title": "Leela Patel: Trained Pragmatist",
@@ -323,6 +325,123 @@
                 "wins": 2,
                 "draws": 0,
                 "losses": 1
+            },
+            {
+                "title": "Liza Talking Thunder: Prominent Legislator",
+                "code": "22008",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Ayla \"Bios\" Rahim: Simulant Specialist",
+                "code": "13012",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Steve Cambridge: Master Grifter",
+                "code": "13001",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Nasir Meidan: Cyber Explorer",
+                "code": "06017",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Exile: Streethawk",
+                "code": "03030",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "The Professor: Keeper of Knowledge",
+                "code": "03029",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Andromeda: Dispossessed Ristie",
+                "code": "02083",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Whizzard: Master Gamer",
+                "code": "02001",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Kate \"Mac\" McCaffrey: Digital Tinker",
+                "code": "01033",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Noise: Hacker Extraordinaire",
+                "code": "01001",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Jamie \"Bzzz\" Micken: Techno Savant",
+                "code": "00009",
+                "faction": "shaper",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Boris \"Syfr\" Kovac: Crafty Veteran",
+                "code": "00008",
+                "faction": "criminal",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Wyvern: Chemically Enhanced",
+                "code": "00007",
+                "faction": "anarch",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
             }
         ],
         "corp": [
@@ -330,19 +449,19 @@
                 "title": "Azmari EdTech: Shaping the Future",
                 "code": "21054",
                 "faction": "nbn",
-                "used": 128,
-                "wins": 357,
+                "used": 129,
+                "wins": 359,
                 "draws": 0,
-                "losses": 141
+                "losses": 142
             },
             {
                 "title": "Earth Station: SEA Headquarters",
                 "code": "26120",
                 "faction": "weyland-consortium",
-                "used": 103,
-                "wins": 201,
+                "used": 104,
+                "wins": 202,
                 "draws": 0,
-                "losses": 161
+                "losses": 163
             },
             {
                 "title": "Argus Security: Protection Guaranteed",
@@ -366,10 +485,10 @@
                 "title": "Asa Group: Security Through Vigilance",
                 "code": "21009",
                 "faction": "haas-bioroid",
-                "used": 87,
-                "wins": 220,
+                "used": 88,
+                "wins": 221,
                 "draws": 0,
-                "losses": 109
+                "losses": 111
             },
             {
                 "title": "GameNET: Where Dreams are Real",
@@ -429,10 +548,10 @@
                 "title": "Jinteki: Personal Evolution",
                 "code": "25084",
                 "faction": "jinteki",
-                "used": 57,
-                "wins": 113,
+                "used": 59,
+                "wins": 119,
                 "draws": 0,
-                "losses": 88
+                "losses": 89
             },
             {
                 "title": "Jinteki: Replicating Perfection",
@@ -676,6 +795,150 @@
                 "wins": 0,
                 "draws": 0,
                 "losses": 2
+            },
+            {
+                "title": "Mti Mwekundu: Life Improved",
+                "code": "21114",
+                "faction": "jinteki",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Skorpios Defense Systems: Persuasive Power",
+                "code": "13041",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Industrial Genomics: Growing Solutions",
+                "code": "06105",
+                "faction": "jinteki",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "The Foundry: Refining the Process",
+                "code": "06021",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Near-Earth Hub: Broadcast Center",
+                "code": "06005",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "GRNDL: Power Unleashed",
+                "code": "04097",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "NEXT Design: Guarding the Net",
+                "code": "03003",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Custom Biotics: Engineered for Success",
+                "code": "03002",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Cerebral Imaging: Infinite Frontiers",
+                "code": "03001",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "NBN: The World is Yours*",
+                "code": "02114",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Weyland Consortium: Because We Built It",
+                "code": "02076",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Haas-Bioroid: Engineering the Future",
+                "code": "01054",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Fringe Applications: Tomorrow, Today",
+                "code": "00013",
+                "faction": "weyland-consortium",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Information Dynamics: All You Need To Know",
+                "code": "00012",
+                "faction": "nbn",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Synthetic Systems: The World Re-imagined",
+                "code": "00011",
+                "faction": "jinteki",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
+            },
+            {
+                "title": "Strategic Innovations: Future Forward",
+                "code": "00010",
+                "faction": "haas-bioroid",
+                "used": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0
             }
         ]
     },

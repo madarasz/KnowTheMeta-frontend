@@ -25,14 +25,14 @@ describe('MWL', () => {
             validation[side][list].forEach(card => {
               if (typeof card === 'string') {
                 // without badge
-                cy.contains(`[data-testid=list-${side}-${list}] .card-title > span`, card)
+                cy.contains(`[data-testid=list-${side}-${list}] .card-title > a`, card)
               } else {
                 // with badge
-                cy.contains(`[data-testid=list-${side}-${list}] .card-title > span[badge='${card.badge}']`, card.title)
+                cy.contains(`[data-testid=list-${side}-${list}] .card-title > a[badge='${card.badge}']`, card.title)
               }
             })
             // check card count
-            cy.get(`[data-testid=list-${side}-${list}] .card-title > span`).its('length').should('eq', validation[side][list].length)
+            cy.get(`[data-testid=list-${side}-${list}] .card-title > a`).its('length').should('eq', validation[side][list].length)
           } else {
             // empty list
             cy.contains(`[data-testid=list-${side}-${list}] > .overline`, 'no cards')
