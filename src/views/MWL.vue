@@ -2,7 +2,7 @@
   <v-content>
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
-      <desktop-card :title="netrunnerdb.mwl[0].name" :subtitle="getSubtitle">
+      <desktop-card :title="netrunnerdb.mwl[0].name" :subtitle="getSubtitle" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length">
         <!-- Banned -->
         <template v-slot:pretext>
           <desktop-card-subtitle subtitle="Banned"/>
@@ -29,7 +29,7 @@
     <div v-if="$vuetify.breakpoint.smAndDown">
       <runner-corp-tabs>
         <template v-slot:between>
-          <mobile-panel :title="netrunnerdb.mwl[0].name" :subtitle="getSubtitle" hide-actions/>
+          <mobile-panel :title="netrunnerdb.mwl[0].name" :subtitle="getSubtitle" hide-actions v-if="netrunnerdb.mwl && netrunnerdb.mwl.length"/>
         </template>
         <template v-slot:runner>
           <mobile-panel title="Banned" color="accent" thin>
