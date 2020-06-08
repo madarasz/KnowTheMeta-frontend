@@ -22,10 +22,24 @@ import './commands'
 Cypress.on("window:before:load", win => {
     cy.stub(win.console, "error", msg => {
         cy.now("task", "error", msg);
-        throw new Error(msg); // all we needed to add!
+        throw new Error(msg); // unfortunately does not fail :(
     });
   
     cy.stub(win.console, "warn", msg => {
         cy.now("task", "warn", msg);
+    });
+});
+
+// spy on console errors and warnings
+beforeEach(function() {
+    cy.window().then((win) => {
+        cy.spy(win.console, "error");
+        cy.spy(win.console, "warn");
+    });    
+})
+// fail test if there was a console error
+afterEach( () => {
+    cy.window().then((win) => {
+        expect(win.console.error).to.have.callCount(0);
     });
 });

@@ -20,6 +20,17 @@ module.exports = (on, config) => {
   // }))
   addMatchImageSnapshotPlugin(on, config);
 
+  on(`task`, {
+    error(message) {
+      console.error("\x1b[31m", "ERROR:", message, "\x1b[0m");
+      return null
+    },
+    warn(message) {
+      console.warn("\x1b[33m", "WARNING:", message, "\x1b[0m");
+      return null
+    },
+  });
+
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',
     integrationFolder: 'tests/e2e/specs',
