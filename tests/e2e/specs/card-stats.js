@@ -15,9 +15,46 @@ describe('Card Stats', () => {
     })
 
     it('Check card stats', () => {
-        cy.visit('/card/11104-tapwrm')
-        // cy.fixture('validation-meta-cards.json').then(validation => {
-        //     metaCheck(validation.uprising)
-        // })
+        cy.fixture('validation-card-stats.json').then(cards => {
+          Object.keys(cards).forEach(card => {
+            cy.visit(cards[card].url)
+            // check card title
+            cy.contains('[data-testid=card-title]', card)
+            // check card chart
+            cy.get('#card-chart').matchImageSnapshot(`card-chart-${cards[card].url.split('/')[2]}`)
+            // check print packs
+            cards[card].packs.forEach(pack => {
+              cy.contains('[data-testid=pack-name]', pack)
+              cy.get('body').then(($body) => {
+                if ($body.find('.v-window__next > .v-btn').length) {
+                  cy.get('.v-window__next > .v-btn').click()
+                }
+              })
+            })
+            // low data warning
+            if (cards[card].lowDataWarning) {
+              cy.get('[data-testid=warning-low-data]')
+            } else {
+              cy.get('[data-testid=warning-low-data]').should('not.exist')
+            }
+            // check chart explanation
+            cy.get('[data-testid=card-chart-explanation]').should('not.visible')
+            cy.get('[data-testid=explain-chart]').click()
+            cy.get('[data-testid=card-chart-explanation]')
+            if (cards[card].mwlWarning) {
+              cy.get('[data-testid=mwlWarning]')
+            } else {
+              cy.get('[data-testid=mwlWarning]').should('not.exist')
+            }
+            if (cards[card].lowDataWarning) {
+              cy.get('[data-testid=lowDataWarning]')
+            } else {
+              cy.get('[data-testid=lowDataWarning]').should('not.exist')
+            }
+            //close
+            cy.get('[data-testid=close-explanation]').click()
+            cy.get('[data-testid=card-chart-explanation]').should('not.visible')
+          })
+        })
     })
 })

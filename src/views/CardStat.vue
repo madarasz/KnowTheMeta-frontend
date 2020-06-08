@@ -14,7 +14,7 @@
       </v-col>
     </v-row>
     <!-- low data warning -->
-    <v-row justify="center" v-if="cardStats && cardStats.lowData">
+    <v-row justify="center" v-if="cardStats && cardStats.lowData" data-testid="warning-low-data">
       <v-col cols="auto pb-0">
         <v-alert border="left" colored-border color="#B56503" elevation="1"
             class="ml-2 mr-2 mb-0 pa-2 pl-4 pr-4 caption text-center" dismissible>

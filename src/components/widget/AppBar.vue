@@ -52,7 +52,7 @@
     <v-btn icon @click="$router.go(-1)" v-if="$route.name === 'Card statistics'">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
-    <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle">
+    <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
       {{ cards.currentCardTitle }}
     </v-toolbar-title>
   </v-app-bar>

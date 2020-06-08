@@ -11,7 +11,7 @@
       </v-row>
       <v-row dense>
         <v-col class="pt-0">
-          <em>{{ print.pack_title }}</em>
+          <em data-testid="pack-name">{{ print.pack_title }}</em>
         </v-col>
       </v-row>
     </v-carousel-item>

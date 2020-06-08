@@ -5,7 +5,7 @@
     <template v-slot:activator="{ on }">
       <v-row>
         <v-col class="text-right pr-8 caption">
-          <a v-on="on">
+          <a v-on="on" data-testid="explain-chart">
             <em>explain this chart</em>&nbsp;
             <v-icon icon class="icon-left">{{ mdiInformation }}</v-icon>
           </a>
@@ -13,10 +13,10 @@
       </v-row>
     </template>
     <!-- Dialog -->
-    <v-card>
+    <v-card data-testid="card-chart-explanation">
       <!-- mobile toolbar -->
       <v-toolbar dark color="primary" v-if="!$vuetify.breakpoint.mdAndUp" max-height="48px" dense>
-        <v-btn icon dark @click="chartExplanation = false">
+        <v-btn icon dark @click="chartExplanation = false" data-testid="close-explanation">
             <v-icon>{{ mdiClose }}</v-icon>
         </v-btn>
         <v-toolbar-title>Chart explanation</v-toolbar-title>
@@ -75,7 +75,7 @@
         If the "{{ isIdentity ? 'identity' : 'card'}} win rate" is higher than the "average {{ sideString }} {{ isIdentity ? '' : 'deck'}} win rate",
         then the {{ isIdentity ? 'identity' : 'card'}} is probably strong. Look at the difference and the win rate error bars.
         <!-- mwl warning -->
-        <div v-if="cardStats.mwlWarning">
+        <div v-if="cardStats.mwlWarning" data-testid="mwlWarning">
           <hr/>
           <v-row>
             <v-col cols="4">
@@ -88,7 +88,7 @@
           </v-row>
         </div>
         <!-- low data warning -->
-        <div v-if="cardStats.lowData">
+        <div v-if="cardStats.lowData" data-testid="lowDataWarning">
           <hr/>
           <v-row>
             <v-col cols="4">
@@ -104,7 +104,7 @@
       <!-- close button for desktop -->
       <v-card-actions v-if="$vuetify.breakpoint.mdAndUp">
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="chartExplanation = false">Close</v-btn>
+        <v-btn color="primary" text @click="chartExplanation = false" data-testid="close-explanation">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
