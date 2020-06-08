@@ -9,17 +9,18 @@ export const cards = {
   },
   getters: {
     getCurrentStat: (state) => {
+      if (state.currentCardTitle === 'loading...') return false
       return state.stats[state.currentCardTitle]
     },
     isRunner: (state, getters) => {
       if (!getters.getCurrentStat) {
-        return undefined
+        return false
       }
       return getters.getCurrentStat.card.side_code === 'runner'
     },
     isIdentity: (state, getters) => {
       if (!getters.getCurrentStat) {
-        return undefined
+        return false
       }
       return getters.getCurrentStat.card.type_code === 'identity'
     },
@@ -38,8 +39,9 @@ export const cards = {
     getCardStat ({ commit }, cardcode) {
       commit('setCurrentCardTitle', 'loading...')
       axios.get(`https://alwaysberunning.net/ktm/cards/${cardcode}.json`).then((response) => {
-        commit('setCardStats', { data: response.data, title: response.data.card.title })
-        commit('setCurrentCardTitle', response.data.card.title)
+        const title = response.data.card.title
+        commit('setCurrentCardTitle', title)
+        commit('setCardStats', { data: response.data, title: title })
       })
     }
   },
