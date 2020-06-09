@@ -17,7 +17,7 @@
       <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="ids" :transition="false" :reverse-transition="false">
-            <identities :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
+            <identities :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta && getCurrentMeta.identities"/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
             <h3 class="pa-4">
@@ -26,7 +26,7 @@
             </h3>
           </v-tab-item>
           <v-tab-item :key="3" value="cards" :transition="false" :reverse-transition="false">
-            <cards :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
+            <cards :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta && getCurrentMeta.cards"/>
           </v-tab-item>
         </v-tabs-items>
       </v-container>
@@ -63,7 +63,6 @@ export default {
   methods: {
     getMetaData: function (metacode) {
       this.loaded = false
-      this.setCurrentMetaCode(metacode)
       this.$store.dispatch('metas/getMetaData', metacode).then((response) => {
         this.loaded = true
       }).catch(() => {

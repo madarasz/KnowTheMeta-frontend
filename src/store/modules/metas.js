@@ -22,19 +22,19 @@ export const metas = {
       return ''
     },
     getCurrentMeta: (state) => {
-      console.log(`getting meta for ${state.currentMetaCode}`)
+      if (!state.currentMetaCode) return false
       return state.metaData[state.currentMetaCode]
     }
   },
   actions: {
     getMetaList ({ commit }) {
       return axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
-        console.log('got meta list - store')
         commit('setMetaList', response.data)
       }) // .catch((err) => { console.error(err) })
     },
     getMetaData ({ commit }, metacode) {
       return axios.get(`https://alwaysberunning.net/ktm/${metacode}.json`).then((response) => {
+        commit('setCurrentMetaCode', metacode)
         commit('setMetaData', response.data)
       })
     }
@@ -42,7 +42,6 @@ export const metas = {
   mutations: {
     // makes the active meta the latest meta in the list (first element)
     fallbackToLatestMeta (state) {
-      console.log('falling back to latest meta')
       state.currentMetaCode = state.metaList[0].code
     },
     setCurrentMetaCode (state, metacode) {
@@ -52,7 +51,7 @@ export const metas = {
       state.metaList = list
     },
     setMetaData (state, metadata) {
-      state.metaData[metadata.meta.code] = metadata
+      state.metaData = { ...state.metaData, [metadata.meta.code]: metadata } // new object, to follow vue reactivity rules
     }
   }
 }

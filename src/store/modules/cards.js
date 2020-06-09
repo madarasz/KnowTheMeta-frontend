@@ -50,9 +50,9 @@ export const cards = {
       state.currentCardTitle = title
     },
     setCardStats (state, { data, title }) {
-      state.stats[title] = data
-      state.stats[title].lowData = false
-      state.stats[title].mwlWarning = false
+      data.lowData = false
+      data.mwlWarning = false
+      state.stats = { ...state.stats, [title]: data }
     },
     setLowDataWarning (state, title) {
       state.stats[title].lowData = true
