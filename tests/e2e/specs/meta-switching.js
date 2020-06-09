@@ -74,4 +74,23 @@ describe('Meta Switching', () => {
     cy.visit('/mwl')
     cy.contains('[data-testid=current-meta] > .v-btn__content', 'Uprising')
   })
+
+  it('Can change meta, subview is remembered', () => {
+    cy.visit('/meta/uprising/cards')
+    cy.get('[data-testid=icon-meta-select]').click()
+    cy.get('[data-testid=list-metas] > :nth-child(2)').click()
+    getStore().its('state.metas.currentMetaCode').should('not.be.null')
+    cy.url().should('include', '/meta/uprising-booster-pack/cards')
+    cy.contains(`[data-testid=popular-runner] > div > div > :nth-child(2) > .card-title > a`, 'Mystic Maemi')
+  })
+
+  it('Non-meta page is visited first, navigate to meta', () => {
+    cy.visit('/mwl')
+    cy.contains('[data-testid=current-meta] > .v-btn__content', 'Uprising')
+    getStore().its('state.metas.currentMetaCode').should('not.be.null')
+    cy.get('[data-testid=icon-meta-select]').click()
+    cy.get('[data-testid=list-metas] > :nth-child(1)').click()
+    checkMetaIdentityData('runner', 'uprising')
+    checkMetaIdentityData('corporation', 'uprising')
+  })
 })
