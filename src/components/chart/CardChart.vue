@@ -21,11 +21,6 @@ export default {
       // chart options
       options: {
         plugins: [pluginErrorBars, pluginDataLabels],
-        datalabels: {
-          formatter: function (value, context) {
-            return ' '
-          }
-        },
         maintainAspectRatio: false,
         responsive: true,
         animation: false,

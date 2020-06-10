@@ -59,7 +59,10 @@ export default {
         datasets: [{
           data: this.groupedData.map(x => { return x.used }),
           backgroundColor: this.groupedData.map(x => { return x.color }),
-          borderWidth: 2
+          borderWidth: 2,
+          datalabels: {
+            display: false
+          }
         }]
       }
     }

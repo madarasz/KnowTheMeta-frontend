@@ -1,6 +1,7 @@
 <script>
 import { HorizontalBar } from 'vue-chartjs'
 import * as annotation from 'chartjs-plugin-annotation'
+import * as pluginDataLabels from 'chartjs-plugin-datalabels'
 
 export default {
   extends: HorizontalBar,
@@ -13,7 +14,7 @@ export default {
   data: () => ({
     options: {
       maintainAspectRatio: false,
-      plugins: [annotation],
+      plugins: [annotation, pluginDataLabels],
       annotation: {
         drawTime: 'afterDatasetsDraw',
         events: [],
@@ -73,7 +74,13 @@ export default {
           backgroundColor: ['#FF0000'],
           barThickness: 32,
           barPercentage: 1,
-          categoryPercentage: 1
+          categoryPercentage: 1,
+          datalabels: {
+            color: '#FFF',
+            formatter: function (value, context) {
+              return value + '%'
+            }
+          }
         },
         {
           label: 'draw',
@@ -81,7 +88,13 @@ export default {
           backgroundColor: ['#AAAAAA'],
           barThickness: 32,
           barPercentage: 1,
-          categoryPercentage: 1
+          categoryPercentage: 1,
+          datalabels: {
+            color: '#FFF',
+            formatter: function (value, context) {
+              return value + '%'
+            }
+          }
         },
         {
           label: 'corporation',
@@ -89,7 +102,13 @@ export default {
           backgroundColor: ['#0000FF'],
           barThickness: 32,
           barPercentage: 1,
-          categoryPercentage: 1
+          categoryPercentage: 1,
+          datalabels: {
+            color: '#FFF',
+            formatter: function (value, context) {
+              return value + '%'
+            }
+          }
         }
       ]
       // remove draw part if draw < 0.005

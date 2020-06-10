@@ -1,6 +1,7 @@
 <script>
 import { HorizontalBar } from 'vue-chartjs'
 import * as pluginErrorBars from 'chartjs-plugin-error-bars'
+import * as pluginDataLabels from 'chartjs-plugin-datalabels'
 import transform from '@/netrunnerTransformations.js'
 export default {
   extends: HorizontalBar,
@@ -11,7 +12,7 @@ export default {
   data: () => ({
     options: {
       animation: false,
-      plugins: [pluginErrorBars],
+      plugins: [pluginErrorBars, pluginDataLabels],
       legend: {
         display: false
       },
@@ -68,6 +69,12 @@ export default {
           tooltips: this.metaData.map(x => { return transform.winrate(x) + '% (' + x.wins + '/' + transform.matchCount(x) + ')' }), // store values here, read with tooltip callback later
           backgroundColor: this.metaData.map(x => { return transform.factionCodeToColor(x.faction) }),
           errorBars: this.errordata.errors,
+          datalabels: {
+            color: '#FFF',
+            formatter: function (value, context) {
+              return value + '%'
+            }
+          },
           borderColor: 'rgba(50, 50, 50, 0.6)' // error bar color
         }]
       }
