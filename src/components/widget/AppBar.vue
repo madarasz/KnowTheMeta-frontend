@@ -37,6 +37,7 @@
     <v-spacer v-if="$route.name !== 'Card statistics'"/>
     <!-- Other menu items -->
     <v-toolbar-items v-if="$route.name !== 'Card statistics'">
+      <card-autocomplete class="mr-4 mt-2"/>
       <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'">
         <router-link to="/MWL" tag="span">
           MWL
@@ -60,6 +61,7 @@
 
 <script>
 import { VListItem } from 'vuetify/lib'
+import CardAutocomplete from '@/components/widget/CardAutocomplete.vue'
 import { mdiMenuDown, mdiArrowLeft } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
@@ -67,6 +69,7 @@ import transform from '@/netrunnerTransformations.js'
 export default {
   name: 'AppBar',
   components: {
+    CardAutocomplete,
     VListItem // eslint-disable-line vue/no-unused-components
   },
   data: () => ({
