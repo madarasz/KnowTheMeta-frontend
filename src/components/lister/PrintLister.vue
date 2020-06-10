@@ -1,5 +1,5 @@
 <template>
-  <v-carousel v-if="prints" :show-arrows="prints.length > 1" hide-delimiters style="margin-bottom: -32px" :continuous="false">
+  <v-carousel v-if="prints" :show-arrows="prints.length > 1" hide-delimiters style="margin-bottom: -32px" :continuous="false" @change="slide">
     <v-carousel-item v-for="print in prints" :key="print.code" class="text-center">
       <v-row dense>
         <v-col class="text-center pb-0">
@@ -24,6 +24,21 @@ export default {
   props: {
     prints: Array,
     isRunner: Boolean
+  },
+  data: () => ({
+    initialized: false // workaround
+  }),
+  methods: {
+    slide: function () {
+      if (this.initialized) {
+        // fire analytics event, not firing for the first time, workaround
+        this.$ga.event({
+          eventCategory: 'UI',
+          eventAction: 'slide-print-carousel'
+        })
+      }
+      this.initialized = true
+    }
   }
 }
 </script>

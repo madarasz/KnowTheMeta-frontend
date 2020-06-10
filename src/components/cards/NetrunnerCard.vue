@@ -3,7 +3,7 @@
     <v-row dense>
       <v-col class="text-center pa-1 pb-0">
         <div class="d-inline-flex">
-          <router-link :to="cardUrl">
+          <router-link :to="cardUrl" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-image', eventLabel: card.title })">
             <v-img :src="card.image_url" width="100px" height="140px"
                 :lazy-src="'/img/' + (card.runner ? 'runner' : 'corp') + '-card-back-small.png'">
               <v-badge v-if="card.badge" class="badge-border-fix" bordered overlap
@@ -18,7 +18,9 @@
     </v-row>
     <v-row dense>
       <v-col class="card-title pt-0">
-        <router-link :to="cardUrl" :badge="card.badge">{{ shorten(card.title) }}</router-link>
+        <router-link :to="cardUrl" :badge="card.badge" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-title', eventLabel: card.title })">
+          {{ shorten(card.title) }}
+        </router-link>
       </v-col>
     </v-row>
   </div>

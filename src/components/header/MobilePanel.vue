@@ -1,6 +1,6 @@
 <template>
   <v-expansion-panels v-model="openedIndex" class="square-border">
-  <v-expansion-panel class="square-border">
+  <v-expansion-panel class="square-border" @change="expand">
     <v-expansion-panel-header class="mobile-panel" :color="color" :hide-actions="hideActions" :class="{ 'thin-panel': thin }">
       <!-- Title -->
       {{ title }}
@@ -40,6 +40,17 @@ export default {
   },
   data: () => ({
     openedIndex: 0
-  })
+  }),
+  methods: {
+    expand: function () {
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: 'mobilepanel-expand/contract',
+        eventLabel: this.title,
+        eventValue: this.openedIndex === 0 ? 0 : 1 // send 0 on contract, 1 on expand
+      })
+    }
+  }
 }
 </script>

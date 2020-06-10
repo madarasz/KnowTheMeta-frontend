@@ -1,7 +1,11 @@
 <template>
-  <v-data-table :data-testid="testId" :headers="headers" :items="cardList" item-key="title" group-by="type" disable-filtering hide-default-footer :items-per-page="1000" dense>
+  <v-data-table :data-testid="testId" :headers="headers" :items="cardList" item-key="title" group-by="type" disable-filtering hide-default-footer
+      :items-per-page="1000" dense @update:sort-by="sorting">
     <template v-slot:item.title="{ item }">
-      <span :class="'netrunner-icon icon-' + item.faction"/> <router-link :to="cardUrl(item)">{{ item.title }}</router-link>
+      <span :class="'netrunner-icon icon-' + item.faction"/>&nbsp;
+      <router-link :to="cardUrl(item)" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-table', eventLabel: item.title })">
+        {{ item.title }}
+      </router-link>
     </template>
   </v-data-table>
 </template>
@@ -43,6 +47,14 @@ export default {
   methods: {
     cardUrl: function (card) {
       return transform.cardUrl(card)
+    },
+    sorting: function (param) {
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: this.testId + '-sort',
+        eventLabel: param[0]
+      })
     }
   }
 }

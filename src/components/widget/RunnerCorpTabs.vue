@@ -2,7 +2,7 @@
   <!-- for mobile screens -->
   <div v-if="$vuetify.breakpoint.smAndDown">
     <v-card>
-      <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
+      <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs" @change="changeTab(tab)">
         <v-tab href="#runner">
           Runner
         </v-tab>
@@ -28,6 +28,16 @@ export default {
   name: 'RunnerCorpTabs',
   data: () => ({
     tab: 'runner' // default tab
-  })
+  }),
+  methods: {
+    changeTab: function (tabName) {
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: 'change-side-tab',
+        eventLabel: tabName
+      })
+    }
+  }
 }
 </script>

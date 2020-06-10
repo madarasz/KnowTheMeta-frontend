@@ -16,7 +16,7 @@
     <div v-if="$vuetify.breakpoint.smAndDown">
       <!-- Tabs -->
       <v-card>
-        <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
+        <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs" @change="changeTab(tab)">
           <v-tab href="#legal">
             Legal
           </v-tab>
@@ -60,6 +60,14 @@ export default {
   methods: {
     getNetunnerDBData: function () {
       this.$store.dispatch('netrunnerdb/getCardData', false).then(() => {
+      })
+    },
+    changeTab: function (tabName) {
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: 'change-rotation-tab',
+        eventLabel: tabName
       })
     }
   },

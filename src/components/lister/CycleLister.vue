@@ -13,7 +13,7 @@
           </v-row>
           <!-- rotated -->
           <v-expansion-panels :key="pack.name" v-if="legalReprints" flat :data-testid="testId + '-' + pack.code">
-            <v-expansion-panel>
+            <v-expansion-panel @change="expand(pack.code)">
               <!-- header -->
               <v-expansion-panel-header class="rotation-content bordered-bottom pt-0 pb-0 pl-3 pr-3" style="line-height: 21px">
                 <v-row align="center">
@@ -64,6 +64,14 @@ export default {
   methods: {
     getPacks: function (cycleCode) {
       return this.netrunnerdb.packs.filter(x => { return x.cycle_code === cycleCode }).sort(transform.compareReleaseDates)
+    },
+    expand: function (packcode) {
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: 'rotated-expand/contract',
+        eventLabel: packcode
+      })
     }
   },
   computed: {

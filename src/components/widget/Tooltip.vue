@@ -18,6 +18,18 @@ export default {
   data: () => ({
     showTooltip: false,
     mdiInformation
-  })
+  }),
+  watch: {
+    showTooltip: function (newValue, oldValue) {
+      if (newValue) {
+        // fire analytics event
+        this.$ga.event({
+          eventCategory: 'UI',
+          eventAction: 'display-tooltip',
+          eventLabel: this.text
+        })
+      }
+    }
+  }
 }
 </script>

@@ -5,7 +5,7 @@
     <template v-slot:activator="{ on }">
       <v-row>
         <v-col class="text-right pr-8 caption">
-          <a v-on="on" data-testid="explain-chart">
+          <a v-on="on" data-testid="explain-chart" @click="explain(true)">
             <em>explain this chart</em>&nbsp;
             <v-icon icon class="icon-left">{{ mdiInformation }}</v-icon>
           </a>
@@ -16,7 +16,7 @@
     <v-card data-testid="card-chart-explanation">
       <!-- mobile toolbar -->
       <v-toolbar dark color="primary" v-if="!$vuetify.breakpoint.mdAndUp" max-height="48px" dense>
-        <v-btn icon dark @click="chartExplanation = false" data-testid="close-explanation">
+        <v-btn icon dark @click="explain(false)" data-testid="close-explanation">
             <v-icon>{{ mdiClose }}</v-icon>
         </v-btn>
         <v-toolbar-title>Chart explanation</v-toolbar-title>
@@ -104,7 +104,7 @@
       <!-- close button for desktop -->
       <v-card-actions v-if="$vuetify.breakpoint.mdAndUp">
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="chartExplanation = false" data-testid="close-explanation">Close</v-btn>
+        <v-btn color="primary" text @click="explain(false)" data-testid="close-explanation">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -121,6 +121,17 @@ export default {
     mdiClose,
     chartExplanation: false
   }),
+  methods: {
+    explain: function (show) {
+      this.chartExplanation = show
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: 'explain-chart',
+        eventLabel: show ? 'open' : 'close'
+      })
+    }
+  },
   computed: {
     ...mapGetters({
       cardStats: 'cards/getCurrentStat',
