@@ -1,7 +1,7 @@
 <template>
   <v-data-table :data-testid="testId" :headers="headers" :items="cardList" item-key="title" group-by="type" disable-filtering hide-default-footer :items-per-page="1000" dense>
     <template v-slot:item.title="{ item }">
-      <span :class="'netrunner-icon icon-' + item.faction"/> <a :href="cardUrl(item)">{{ item.title }}</a>
+      <span :class="'netrunner-icon icon-' + item.faction"/> <router-link :to="cardUrl(item)">{{ item.title }}</router-link>
     </template>
   </v-data-table>
 </template>

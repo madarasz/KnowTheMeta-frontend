@@ -2,9 +2,9 @@
   <v-app-bar dark dense app :color="$route.name !== 'Card statistics' ? 'primary' : 'black'">
     <!-- Ktm Logo -->
     <div class="mr-4">
-      <a :href="'/meta/' + this.latestMetaCode + '/ids'">
+      <router-link :to="'/meta/' + this.latestMetaCode + '/ids'">
         <v-img :src="require('../../assets/ktm.png')" width="24px"/>
-      </a>
+      </router-link>
     </div>
     <!-- Regular app bar -->
     <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="$route.name !== 'Card statistics'">

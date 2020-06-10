@@ -3,17 +3,17 @@
     <v-row dense>
       <v-col class="text-center pa-1 pb-0">
         <div class="d-inline-flex">
-          <a :href="cardUrl">
+          <router-link :to="cardUrl">
             <v-img :src="card.image_url" width="100px" height="140px"
                 :lazy-src="'/img/' + (runner ? 'runner' : 'corp') + '-card-back-small.png'">
             </v-img>
-          </a>
+          </router-link>
         </div>
       </v-col>
     </v-row>
     <v-row dense>
       <v-col class="card-title pt-0">
-        <a :href="cardUrl">{{ shorten(card.title) }}</a>
+        <router-link :to="cardUrl">{{ shorten(card.title) }}</router-link>
       </v-col>
     </v-row>
     <v-row dense class="mb--4">

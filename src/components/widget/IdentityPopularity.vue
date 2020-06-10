@@ -14,7 +14,7 @@
                 :lazy-src="'/img/' + side + '-color.png'"/>
             </td>
             <td class="text-left" v-if="index < showMax">
-              <a :href="cardUrl(identity)">{{ shortenIdentity(identity.title) }}</a>
+              <router-link :to="cardUrl(identity)">{{ shortenIdentity(identity.title) }}</router-link>
             </td>
             <td class="text-right" v-if="index < showMax">{{ (identity.used / standingCount * 200).toFixed(1) }}%</td>
           </tr>
@@ -49,8 +49,13 @@ export default {
   methods: {
     shortenIdentity: transform.shortenIdentity,
     changeListed: function (change) {
-      console.log(this.$vuetify.breakpoint)
       this.showMax = this.showMax + change
+      // fire analytics event
+      this.$ga.event({
+        eventCategory: 'UI',
+        eventAction: change > 0 ? 'more-identities' : 'less-identities',
+        eventLabel: this.side
+      })
     },
     cardUrl: function (card) {
       return transform.cardUrl(card)
