@@ -1,7 +1,7 @@
 <template>
   <v-app-bar dark dense app :color="$route.name !== 'Card statistics' ? 'primary' : 'black'">
     <!-- Ktm Logo -->
-    <div class="mr-4">
+    <div class="app-logo">
       <router-link :to="'/meta/' + this.latestMetaCode + '/ids'" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'logo' })">
         <v-img :src="require('../../assets/ktm.png')" width="24px"/>
       </router-link>
@@ -15,7 +15,7 @@
       <v-menu bottom left v-if="metas && metas.metaList.length > 0">
         <!-- Meta name -->
         <template v-slot:activator="{ on }">
-          <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="pr-2"  v-on="on" data-testid="current-meta">
+          <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="meta-button" v-on="on" data-testid="current-meta">
             <span class="d-none d-sm-block">{{ currentMetaTitle ? currentMetaTitle : 'loading' }}</span>
             <span class="d-flex d-sm-none">{{ shortMetaTitle }}</span>
             <v-icon icon data-testid="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
@@ -35,15 +35,15 @@
       </v-menu>
     </v-toolbar-items>
     <v-spacer v-if="$route.name !== 'Card statistics'"/>
+    <card-autocomplete @mobile-search="mobileSearch = $event" v-if="$route.name !== 'Card statistics'"/>
     <!-- Other menu items -->
-    <v-toolbar-items v-if="$route.name !== 'Card statistics'">
-      <card-autocomplete class="mr-4 mt-2"/>
-      <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'">
+    <v-toolbar-items v-if="$route.name !== 'Card statistics' && !mobileSearch">
+      <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'" class="menu-button">
         <router-link to="/MWL" tag="span">
           MWL
         </router-link>
       </v-btn>
-      <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'">
+      <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'" class="menu-button">
         <router-link to="/Rotation" tag="span">
           Rotation
         </router-link>
@@ -74,7 +74,8 @@ export default {
   },
   data: () => ({
     mdiMenuDown,
-    mdiArrowLeft
+    mdiArrowLeft,
+    mobileSearch: false
   }),
   mounted: function () {
     this.getMetas()

@@ -70,3 +70,34 @@ tr.v-row-group__header > td > button {
   border-bottom: thin solid rgba(0, 0, 0, 0.12);
   border-top: 0;
 }
+
+/* card search */
+.v-autocomplete__content {
+  margin-top: 2px;
+}
+
+/* app bar */
+@media (min-width: 600px) {
+  .app-logo {
+    margin-right: 16px !important;
+  }
+  .meta-button {
+    padding-right: 8px !important;
+  }
+}
+@media (max-width: 599px) {
+  .app-logo {
+    margin-right: 8px !important;
+  }
+  .meta-button {
+    padding-right: 0px !important;
+    padding-left: 8px !important;
+  }
+  .menu-button {
+    padding: 0 8px !important;
+    min-width: 48px !important;
+  }
+  .search-button {
+    width: 40px;
+  }
+}

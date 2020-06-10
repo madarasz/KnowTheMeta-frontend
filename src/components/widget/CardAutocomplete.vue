@@ -1,9 +1,24 @@
 <template>
-  <v-autocomplete :append-icon="mdiMagnify" :allow-overflow="false" clearable persistent-hint
-    :items="cardTitles" :hide-no-data="hideFiltered" :search-input.sync="searchString" :loading="loading"
-    placeholder="search for card" no-data-text="no such card"
-    v-model="selected" @change="cardSelected">
-  </v-autocomplete>
+  <div>
+    <!-- desktop -->
+    <v-autocomplete :append-icon="mdiMagnify" :allow-overflow="false" clearable persistent-hint
+      :items="cardTitles" :hide-no-data="hideFiltered" :search-input.sync="searchString" :loading="loading"
+      placeholder="search for card" no-data-text="no such card" class="mr-4 mt-4"
+      v-model="selected" @change="cardSelected" v-if="$vuetify.breakpoint.mdAndUp">
+    </v-autocomplete>
+    <!-- mobile -->
+    <div v-if="!$vuetify.breakpoint.mdAndUp">
+      <v-btn icon depressed @click="searchMobile(true)" v-if="!mobileSearch" class="search-button">
+        <v-icon>{{ mdiMagnify }}</v-icon>
+      </v-btn>
+      <v-autocomplete :append-icon="mdiMagnify" :allow-overflow="false" clearable persistent-hint
+        :items="cardTitles" :hide-no-data="hideFiltered" :search-input.sync="searchString" :loading="loading"
+        placeholder="card search" no-data-text="no such card" class="ml-2 mt-4"
+        v-model="selected" @change="cardSelected" v-show="mobileSearch"
+        ref="mobileautocomplete" @blur="searchMobile(false)">
+      </v-autocomplete>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,6 +36,7 @@ export default {
   },
   data: () => ({
     mdiMagnify,
+    mobileSearch: false, // is search ongoing on mobile screen
     loading: false, // loading animation
     selected: {}, // selected item
     searchString: '', // search string
@@ -50,6 +66,16 @@ export default {
       }
       this.hideFiltered = false
       return itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
+    },
+    searchMobile: function (enable) {
+      this.$emit('mobile-search', enable)
+      this.mobileSearch = enable
+      // set focus on input field
+      if (enable) {
+        this.$nextTick(() => {
+          this.$refs.mobileautocomplete.$refs.input.focus()
+        })
+      }
     }
   },
   watch: {
@@ -77,9 +103,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.v-autocomplete__content {
-  margin-top: 2px;
-}
-</style>
