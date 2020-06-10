@@ -89,12 +89,9 @@ export default {
         }
         // if on the root, forward to the latest meta
         if (this.$route.name === 'Root') {
-          this.$router.push('/meta/' + this.latestMetaCode + '/ids').catch(err => {
-            console.error('Could not navigate to latest meta: ' + err)
-          })
+          this.$router.push('/meta/' + this.latestMetaCode + '/ids').catch()
         }
-      }).catch((err) => {
-        console.error(err)
+      }).catch(() => {
         this.showError('Could not load metas')
       })
     },
