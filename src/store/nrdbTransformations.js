@@ -32,7 +32,10 @@ const transformCardData = function (cardData, packData, imgUrlTemplate) {
       cards[cardData[i].title].image_url = 'image_url' in cardData[i] ? cardData[i].image_url : imgUrlTemplate.replace('{code}', cardData[i].code) // keep image fresh
       if (legal) {
         for (let u = 0; u < cards[cardData[i].title].in_pack.length; u++) {
-          packData.find(x => { return x.code === cards[cardData[i].title].in_pack[u] }).legal_reprints.push(cardData[i].title)
+          packData.find(x => { return x.code === cards[cardData[i].title].in_pack[u] }).legal_reprints.push({
+            title: cardData[i].title,
+            code: cardData[i].code
+          })
         }
       }
       cards[cardData[i].title].in_pack.push(cardData[i].pack_code)

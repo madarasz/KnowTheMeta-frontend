@@ -30,8 +30,10 @@
               <v-expansion-panel-content class="bordered-bottom pb-2">
                 <small v-if="pack.legal_reprints.length" :data-testid="'legal-list-' + pack.code">
                   <strong>legal cards: </strong>
-                  <em v-for="(reprint, index) in pack.legal_reprints" :key="reprint">
-                    {{ reprint }}<span v-if="index !== pack.legal_reprints.length - 1">, </span>
+                  <em v-for="(reprint, index) in pack.legal_reprints" :key="reprint.code">
+                    <router-link :to="cardUrl(reprint)" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-title', eventLabel: reprint.title })">
+                      {{ reprint.title }}
+                    </router-link><span v-if="index !== pack.legal_reprints.length - 1">, </span>
                   </em>
                 </small>
                 <small v-if="pack.legal_reprints.length === 0">
@@ -50,6 +52,7 @@
 import { mapState } from 'vuex'
 import DesktopCardSubtitle from '@/components/header/DesktopCardSubtitle.vue'
 import transform from '@/store/nrdbTransformations'
+import cardtransform from '@/netrunnerTransformations'
 
 export default {
   name: 'CycleLister',
@@ -64,6 +67,9 @@ export default {
   methods: {
     getPacks: function (cycleCode) {
       return this.netrunnerdb.packs.filter(x => { return x.cycle_code === cycleCode }).sort(transform.compareReleaseDates)
+    },
+    cardUrl: function (card) {
+      return cardtransform.cardUrl(card)
     },
     expand: function (packcode) {
       // fire analytics event
