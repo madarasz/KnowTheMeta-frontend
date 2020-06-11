@@ -2,7 +2,7 @@
   <div>
     <v-app>
       <!-- app bar -->
-      <app-bar/>
+      <app-bar :prev-route="prevRoute"/>
       <!-- router view -->
       <router-view/>
       <!-- snackbar messages -->
@@ -25,6 +25,9 @@ export default {
   components: {
     AppBar
   },
+  data: () => ({
+    prevRoute: false
+  }),
   methods: {
     ...mapMutations({
       closeSnackbar: 'snackbar/closeSnackbar'
@@ -36,6 +39,7 @@ export default {
   watch: {
     '$route' (to, from) {
       document.title = to.meta.title || 'Know the Meta - Netrunner'
+      this.prevRoute = from
     }
   }
 }

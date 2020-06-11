@@ -2,7 +2,7 @@
   <v-app-bar dark dense app :color="$route.name !== 'Card statistics' ? 'primary' : 'black'">
     <!-- Ktm Logo -->
     <div class="app-logo">
-      <router-link :to="'/meta/' + this.latestMetaCode + '/ids'" aria-label="to latest meta"
+      <router-link :to="latestMetaUrl" aria-label="to latest meta"
           @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'logo' })">
         <v-img :src="require('../../assets/ktm.png')" width="24px" aria-label="logo"/>
       </router-link>
@@ -69,6 +69,9 @@ import transform from '@/netrunnerTransformations.js'
 
 export default {
   name: 'AppBar',
+  props: {
+    prevRoute: Object
+  },
   components: {
     CardAutocomplete,
     VListItem // eslint-disable-line vue/no-unused-components
@@ -90,7 +93,7 @@ export default {
         }
         // if on the root, forward to the latest meta
         if (this.$route.name === 'Root') {
-          this.$router.push('/meta/' + this.latestMetaCode + '/ids').catch()
+          this.$router.push(this.latestMetaUrl).catch()
         }
       }).catch(() => {
         this.showError('Could not load metas')
@@ -99,8 +102,14 @@ export default {
     goBack: function () {
       // fire analytics event
       this.$ga.event({ eventCategory: 'Navigation', eventAction: 'back' })
-      // navigate back
-      this.$router.go(-1)
+      // navigate
+      if (this.prevRoute.fullPath === '/') {
+        // this was the first page, going to latest meta instead of back
+        this.$router.push(this.latestMetaUrl)
+      } else {
+        // navigate back
+        this.$router.go(-1)
+      }
     },
     ...mapMutations({
       fallbackToLatestMeta: 'metas/fallbackToLatestMeta'
@@ -114,6 +123,9 @@ export default {
     }),
     shortMetaTitle: function () {
       return transform.shortenMeta(this.currentMetaTitle)
+    },
+    latestMetaUrl: function () {
+      return '/meta/' + this.latestMetaCode + '/ids'
     }
   }
 }
