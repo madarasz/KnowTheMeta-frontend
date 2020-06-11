@@ -58,6 +58,10 @@ export default {
   watch: {
     '$route.params.metacode' (newMetacode) {
       this.getMetaData(newMetacode)
+      this.setPageTitle()
+    },
+    '$route.params.subview' (newSubview) {
+      this.setPageTitle()
     }
   },
   methods: {
@@ -65,9 +69,25 @@ export default {
       this.loaded = false
       this.$store.dispatch('metas/getMetaData', metacode).then((response) => {
         this.loaded = true
+        this.setPageTitle()
       }).catch(() => {
         // TODO: error handling
       })
+    },
+    setPageTitle: function () {
+      let title = ''
+      const subview = this.$route.params.subview
+      if (subview || subview.length > 0) {
+        if (subview === 'ids') {
+          title += 'Identities - '
+        } else {
+          title += subview[0].toUpperCase() + subview.slice(1) + ' - '
+        }
+      }
+      if (this.getCurrentMeta && this.getCurrentMeta.meta && this.getCurrentMeta.meta.title) {
+        title += this.getCurrentMeta.meta.title + ' - '
+      }
+      document.title = title + 'Know the Meta - Netrunner'
     },
     ...mapMutations({
       setCurrentMetaCode: 'metas/setCurrentMetaCode'

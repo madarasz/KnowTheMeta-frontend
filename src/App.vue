@@ -32,6 +32,11 @@ export default {
   },
   computed: {
     ...mapState(['snackbar'])
+  },
+  watch: {
+    '$route' (to, from) {
+      document.title = to.meta.title || 'Know the Meta - Netrunner'
+    }
   }
 }
 </script>

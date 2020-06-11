@@ -6,26 +6,41 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Root'
+    name: 'Root',
+    meta: {
+      title: 'Know the Meta - Netrunner'
+    }
   },
   {
     path: '/meta/:metacode/:subview',
     name: 'Meta',
+    meta: {
+      title: 'Know the Meta - Netrunner'
+    },
     component: () => import(/* webpackChunkName: "meta" */ '../views/Meta.vue')
   },
   {
     path: '/mwl',
     name: 'MWL',
+    meta: {
+      title: 'Most Wanted List (MWL) - Know the Meta - Netrunner'
+    },
     component: () => import(/* webpackChunkName: "mwl" */ '../views/MWL.vue')
   },
   {
     path: '/rotation',
     name: 'Rotation',
+    meta: {
+      title: 'Rotation - Know the Meta - Netrunner'
+    },
     component: () => import(/* webpackChunkName: "rotation" */ '../views/Rotation.vue')
   },
   {
     path: '/card/:cardcode',
     name: 'Card statistics',
+    meta: {
+      title: 'Card - Know the Meta - Netrunner'
+    },
     component: () => import(/* webpackChunkName: "rotation" */ '../views/CardStat.vue')
   }
 ]

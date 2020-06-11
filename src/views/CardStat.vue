@@ -55,6 +55,13 @@ export default {
     this.getCardStats()
     this.getMwlData()
   },
+  watch: {
+    'cardStats.card.title': function (newValue, Oldvalue) {
+      if (this.cardStats && this.cardStats.card) {
+        document.title = this.cardStats.card.title + ' - Know the Meta - Netrunner'
+      }
+    }
+  },
   methods: {
     getCardStats: function () {
       this.$store.dispatch('cards/getCardStat', this.$route.params.cardcode).then(() => {
