@@ -7,6 +7,9 @@
     <v-alert type="warning" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
       Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
     </v-alert>
+    <v-alert color="blue-grey" type="warning" dark v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && !netrunnerdb.cards[cardStats.card.title].legal" data-testid="warning-rotated" class="ma-2 pa-2">
+      This card has rotated and it is not legal to play.
+    </v-alert>
     <!-- Print carousel -->
     <v-row>
       <v-col class="pb-0 col-md-6">
