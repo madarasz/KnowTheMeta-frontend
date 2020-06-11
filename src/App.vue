@@ -26,7 +26,7 @@ export default {
     AppBar
   },
   data: () => ({
-    prevRoute: false
+    prevRoute: { fullPath: '/' }
   }),
   methods: {
     ...mapMutations({
