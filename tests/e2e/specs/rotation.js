@@ -1,6 +1,5 @@
 describe('Rotation', () => {
-
-  beforeEach (() => {
+  beforeEach(() => {
     cy.clearLocalStorage()
     // stub netrunnerdb
     cy.server()

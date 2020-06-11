@@ -10,26 +10,26 @@
 // const webpack = require('@cypress/webpack-preprocessor')
 
 const {
-  addMatchImageSnapshotPlugin,
-} = require('cypress-image-snapshot/plugin');
+  addMatchImageSnapshotPlugin
+} = require('cypress-image-snapshot/plugin')
 
 module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
-  addMatchImageSnapshotPlugin(on, config);
+  addMatchImageSnapshotPlugin(on, config)
 
-  on(`task`, {
-    error(message) {
-      console.error("\x1b[31m", "ERROR:", message, "\x1b[0m");
+  on('task', {
+    error (message) {
+      console.error('\x1b[31m', 'ERROR:', message, '\x1b[0m')
       return null
     },
-    warn(message) {
-      console.warn("\x1b[33m", "WARNING:", message, "\x1b[0m");
+    warn (message) {
+      console.warn('\x1b[33m', 'WARNING:', message, '\x1b[0m')
       return null
-    },
-  });
+    }
+  })
 
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',

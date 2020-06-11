@@ -3,8 +3,7 @@
 // https://www.cypress.io/blog/2017/11/28/testing-vue-web-application-with-vuex-data-store-and-rest-backend/
 
 describe('Meta Switching', () => {
-
-  beforeEach (() => {
+  beforeEach(() => {
     cy.clearLocalStorage()
     // stub metas
     cy.server()
@@ -18,11 +17,11 @@ describe('Meta Switching', () => {
   const getStore = () => cy.window().its('app.$store')
 
   // checks meta data on identities
-  function checkMetaIdentityData(side, meta) {
+  function checkMetaIdentityData (side, meta) {
     cy.get(`[data-testid=table-popularity-${side}]`).find('tr').its('length').should('be.at.least', 6)
     cy.get(`#chart-popularity-${side}`).matchImageSnapshot(`chart-popularity-${side}-${meta}`)
     cy.get(`#chart-winrate-${side}`).matchImageSnapshot(`chart-winrate-${side}-${meta}`)
-    cy.get(`#chart-side-winrate`).matchImageSnapshot(`chart-side-winrate-${meta}`)
+    cy.get('#chart-side-winrate').matchImageSnapshot(`chart-side-winrate-${meta}`)
   }
 
   it('Root visit gets forwarded to latest meta', () => {
@@ -51,12 +50,12 @@ describe('Meta Switching', () => {
         .click()
       cy.get('[data-testid=list-metas] > :nth-child(2)')
         .click()
-        cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cellSecond) => {
-          // check that the values are different for different metas
-          expect($cellSecond.text()).not.to.eq($cell.text())
-          checkMetaIdentityData('runner', 'uprising-booster-pack')
-          checkMetaIdentityData('corporation', 'uprising-booster-pack')
-        })
+      cy.get('[data-testid=table-popularity-runner] > .v-data-table__wrapper > table > tbody > :nth-child(1) > .text-right').then(($cellSecond) => {
+        // check that the values are different for different metas
+        expect($cellSecond.text()).not.to.eq($cell.text())
+        checkMetaIdentityData('runner', 'uprising-booster-pack')
+        checkMetaIdentityData('corporation', 'uprising-booster-pack')
+      })
     })
     // check if selected meta is remembered
     cy.visit('/mwl')
@@ -81,7 +80,7 @@ describe('Meta Switching', () => {
     cy.get('[data-testid=list-metas] > :nth-child(2)').click()
     getStore().its('state.metas.currentMetaCode').should('not.be.null')
     cy.url().should('include', '/meta/uprising-booster-pack/cards')
-    cy.contains(`[data-testid=popular-runner] > div > div > :nth-child(2) > .card-title > a`, 'Mystic Maemi')
+    cy.contains('[data-testid=popular-runner] > div > div > :nth-child(2) > .card-title > a', 'Mystic Maemi')
   })
 
   it('Non-meta page is visited first, navigate to meta', () => {

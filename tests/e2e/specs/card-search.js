@@ -1,6 +1,5 @@
 describe('Card Search', () => {
-
-  beforeEach (() => {
+  beforeEach(() => {
     cy.clearLocalStorage()
     // stub netrunnerdb
     cy.server()
