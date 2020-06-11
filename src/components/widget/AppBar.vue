@@ -39,19 +39,19 @@
     <card-autocomplete @mobile-search="mobileSearch = $event" v-if="$route.name !== 'Card statistics'"/>
     <!-- Other menu items -->
     <v-toolbar-items v-if="$route.name !== 'Card statistics' && !mobileSearch">
-      <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'" class="menu-button">
+      <v-btn depressed :color="$route.path === '/MWL' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-mwl">
         <router-link to="/MWL" tag="span">
           MWL
         </router-link>
       </v-btn>
-      <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'" class="menu-button">
+      <v-btn depressed :color="$route.path === '/Rotation' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-rotation">
         <router-link to="/Rotation" tag="span">
           Rotation
         </router-link>
       </v-btn>
     </v-toolbar-items>
     <!-- Card stat app bar -->
-    <v-btn icon depressed @click="goBack" v-if="$route.name === 'Card statistics'" aria-label="navigate back">
+    <v-btn icon depressed @click="goBack" v-if="$route.name === 'Card statistics'" aria-label="navigate back" data-testid="menu-back">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
     <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">

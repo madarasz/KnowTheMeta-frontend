@@ -27,10 +27,10 @@
                 </v-row>
               </v-expansion-panel-header>
               <!-- legal cardlist -->
-              <v-expansion-panel-content class="bordered-bottom pb-2">
+              <v-expansion-panel-content class="bordered-bottom pb-2" :data-testid="testId + '-' + pack.code + '-cards'">
                 <small v-if="pack.legal_reprints.length" :data-testid="'legal-list-' + pack.code">
                   <strong>legal cards: </strong>
-                  <em v-for="(reprint, index) in pack.legal_reprints" :key="reprint.code">
+                  <em v-for="(reprint, index) in pack.legal_reprints" :key="reprint.code + index">
                     <router-link :to="cardUrl(reprint)" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-title', eventLabel: reprint.title })">
                       {{ reprint.title }}
                     </router-link><span v-if="index !== pack.legal_reprints.length - 1">, </span>
