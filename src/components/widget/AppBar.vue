@@ -2,8 +2,9 @@
   <v-app-bar dark dense app :color="$route.name !== 'Card statistics' ? 'primary' : 'black'">
     <!-- Ktm Logo -->
     <div class="app-logo">
-      <router-link :to="'/meta/' + this.latestMetaCode + '/ids'" @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'logo' })">
-        <v-img :src="require('../../assets/ktm.png')" width="24px"/>
+      <router-link :to="'/meta/' + this.latestMetaCode + '/ids'" aria-label="to latest meta"
+          @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'logo' })">
+        <v-img :src="require('../../assets/ktm.png')" width="24px" aria-label="logo"/>
       </router-link>
     </div>
     <!-- Regular app bar -->
@@ -50,7 +51,7 @@
       </v-btn>
     </v-toolbar-items>
     <!-- Card stat app bar -->
-    <v-btn icon @click="goBack" v-if="$route.name === 'Card statistics'">
+    <v-btn icon depressed @click="goBack" v-if="$route.name === 'Card statistics'" aria-label="navigate back">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
     <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
