@@ -1,6 +1,8 @@
 import axios from 'axios'
 import transform from '@/store/nrdbTransformations'
 
+const cacheTime = 1000 * 60 * 60 // 1 hour
+
 export const netrunnerdb = {
   namespaced: true,
   state: {
@@ -8,7 +10,9 @@ export const netrunnerdb = {
     packs: [],
     cards: {},
     prints: {},
-    mwl: []
+    mwl: [],
+    mwlTimestamp: 0,
+    cardTimestamp: 0
   },
   getters: {
   },
@@ -17,11 +21,19 @@ export const netrunnerdb = {
     getCardData ({ dispatch }, getMwlData = false) {
       dispatch('getCycles', getMwlData)
     },
-    getCycles ({ commit, dispatch }, getMwlData = false) {
-      return axios.get('https://netrunnerdb.com/api/2.0/public/cycles').then((response) => {
-        commit('setCycles', response.data.data)
-        dispatch('getPacks', getMwlData)
-      })
+    getCycles ({ commit, dispatch, state }, getMwlData = false) {
+      if (state.cards.length === 0 || Date.now() - state.cardTimestamp > cacheTime) {
+        return axios.get('https://netrunnerdb.com/api/2.0/public/cycles').then((response) => {
+          commit('setCycles', response.data.data)
+          dispatch('getPacks', getMwlData)
+        })
+      } else {
+        if (getMwlData) {
+          dispatch('getMwl')
+        }
+        console.log('Cards cached')
+        return Promise.resolve()
+      }
     },
     getPacks ({ commit, dispatch }, getMwlData = false) {
       return axios.get('https://netrunnerdb.com/api/2.0/public/packs').then((response) => {
@@ -37,14 +49,19 @@ export const netrunnerdb = {
         }
       })
     },
-    getMwl ({ commit }) {
-      return axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
-        commit('resetMwl')
-        for (let i = response.data.data.length - 1; i >= 0; i--) {
-          commit('addMwl', response.data.data[i])
-        }
-        commit('compareMwls')
-      })
+    getMwl ({ commit, state }) {
+      if (state.mwl.length === 0 || Date.now() - state.mwlTimestamp > cacheTime) {
+        return axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
+          commit('resetMwl')
+          for (let i = response.data.data.length - 1; i >= 0; i--) {
+            commit('addMwl', response.data.data[i])
+          }
+          commit('compareMwls')
+        })
+      } else {
+        console.log('MWL cached')
+        return Promise.resolve()
+      }
     }
   },
   mutations: {
@@ -61,6 +78,7 @@ export const netrunnerdb = {
       const result = transform.transformCardData(cards, state.packs, imgtemplate)
       state.cards = result.cards
       state.prints = result.prints
+      state.cardTimestamp = Date.now()
     },
     // empties all mwl data
     resetMwl (state) {
@@ -76,6 +94,7 @@ export const netrunnerdb = {
     // compares latest MWL and the previous, adds badge data to latest MWL
     compareMwls (state) {
       transform.addBadgesToMwl(state.mwl[0], state.mwl[1])
+      state.mwlTimestamp = Date.now()
     }
   }
 }

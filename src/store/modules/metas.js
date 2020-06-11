@@ -1,9 +1,12 @@
 import axios from 'axios'
 
+const cacheTime = 1000 * 60 * 60 // 1 hour
+
 export const metas = {
   namespaced: true,
   state: {
     currentMetaCode: null,
+    metaListTimestamp: 0,
     metaList: [],
     metaData: {}
   },
@@ -27,16 +30,25 @@ export const metas = {
     }
   },
   actions: {
-    getMetaList ({ commit }) {
-      return axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
-        commit('setMetaList', response.data)
-      }) // .catch((err) => { console.error(err) })
+    getMetaList ({ commit, state }) {
+      if (Date.now() - state.metaListTimestamp > cacheTime) {
+        return axios.get('https://alwaysberunning.net/ktm/metas.json').then((response) => {
+          commit('setMetaList', response.data)
+        }) // .catch((err) => { console.error(err) })
+      } else {
+        return Promise.resolve()
+      }
     },
-    getMetaData ({ commit }, metacode) {
-      return axios.get(`https://alwaysberunning.net/ktm/${metacode}.json`).then((response) => {
+    getMetaData ({ commit, state }, metacode) {
+      if (!state.metaData[metacode] || Date.now() - state.metaData[metacode].timestamp > cacheTime) {
+        return axios.get(`https://alwaysberunning.net/ktm/${metacode}.json`).then((response) => {
+          commit('setCurrentMetaCode', metacode)
+          commit('setMetaData', response.data)
+        })
+      } else {
         commit('setCurrentMetaCode', metacode)
-        commit('setMetaData', response.data)
-      })
+        return Promise.resolve()
+      }
     }
   },
   mutations: {
@@ -48,9 +60,11 @@ export const metas = {
       state.currentMetaCode = metacode
     },
     setMetaList (state, list) {
+      state.metaListTimestamp = Date.now()
       state.metaList = list
     },
     setMetaData (state, metadata) {
+      metadata.timestamp = Date.now()
       state.metaData = { ...state.metaData, [metadata.meta.code]: metadata } // new object, to follow vue reactivity rules
     }
   }
