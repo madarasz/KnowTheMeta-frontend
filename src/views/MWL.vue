@@ -95,24 +95,31 @@ export default {
   computed: {
     ...mapState(['netrunnerdb']),
     getSubtitle: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return ''
       return 'latest mwl, from: ' + this.netrunnerdb.mwl[0].date_start
     },
     bannedRunner: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, true)
     },
     bannedCorp: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, false)
     },
     restrictedRunner: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, true)
     },
     restrictedCorp: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, false)
     },
     removedRunner: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, true)
     },
     removedCorp: function () {
+      if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, false)
     }
   }
