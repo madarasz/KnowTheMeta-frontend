@@ -9,7 +9,7 @@
     </div>
     <!-- Regular app bar -->
     <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="$route.name !== 'Card statistics'">
-      Know the Meta
+      <h1>Know the Meta</h1>
     </v-toolbar-title>
     <!-- Meta selector -->
     <v-toolbar-items v-if="$route.name !== 'Card statistics'">
@@ -55,7 +55,7 @@
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
     <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
-      {{ cards.currentCardTitle }}
+      <h1>{{ cards.currentCardTitle }}</h1>
     </v-toolbar-title>
   </v-app-bar>
 </template>
@@ -130,3 +130,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h1 {
+  font-size: 20px;
+  font-weight: unset;
+}
+</style>

@@ -13,6 +13,7 @@ export default {
   },
   data: () => ({
     options: {
+      animation: false,
       maintainAspectRatio: false,
       plugins: [annotation, pluginDataLabels],
       annotation: {
