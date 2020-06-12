@@ -7,9 +7,7 @@
       <tooltip :text="tooltip" v-if="tooltip"/>
       <v-spacer/>
       <!-- Subtitle -->
-      <span class="overline">
-        {{ subtitle }}
-      </span>
+      <span class="overline" v-html="subtitle"/>
     </v-card-title>
     <!-- Pretext -->
     <slot name="pretext"></slot>
