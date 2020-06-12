@@ -12,7 +12,7 @@
     </v-alert>
     <!-- Print carousel -->
     <v-row>
-      <v-col class="pb-0 col-md-6">
+      <v-col class="pb-0 pr-0 col-md-6">
         <print-lister v-if="cardStats" :prints="cardStats.prints" :is-runner="isRunner"/>
       </v-col>
     </v-row>
