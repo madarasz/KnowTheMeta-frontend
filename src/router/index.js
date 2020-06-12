@@ -12,7 +12,7 @@ const routes = [
     }
   },
   {
-    path: '/meta/:metacode/:subview',
+    path: '/meta/:metacode/:subview/:side?',
     name: 'Meta',
     meta: {
       title: 'Know the Meta - Netrunner'
@@ -20,7 +20,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "meta" */ '../views/Meta.vue')
   },
   {
-    path: '/mwl',
+    path: '/mwl/:side?',
     name: 'MWL',
     meta: {
       title: 'Most Wanted List (MWL) - Know the Meta - Netrunner'
@@ -28,7 +28,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "mwl" */ '../views/MWL.vue')
   },
   {
-    path: '/rotation',
+    path: '/rotation/:section?',
     name: 'Rotation',
     meta: {
       title: 'Rotation - Know the Meta - Netrunner'

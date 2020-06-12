@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Small screens -->
-    <runner-corp-tabs>
+    <runner-corp-tabs :url="'/meta/' + $route.params.metacode + '/cards'">
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">

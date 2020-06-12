@@ -3,13 +3,13 @@
     <v-content>
       <v-card>
         <v-tabs height="40px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs">
-          <v-tab href="#ids" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/ids' })">
+          <v-tab href="#ids" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/ids/' + ($route.params.side || '') })">
             Identities
           </v-tab>
-          <v-tab href="#decks" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/decks' })">
+          <v-tab href="#decks" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/decks/' + ($route.params.side || '') })">
             Decks
           </v-tab>
-          <v-tab href="#cards" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/cards' })">
+          <v-tab href="#cards" @click="$router.push({ path: '/meta/' + $route.params.metacode + '/cards/' + ($route.params.side || '') })">
             Cards
           </v-tab>
         </v-tabs>

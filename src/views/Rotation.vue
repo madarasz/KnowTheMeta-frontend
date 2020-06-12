@@ -17,10 +17,10 @@
       <!-- Tabs -->
       <v-card>
         <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs" @change="changeTab(tab)">
-          <v-tab href="#legal">
+          <v-tab href="#legal" @click="$router.push({ path: '/rotation/legal' })">
             Legal
           </v-tab>
-          <v-tab href="#rotated">
+          <v-tab href="#rotated" @click="$router.push({ path: '/rotation/rotated' })">
             Rotated
           </v-tab>
         </v-tabs>
@@ -51,9 +51,11 @@ export default {
     DesktopCardDivided,
     CycleLister
   },
-  data: () => ({
-    tab: 'legal' // default tab
-  }),
+  data: function () {
+    return {
+      tab: this.$route.params.section || 'legal' // default tab
+    }
+  },
   mounted: function () {
     this.getNetunnerDBData()
   },

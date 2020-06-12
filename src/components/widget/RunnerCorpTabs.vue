@@ -3,10 +3,10 @@
   <div v-if="$vuetify.breakpoint.smAndDown">
     <v-card>
       <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs" @change="changeTab(tab)">
-        <v-tab href="#runner">
+        <v-tab href="#runner" @click="$router.push({ path: url + '/runner' })">
           Runner
         </v-tab>
-        <v-tab href="#corp">
+        <v-tab href="#corp" @click="$router.push({ path: url + '/corp' })">
           Corporation
         </v-tab>
       </v-tabs>
@@ -26,9 +26,14 @@
 <script>
 export default {
   name: 'RunnerCorpTabs',
-  data: () => ({
-    tab: 'runner' // default tab
-  }),
+  props: {
+    url: String
+  },
+  data: function () {
+    return {
+      tab: this.$route.params.side || 'runner' // default tab
+    }
+  },
   methods: {
     changeTab: function (tabName) {
       // fire analytics event
@@ -37,6 +42,11 @@ export default {
         eventAction: 'change-side-tab',
         eventLabel: tabName
       })
+    }
+  },
+  watch: {
+    '$route.params.side': function (newValue, oldValue) {
+      this.tab = newValue || 'runner'
     }
   }
 }

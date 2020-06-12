@@ -27,7 +27,7 @@
     </div>
     <!-- Mobile screens -->
     <div v-if="$vuetify.breakpoint.smAndDown">
-      <runner-corp-tabs>
+      <runner-corp-tabs url="/mwl">
         <template v-slot:between>
           <mobile-panel :title="netrunnerdb.mwl[0].name" :subtitle="getSubtitle" hide-actions v-if="netrunnerdb.mwl && netrunnerdb.mwl.length"/>
         </template>

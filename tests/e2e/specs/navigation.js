@@ -29,11 +29,11 @@ describe('Navigation', () => {
     cy.title().should('eq', 'Cards - Uprising - Know the Meta - Netrunner')
     // navigate to MWL
     cy.get('[data-testid=menu-mwl]').click()
-    cy.url().should('include', '/MWL')
+    cy.url().should('include', '/mwl')
     cy.title().should('eq', 'Most Wanted List (MWL) - Know the Meta - Netrunner')
     // navigate to Rotation
     cy.get('[data-testid=menu-rotation]').click()
-    cy.url().should('include', '/Rotation')
+    cy.url().should('include', '/rotation')
     cy.title().should('eq', 'Rotation - Know the Meta - Netrunner')
   })
 
