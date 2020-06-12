@@ -31,7 +31,6 @@ export const netrunnerdb = {
         if (getMwlData) {
           dispatch('getMwl')
         }
-        console.log('Cards cached')
         return Promise.resolve()
       }
     },
@@ -59,7 +58,6 @@ export const netrunnerdb = {
           commit('compareMwls')
         })
       } else {
-        console.log('MWL cached')
         return Promise.resolve()
       }
     }
