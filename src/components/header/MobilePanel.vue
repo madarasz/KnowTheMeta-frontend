@@ -8,9 +8,7 @@
       <tooltip :text="tooltip" v-if="tooltip"/>
       <v-spacer/>
       <!-- Subtitle -->
-      <span class="overline text-right">
-        {{ subtitle }}
-      </span>
+      <span class="overline text-right" v-html="subtitle"/>
     </v-expansion-panel-header>
     <v-expansion-panel-content>
       <slot></slot>

@@ -96,7 +96,7 @@ export default {
     ...mapState(['netrunnerdb']),
     getSubtitle: function () {
       if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return ''
-      return 'latest mwl, from: ' + this.netrunnerdb.mwl[0].date_start
+      return '<span class="d-none d-sm-inline">latest mwl, </span>from: <span class="text-no-wrap">' + this.netrunnerdb.mwl[0].date_start + '</span>'
     },
     bannedRunner: function () {
       if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
