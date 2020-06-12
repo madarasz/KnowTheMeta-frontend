@@ -51,10 +51,10 @@
       </v-btn>
     </v-toolbar-items>
     <!-- Card stat app bar -->
-    <v-btn icon depressed @click="goBack" v-if="$route.name === 'Card statistics'" aria-label="navigate back" data-testid="menu-back">
+    <v-btn icon depressed @click="goBack" v-show="$route.name === 'Card statistics'" aria-label="navigate back" data-testid="menu-back">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
-    <v-toolbar-title class="mr-4" v-if="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
+    <v-toolbar-title class="mr-4" v-show="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
       <h1>{{ cards.currentCardTitle }}</h1>
     </v-toolbar-title>
   </v-app-bar>

@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getCardStats: function () {
-      this.$store.dispatch('cards/getCardStat', this.$route.params.cardcode).then(() => {
+      this.$store.dispatch('cards/getCardStat', this.$route.params.cardcode + '-' + this.$route.params.cardtitle).then(() => {
       })
     },
     getMwlData: function () {

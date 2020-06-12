@@ -131,7 +131,7 @@ const winrateError = function (entry) {
 }
 
 const cardUrl = function (card) {
-  return '/card/' + card.code + '-' + card.title.toLowerCase().replace(/\s/g, ' ').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')
+  return '/card/' + card.code + '/' + card.title.toLowerCase().replace(/\s/g, ' ').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')
 }
 
 export default {

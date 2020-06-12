@@ -45,7 +45,7 @@ describe('Navigation', () => {
   })
 
   it('Navigate to card first, use back button', () => {
-    cy.visit('/card/25001-reina-roja-freedom-fighter')
+    cy.visit('/card/25001/reina-roja-freedom-fighter')
     cy.title().should('eq', 'Reina Roja: Freedom Fighter - Know the Meta - Netrunner')
     cy.get('[data-testid=menu-back]').click()
     cy.url().should('include', '/meta/')

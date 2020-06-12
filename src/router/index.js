@@ -36,7 +36,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "rotation" */ '../views/Rotation.vue')
   },
   {
-    path: '/card/:cardcode',
+    path: '/card/:cardcode/:cardtitle',
     name: 'Card statistics',
     meta: {
       title: 'Card - Know the Meta - Netrunner'
