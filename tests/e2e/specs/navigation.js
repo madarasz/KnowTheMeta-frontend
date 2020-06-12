@@ -5,14 +5,21 @@ describe('Navigation', () => {
     cy.server()
     cy.route('GET', 'https://alwaysberunning.net/ktm/metas.json', 'fixture:metas.json')
     cy.route('GET', 'https://alwaysberunning.net/ktm/uprising.json', 'fixture:uprising.json')
+    cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/cycles', 'fixture:cycles.json')
+    cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/packs', 'fixture:packs.json')
+    cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/cards', 'fixture:cards.json')
     // TODO: stub these as well, getting strange error
-    // cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/cycles', 'fixture:cycles.json')
-    // cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/packs', 'fixture:packs.json')
-    // cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/cards', 'fixture:cards.json')
     // cy.route('GET', 'https://netrunnerdb.com/api/2.0/public/mwl', 'fixture:mwl.json')
     // screen size
     cy.viewport(1000, 660)
   })
+
+  // checks page title, app bar title then navigates back
+  function cardCheck(cardTitle) {
+    cy.contains('[data-testid=card-title]', cardTitle)
+    cy.title().should('eq', cardTitle + ' - Know the Meta - Netrunner')
+    cy.get('[data-testid=menu-back]').click()
+  }
 
   it('Navigate menu points, check titles and urls', () => {
     cy.visit('/')
@@ -44,13 +51,6 @@ describe('Navigation', () => {
     cy.url().should('include', '/meta/')
     cy.title().should('eq', 'Identities - Uprising - Know the Meta - Netrunner')
   })
-
-  // checks page title, app bar title then navigates back
-  function cardCheck(cardTitle) {
-    cy.contains('[data-testid=card-title]', cardTitle)
-    cy.title().should('eq', cardTitle + ' - Know the Meta - Netrunner')
-    cy.get('[data-testid=menu-back]').click()
-  }
 
   it('Navigate to card stats from meta, use back button', () => {
     // meta identities
@@ -91,5 +91,37 @@ describe('Navigation', () => {
     cy.get('[data-testid=rotation-rotated-core2-cards] > div > small > :nth-child(4) > a').scrollIntoView().click()
     cardCheck('Stimhack')
     cy.title().should('eq', 'Rotation - Know the Meta - Netrunner')
+  })
+
+  it('Mobile navigation', () => {
+    cy.viewport(360, 640)
+    // meta
+    cy.visit('/meta/uprising/ids')
+    cy.get('[data-testid="/meta/uprising/ids/corp"]').click()
+    cy.url().should('include', '/meta/uprising/ids/corp')
+    cy.get('[href="#cards"]').click()
+    cy.url().should('include', '/meta/uprising/cards/corp')
+    cy.get('[data-testid="/meta/uprising/cards/runner"]').click()
+    cy.url().should('include', '/meta/uprising/cards/runner')
+    cy.get('[href="#ids"]').click()
+    cy.url().should('include', '/meta/uprising/ids/runner')
+    // mwl
+    cy.get('[data-testid=menu-mwl]').click()
+    cy.get('[data-testid="/mwl/corp"]').click()
+    cy.get('[data-testid=list-corp-banned] > :nth-child(1) > :nth-child(1) > :nth-child(1) > .text-center > .d-inline-flex > a > .v-responsive > .v-responsive__content').click()
+    cardCheck('Museum of History')
+    cy.url().should('include', '/mwl/corp')
+    // rotation
+    cy.get('[data-testid=menu-rotation]').click()
+    cy.get('[href="#rotated"]').click()
+    cy.get('[data-testid=rotation-rotated-core2] > .v-expansion-panel > .v-expansion-panel-header > .v-expansion-panel-header__icon > .v-icon > svg').scrollIntoView().click()
+    cy.get('[data-testid=rotation-rotated-core2-cards] > div > small > :nth-child(5) > a').scrollIntoView().click()
+    cardCheck('Cyberfeeder')
+    cy.url().should('include', '/rotation/rotated')
+    // search
+    cy.get('.search-button').click()
+    cy.get('[data-testid=card-search]').type('falsi')
+    cy.get('.v-menu__content > [role=listbox] > .v-list-item').click()
+    cardCheck('Falsified Credentials')
   })
 })    

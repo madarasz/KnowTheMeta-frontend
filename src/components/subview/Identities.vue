@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Small screens -->
-    <runner-corp-tabs :url="'/meta/' + $route.params.metacode + '/identities'">
+    <runner-corp-tabs :url="'/meta/' + $route.params.metacode + '/ids'">
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel title="Popularity" :subtitle="popSubtitle">

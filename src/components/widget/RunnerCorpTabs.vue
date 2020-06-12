@@ -3,10 +3,10 @@
   <div v-if="$vuetify.breakpoint.smAndDown">
     <v-card>
       <v-tabs height="36px" v-model="tab" :fixed-tabs="$vuetify.breakpoint.xs" @change="changeTab(tab)">
-        <v-tab href="#runner" @click="$router.push({ path: url + '/runner' })">
+        <v-tab href="#runner" @click="$router.push({ path: url + '/runner' })" :data-testid="url + '/runner'">
           Runner
         </v-tab>
-        <v-tab href="#corp" @click="$router.push({ path: url + '/corp' })">
+        <v-tab href="#corp" @click="$router.push({ path: url + '/corp' })" :data-testid="url + '/corp'">
           Corporation
         </v-tab>
       </v-tabs>
