@@ -3,30 +3,54 @@
         "url": "/card/21108-engolo",
         "packs": ["Kampala Ascendent"],
         "mwlWarning": true,
-        "lowDataWarning": false
+        "lowDataWarning": false,
+        "banned": false,
+        "restricted": true,
+        "rotated": false
     },
     "Liza Talking Thunder: Prominent Legislator": {
         "url": "/card/22008-liza-talking-thunder-prominent-legislator",
         "packs": ["Reign and Reverie"],
         "mwlWarning": true,
-        "lowDataWarning": true
+        "lowDataWarning": true,
+        "banned": true,
+        "restricted": false,
+        "rotated": false
     },
     "Daily Casts": {
         "url": "/card/26094-daily-casts",
         "packs": ["Uprising", "Creation and Control"],
         "mwlWarning": false,
-        "lowDataWarning": false
+        "lowDataWarning": false,
+        "banned": false,
+        "restricted": false,
+        "rotated": false
     },
     "Gold Farmer": {
         "url": "/card/26116-gold-farmer",
         "packs": ["Uprising"],
         "mwlWarning": false,
-        "lowDataWarning": false
+        "lowDataWarning": false,
+        "banned": false,
+        "restricted": false,
+        "rotated": false
     },
     "False Lead": {
         "url": "/card/26129-false-lead",
         "packs": ["Uprising", "Revised Core Set", "A Study in Static"],
         "mwlWarning": false,
-        "lowDataWarning": false
+        "lowDataWarning": false,
+        "banned": false,
+        "restricted": false,
+        "rotated": false
+    },
+    "D4v1d": {
+        "url": "/card/06033-d4v1d",
+        "packs": ["The Spaces Between"],
+        "mwlWarning": false,
+        "lowDataWarning": true,
+        "banned": false,
+        "restricted": false,
+        "rotated": true
     }
 }

@@ -36,6 +36,22 @@ describe('Card Stats', () => {
         } else {
           cy.get('[data-testid=warning-low-data]').should('not.exist')
         }
+        // card warnings
+        if (cards[card].banned) {
+          cy.get('[data-testid=warning-banned]')
+        } else {
+          cy.get('[data-testid=warning-banned]').should('not.exist')
+        }
+        if (cards[card].restricted) {
+          cy.get('[data-testid=warning-restricted]')
+        } else {
+          cy.get('[data-testid=warning-restricted]').should('not.exist')
+        }
+        if (cards[card].rotated) {
+          cy.get('[data-testid=warning-rotated]')
+        } else {
+          cy.get('[data-testid=warning-rotated]').should('not.exist')
+        }
         // check chart explanation
         cy.get('[data-testid=card-chart-explanation]').should('not.visible')
         cy.get('[data-testid=explain-chart]').click()
