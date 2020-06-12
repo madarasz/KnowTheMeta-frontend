@@ -8,7 +8,7 @@
     </v-autocomplete>
     <!-- mobile -->
     <div v-if="!$vuetify.breakpoint.mdAndUp">
-      <v-btn icon depressed @click="searchMobile(true)" v-if="!mobileSearch" class="search-button" aria-label="card search">
+      <v-btn icon depressed @click="searchMobile(true)" v-show="!mobileSearch" class="search-button" aria-label="card search">
         <v-icon>{{ mdiMagnify }}</v-icon>
       </v-btn>
       <v-autocomplete :append-icon="mdiMagnify" :allow-overflow="false" clearable persistent-hint
