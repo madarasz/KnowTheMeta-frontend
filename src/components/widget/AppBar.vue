@@ -39,14 +39,16 @@
     <card-autocomplete @mobile-search="mobileSearch = $event" v-if="$route.name !== 'Card statistics'"/>
     <!-- Other menu items -->
     <v-toolbar-items v-if="$route.name !== 'Card statistics' && !mobileSearch">
-      <v-btn depressed :color="$route.path === '/mwl' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-mwl">
+      <v-btn depressed :color="$route.path === '/mwl' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-mwl" aria-label="most wanted list">
         <router-link to="/mwl" tag="span">
-          MWL
+          <span class="d-xxs-none d-xs-inline">MWL</span>
+          <v-icon color="white" class="d-xxs-only-inline">{{ mdiPoliceBadge }}</v-icon>
         </router-link>
       </v-btn>
-      <v-btn depressed :color="$route.path === '/rotation' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-rotation">
+      <v-btn depressed :color="$route.path === '/rotation' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-rotation" aria-label="rotation">
         <router-link to="/rotation" tag="span">
-          Rotation
+          <span class="d-xxs-none d-xs-inline">Rotation</span>
+          <v-icon color="white" class="d-xxs-only-inline">{{ mdiRotate3dVariant }}</v-icon>
         </router-link>
       </v-btn>
     </v-toolbar-items>
@@ -63,7 +65,7 @@
 <script>
 import { VListItem } from 'vuetify/lib'
 import CardAutocomplete from '@/components/widget/CardAutocomplete.vue'
-import { mdiMenuDown, mdiArrowLeft } from '@mdi/js'
+import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
 
@@ -79,6 +81,8 @@ export default {
   data: () => ({
     mdiMenuDown,
     mdiArrowLeft,
+    mdiPoliceBadge,
+    mdiRotate3dVariant,
     mobileSearch: false
   }),
   mounted: function () {

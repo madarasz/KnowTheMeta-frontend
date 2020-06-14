@@ -101,3 +101,20 @@ tr.v-row-group__header > td > button {
     width: 40px;
   }
 }
+/* for small mobile screens */
+.d-xxs-none {
+  display: none;
+}
+@media (min-width: 360px) {
+  .d-xs-inline {
+    display: inline !important;
+  }
+  .d-xxs-only-inline {
+    display: none !important;
+  }
+}
+@media (max-width: 359px) {
+  .d-xxs-only-inline {
+    display: inline !important;
+  }
+}
