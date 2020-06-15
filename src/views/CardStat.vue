@@ -1,41 +1,45 @@
 <template>
   <v-content>
-    <!-- Alerts -->
-    <v-alert type="error" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
-      Currently banned by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
-    </v-alert>
-    <v-alert type="warning" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
-      Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
-    </v-alert>
-    <v-alert color="blue-grey" type="warning" dark v-if="netrunnerdb.cards && Object.keys(netrunnerdb.cards).length && cardStats && cardStats.card && !netrunnerdb.cards[cardStats.card.title].legal" data-testid="warning-rotated" class="ma-2 pa-2">
-      This card has rotated and it is not legal to play.
-    </v-alert>
-    <!-- Print carousel -->
-    <v-row>
-      <v-col class="pb-0 pr-0 col-md-6">
-        <print-lister v-if="cardStats" :prints="cardStats.prints" :is-runner="isRunner"/>
-      </v-col>
-    </v-row>
-    <!-- low data warning -->
-    <v-row justify="center" v-if="cardStats && cardStats.lowData" data-testid="warning-low-data">
-      <v-col cols="auto pb-0">
-        <v-alert border="left" colored-border color="#B56503" elevation="1"
-            class="ml-2 mr-2 mb-0 pa-2 pl-4 pr-4 caption text-center" dismissible>
-          This chart has metas with low amounts of win rate data. These statistics could be misleading.
+    <v-container>
+      <v-row>
+        <!-- Alerts -->
+        <v-alert type="error" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
+          Currently banned by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
         </v-alert>
-      </v-col>
-    </v-row>
-    <!-- Card Chart -->
-    <v-row class="mb--4">
-      <v-col class="pt-0">
-        <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
-          v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl && netrunnerdb.mwl.length"
-          :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"
-          :style="Object.keys(cardStats.metaData).length === 1 ? 'max-width: 600px; margin: 0 auto' : ''"/>
-      </v-col>
-    </v-row>
-    <!-- explain chart -->
-    <explain-card-chart/>
+        <v-alert type="warning" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
+          Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
+        </v-alert>
+        <v-alert color="blue-grey" type="warning" dark v-if="netrunnerdb.cards && Object.keys(netrunnerdb.cards).length && cardStats && cardStats.card && !netrunnerdb.cards[cardStats.card.title].legal" data-testid="warning-rotated" class="ma-2 pa-2">
+          This card has rotated and it is not legal to play.
+        </v-alert>
+      </v-row>
+      <!-- Print carousel -->
+      <v-row>
+        <v-col class="pb-0 pr-0 col-md-6">
+          <print-lister v-if="cardStats" :prints="cardStats.prints" :is-runner="isRunner"/>
+        </v-col>
+      </v-row>
+      <!-- low data warning -->
+      <v-row justify="center" v-if="cardStats && cardStats.lowData" data-testid="warning-low-data">
+        <v-col cols="auto pb-0">
+          <v-alert border="left" colored-border color="#B56503" elevation="1"
+              class="ml-2 mr-2 mb-0 pa-2 pl-4 pr-4 caption text-center" dismissible>
+            This chart has metas with low amounts of win rate data. These statistics could be misleading.
+          </v-alert>
+        </v-col>
+      </v-row>
+      <!-- Card Chart -->
+      <v-row class="mb--4">
+        <v-col class="pt-0">
+          <card-chart :meta-data="cardStats.metaData" :meta-list="metas.metaList" :mwl="netrunnerdb.mwl" :card-title="cardStats.card.title"
+            v-if="cardStats && cardStats.metaData && metas.metaList.length && netrunnerdb.mwl && netrunnerdb.mwl.length"
+            :is-runner="isRunner" :is-identity="cardStats.card.type_code === 'identity'" chart-id="card-chart" style="height: 300px"
+            :style="Object.keys(cardStats.metaData).length === 1 ? 'max-width: 600px; margin: 0 auto' : ''"/>
+        </v-col>
+      </v-row>
+      <!-- explain chart -->
+      <explain-card-chart/>
+    </v-container>
   </v-content>
 </template>
 
