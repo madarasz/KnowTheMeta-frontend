@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar dark dense app :color="$route.name !== 'Card statistics' ? 'primary' : 'black'">
+  <v-app-bar dark dense app :color="!isCardStatsPage ? 'primary' : 'black'">
     <!-- Ktm Logo -->
     <div class="app-logo">
       <router-link :to="latestMetaUrl" aria-label="to latest meta"
@@ -8,18 +8,18 @@
       </router-link>
     </div>
     <!-- Regular app bar -->
-    <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="$route.name !== 'Card statistics'">
+    <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="!isCardStatsPage">
       <h1>Know the Meta</h1>
     </v-toolbar-title>
     <!-- Meta selector -->
-    <v-toolbar-items v-if="$route.name !== 'Card statistics'">
-      <v-menu bottom left v-if="metas && metas.metaList.length > 0">
+    <v-toolbar-items v-if="!isCardStatsPage">
+      <v-menu bottom left v-if="metaLoaded">
         <!-- Meta name -->
         <template v-slot:activator="{ on }">
           <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="meta-button" v-on="on" data-testid="current-meta">
             <span class="d-none d-sm-block">{{ currentMetaTitle ? currentMetaTitle : 'loading' }}</span>
             <span class="d-flex d-sm-none">{{ shortMetaTitle }}</span>
-            <v-icon icon data-testid="icon-meta-select" v-if="currentMetaTitle">{{ mdiMenuDown }}</v-icon>
+            <v-icon icon data-testid="icon-meta-select" v-if="metaLoaded">{{ mdiMenuDown }}</v-icon>
           </v-btn>
         </template>
         <!-- Meta list -->
@@ -35,10 +35,10 @@
         </v-list>
       </v-menu>
     </v-toolbar-items>
-    <v-spacer v-if="$route.name !== 'Card statistics'"/>
-    <card-autocomplete @mobile-search="mobileSearch = $event" v-if="$route.name !== 'Card statistics'"/>
+    <v-spacer v-if="!isCardStatsPage"/>
+    <card-autocomplete @mobile-search="mobileSearch = $event" v-if="!isCardStatsPage"/>
     <!-- Other menu items -->
-    <v-toolbar-items v-if="$route.name !== 'Card statistics' && !mobileSearch">
+    <v-toolbar-items v-if="!isCardStatsPage && !mobileSearch">
       <v-btn depressed :color="$route.path === '/mwl' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-mwl" aria-label="most wanted list">
         <router-link to="/mwl" tag="span">
           <span class="d-xxs-none d-xs-inline">MWL</span>
@@ -53,10 +53,10 @@
       </v-btn>
     </v-toolbar-items>
     <!-- Card stat app bar -->
-    <v-btn icon depressed @click="goBack" v-show="$route.name === 'Card statistics'" aria-label="navigate back" data-testid="menu-back">
+    <v-btn icon depressed @click="goBack" v-show="isCardStatsPage" aria-label="navigate back" data-testid="menu-back">
       <v-icon>{{ mdiArrowLeft }}</v-icon>
     </v-btn>
-    <v-toolbar-title class="mr-4" v-show="$route.name === 'Card statistics' && cards && cards.currentCardTitle" data-testid="card-title">
+    <v-toolbar-title v-show="isCardStatsPage && cards && cards.currentCardTitle" data-testid="card-title">
       <h1>{{ cards.currentCardTitle }}</h1>
     </v-toolbar-title>
   </v-app-bar>
@@ -130,6 +130,12 @@ export default {
     },
     latestMetaUrl: function () {
       return '/meta/' + this.latestMetaCode + '/ids'
+    },
+    isCardStatsPage: function () {
+      return this.$route.name === 'Card statistics'
+    },
+    metaLoaded: function () {
+      return this.metas && this.metas.metaList.length > 0
     }
   }
 }
