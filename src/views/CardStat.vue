@@ -3,13 +3,16 @@
     <v-container>
       <v-row>
         <!-- Alerts -->
-        <v-alert type="error" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].banned" data-testid="warning-banned" class="ma-2 pa-2">
+        <v-alert type="error" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].banned"
+            data-testid="warning-banned" class="ma-2 pa-2" width="100%">
           Currently banned by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
         </v-alert>
-        <v-alert type="warning" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted" data-testid="warning-restricted" class="ma-2 pa-2">
+        <v-alert type="warning" v-if="netrunnerdb.mwl && netrunnerdb.mwl.length && cardStats && cardStats.card.title in netrunnerdb.mwl[0].restricted"
+            data-testid="warning-restricted" class="ma-2 pa-2" width="100%">
           Currently restricted by <span class="text-no-wrap">'{{ netrunnerdb.mwl[0].name }}'</span>
         </v-alert>
-        <v-alert color="blue-grey" type="warning" dark v-if="netrunnerdb.cards && Object.keys(netrunnerdb.cards).length && cardStats && cardStats.card && !netrunnerdb.cards[cardStats.card.title].legal" data-testid="warning-rotated" class="ma-2 pa-2">
+        <v-alert color="blue-grey" type="warning" dark v-if="netrunnerdb.cards && Object.keys(netrunnerdb.cards).length && cardStats && cardStats.card && !netrunnerdb.cards[cardStats.card.title].legal"
+            data-testid="warning-rotated" class="ma-2 pa-2" width="100%">
           This card has rotated and it is not legal to play.
         </v-alert>
       </v-row>

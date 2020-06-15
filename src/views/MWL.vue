@@ -15,11 +15,11 @@
         </template>
         <template v-slot:posttext>
           <!-- Restricted -->
-          <desktop-card-subtitle subtitle="Restricted"/>
+          <desktop-card-subtitle subtitle="Restricted" v-if="isRestrictedUsed"/>
           <cards-in-two-wrapper in-card-text :runner-cards="restrictedRunner" :corp-cards="restrictedCorp"
-              runner-test-id="list-runner-restricted" corp-test-id="list-corp-restricted"/>
+              runner-test-id="list-runner-restricted" corp-test-id="list-corp-restricted" v-if="isRestrictedUsed"/>
           <!-- Removed from MWL -->
-          <desktop-card-subtitle subtitle="Removed from MWL"/>
+          <desktop-card-subtitle subtitle="Removed from MWL, legal again"/>
           <cards-in-two-wrapper in-card-text :runner-cards="removedRunner" :corp-cards="removedCorp"
               runner-test-id="list-runner-removed" corp-test-id="list-corp-removed"/>
         </template>
@@ -35,10 +35,10 @@
           <mobile-panel title="Banned" color="accent" thin>
             <card-lister :card-list="bannedRunner" test-id="list-runner-banned"/>
           </mobile-panel>
-          <mobile-panel title="Restricted" color="accent" thin>
-            <card-lister :card-list="restrictedRunner" test-id="list-runner-restricted"/>
+          <mobile-panel title="Restricted" color="accent" thin v-if="isRestrictedUsed">
+            <card-lister :card-list="restrictedRunner" test-id="list-runner-restricted" v-if="isRestrictedUsed"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL" color="accent" thin>
+          <mobile-panel title="Removed from MWL, legal again" color="accent" thin>
             <card-lister :card-list="removedRunner" test-id="list-runner-removed"/>
           </mobile-panel>
         </template>
@@ -46,10 +46,10 @@
           <mobile-panel title="Banned" color="accent" thin>
             <card-lister :card-list="bannedCorp" test-id="list-corp-banned"/>
           </mobile-panel>
-          <mobile-panel title="Restricted" color="accent" thin>
-            <card-lister :card-list="restrictedCorp" test-id="list-corp-restricted"/>
+          <mobile-panel title="Restricted" color="accent" thin v-if="isRestrictedUsed">
+            <card-lister :card-list="restrictedCorp" test-id="list-corp-restricted" v-if="isRestrictedUsed"/>
           </mobile-panel>
-          <mobile-panel title="Removed from MWL" color="accent" thin>
+          <mobile-panel title="Removed from MWL, legal again" color="accent" thin>
             <card-lister :card-list="removedCorp" test-id="list-corp-removed"/>
           </mobile-panel>
         </template>
@@ -89,7 +89,7 @@ export default {
         const arrayElement = cardSet[title]
         arrayElement.title = title
         return arrayElement
-      }).filter(x => { return x.runner === runner })
+      }).filter(x => { return x.runner === runner && x.legal })
     }
   },
   computed: {
@@ -121,6 +121,9 @@ export default {
     removedCorp: function () {
       if (!this.netrunnerdb.mwl || this.netrunnerdb.mwl.length === 0) return []
       return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, false)
+    },
+    isRestrictedUsed: function () {
+      return this.restrictedRunner.length + this.restrictedCorp.length > 0
     }
   }
 }
