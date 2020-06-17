@@ -14,7 +14,7 @@ export default {
   },
   data: function () {
     return {
-      hiddenStates: new Array(Object.keys(this.factions).length).fill(false), // which dataset is hidden
+      hiddenStates: Object.keys(this.factions).reduce((attrs, key) => ({ ...attrs, [key]: false }), {}), // which dataset is hidden
       // chart options
       options: {
         plugins: [pluginErrorBars],
@@ -50,7 +50,8 @@ export default {
   },
   methods: {
     updateVisibility: function (e, legendItem) {
-      this.$set(this.hiddenStates, legendItem.datasetIndex, !this.hiddenStates[legendItem.datasetIndex]) // change visibility with Vue reactivity
+      const factioncode = Object.keys(this.factions)[legendItem.datasetIndex]
+      this.$set(this.hiddenStates, factioncode, !this.hiddenStates[factioncode]) // change visibility with Vue reactivity
       this.renderChart(this.chartdata, this.options)
     },
     getFactionData: function (factioncode) {
@@ -59,16 +60,14 @@ export default {
     getErrorBars: function (factioncode) {
       const result = {}
       if (this.errorBar === false) return result
-      let i = 0
       for (const meta of Object.values(this.metaData.metaData)) {
         const error = transform.winrateError(meta.factions[this.sideCode].find(x => x.code === factioncode))
-        if ((this.errorBar === true || this.errorBar === factioncode) && !this.hiddenStates[i]) {
+        if ((this.errorBar === true || this.errorBar === factioncode) && !this.hiddenStates[factioncode]) {
           result[meta.meta.title] = {
             plus: error,
             minus: -error
           }
         }
-        i++
       }
       return result
     }
@@ -87,7 +86,6 @@ export default {
         labels: this.metaData.metaList.map(x => x.title).reverse(),
         datasets: []
       }
-      let i = 0
       for (const [factioncode, faction] of Object.entries(this.factions)) {
         results.datasets.push({
           data: this.getFactionData(factioncode).map(x => transform.winrate(x)),
@@ -95,7 +93,7 @@ export default {
           label: faction + ' win rate',
           backgroundColor: 'rgba(0,0,0,0)',
           borderWidth: 2,
-          hidden: this.hiddenStates[i],
+          hidden: this.hiddenStates[factioncode],
           borderColor: transform.factionCodeToColor(factioncode),
           pointBackgroundColor: transform.factionCodeToColor(factioncode),
           pointRadius: 2,
@@ -103,7 +101,6 @@ export default {
             display: false
           }
         })
-        i++
       }
       return results
     }
