@@ -118,3 +118,8 @@ tr.v-row-group__header > td > button {
     display: inline !important;
   }
 }
+/* linebreak for buttons */
+.with-linebreaks {
+  overflow: hidden;
+  white-space: normal;
+}

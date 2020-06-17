@@ -44,7 +44,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "rotation" */ '../views/CardStat.vue')
   },
   {
-    path: '/drilldown',
+    path: '/drilldown/:sidecode?/:factioncode?',
     name: 'Drilldown',
     meta: {
       title: 'Know the Meta - Netrunner'
