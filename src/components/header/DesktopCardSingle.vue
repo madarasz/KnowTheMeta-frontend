@@ -8,6 +8,7 @@
       <v-spacer/>
       <!-- Subtitle -->
       <span class="overline" v-html="subtitle"/>
+      <slot name="title-action"></slot>
     </v-card-title>
     <!-- Content -->
     <v-card-text :data-testid="'desktop-card-content-' + title">

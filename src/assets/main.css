@@ -123,3 +123,18 @@ tr.v-row-group__header > td > button {
   overflow: hidden;
   white-space: normal;
 }
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+/* fixes for too much spacing for inputs */
+.title-input .v-messages {
+  display: none !important;
+}
+.title-input .v-text-field__details {
+  display: none !important;
+}
+.title-input .v-input__slot {
+  margin: 0 !important;
+}

@@ -25,7 +25,9 @@
                 <desktop-card-single title="Faction popularity">
                   <template v-slot:content>
                     <faction-popularity :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :stacked="popularityStacked"/>
-                    <v-switch v-model="popularityStacked" label="stacked"/>
+                  </template>
+                  <template v-slot:title-action>
+                    <v-switch v-model="popularityStacked" label="stacked" class="ma-0 pa-0 title-input"/>
                   </template>
                 </desktop-card-single>
               </v-col>
@@ -35,7 +37,9 @@
                 <desktop-card-single title="Faction winrate">
                   <template v-slot:content>
                     <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
-                    <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar"/>
+                  </template>
+                  <template v-slot:title-action>
+                    <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar" class="mt-0 title-input"/>
                   </template>
                 </desktop-card-single>
               </v-col>

@@ -8,7 +8,7 @@
       </router-link>
     </div>
     <!-- Regular app bar -->
-    <v-toolbar-title class="mr-4 d-none d-sm-flex" v-if="!isCardStatsPage">
+    <v-toolbar-title class="mr-4 d-none d-md-flex" v-if="!isCardStatsPage">
       <h1>Know the Meta</h1>
     </v-toolbar-title>
     <!-- Meta selector -->
@@ -34,6 +34,13 @@
           </template>
         </v-list>
       </v-menu>
+      <!-- Drilldown -->
+      <v-btn depressed :color="$route.path.includes('/drilldown') ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-drilldown" aria-label="data drilldown">
+        <router-link to="/drilldown" tag="span">
+          <span class="d-none d-sm-inline">Drilldown</span>
+          <v-icon color="white" class="d-flex d-sm-none">{{ mdiBullseyeArrow }}</v-icon>
+        </router-link>
+      </v-btn>
     </v-toolbar-items>
     <v-spacer v-if="!isCardStatsPage"/>
     <card-autocomplete @mobile-search="mobileSearch = $event" v-if="!isCardStatsPage"/>
@@ -65,7 +72,7 @@
 <script>
 import { VListItem } from 'vuetify/lib'
 import CardAutocomplete from '@/components/widget/CardAutocomplete.vue'
-import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant } from '@mdi/js'
+import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant, mdiBullseyeArrow } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
 
@@ -83,6 +90,7 @@ export default {
     mdiArrowLeft,
     mdiPoliceBadge,
     mdiRotate3dVariant,
+    mdiBullseyeArrow,
     mobileSearch: false
   }),
   mounted: function () {
