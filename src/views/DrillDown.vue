@@ -1,47 +1,74 @@
 <template>
   <v-content>
     <!-- Desktop -->
-    <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
-      <desktop-card title="Win rates over time">
-        <template v-slot:left>
-          <side-winrate-meta :meta-data="metas" v-if="!sideCode && metaListLoaded"/>
+    <v-container class="pa-4" fluid v-show="$vuetify.breakpoint.mdAndUp">
+      <v-row dense>
+        <!-- Drilldown options -->
+        <v-col class="col-md-6 col-lg-4 pa-0 pr-2">
+          <desktop-card-single title="Drilldown">
+            <template v-slot:content>
+              <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
+            </template>
+          </desktop-card-single>
+        </v-col>
+        <!-- Charts -->
+        <v-col class="col-md-6 col-lg-8 pa-0 pl-2">
+          <!-- side win rates -->
+          <desktop-card-single title="Side win rates" v-if="!sideCode && metaListLoaded">
+            <template v-slot:content>
+              <side-winrate-meta :meta-data="metas" v-if="!sideCode && metaListLoaded"/>
+            </template>
+          </desktop-card-single>
           <div v-if="sideCode && allMetaDataLoaded">
-            <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
-            <v-row>
-              <v-col cols="6">
-                <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar"/>
+            <v-row no-gutters class="pb-4">
+              <v-col>
+                <desktop-card-single title="Faction popularity">
+                  <template v-slot:content>
+                    <faction-popularity :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :stacked="popularityStacked"/>
+                    <v-switch v-model="popularityStacked" label="stacked"/>
+                  </template>
+                </desktop-card-single>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col>
+                <desktop-card-single title="Faction winrate">
+                  <template v-slot:content>
+                    <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
+                    <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar"/>
+                  </template>
+                </desktop-card-single>
               </v-col>
             </v-row>
           </div>
-        </template>
-        <template v-slot:right>
-          <h3 class="text-center pb-2">Drilldown</h3>
-          <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
-        </template>
-      </desktop-card>
-    </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-content>
 </template>
 
 <script>
-import DesktopCard from '@/components/header/DesktopCard.vue'
+import DesktopCardSingle from '@/components/header/DesktopCardSingle.vue'
 import SideWinrateMeta from '@/components/chart/SideWinrateMeta.vue'
 import FactionWinrate from '@/components/chart/FactionWinrate.vue'
+import FactionPopularity from '@/components/chart/FactionPopularity.vue'
 import DrillDownOptions from '@/components/widget/DrillDownOptions.vue'
 import { mapState } from 'vuex'
 
 export default {
   name: 'DrillDown',
   components: {
-    DesktopCard,
+    DesktopCardSingle,
     SideWinrateMeta,
     FactionWinrate,
+    FactionPopularity,
     DrillDownOptions
   },
   data: function () {
     return {
       sideCode: this.$route.params.sidecode || null,
-      selectedErrorBar: false
+      selectedErrorBar: false,
+      popularityStacked: false
     }
   },
   mounted () {
@@ -93,7 +120,7 @@ export default {
     },
     errorBarOptions: function () {
       const options = Object.entries(this.currentFactions).map(x => { return { text: x[1], value: x[0] } })
-      options.push({ text: 'NONE', value: false })
+      options.unshift({ text: 'NONE', value: false })
       options.push({ text: 'ALL', value: true })
       return options
     }

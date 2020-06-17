@@ -1,23 +1,21 @@
 <script>
 import { Line } from 'vue-chartjs'
 import transform from '@/netrunnerTransformations.js'
-import * as pluginErrorBars from 'chartjs-plugin-error-bars'
 
 export default {
   extends: Line,
-  name: 'FactionWinrate',
+  name: 'FactionPopularity',
   props: {
     metaData: Object,
     factions: Object,
     sideCode: String,
-    errorBar: [Boolean, String]
+    stacked: Boolean
   },
   data: function () {
     return {
       hiddenStates: Object.keys(this.factions).reduce((attrs, key) => ({ ...attrs, [key]: false }), {}), // which dataset is hidden
       // chart options
       options: {
-        plugins: [pluginErrorBars],
         maintainAspectRatio: false,
         responsive: true,
         animation: false,
@@ -27,6 +25,7 @@ export default {
         },
         scales: {
           yAxes: [{
+            stacked: this.stacked,
             ticks: {
               callback: function (value, index, values) {
                 return value + '%'
@@ -54,26 +53,15 @@ export default {
       this.$set(this.hiddenStates, factioncode, !this.hiddenStates[factioncode]) // change visibility with Vue reactivity
       this.renderChart(this.chartdata, this.options)
     },
-    getFactionData: function (factioncode) {
-      return this.factionMetaDataOrdered.map(meta => meta.find(faction => faction.code === factioncode))
-    },
-    getErrorBars: function (factioncode) {
-      const result = {}
-      if (this.errorBar === false) return result
-      for (const meta of Object.values(this.metaData.metaData)) {
-        const error = transform.winrateError(meta.factions[this.sideCode].find(x => x.code === factioncode))
-        if ((this.errorBar === true || this.errorBar === factioncode) && !this.hiddenStates[factioncode]) {
-          result[meta.meta.title] = {
-            plus: error,
-            minus: -error
-          }
-        }
-      }
-      return result
+    getFactionPopularity: function (factioncode) {
+      console.log(this.factionMetaDataOrdered.map(meta => meta.reduce((sum, current) => sum + current.used, 0)))
+      return this.factionMetaDataOrdered.map(meta => ((meta.find(faction => faction.code === factioncode).used / meta.reduce((sum, current) => sum + current.used, 0)) * 100).toFixed(1))
     }
   },
   watch: {
-    errorBar: function (newValue, OldValue) {
+    stacked: function (newValue, OldValue) {
+      this.options.scales.yAxes[0].stacked = newValue
+      this.options.scales.yAxes[0].ticks.max = newValue ? 100 : undefined
       this.renderChart(this.chartdata, this.options)
     }
   },
@@ -88,12 +76,11 @@ export default {
       }
       for (const [factioncode, faction] of Object.entries(this.factions)) {
         results.datasets.push({
-          data: this.getFactionData(factioncode).map(x => transform.winrate(x)),
-          errorBars: this.getErrorBars(factioncode),
-          label: faction + ' win rate',
+          data: this.getFactionPopularity(factioncode),
+          label: faction + ' popularity',
           backgroundColor: transform.factionCodeToColor(factioncode),
           borderWidth: 2,
-          fill: false,
+          fill: this.stacked,
           hidden: this.hiddenStates[factioncode],
           borderColor: transform.factionCodeToColor(factioncode),
           pointBackgroundColor: transform.factionCodeToColor(factioncode),
