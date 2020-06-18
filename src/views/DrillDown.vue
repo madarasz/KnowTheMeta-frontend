@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <!-- Desktop -->
-    <v-container class="pa-4" fluid v-show="$vuetify.breakpoint.mdAndUp">
+    <v-container class="pa-4" fluid v-if="$vuetify.breakpoint.mdAndUp">
       <v-row dense>
         <!-- Drilldown options -->
         <v-col class="col-md-6 col-lg-4 pa-0 pr-2">
@@ -20,6 +20,7 @@
             </template>
           </desktop-card-single>
           <div v-if="sideCode && allMetaDataLoaded">
+            <!-- faction popularity -->
             <v-row no-gutters class="pb-4">
               <v-col>
                 <desktop-card-single title="Faction popularity">
@@ -32,6 +33,7 @@
                 </desktop-card-single>
               </v-col>
             </v-row>
+            <!-- faction win rate -->
             <v-row no-gutters>
               <v-col>
                 <desktop-card-single title="Faction winrate">
@@ -39,7 +41,7 @@
                     <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
                   </template>
                   <template v-slot:title-action>
-                    <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar" class="mt-0 title-input"/>
+                    <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar" class="mt-0 title-input" style="max-width: 300px"/>
                   </template>
                 </desktop-card-single>
               </v-col>
@@ -48,6 +50,27 @@
         </v-col>
       </v-row>
     </v-container>
+    <!-- Mobile -->
+    <div v-if="!$vuetify.breakpoint.mdAndUp">
+      <mobile-panel title="Drilldown">
+        <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
+      </mobile-panel>
+      <mobile-panel title="Side win rates" v-if="!sideCode && metaListLoaded">
+        <side-winrate-meta :meta-data="metas" v-if="!sideCode && metaListLoaded"/>
+      </mobile-panel>
+      <mobile-panel title="Faction popularity" v-if="sideCode && allMetaDataLoaded">
+        <template v-slot:title-action>
+          <v-switch v-model="popularityStacked" label="stacked" class="ma-0 pa-0 title-input" @click.stop="popularityStacked = !popularityStacked"/>
+        </template>
+        <faction-popularity :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :stacked="popularityStacked"/>
+      </mobile-panel>
+      <mobile-panel title="Faction win rate" v-if="sideCode && allMetaDataLoaded">
+        <template v-slot:title-action>
+          <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar" class="mt-0 title-input" style="max-width: 130px" @click.native.stop=""/>
+        </template>
+        <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
+      </mobile-panel>
+    </div>
   </v-content>
 </template>
 
@@ -57,6 +80,7 @@ import SideWinrateMeta from '@/components/chart/SideWinrateMeta.vue'
 import FactionWinrate from '@/components/chart/FactionWinrate.vue'
 import FactionPopularity from '@/components/chart/FactionPopularity.vue'
 import DrillDownOptions from '@/components/widget/DrillDownOptions.vue'
+import MobilePanel from '@/components/header/MobilePanel.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -66,7 +90,8 @@ export default {
     SideWinrateMeta,
     FactionWinrate,
     FactionPopularity,
-    DrillDownOptions
+    DrillDownOptions,
+    MobilePanel
   },
   data: function () {
     return {

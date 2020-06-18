@@ -7,10 +7,11 @@
       <!-- Tooltip -->
       <tooltip :text="tooltip" v-if="tooltip"/>
       <v-spacer/>
+      <slot name="title-action"></slot>
       <!-- Subtitle -->
       <span class="overline text-right" v-html="subtitle"/>
     </v-expansion-panel-header>
-    <v-expansion-panel-content>
+    <v-expansion-panel-content :key="contentKey">
       <slot></slot>
     </v-expansion-panel-content>
   </v-expansion-panel>
@@ -37,7 +38,8 @@ export default {
     Tooltip
   },
   data: () => ({
-    openedIndex: 0
+    openedIndex: 0,
+    contentKey: 0
   }),
   methods: {
     expand: function () {
@@ -48,6 +50,12 @@ export default {
         eventLabel: this.title,
         eventValue: this.openedIndex === 0 ? 0 : 1 // send 0 on contract, 1 on expand
       })
+    }
+  },
+  // This fixes charts disappearing after reopening expansion panel
+  watch: {
+    openedIndex: function (newValue, oldValue) {
+      if (newValue === 0) this.contentKey++ // Force rerender of content if expansion panel is reopened.
     }
   }
 }

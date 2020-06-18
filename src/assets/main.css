@@ -105,7 +105,7 @@ tr.v-row-group__header > td > button {
 .d-xxs-none {
   display: none;
 }
-@media (min-width: 360px) {
+@media (min-width: 415px) {
   .d-xs-inline {
     display: inline !important;
   }
@@ -113,7 +113,7 @@ tr.v-row-group__header > td > button {
     display: none !important;
   }
 }
-@media (max-width: 359px) {
+@media (max-width: 414px) {
   .d-xxs-only-inline {
     display: inline !important;
   }
@@ -137,4 +137,30 @@ tr.v-row-group__header > td > button {
 }
 .title-input .v-input__slot {
   margin: 0 !important;
+}
+/* drilldown buttons */
+.drilldown-subtitle-left {
+  margin-top: -12px;
+  margin-left: -24px;
+  margin-right: -12px;
+  margin-bottom: 8px;
+}
+.drilldown-subtitle-right {
+  margin-top: -12px;
+  margin-left: -12px;
+  margin-right: -24px;
+  margin-bottom: 8px;
+}
+.v-btn__content {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: normal;
+}
+.drilldown-button {
+  width: 100%;
+  text-decoration: none;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  height: unset !important;
+  min-height: 36px;
 }
