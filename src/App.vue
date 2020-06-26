@@ -4,7 +4,9 @@
       <!-- app bar -->
       <app-bar :prev-route="prevRoute"/>
       <!-- router view -->
-      <router-view/>
+      <transition name="fade">
+        <router-view/>
+      </transition>
       <!-- snackbar messages -->
       <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="snackbar.timeout"
           :left="snackbar.left" :right="snackbar.right"

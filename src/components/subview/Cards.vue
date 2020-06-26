@@ -5,25 +5,31 @@
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </mobile-panel>
         <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-table :card-list="iceBreakers" test-id="table-icebreakers" v-if="cardsLoaded"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </mobile-panel>
       </template>
       <!-- Corp -->
       <template v-slot:corp>
         <mobile-panel :title="popularTitle" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </mobile-panel>
         <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-table :card-list="ice" test-id="table-icebreakers"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-table :card-list="ice" test-id="table-icebreakers" v-if="cardsLoaded"/>
         </mobile-panel>
         <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
-          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </mobile-panel>
       </template>
     </runner-corp-tabs>
@@ -32,28 +38,34 @@
       <!-- Popular in pack -->
       <desktop-card :title="popularTitle" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
-          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </template>
         <template v-slot:right>
-          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </template>
       </desktop-card>
       <!-- Breakers / ICE -->
       <desktop-card title="Breakers / ICE" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
-          <card-table :card-list="iceBreakers" test-id="table-icebreakers"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-table :card-list="iceBreakers" test-id="table-icebreakers" v-if="cardsLoaded"/>
         </template>
         <template v-slot:right>
-          <card-table :card-list="ice" test-id="table-ice"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-table :card-list="ice" test-id="table-ice" v-if="cardsLoaded"/>
         </template>
       </desktop-card>
       <!-- Winning -->
       <desktop-card title="Impressive winrates" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
         <template v-slot:left>
-          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </template>
         <template v-slot:right>
-          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="Object.keys(netrunnerdb.cards).length"/>
+          <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
+          <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </template>
       </desktop-card>
       <last-update :meta-info="metaData.meta"/>
@@ -162,6 +174,9 @@ export default {
         this.metaData.cards.corp.filter(x => { return x.tags.includes('ice') })
           .sort(transform.comparePopularity)
       )
+    },
+    cardsLoaded: function () {
+      return Object.keys(this.netrunnerdb.cards).length > 0
     }
   }
 }

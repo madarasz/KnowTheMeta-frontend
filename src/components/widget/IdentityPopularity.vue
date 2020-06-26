@@ -2,10 +2,12 @@
   <v-row>
     <!-- Chart -->
     <v-col cols="6" class="col-lg-4 offset-3 offset-sm-0 offset-md-3 offset-lg-1">
-      <popularity-chart :meta-data="sideData" :max-entries="showMax" :chart-id="'chart-popularity-' + side"/>
+      <div class="loader" v-if="!sideData"><span/><span/><span/></div>
+      <popularity-chart :meta-data="sideData" :max-entries="showMax" :chart-id="'chart-popularity-' + side" v-if="sideData"/>
     </v-col>
     <!-- Table -->
     <v-col cols="12" class="col-sm-6 col-md-12 col-lg-6 text-center">
+      <div class="loader" v-if="!sideData"><span/><span/><span/></div>
       <v-simple-table v-if="sideData" style="max-width: 350px; margin: 0 auto" class="pt-2 pop-table" :data-testid="'table-popularity-' + side">
         <tbody>
           <tr v-for="(identity, index) in sideData" :key="identity.title">

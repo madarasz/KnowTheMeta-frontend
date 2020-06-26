@@ -164,3 +164,44 @@ tr.v-row-group__header > td > button {
   height: unset !important;
   min-height: 36px;
 }
+
+/* loader animation */
+.loader {
+  height: 80px;
+  position: relative;
+}
+
+.loader span {
+  height: 35px;
+  width: 25px;
+  border: 2px solid rgba(0,0,0,0.12);
+  background-color: white;
+  border-radius: 5px;
+  animation: spin 1s cubic-bezier(0.5, 0, 0.7, 1.1) infinite;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: left bottom;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: -0.2s;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* router transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

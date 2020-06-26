@@ -5,9 +5,11 @@
       <!-- Legal -->
       <desktop-card-divided left-title="Legal" right-title="Rotated">
         <template v-slot:left>
+          <div class="loader" v-if="!cyclesLoaded"><span/><span/><span/></div>
           <cycle-lister :cycle-list="legalCycles" test-id="rotation-legal"/>
         </template>
         <template v-slot:right>
+          <div class="loader" v-if="!cyclesLoaded"><span/><span/><span/></div>
           <cycle-lister :cycle-list="rotatedCycles" legal-reprints test-id="rotation-rotated"/>
         </template>
       </desktop-card-divided>
@@ -29,9 +31,11 @@
       <v-container fluid class="pa-0">
         <v-tabs-items v-model="tab">
           <v-tab-item :key="1" value="legal" :transition="false" :reverse-transition="false">
+            <div class="loader" v-if="!cyclesLoaded"><span/><span/><span/></div>
             <cycle-lister :cycle-list="legalCycles" test-id="rotation-legal"/>
           </v-tab-item>
           <v-tab-item :key="2" value="rotated" :transition="false" :reverse-transition="false">
+            <div class="loader" v-if="!cyclesLoaded"><span/><span/><span/></div>
             <cycle-lister :cycle-list="rotatedCycles" legal-reprints test-id="rotation-rotated"/>
           </v-tab-item>
         </v-tabs-items>
@@ -80,6 +84,9 @@ export default {
     },
     rotatedCycles: function () {
       return transform.filterCycles(this.netrunnerdb.cycles.filter(x => { return x.rotated }).reverse())
+    },
+    cyclesLoaded: function () {
+      return this.netrunnerdb.cycles && this.netrunnerdb.cycles.length
     }
   }
 }
