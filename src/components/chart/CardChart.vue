@@ -117,10 +117,10 @@ export default {
         const metaTitle = metaDataArray[i][0]
         const mwlName = this.metaList.find(x => { return x.title === metaTitle }).mwl
         const mwl = this.mwl.find(x => { return x.name === mwlName })
-        if (this.cardTitle in mwl.banned) {
+        if (mwl && 'banned' in mwl && this.cardTitle in mwl.banned) {
           result.push('banned')
           mwlWarning = true
-        } else if (this.cardTitle in mwl.restricted) {
+        } else if (mwl && 'restricted' in mwl && this.cardTitle in mwl.restricted) {
           result.push('restricted')
           mwlWarning = true
         } else result.push('')
