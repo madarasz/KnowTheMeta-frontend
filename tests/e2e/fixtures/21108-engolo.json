@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 5,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 4,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 2,
+        "strength": 2,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Icebreaker - Decoder",
+        "side_code": "runner",
+        "text": "When you encounter a piece of ice, you may pay 2[credit] to have it gain <strong>code gate</strong> until the end of the encounter. Use this ability only once per turn.\n1[credit]: Break <strong>code gate</strong> subroutine.\n2[credit]: +4 strength.",
+        "title": "Engolo",
+        "type_code": "program",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "21108",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN55_108.png",
+            "pack_title": "Kampala Ascendent"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 41,
+            "wins": 75,
+            "draws": 0,
+            "losses": 86,
+            "avgPerDeck": 1.2439024,
+            "tags": "icebreaker-Decoder"
+        },
+        "Uprising Booster Pack": {
+            "used": 36,
+            "wins": 64,
+            "draws": 0,
+            "losses": 41,
+            "avgPerDeck": 1.25,
+            "tags": "icebreaker-Decoder"
+        },
+        "Downfall + MWL 3.3": {
+            "used": 91,
+            "wins": 156,
+            "draws": 0,
+            "losses": 118,
+            "avgPerDeck": 1.1208792,
+            "tags": "icebreaker-Decoder"
+        },
+        "Downfall + MWL 3.2": {
+            "used": 75,
+            "wins": 118,
+            "draws": 0,
+            "losses": 73,
+            "avgPerDeck": 1.16,
+            "tags": "winning,icebreaker-Decoder"
+        },
+        "Downfall": {
+            "used": 79,
+            "wins": 135,
+            "draws": 3,
+            "losses": 108,
+            "avgPerDeck": 1.1012658,
+            "tags": "icebreaker-Decoder"
+        }
+    }
+}

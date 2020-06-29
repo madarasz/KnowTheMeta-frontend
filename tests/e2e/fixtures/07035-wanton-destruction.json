@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 1,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 4,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Run - Sabotage",
+        "side_code": "runner",
+        "text": "Make a run on HQ. If successful, instead of accessing cards, you may spend any number of [click] to force the Corp to trash an equal number of cards from HQ at random.",
+        "title": "Wanton Destruction",
+        "type_code": "event",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "07035",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN22_35.png",
+            "pack_title": "Order and Chaos"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 43,
+            "wins": 95,
+            "draws": 0,
+            "losses": 77,
+            "avgPerDeck": 2.0930233,
+            "tags": "winning"
+        },
+        "Uprising Booster Pack": {
+            "used": 61,
+            "wins": 152,
+            "draws": 0,
+            "losses": 66,
+            "avgPerDeck": 2.147541,
+            "tags": "winning"
+        },
+        "Downfall + MWL 3.3": {
+            "used": 24,
+            "wins": 39,
+            "draws": 0,
+            "losses": 27,
+            "avgPerDeck": 2.3333333,
+            "tags": "winning"
+        },
+        "Downfall + MWL 3.2": {
+            "used": 17,
+            "wins": 40,
+            "draws": 0,
+            "losses": 16,
+            "avgPerDeck": 2.1176472,
+            "tags": "winning"
+        },
+        "Downfall": {
+            "used": 11,
+            "wins": 17,
+            "draws": 1,
+            "losses": 11,
+            "avgPerDeck": 1.8181819,
+            "tags": ""
+        }
+    }
+}

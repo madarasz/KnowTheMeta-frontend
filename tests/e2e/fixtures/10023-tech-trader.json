@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 1,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 1,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Connection",
+        "side_code": "runner",
+        "text": "Whenever you use a [trash] ability, gain 1[credit].",
+        "title": "Tech Trader",
+        "type_code": "resource",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "10023",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN31_23.png",
+            "pack_title": "Business First"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 31,
+            "wins": 55,
+            "draws": 0,
+            "losses": 85,
+            "avgPerDeck": 3,
+            "tags": ""
+        },
+        "Uprising Booster Pack": {
+            "used": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": 3,
+            "tags": ""
+        },
+        "Downfall + MWL 3.3": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.2": {
+            "used": 21,
+            "wins": 33,
+            "draws": 0,
+            "losses": 23,
+            "avgPerDeck": 3,
+            "tags": ""
+        },
+        "Downfall": {
+            "used": 23,
+            "wins": 40,
+            "draws": 2,
+            "losses": 39,
+            "avgPerDeck": 2.9565217,
+            "tags": ""
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 3,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 2,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": null,
+        "side_code": "runner",
+        "text": "Whenever you approach a piece of ice, you may expose it. You may then trash GPI Net Tap to jack out.",
+        "title": "GPI Net Tap",
+        "type_code": "hardware",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "11003",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN36_3.png",
+            "pack_title": "23 Seconds"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Uprising Booster Pack": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.3": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.2": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall": {
+            "used": 8,
+            "wins": 11,
+            "draws": 0,
+            "losses": 7,
+            "avgPerDeck": 3,
+            "tags": ""
+        }
+    }
+}

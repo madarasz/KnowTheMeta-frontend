@@ -1,0 +1,82 @@
+{
+    "card": {
+        "cost": 0,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 0,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 3,
+        "agenda_points": 1,
+        "trash_cost": 0,
+        "keywords": "Security",
+        "side_code": "corp",
+        "text": "<strong>Forfeit this agenda:</strong> If the Runner has 2 or more [click] remaining, they lose [click][click].",
+        "title": "False Lead",
+        "type_code": "agenda",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "26129",
+            "image_url": "https://netrunnerdb.com/card_image/26129.png",
+            "pack_title": "Uprising"
+        },
+        {
+            "code": "20124",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN49_124.png",
+            "pack_title": "Revised Core Set"
+        },
+        {
+            "code": "02080",
+            "image_url": "https://netrunnerdb.com/card_image/02080.png",
+            "pack_title": "A Study in Static"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 20,
+            "wins": 52,
+            "draws": 0,
+            "losses": 25,
+            "avgPerDeck": 2.5,
+            "tags": "popular-in-pack"
+        },
+        "Uprising Booster Pack": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.3": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.2": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        }
+    }
+}

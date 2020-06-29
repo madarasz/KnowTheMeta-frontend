@@ -51,9 +51,8 @@ export const netrunnerdb = {
     getMwl ({ commit, state }) {
       if (state.mwl.length === 0 || Date.now() - state.mwlTimestamp > cacheTime) {
         return axios.get('https://netrunnerdb.com/api/2.0/public/mwl').then((response) => {
-          commit('resetMwl')
           for (let i = response.data.data.length - 1; i >= 0; i--) {
-            commit('addMwl', response.data.data[i])
+            commit('addMwl', { mwl: response.data.data[i], index: response.data.data.length - 1 - i })
           }
           commit('compareMwls')
         })
@@ -78,16 +77,12 @@ export const netrunnerdb = {
       state.prints = result.prints
       state.cardTimestamp = Date.now()
     },
-    // empties all mwl data
-    resetMwl (state) {
-      state.mwl = []
-    },
     // adds an mwl data
-    addMwl (state, mwlData) {
+    addMwl (state, { mwl: mwlData, index }) {
       const mwl = transform.sortMwlData(mwlData.cards, state.cards, state.prints)
       mwl.name = mwlData.name
       mwl.date_start = mwlData.date_start
-      state.mwl.push(mwl)
+      this._vm.$set(state.mwl, index, mwl)
     },
     // compares latest MWL and the previous, adds badge data to latest MWL
     compareMwls (state) {

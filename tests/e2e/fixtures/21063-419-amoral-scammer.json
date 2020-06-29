@@ -1,0 +1,62 @@
+{
+    "card": {
+        "cost": 0,
+        "deck_limit": 1,
+        "faction": null,
+        "faction_cost": 0,
+        "influence_limit": 15,
+        "base_link": 1,
+        "minimum_deck_size": 45,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Natural",
+        "side_code": "runner",
+        "text": "The first time the Corp installs a card each turn, you may expose that card unless the Corp pays 1[credit].",
+        "title": "419: Amoral Scammer",
+        "type_code": "identity",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "21063",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN53_63.png",
+            "pack_title": "The Devil and the Dragon"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 177,
+            "wins": 293,
+            "draws": 0,
+            "losses": 364
+        },
+        "Uprising Booster Pack": {
+            "used": 138,
+            "wins": 207,
+            "draws": 0,
+            "losses": 193
+        },
+        "Downfall + MWL 3.3": {
+            "used": 65,
+            "wins": 82,
+            "draws": 0,
+            "losses": 75
+        },
+        "Downfall + MWL 3.2": {
+            "used": 110,
+            "wins": 136,
+            "draws": 0,
+            "losses": 134
+        },
+        "Downfall": {
+            "used": 111,
+            "wins": 167,
+            "draws": 5,
+            "losses": 136
+        }
+    }
+}

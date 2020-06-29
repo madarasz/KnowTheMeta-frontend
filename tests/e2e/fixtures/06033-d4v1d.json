@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 3,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 4,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 1,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": null,
+        "side_code": "runner",
+        "text": "Place 3 power counters on D4v1d when it is installed.\n<strong>Hosted power counter:</strong> Break ice subroutine on a piece of ice that has a strength of 5 or greater.",
+        "title": "D4v1d",
+        "type_code": "program",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "06033",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN17_33.png",
+            "pack_title": "The Spaces Between"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 2,
+            "avgPerDeck": 2,
+            "tags": ""
+        },
+        "Uprising Booster Pack": {
+            "used": 79,
+            "wins": 158,
+            "draws": 0,
+            "losses": 109,
+            "avgPerDeck": 1.5443038,
+            "tags": "icebreaker-program"
+        },
+        "Downfall + MWL 3.3": {
+            "used": 51,
+            "wins": 86,
+            "draws": 0,
+            "losses": 53,
+            "avgPerDeck": 1.3333334,
+            "tags": "winning,icebreaker-program"
+        },
+        "Downfall + MWL 3.2": {
+            "used": 31,
+            "wins": 46,
+            "draws": 0,
+            "losses": 37,
+            "avgPerDeck": 1.6774193,
+            "tags": "icebreaker-program"
+        },
+        "Downfall": {
+            "used": 29,
+            "wins": 38,
+            "draws": 0,
+            "losses": 30,
+            "avgPerDeck": 1.4827586,
+            "tags": "icebreaker-program"
+        }
+    }
+}

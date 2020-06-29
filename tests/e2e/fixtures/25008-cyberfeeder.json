@@ -1,0 +1,82 @@
+{
+    "card": {
+        "cost": 2,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 1,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Chip",
+        "side_code": "runner",
+        "text": "1[recurring-credit]\nUse this credit to pay for using <strong>icebreakers</strong> or for installing <strong>virus</strong> programs.",
+        "title": "Cyberfeeder",
+        "type_code": "hardware",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "25008",
+            "image_url": "https://netrunnerdb.com/card_image/25008.png",
+            "pack_title": "System Core 2019"
+        },
+        {
+            "code": "20006",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN49_6.png",
+            "pack_title": "Revised Core Set"
+        },
+        {
+            "code": "01005",
+            "image_url": "https://netrunnerdb.com/card_image/01005.png",
+            "pack_title": "Core Set"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 4,
+            "avgPerDeck": 2,
+            "tags": ""
+        },
+        "Uprising Booster Pack": {
+            "used": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "avgPerDeck": 2,
+            "tags": ""
+        },
+        "Downfall + MWL 3.3": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall + MWL 3.2": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": "NaN",
+            "tags": ""
+        },
+        "Downfall": {
+            "used": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "avgPerDeck": 3,
+            "tags": ""
+        }
+    }
+}

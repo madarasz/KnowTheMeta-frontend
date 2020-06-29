@@ -1,0 +1,53 @@
+{
+    "card": {
+        "cost": 1,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 2,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Companion - Virtual",
+        "side_code": "runner",
+        "text": "When your turn begins or you steal an agenda, place 1[credit] on this resource.\nSpend hosted credits to play events.\nWhen your turn ends, if there are 3 or more hosted credits, you must trash 1 card from your grip at random or trash this resource.",
+        "title": "Mystic Maemi",
+        "type_code": "resource",
+        "uniqueness": true,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "26072",
+            "image_url": "https://netrunnerdb.com/card_image/26072.png",
+            "pack_title": "Uprising"
+        },
+        {
+            "code": "27001",
+            "image_url": "https://netrunnerdb.com/card_image/27001.png",
+            "pack_title": "Uprising Booster Pack"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 49,
+            "wins": 87,
+            "draws": 0,
+            "losses": 100,
+            "avgPerDeck": 1.3469387,
+            "tags": "popular-in-pack"
+        },
+        "Uprising Booster Pack": {
+            "used": 38,
+            "wins": 64,
+            "draws": 0,
+            "losses": 49,
+            "avgPerDeck": 1.5789474,
+            "tags": "popular-in-pack"
+        }
+    }
+}

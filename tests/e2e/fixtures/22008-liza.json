@@ -1,0 +1,62 @@
+{
+    "card": {
+        "cost": 0,
+        "deck_limit": 1,
+        "faction": null,
+        "faction_cost": 0,
+        "influence_limit": 15,
+        "base_link": 0,
+        "minimum_deck_size": 50,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "G-mod",
+        "side_code": "runner",
+        "text": "The first time you make a successful run on a central server each turn, draw 2 cards and take 1 tag.",
+        "title": "Liza Talking Thunder: Prominent Legislator",
+        "type_code": "identity",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "22008",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN56_8.png",
+            "pack_title": "Reign and Reverie"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0
+        },
+        "Uprising Booster Pack": {
+            "used": 77,
+            "wins": 120,
+            "draws": 0,
+            "losses": 104
+        },
+        "Downfall + MWL 3.3": {
+            "used": 6,
+            "wins": 9,
+            "draws": 0,
+            "losses": 5
+        },
+        "Downfall + MWL 3.2": {
+            "used": 11,
+            "wins": 11,
+            "draws": 0,
+            "losses": 15
+        },
+        "Downfall": {
+            "used": 8,
+            "wins": 15,
+            "draws": 0,
+            "losses": 7
+        }
+    }
+}

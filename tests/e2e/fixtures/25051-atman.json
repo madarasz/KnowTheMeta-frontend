@@ -1,0 +1,77 @@
+{
+    "card": {
+        "cost": 3,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 3,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 1,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Icebreaker - AI",
+        "side_code": "runner",
+        "text": "When you install Atman, you may pay X[credit] to place X power counters on Atman.\nAtman has +1 strength for each power counter on it.\n1[credit]: Break ice subroutine on a piece of ice that has strength equal to Atman's strength.",
+        "title": "Atman",
+        "type_code": "program",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "25051",
+            "image_url": "https://netrunnerdb.com/card_image/25051.png",
+            "pack_title": "System Core 2019"
+        },
+        {
+            "code": "03040",
+            "image_url": "https://netrunnerdb.com/card_image/03040.png",
+            "pack_title": "Creation and Control"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 9,
+            "wins": 11,
+            "draws": 0,
+            "losses": 20,
+            "avgPerDeck": 1,
+            "tags": ""
+        },
+        "Uprising Booster Pack": {
+            "used": 20,
+            "wins": 28,
+            "draws": 0,
+            "losses": 29,
+            "avgPerDeck": 1,
+            "tags": "icebreaker-AI"
+        },
+        "Downfall + MWL 3.3": {
+            "used": 13,
+            "wins": 23,
+            "draws": 0,
+            "losses": 14,
+            "avgPerDeck": 1,
+            "tags": "winning,icebreaker-AI"
+        },
+        "Downfall + MWL 3.2": {
+            "used": 3,
+            "wins": 6,
+            "draws": 0,
+            "losses": 3,
+            "avgPerDeck": 1,
+            "tags": ""
+        },
+        "Downfall": {
+            "used": 8,
+            "wins": 11,
+            "draws": 0,
+            "losses": 12,
+            "avgPerDeck": 1,
+            "tags": ""
+        }
+    }
+}

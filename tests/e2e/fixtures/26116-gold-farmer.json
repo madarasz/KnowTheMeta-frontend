@@ -1,0 +1,40 @@
+{
+    "card": {
+        "cost": 3,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 3,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 1,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Barrier",
+        "side_code": "corp",
+        "text": "When the Runner breaks a printed subroutine on this ice, they lose 1[credit].\n[subroutine] End the run unless the Runner pays 3[credit].\n[subroutine] End the run unless the Runner pays 3[credit].",
+        "title": "Gold Farmer",
+        "type_code": "ice",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "26116",
+            "image_url": "https://netrunnerdb.com/card_image/26116.png",
+            "pack_title": "Uprising"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 77,
+            "wins": 217,
+            "draws": 0,
+            "losses": 88,
+            "avgPerDeck": 2.7402596,
+            "tags": "popular-in-pack,ice-Barrier"
+        }
+    }
+}

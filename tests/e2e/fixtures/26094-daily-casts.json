@@ -1,0 +1,77 @@
+{
+    "card": {
+        "cost": 3,
+        "deck_limit": 3,
+        "faction": null,
+        "faction_cost": 0,
+        "influence_limit": 0,
+        "base_link": 0,
+        "minimum_deck_size": 0,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": null,
+        "side_code": "runner",
+        "text": "When you install this resource, load 8[credit] onto it. When it is empty, trash it.\nWhen your turn begins, take 2[credit] from this resource.",
+        "title": "Daily Casts",
+        "type_code": "resource",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "26094",
+            "image_url": "https://netrunnerdb.com/card_image/26094.png",
+            "pack_title": "Uprising"
+        },
+        {
+            "code": "03053",
+            "image_url": "https://netrunnerdb.com/card_image/03053.png",
+            "pack_title": "Creation and Control"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 228,
+            "wins": 424,
+            "draws": 0,
+            "losses": 450,
+            "avgPerDeck": 2.8903508,
+            "tags": "popular-in-pack"
+        },
+        "Uprising Booster Pack": {
+            "used": 268,
+            "wins": 513,
+            "draws": 0,
+            "losses": 348,
+            "avgPerDeck": 2.8880596,
+            "tags": ""
+        },
+        "Downfall + MWL 3.3": {
+            "used": 182,
+            "wins": 300,
+            "draws": 0,
+            "losses": 213,
+            "avgPerDeck": 2.9175825,
+            "tags": "winning"
+        },
+        "Downfall + MWL 3.2": {
+            "used": 163,
+            "wins": 247,
+            "draws": 0,
+            "losses": 163,
+            "avgPerDeck": 2.9018404,
+            "tags": "winning"
+        },
+        "Downfall": {
+            "used": 180,
+            "wins": 295,
+            "draws": 4,
+            "losses": 207,
+            "avgPerDeck": 2.9555554,
+            "tags": "winning"
+        }
+    }
+}

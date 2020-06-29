@@ -1,0 +1,72 @@
+{
+    "card": {
+        "cost": 0,
+        "deck_limit": 1,
+        "faction": null,
+        "faction_cost": 0,
+        "influence_limit": 15,
+        "base_link": 1,
+        "minimum_deck_size": 45,
+        "memory_cost": 0,
+        "strength": 0,
+        "advancement_cost": 0,
+        "agenda_points": 0,
+        "trash_cost": 0,
+        "keywords": "Cyborg - G-mod",
+        "side_code": "runner",
+        "text": "The rez cost of the first piece of ice rezzed each turn is increased by 1.",
+        "title": "Reina Roja: Freedom Fighter",
+        "type_code": "identity",
+        "uniqueness": false,
+        "pack": null
+    },
+    "prints": [
+        {
+            "code": "25001",
+            "image_url": "https://netrunnerdb.com/card_image/25001.png",
+            "pack_title": "System Core 2019"
+        },
+        {
+            "code": "20001",
+            "image_url": "http://www.cardgamedb.com/forums/uploads/an/med_ADN49_1.png",
+            "pack_title": "Revised Core Set"
+        },
+        {
+            "code": "04041",
+            "image_url": "https://netrunnerdb.com/card_image/04041.png",
+            "pack_title": "Mala Tempora"
+        }
+    ],
+    "metaData": {
+        "Uprising": {
+            "used": 13,
+            "wins": 17,
+            "draws": 0,
+            "losses": 21
+        },
+        "Uprising Booster Pack": {
+            "used": 4,
+            "wins": 3,
+            "draws": 0,
+            "losses": 6
+        },
+        "Downfall + MWL 3.3": {
+            "used": 5,
+            "wins": 5,
+            "draws": 0,
+            "losses": 6
+        },
+        "Downfall + MWL 3.2": {
+            "used": 4,
+            "wins": 5,
+            "draws": 0,
+            "losses": 1
+        },
+        "Downfall": {
+            "used": 7,
+            "wins": 8,
+            "draws": 1,
+            "losses": 15
+        }
+    }
+}
