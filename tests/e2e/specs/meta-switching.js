@@ -31,7 +31,7 @@ describe('Meta Switching', () => {
     // check forwarding works
     cy.url().should('include', '/meta/')
     // check store values
-    getStore().its('state.metas').should('have.keys', ['currentMetaCode', 'metaData', 'metaList', 'metaListTimestamp'])
+    getStore().its('state.metas').should('have.keys', ['currentMetaCode', 'metaData', 'metaList', 'metaListTimestamp', 'metaDeckData'])
     getStore().its('state.metas.currentMetaCode').should('not.be.null')
     getStore().its('state.metas.metaList').should('have.length.of.at.least', 1)
     getStore().its('state.metas.metaData').should('not.have.key', undefined)
