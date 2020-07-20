@@ -20,10 +20,7 @@
             <identities :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta && getCurrentMeta.identities"/>
           </v-tab-item>
           <v-tab-item :key="2" value="decks" :transition="false" :reverse-transition="false">
-            <h3 class="pa-4">
-              <v-icon icon class="icon-left">{{ mdiAccountHardHat }}</v-icon>
-              Section under construction
-            </h3>
+            <decks :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta"/>
           </v-tab-item>
           <v-tab-item :key="3" value="cards" :transition="false" :reverse-transition="false">
             <cards :meta-data="getCurrentMeta" v-if="loaded && getCurrentMeta && getCurrentMeta.cards"/>
@@ -37,17 +34,17 @@
 <script>
 import Identities from '@/components/subview/Identities.vue'
 import Cards from '@/components/subview/Cards.vue'
+import Decks from '@/components/subview/Decks.vue'
 import { mapGetters, mapMutations } from 'vuex'
-import { mdiAccountHardHat } from '@mdi/js'
 
 export default {
   components: {
     Identities,
-    Cards
+    Cards,
+    Decks
   },
   data: function () {
     return {
-      mdiAccountHardHat,
       loaded: false,
       tab: this.$route.params.subview // default tab
     }

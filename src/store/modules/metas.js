@@ -8,7 +8,8 @@ export const metas = {
     currentMetaCode: null,
     metaListTimestamp: 0,
     metaList: [],
-    metaData: {}
+    metaData: {},
+    metaDeckData: {}
   },
   getters: {
     getLatestMetaCode: (state) => {
@@ -27,6 +28,10 @@ export const metas = {
     getCurrentMeta: (state) => {
       if (!state.currentMetaCode) return false
       return state.metaData[state.currentMetaCode]
+    },
+    getCurrentMetaDecks: (state) => {
+      if (!state.currentMetaCode) return false
+      return state.metaDeckData[state.currentMetaCode]
     }
   },
   actions: {
@@ -49,6 +54,15 @@ export const metas = {
         commit('setCurrentMetaCode', metacode)
         return Promise.resolve()
       }
+    },
+    getMetaDeckData ({ commit, state }, metacode) {
+      if (!state.metaDeckData[metacode] || Date.now() - state.metaDeckData[metacode].timestamp > cacheTime) {
+        return axios.get(`https://alwaysberunning.net/ktm/decks/${metacode}.json`).then((response) => {
+          commit('setMetaDeckData', { metadata: response.data, metacode })
+        })
+      } else {
+        return Promise.resolve()
+      }
     }
   },
   mutations: {
@@ -66,6 +80,10 @@ export const metas = {
     setMetaData (state, metadata) {
       metadata.timestamp = Date.now()
       state.metaData = { ...state.metaData, [metadata.meta.code]: metadata } // new object, to follow vue reactivity rules
+    },
+    setMetaDeckData (state, { metadata, metacode }) {
+      metadata.timestamp = Date.now()
+      state.metaDeckData = { ...state.metaDeckData, [metacode]: metadata } // new object, to follow vue reactivity rules
     }
   }
 }
