@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-simple-table>
+    <v-simple-table :data-testid="testId">
       <tbody>
-        <tr v-for="(deck, index) in deckList" :key="deck.id">
+        <tr v-for="(deck, index) in deckList" :key="deck.id" :data-testid="`${testId}-row-${index}`">
           <td v-if="index < showMax">
             <v-img height="40px" width="40px" :src="'https://alwaysberunning.net/img/ids/' + deck.identityCode + '.png'"
               :lazy-src="'/img/' + side + '-color.png'"/>

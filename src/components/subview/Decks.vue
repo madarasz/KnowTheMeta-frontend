@@ -5,11 +5,11 @@
       <!-- Deck Highlights -->
       <desktop-card title="Deck highlights" tooltip="successful decks from various archetypes" :subtitle="subtitle">
         <template v-slot:left>
-          <deck-lister :deck-list="runnerDeckHighlights" v-if="loaded" side="runner" :meta="metacode"/>
+          <deck-lister :deck-list="runnerDeckHighlights" v-if="loaded" side="runner" :meta="metacode" test-id="runner-decks"/>
           <div class="loader" v-if="!loaded"><span/><span/><span/></div>
         </template>
         <template v-slot:right>
-          <deck-lister :deck-list="corpDeckHighlights" v-if="loaded" side="corporation" :meta="metacode"/>
+          <deck-lister :deck-list="corpDeckHighlights" v-if="loaded" side="corporation" :meta="metacode" test-id="corp-decks"/>
           <div class="loader" v-if="!loaded"><span/><span/><span/></div>
         </template>
       </desktop-card>
@@ -19,13 +19,13 @@
       <!-- Runner -->
       <template v-slot:runner>
         <mobile-panel title="Deck highlights" tooltip="successful decks from various archetypes" :subtitle="subtitleRunner">
-          <deck-lister :deck-list="runnerDeckHighlights" v-if="loaded" side="runner" :meta="metacode"/>
+          <deck-lister :deck-list="runnerDeckHighlights" v-if="loaded" side="runner" :meta="metacode" test-id="runner-decks"/>
           <div class="loader" v-if="!loaded"><span/><span/><span/></div>
         </mobile-panel>
       </template>
       <template v-slot:corp>
         <mobile-panel title="Deck highlights" tooltip="successful decks from various archetypes" :subtitle="subtitleCorp">
-          <deck-lister :deck-list="corpDeckHighlights" v-if="loaded" side="corp" :meta="metacode"/>
+          <deck-lister :deck-list="corpDeckHighlights" v-if="loaded" side="corp" :meta="metacode" test-id="corp-decks"/>
           <div class="loader" v-if="!loaded"><span/><span/><span/></div>
         </mobile-panel>
       </template>
