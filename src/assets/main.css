@@ -94,14 +94,23 @@ tr.v-row-group__header > td > button {
     padding-left: 8px !important;
   }
   .menu-button {
-    padding: 0 8px !important;
+    padding: 0 4px !important;
     min-width: 48px !important;
   }
   .search-button {
-    width: 40px;
+    width: 40px !important;
   }
 }
 /* for small mobile screens */
+.mobile-nav-text {
+  font-size: 6px;
+}
+@media (max-width: 599px) {
+  .v-toolbar__content {
+    padding: 4px 10px !important;
+  }
+}
+
 .d-xxs-none {
   display: none;
 }
@@ -109,12 +118,12 @@ tr.v-row-group__header > td > button {
   .d-xs-inline {
     display: inline !important;
   }
-  .d-xxs-only-inline {
+  .d-xxs-inline {
     display: none !important;
   }
 }
 @media (max-width: 414px) {
-  .d-xxs-only-inline {
+  .d-xxs-inline {
     display: inline !important;
   }
 }

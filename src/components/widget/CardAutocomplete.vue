@@ -9,7 +9,18 @@
     <!-- mobile -->
     <div v-if="!$vuetify.breakpoint.mdAndUp">
       <v-btn icon depressed @click="searchMobile(true)" v-show="!mobileSearch" class="search-button" aria-label="card search">
-        <v-icon>{{ mdiMagnify }}</v-icon>
+        <div>
+        <v-row dense>
+          <v-col class="pa-0">
+            <v-icon>{{ mdiMagnify }}</v-icon>
+          </v-col>
+        </v-row>
+        <v-row dense>
+          <v-col class="pa-0 mobile-nav-text">
+            Search
+          </v-col>
+        </v-row>
+        </div>
       </v-btn>
       <v-autocomplete :append-icon="mdiMagnify" :allow-overflow="false" clearable persistent-hint
         :items="cardTitles" :hide-no-data="hideNoData" :search-input.sync="searchString" :loading="loading"

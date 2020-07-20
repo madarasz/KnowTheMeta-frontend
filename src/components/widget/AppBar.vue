@@ -18,7 +18,7 @@
         <template v-slot:activator="{ on }">
           <v-btn depressed :color="$route.path.indexOf('meta') > -1 ? 'highlight' : 'primary'" class="meta-button" v-on="on" data-testid="current-meta">
             <span class="d-none d-sm-block">{{ currentMetaTitle ? currentMetaTitle : 'loading' }}</span>
-            <span class="d-flex d-sm-none">{{ shortMetaTitle }}</span>
+            <span class="d-flex d-sm-none"><small>{{ shortMetaTitle }}</small></span>
             <v-icon icon data-testid="icon-meta-select" v-if="metaLoaded">{{ mdiMenuDown }}</v-icon>
           </v-btn>
         </template>
@@ -35,29 +35,14 @@
         </v-list>
       </v-menu>
       <!-- Drilldown -->
-      <v-btn depressed :color="$route.path.includes('/drilldown') ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-drilldown" aria-label="data drilldown">
-        <router-link to="/drilldown" tag="span">
-          <span class="d-none d-sm-inline">Drilldown</span>
-          <v-icon color="white" class="d-flex d-sm-none">{{ mdiBullseyeArrow }}</v-icon>
-        </router-link>
-      </v-btn>
+      <nav-responsive text="Drilldown" :icon="mdiBullseyeArrow" url="/drilldown" breakpoint="md"/>
     </v-toolbar-items>
     <v-spacer v-if="!isCardStatsPage"/>
     <card-autocomplete @mobile-search="mobileSearch = $event" v-if="!isCardStatsPage"/>
     <!-- Other menu items -->
     <v-toolbar-items v-if="!isCardStatsPage && !mobileSearch">
-      <v-btn depressed :color="$route.path === '/mwl' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-mwl" aria-label="most wanted list">
-        <router-link to="/mwl" tag="span">
-          <span class="d-xxs-none d-xs-inline">MWL</span>
-          <v-icon color="white" class="d-xxs-only-inline">{{ mdiPoliceBadge }}</v-icon>
-        </router-link>
-      </v-btn>
-      <v-btn depressed :color="$route.path === '/rotation' ? 'highlight' : 'primary'" class="menu-button" data-testid="menu-rotation" aria-label="rotation">
-        <router-link to="/rotation" tag="span">
-          <span class="d-xxs-none d-xs-inline">Rotation</span>
-          <v-icon color="white" class="d-xxs-only-inline">{{ mdiRotate3dVariant }}</v-icon>
-        </router-link>
-      </v-btn>
+      <nav-responsive text="MWL" :icon="mdiPoliceBadge" url="/mwl" breakpoint="md"/>
+      <nav-responsive text="Rotation" :icon="mdiRotate3dVariant" url="/rotation" breakpoint="md"/>
     </v-toolbar-items>
     <!-- Card stat app bar -->
     <v-btn icon depressed @click="goBack" v-show="isCardStatsPage" aria-label="navigate back" data-testid="menu-back">
@@ -72,6 +57,7 @@
 <script>
 import { VListItem } from 'vuetify/lib'
 import CardAutocomplete from '@/components/widget/CardAutocomplete.vue'
+import NavResponsive from '@/components/widget/NavResponsive.vue'
 import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant, mdiBullseyeArrow } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
@@ -83,6 +69,7 @@ export default {
   },
   components: {
     CardAutocomplete,
+    NavResponsive,
     VListItem // eslint-disable-line vue/no-unused-components
   },
   data: () => ({
