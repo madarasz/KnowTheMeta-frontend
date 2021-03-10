@@ -4,6 +4,9 @@ node_modules
 tests/e2e/snapshots/*/__diff_output__
 tests/e2e/screenshots
 tests/e2e/videos
+public/img/cards/*
+cards.json
+!**/.gitkeep
 
 # local env files
 .env.local
