@@ -5,7 +5,7 @@
         <div class="d-inline-flex">
           <router-link :to="cardUrl" :aria-label="card.title"
               @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-image', eventLabel: card.title })">
-            <v-img :src="card.image_url" width="100px" height="140px"
+            <v-img :src="'/img/cards/' + card.code + '.png'" width="100px" height="140px"
                 :lazy-src="'/img/' + (runner ? 'runner' : 'corp') + '-card-back-small.png'">
             </v-img>
           </router-link>

@@ -4,7 +4,7 @@
       <v-row dense>
         <v-col class="text-center pb-0">
           <v-responsive aspect-ratio="5/7" class="text-center d-inline-flex">
-            <v-img :src="print.image_url" max-width="300px" max-height="420px" contain
+            <v-img :src="'/img/cards/' + print.code + '.png'" max-width="300px" max-height="420px" contain
                   :lazy-src="'/img/' + (isRunner ? 'runner' : 'corp') + '-card-back-small.png'" />
           </v-responsive>
         </v-col>

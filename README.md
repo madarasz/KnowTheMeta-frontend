@@ -8,6 +8,11 @@ New, revamped version, being built. Coming whenever.
 yarn install
 ```
 
+### Start Vue dashboard
+```
+vue ui
+```
+
 ### Compiles and hot-reloads for development
 ```
 yarn serve
