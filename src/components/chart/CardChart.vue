@@ -55,6 +55,7 @@ export default {
               }
               if (tooltipItem.datasetIndex === 0) {
                 // display standard error as well for winrate
+                if (context.dataset.errors[context.dataIndex] === undefined) return ''
                 return label + ' (+/-' + data.datasets[0].errorBars[data.labels[tooltipItem.index]].plus.toFixed(1) + '%)'
               }
               return label
@@ -197,6 +198,7 @@ export default {
               },
               clamp: true,
               formatter: function (value, context) {
+                if (context.dataset.errors[context.dataIndex] === undefined) return ''
                 const error = context.dataset.errors[context.dataIndex].plus - context.dataset.errors[context.dataIndex].minus
                 if (error > 28 || error === 0) return 'very low data'
                 if (error > 14) return 'low data'
