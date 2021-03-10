@@ -29,7 +29,6 @@ const transformCardData = function (cardData, packData, imgUrlTemplate) {
     const legal = !packData.find(x => { return x.code === cardData[i].pack_code }).rotated
     if (cardData[i].title in cards) {
       // reprint
-      cards[cardData[i].title].image_url = 'image_url' in cardData[i] ? cardData[i].image_url : imgUrlTemplate.replace('{code}', cardData[i].code) // keep image fresh
       if (legal) {
         for (let u = 0; u < cards[cardData[i].title].in_pack.length; u++) {
           packData.find(x => { return x.code === cards[cardData[i].title].in_pack[u] }).legal_reprints.push({
@@ -45,7 +44,6 @@ const transformCardData = function (cardData, packData, imgUrlTemplate) {
       cards[cardData[i].title] = {
         runner: cardData[i].side_code === 'runner',
         in_pack: [cardData[i].pack_code],
-        image_url: 'image_url' in cardData[i] ? cardData[i].image_url : imgUrlTemplate.replace('{code}', cardData[i].code),
         legal: legal
       }
     }

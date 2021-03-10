@@ -112,10 +112,6 @@ export default {
       this.$store.dispatch('netrunnerdb/getCardData', false).then(() => {
       })
     },
-    addImageUrl: function (card) {
-      card.image_url = this.netrunnerdb.cards[card.title].image_url
-      return card
-    },
     sortIntoTypes: function (cardList) {
       for (let i = 0; i < cardList.length; i++) {
         let tag = cardList[i].tags
@@ -149,19 +145,19 @@ export default {
     },
     runnerPopularInPack: function () {
       return this.metaData.cards.runner.filter(x => { return x.tags.includes('popular-in-pack') })
-        .sort(transform.comparePopularity).slice(0, this.maxCardsPerWidget).map(x => this.addImageUrl(x))
+        .sort(transform.comparePopularity).slice(0, this.maxCardsPerWidget)
     },
     corpPopularInPack: function () {
       return this.metaData.cards.corp.filter(x => { return x.tags.includes('popular-in-pack') })
-        .sort(transform.comparePopularity).slice(0, this.maxCardsPerWidget).map(x => this.addImageUrl(x))
+        .sort(transform.comparePopularity).slice(0, this.maxCardsPerWidget)
     },
     runnerWinning: function () {
       return this.metaData.cards.runner.filter(x => { return x.tags.includes('winning') })
-        .sort(transform.compareWinrates).slice(0, this.maxCardsPerWidget).map(x => this.addImageUrl(x))
+        .sort(transform.compareWinrates).slice(0, this.maxCardsPerWidget)
     },
     corpWinning: function () {
       return this.metaData.cards.corp.filter(x => { return x.tags.includes('winning') })
-        .sort(transform.compareWinrates).slice(0, this.maxCardsPerWidget).map(x => this.addImageUrl(x))
+        .sort(transform.compareWinrates).slice(0, this.maxCardsPerWidget)
     },
     iceBreakers: function () {
       return this.sortIntoTypes(
