@@ -159,23 +159,4 @@ export default {
   padding: 1px;
   color: white;
 }
-.data-label {
-  border-radius: 5px;
-  padding: 1px 5px;
-  color: white;
-  margin: 1px;
-  display: inline-block;
-  font-size: 12px;
-  font-style: italic;
-}
-/* TODO: centralize colors */
-.flag-error {
-  background-color: #ff5252;
-}
-.flag-restricted{
-  background-color: #fb8c00;
-}
-.flag-data{
-  background-color: #B56503;
-}
 </style>

@@ -8,6 +8,11 @@
       <v-spacer/>
       <!-- Subtitle -->
       <span class="overline" v-html="subtitle"/>
+      <span class="data-label flag-warning title-warning" v-if="dataWarning > 0">
+        <v-icon icon dark>{{ mdiAlertOutline }}</v-icon>
+        <span v-if="dataWarning == 2">very</span>
+        low data
+      </span>
     </v-card-title>
     <!-- Pretext -->
     <slot name="pretext"></slot>
@@ -30,16 +35,24 @@
 
 <script>
 import Tooltip from '@/components/widget/Tooltip.vue'
+import { mdiAlertOutline } from '@mdi/js'
 
 export default {
   name: 'DesktopCard',
   props: {
     title: String,
     subtitle: String,
-    tooltip: String
+    tooltip: String,
+    dataWarning: {
+      type: Number,
+      default: 0
+    }
   },
   components: {
     Tooltip
-  }
+  },
+  data: () => ({
+    mdiAlertOutline: mdiAlertOutline
+  })
 }
 </script>

@@ -4,30 +4,30 @@
     <runner-corp-tabs :url="'/meta/' + $route.params.metacode + '/cards'">
       <!-- Runner -->
       <template v-slot:runner>
-        <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel :title="popularTitle" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </mobile-panel>
-        <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel title="Breakers / ICE" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-table :card-list="iceBreakers" test-id="table-icebreakers" v-if="cardsLoaded"/>
         </mobile-panel>
-        <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel title="Impressive winrates" :subtitle="runnerSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
         </mobile-panel>
       </template>
       <!-- Corp -->
       <template v-slot:corp>
-        <mobile-panel :title="popularTitle" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel :title="popularTitle" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="corpPopularInPack" test-id="popular-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </mobile-panel>
-        <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel title="Breakers / ICE" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-table :card-list="ice" test-id="table-icebreakers" v-if="cardsLoaded"/>
         </mobile-panel>
-        <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity">
+        <mobile-panel title="Impressive winrates" :subtitle="corpSubtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="corpWinning" test-id="winning-corp" :deck-count="metaData.meta.corpDecks" :runner="false" v-if="cardsLoaded"/>
         </mobile-panel>
@@ -36,7 +36,7 @@
     <!-- Desktop screens -->
     <div class="mr-4 ml-4" v-if="$vuetify.breakpoint.mdAndUp">
       <!-- Popular in pack -->
-      <desktop-card :title="popularTitle" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
+      <desktop-card :title="popularTitle" :subtitle="subtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
         <template v-slot:left>
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="runnerPopularInPack" test-id="popular-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
@@ -47,7 +47,7 @@
         </template>
       </desktop-card>
       <!-- Breakers / ICE -->
-      <desktop-card title="Breakers / ICE" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
+      <desktop-card title="Breakers / ICE" :subtitle="subtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
         <template v-slot:left>
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-table :card-list="iceBreakers" test-id="table-icebreakers" v-if="cardsLoaded"/>
@@ -58,7 +58,7 @@
         </template>
       </desktop-card>
       <!-- Winning -->
-      <desktop-card title="Impressive winrates" :subtitle="subtitle" tooltip="cards with minimum 5% popularity">
+      <desktop-card title="Impressive winrates" :subtitle="subtitle" tooltip="cards with minimum 5% popularity" :dataWarning="dataWarning">
         <template v-slot:left>
           <div class="loader" v-if="!cardsLoaded"><span/><span/><span/></div>
           <card-stat-lister :card-list="runnerWinning" test-id="winning-runner" :deck-count="metaData.meta.runnerDecks" :runner="true" v-if="cardsLoaded"/>
@@ -177,6 +177,15 @@ export default {
     },
     cardsLoaded: function () {
       return Object.keys(this.netrunnerdb.cards).length > 0
+    },
+    dataWarning: function () {
+      if (this.metaData.meta.runnerDecks < 50) {
+        return 2 // very low data
+      }
+      if (this.metaData.meta.runnerDecks < 200) {
+        return 1 // low data
+      }
+      return 0 // no warning
     }
   }
 }

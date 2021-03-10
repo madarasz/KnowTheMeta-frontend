@@ -7,7 +7,7 @@
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
           <identity-popularity side="runner" :side-data="metaData.identities.runner" :standing-count="metaData.meta.standings"/>
         </mobile-panel>
-        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches" :dataWarning="dataWarning">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
             :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate-r"/>
           <identity-winrate side="runner" :side-data="metaData.identities.runner"/>
@@ -18,7 +18,7 @@
         <mobile-panel title="Popularity" :subtitle="popSubtitle">
           <identity-popularity side="corporation" :side-data="metaData.identities.corp" :standing-count="metaData.meta.standings"/>
         </mobile-panel>
-        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+        <mobile-panel title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches" :dataWarning="dataWarning">
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
             :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate-c"/>
           <identity-winrate side="corporation" :side-data="metaData.identities.corp"/>
@@ -37,7 +37,7 @@
         </template>
       </desktop-card>
       <!-- Win rates -->
-      <desktop-card title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches">
+      <desktop-card title="Win rates" :subtitle="winSubtitle" tooltip="IDs with minimum 50 matches" :dataWarning="dataWarning">
         <template v-slot:pretext>
           <side-winrate-chart :runner-win="metaData.meta.runnerWinRate" :corp-win="metaData.meta.corpWinRate"
             :draw="1 - metaData.meta.runnerWinRate - metaData.meta.corpWinRate" style="height: 150px" class="pt-2" chart-id="chart-side-winrate"/>
@@ -88,6 +88,15 @@ export default {
     },
     winSubtitle: function () {
       return this.metaData.meta.matches + ' matches'
+    },
+    dataWarning: function () {
+      if (this.metaData.meta.matches < 2000) {
+        return 2 // very low data
+      }
+      if (this.metaData.meta.matches < 4000) {
+        return 1 // low data
+      }
+      return 0 // no warning
     }
   }
 }

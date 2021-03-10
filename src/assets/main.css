@@ -214,3 +214,30 @@ tr.v-row-group__header > td > button {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+/* flags */
+.flag-error {
+  background-color: #ff5252;
+}
+.flag-restricted{
+  background-color: #fb8c00;
+}
+.flag-data{
+  background-color: #B56503;
+}
+.flag-warning {
+  background-color: #b54103;
+}
+.data-label {
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: white;
+  margin: 1px;
+  display: inline-block;
+  font-size: 12px;
+  font-style: italic;
+}
+.title-warning {
+  flex: 0 1 auto !important;
+  margin-left: 10px !important;
+}

@@ -10,6 +10,11 @@
       <slot name="title-action"></slot>
       <!-- Subtitle -->
       <span class="overline text-right" v-html="subtitle"/>
+      <span class="data-label flag-warning title-warning" v-if="dataWarning > 0">
+        <v-icon icon dark>{{ mdiAlertOutline }}</v-icon>
+        <span v-if="dataWarning == 2">very</span>
+        low data
+      </span>
     </v-expansion-panel-header>
     <v-expansion-panel-content :key="contentKey">
       <slot></slot>
@@ -20,12 +25,17 @@
 
 <script>
 import Tooltip from '@/components/widget/Tooltip.vue'
+import { mdiAlertOutline } from '@mdi/js'
 
 export default {
   name: 'MobilePanel',
   props: {
     title: String,
     subtitle: String,
+    dataWarning: {
+      type: Number,
+      default: 0
+    },
     color: {
       type: String,
       default: 'secondary'
@@ -38,6 +48,7 @@ export default {
     Tooltip
   },
   data: () => ({
+    mdiAlertOutline: mdiAlertOutline,
     openedIndex: 0,
     contentKey: 0
   }),
