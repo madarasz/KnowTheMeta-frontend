@@ -41,15 +41,15 @@ const routes = [
     meta: {
       title: 'Card - Know the Meta - Netrunner'
     },
-    component: () => import(/* webpackChunkName: "rotation" */ '../views/CardStat.vue')
+    component: () => import(/* webpackChunkName: "card" */ '../views/CardStat.vue')
   },
   {
-    path: '/drilldown/:sidecode?/:factioncode?',
-    name: 'Drilldown',
+    path: '/lab/:subview?/:sidecode?/:factioncode?/:metacode?',
+    name: 'Lab',
     meta: {
       title: 'Know the Meta - Netrunner'
     },
-    component: () => import(/* webpackChunkName: "rotation" */ '../views/DrillDown.vue')
+    component: () => import(/* webpackChunkName: "lab" */ '../views/Lab.vue')
   }
 ]
 

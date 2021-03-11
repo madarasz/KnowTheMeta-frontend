@@ -34,8 +34,6 @@
           </template>
         </v-list>
       </v-menu>
-      <!-- Drilldown -->
-      <nav-responsive text="Drilldown" :icon="mdiBullseyeArrow" url="/drilldown" breakpoint="md"/>
     </v-toolbar-items>
     <v-spacer v-if="!isCardStatsPage"/>
     <card-autocomplete @mobile-search="mobileSearch = $event" v-if="!isCardStatsPage"/>
@@ -43,6 +41,7 @@
     <v-toolbar-items v-if="!isCardStatsPage && !mobileSearch">
       <nav-responsive text="MWL" :icon="mdiPoliceBadge" url="/mwl" breakpoint="md"/>
       <nav-responsive text="Rotation" :icon="mdiRotate3dVariant" url="/rotation" breakpoint="md"/>
+      <nav-responsive text="Lab" :icon="mdiFlask" url="/lab/drilldown" breakpoint="md"/>
     </v-toolbar-items>
     <!-- Card stat app bar -->
     <v-btn icon depressed @click="goBack" v-show="isCardStatsPage" aria-label="navigate back" data-testid="menu-back">
@@ -58,7 +57,7 @@
 import { VListItem } from 'vuetify/lib'
 import CardAutocomplete from '@/components/widget/CardAutocomplete.vue'
 import NavResponsive from '@/components/widget/NavResponsive.vue'
-import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant, mdiBullseyeArrow } from '@mdi/js'
+import { mdiMenuDown, mdiArrowLeft, mdiPoliceBadge, mdiRotate3dVariant, mdiFlask } from '@mdi/js'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 import transform from '@/netrunnerTransformations.js'
 
@@ -77,7 +76,7 @@ export default {
     mdiArrowLeft,
     mdiPoliceBadge,
     mdiRotate3dVariant,
-    mdiBullseyeArrow,
+    mdiFlask,
     mobileSearch: false
   }),
   mounted: function () {

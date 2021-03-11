@@ -1,15 +1,30 @@
 <template>
-  <v-content>
+  <div>
     <!-- Desktop -->
     <v-container class="pa-4" fluid v-if="$vuetify.breakpoint.mdAndUp">
       <v-row dense>
         <!-- Drilldown options -->
-        <v-col class="col-md-6 col-lg-4 pa-0 pr-2">
-          <desktop-card-single title="Drilldown">
-            <template v-slot:content>
-              <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
-            </template>
-          </desktop-card-single>
+        <v-col class="col-md-6 col-lg-4 pa-0 pr-4 pl-4">
+          <v-container class="pa-0" fluid>
+            <v-row>
+              <v-col class="col-12 pa-0">
+                <desktop-card-single title="Drilldown" class="pa-0">
+                  <template v-slot:content>
+                    <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
+                  </template>
+                </desktop-card-single>
+              </v-col>
+            </v-row>
+            <v-row class="pt-4">
+              <v-col class="col-12 pa-0">
+                <desktop-card-single title="Go to meta">
+                  <template v-slot:content>
+                    <meta-options :meta-list-loaded="metaListLoaded"/>
+                  </template>
+                </desktop-card-single>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-col>
         <!-- Charts -->
         <v-col class="col-md-6 col-lg-8 pa-0 pl-2">
@@ -71,7 +86,7 @@
         <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
       </mobile-panel>
     </div>
-  </v-content>
+  </div>
 </template>
 
 <script>
@@ -80,6 +95,7 @@ import SideWinrateMeta from '@/components/chart/SideWinrateMeta.vue'
 import FactionWinrate from '@/components/chart/FactionWinrate.vue'
 import FactionPopularity from '@/components/chart/FactionPopularity.vue'
 import DrillDownOptions from '@/components/widget/DrillDownOptions.vue'
+import MetaOptions from '@/components/widget/MetaOptions.vue'
 import MobilePanel from '@/components/header/MobilePanel.vue'
 import { mapState } from 'vuex'
 
@@ -91,6 +107,7 @@ export default {
     FactionWinrate,
     FactionPopularity,
     DrillDownOptions,
+    MetaOptions,
     MobilePanel
   },
   data: function () {
