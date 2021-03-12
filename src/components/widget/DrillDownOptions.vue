@@ -1,14 +1,19 @@
 <template>
-  <div style="margin-left: -16px; margin-right: -16px; margin-bottom: -16px">
+  <div>
     <v-stepper :value="currentStep" class="pa-0 no-transition">
       <v-stepper-header>
         <v-stepper-step step="1" :complete="currentStep > 1">
-          Select side
+          <span class="d-xxs-inline">Select </span>side
           <small v-if="currentStep > 1" class="overline">{{sideCode}}</small>
         </v-stepper-step>
         <v-divider/>
         <v-stepper-step step="2" :complete="currentStep > 2">
-          Select faction
+          <span class="d-xxs-inline">Select </span>faction
+          <small v-if="currentStep > 2" class="overline">{{factionCode}}</small>
+        </v-stepper-step>
+        <v-divider/>
+        <v-stepper-step step="3" :complete="currentStep > 3">
+          <span class="d-xxs-inline">Go to </span>ID stats
         </v-stepper-step>
       </v-stepper-header>
       <v-stepper-items>
@@ -36,8 +41,16 @@
           <under-development/>
           <v-container class="pa-0">
             <v-row>
-              <v-col cols="6" v-for="(faction, factioncode) in currentFactions" :key="faction" class="pb-0">
-                <v-btn :color="factionCodeToColor(factioncode)" class="white--text pl-2 pr-2" width="100%">{{ faction }}</v-btn>
+              <v-col cols="6" v-for="(faction, fcode) in currentFactions" :key="faction" class="pb-0">
+                <router-link :to="'/lab/drilldown/' + sideCode + '/' + fcode" aria-label="back" class="text-decoration-none"
+                      @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'drilldown-faction', eventLabel: fcode })">
+                  <v-btn :color="factionCodeToColor(fcode)" class="white--text pl-2 pr-2" width="100%">
+                    <div class="flex-column">
+                      <span>{{ faction }}</span>
+                      <div v-if="miniFactions.includes(faction)" class="caption text-lowercase" style="margin-top: -4px">go to stats</div>
+                    </div>
+                  </v-btn>
+                </router-link>
               </v-col>
             </v-row>
           </v-container>
@@ -49,36 +62,17 @@
           </router-link>
         </v-stepper-content>
       </v-stepper-items>
+      <!-- Drilldown to ID -->
+      <v-stepper-content step="3" class="text-center">
+        <under-development/>
+        <router-link :to="'/lab/drilldown/' + sideCode" aria-label="back" class="text-decoration-none d-inline-block pt-4"
+              @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'drilldown-back', eventLabel: 'to-factions' })">
+          <v-btn x-small color="secondary" class="float-left mt-1">
+            <v-icon small>{{ mdiArrowLeft }}</v-icon> back
+          </v-btn>
+        </router-link>
+      </v-stepper-content>
     </v-stepper>
-  <!-- <v-container class="pa-4">
-    <v-row>
-      <v-col cols="12" class="text-center" v-if="sideCode">
-        <v-row dense v-if="$vuetify.breakpoint.mdAndUp">
-          <v-col cols="3" class="pt-0">
-            <router-link to="/lab/drilldown" aria-label="back" class="text-decoration-none"
-                  @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'drilldown-back', eventLabel: 'to-sides' })">
-              <v-btn x-small color="secondary" class="float-left mt-1">
-                <v-icon>{{ mdiArrowLeft }}</v-icon>
-              </v-btn>
-            </router-link>
-          </v-col>
-          <v-col cols="6" class="pt-0">
-            <h3 class="pb-2">
-              by faction
-            </h3>
-          </v-col>
-        </v-row>
-        <desktop-card-subtitle subtitle="by faction" v-if="!$vuetify.breakpoint.mdAndUp" class="drilldown-subtitle-right"/>
-        <v-simple-table>
-          <tr v-for="(faction, factioncode) in currentFactions" :key="faction">
-            <td class="pr-0 pl-0">
-              <v-btn :color="factionCodeToColor(factioncode)" class="white--text pl-2 pr-2">{{ faction }}</v-btn>
-            </td>
-          </tr>
-        </v-simple-table>
-      </v-col>
-    </v-row>
-  </v-container> -->
   </div>
 </template>
 
@@ -95,11 +89,13 @@ export default {
   },
   props: {
     sideCode: String,
+    factionCode: String,
     currentFactions: Object,
     metaListLoaded: Boolean
   },
   data: () => ({
-    mdiArrowLeft
+    mdiArrowLeft,
+    miniFactions: ['Adam', 'Apex', 'Sunny Lebeau']
   }),
   methods: {
     factionCodeToColor: transform.factionCodeToColor
@@ -108,7 +104,8 @@ export default {
     ...mapState(['metas']),
     currentStep: function () {
       if (!this.sideCode) return 1
-      return 2
+      if (!this.factionCode) return 2
+      return 3
     }
   }
 }

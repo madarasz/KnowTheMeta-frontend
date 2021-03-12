@@ -10,7 +10,8 @@
               <v-col class="col-12 pa-0">
                 <desktop-card-single title="Drilldown" class="pa-0">
                   <template v-slot:content>
-                    <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
+                    <drill-down-options :side-code="sideCode" :faction-code="factionCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"
+                      style="margin-left: -16px; margin-right: -16px; margin-bottom: -16px"/>
                   </template>
                 </desktop-card-single>
               </v-col>
@@ -68,11 +69,14 @@
     <!-- Mobile -->
     <div v-if="!$vuetify.breakpoint.mdAndUp">
       <mobile-panel title="Drilldown">
-        <drill-down-options :side-code="sideCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"/>
+        <drill-down-options :side-code="sideCode" :faction-code="factionCode" :current-factions="currentFactions" :meta-list-loaded="metaListLoaded"
+            style="margin-left: -24px; margin-right: -24px; margin-bottom: -12px"/>
       </mobile-panel>
+      <!-- Side win rates -->
       <mobile-panel title="Side win rates" v-if="!sideCode && metaListLoaded">
         <side-winrate-meta :meta-data="metas" v-if="!sideCode && metaListLoaded"/>
       </mobile-panel>
+      <!-- Faction data -->
       <mobile-panel title="Faction popularity" v-if="sideCode && allMetaDataLoaded">
         <template v-slot:title-action>
           <v-switch v-model="popularityStacked" label="stacked" class="ma-0 pa-0 title-input" @click.stop="popularityStacked = !popularityStacked"/>
@@ -84,6 +88,10 @@
           <v-select :items="errorBarOptions" label="Error bars" v-model="selectedErrorBar" class="mt-0 title-input" style="max-width: 130px" @click.native.stop=""/>
         </template>
         <faction-winrate :meta-data="metas" :factions="currentFactions" :side-code="sideCode" :error-bar="selectedErrorBar"/>
+      </mobile-panel>
+      <!-- Go to meta -->
+      <mobile-panel title="Go to meta">
+        <meta-options :meta-list-loaded="metaListLoaded"/>
       </mobile-panel>
     </div>
   </div>
@@ -113,6 +121,7 @@ export default {
   data: function () {
     return {
       sideCode: this.$route.params.sidecode || null,
+      factionCode: this.$route.params.factioncode || null,
       selectedErrorBar: false,
       popularityStacked: false
     }
@@ -143,6 +152,9 @@ export default {
     '$route.params.sidecode': function (newValue, oldValue) {
       this.sideCode = newValue
       if (newValue && !this.allMetaDataLoaded) this.getAllMetaData() // if side is chosen and all meta data is not loaded, load it
+    },
+    '$route.params.factioncode': function (newValue, oldValue) {
+      this.factionCode = newValue
     }
   },
   computed: {

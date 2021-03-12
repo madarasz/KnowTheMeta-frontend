@@ -241,4 +241,11 @@ tr.v-row-group__header > td > button {
   flex: 0 1 auto !important;
   margin-left: 10px !important;
 }
+/* stepper for lab drilldown */
 .no-transition .stepper__content { transition: none; }
+@media only screen and (max-width: 959px) {
+  .v-stepper:not(.v-stepper--vertical) .v-stepper__label {
+    display: flex !important;
+    padding-left: 4px;
+  }
+}

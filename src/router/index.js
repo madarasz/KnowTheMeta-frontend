@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/lab/drilldown/runner/adam', redirect: '/card/09037/adam-compulsive-hacker' },
+  { path: '/lab/drilldown/runner/apex', redirect: '/card/09029/apex-invasive-predator' },
+  { path: '/lab/drilldown/runner/sunny-lebeau', redirect: '/card/09045/sunny-lebeau-security-specialist' },
   {
     path: '/',
     name: 'Root',
