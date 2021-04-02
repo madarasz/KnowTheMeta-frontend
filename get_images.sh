@@ -20,7 +20,13 @@ do
 
         if [ "$imageurl" == "null" ]; then
             # download from NetrunnerDB
-            curl "https://netrunnerdb.com/card_image/$card.png" > "public/img/cards/$card.png"
+            if [ $card -lt 31001 ]; then
+                # old cards
+                curl "https://netrunnerdb.com/card_image/$card.png" > "public/img/cards/$card.png"
+            else
+                # new cards
+                curl "https://netrunnerdb.com/card_image/large/$card.jpg" > "public/img/cards/$card.png"
+            fi
         else
             # download from CardGameDB
             curl $imageurl > "public/img/cards/$card.png"
