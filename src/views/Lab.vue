@@ -17,6 +17,7 @@
             <drill-down/>
           </v-tab-item>
           <v-tab-item :key="2" value="archetypes" :transition="false" :reverse-transition="false">
+            <under-development/>
           </v-tab-item>
         </v-tabs-items>
       </v-container>
@@ -26,10 +27,12 @@
 
 <script>
 import DrillDown from '@/components/subview/DrillDown.vue'
+import UnderDevelopment from '@/components/widget/UnderDevelopment'
 
 export default {
   components: {
-    DrillDown
+    DrillDown,
+    UnderDevelopment
   },
   data: function () {
     return {

@@ -84,7 +84,7 @@ export default {
           {
             data: this.metaData.metaList.map(x => ((1 - x.runnerWinRate - x.corpWinRate) * 100).toFixed(1)).reverse(),
             borderColor: 'rgba(100,100,100,1)',
-            // backgroundColor: 'rgba(100,100,100,0.5)',
+            backgroundColor: 'rgba(100,100,100,0.5)',
             borderWidth: 0,
             label: 'draw',
             datalabels: {
