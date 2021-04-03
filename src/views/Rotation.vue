@@ -66,6 +66,7 @@ export default {
   methods: {
     getNetunnerDBData: function () {
       this.$store.dispatch('netrunnerdb/getCardData', false).then(() => {
+        this.$store.dispatch('netrunnerdb/getRotationWarning')
       })
     },
     changeTab: function (tabName) {

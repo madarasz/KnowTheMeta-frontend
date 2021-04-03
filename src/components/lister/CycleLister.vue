@@ -2,7 +2,11 @@
   <div :data-testid="testId">
     <template v-for="cycle in cycleList">
       <div :key="cycle.code">
-        <desktop-card-subtitle :subtitle="cycle.name"/>
+        <desktop-card-subtitle :subtitle="cycle.name">
+          <template v-slot:label v-if="cycle.label">
+            <v-chip x-small :color="cycle.label == 'new' ? 'green' : 'red'" dark>{{ cycle.label }}</v-chip>
+          </template>
+        </desktop-card-subtitle>
         <template v-for="pack in getPacks(cycle.code)">
           <!-- legal -->
           <v-row align="center" :key="pack.name" class="rotation-content bordered-bottom"

@@ -11,6 +11,7 @@ export const netrunnerdb = {
     cards: {},
     prints: {},
     mwl: [],
+    rotationWarning: {},
     mwlTimestamp: 0,
     cardTimestamp: 0
   },
@@ -59,6 +60,13 @@ export const netrunnerdb = {
       } else {
         return Promise.resolve()
       }
+    },
+    getRotationWarning ({ commit, state }) {
+      if (state.cycles.length > 0) {
+        return axios.get('/api/rotation_warning.json').then((response) => {
+          commit('setRotationWarning', response.data.data)
+        })
+      }
     }
   },
   mutations: {
@@ -88,6 +96,11 @@ export const netrunnerdb = {
     compareMwls (state) {
       transform.addBadgesToMwl(state.mwl[0], state.mwl[1])
       state.mwlTimestamp = Date.now()
+    },
+    // adds rotation warning labels to cycles
+    setRotationWarning (state, rotationWarning) {
+      state.rotationWarning = rotationWarning
+      state.cycles = transform.addRotationWarning(state.cycles, rotationWarning)
     }
   }
 }

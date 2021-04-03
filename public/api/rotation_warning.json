@@ -1,0 +1,20 @@
+{
+    "data": {
+        "code": "system-gateway-rotation",
+        "start_date": "2021-04-09",
+        "new_cycle_codes": [
+            "system-gateway",
+            "system-update-2021"
+        ],
+        "rotating_cycle_codes": [
+            "honor-and-profit",
+            "sansan",
+            "sc19",
+            "salvaged-memories"
+        ]
+    },
+    "total": 1,
+    "success": true,
+    "version_number": 1,
+    "last_updated": "2021-04-03T07:00:16+00:00"
+}

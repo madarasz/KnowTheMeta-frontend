@@ -107,6 +107,23 @@ const addBadgesToMwl = function (latestMwl, previousMwl) {
   })
 }
 
+const addRotationWarning = function (cycles, rotationWarning) {
+  var rotationDate = new Date(rotationWarning.start_date)
+  if (Date() > rotationDate) {
+    return cycles
+  } else {
+    return cycles.map(function (cycle) {
+      if (rotationWarning.new_cycle_codes.includes(cycle.code)) {
+        cycle.label = 'new'
+      }
+      if (rotationWarning.rotating_cycle_codes.includes(cycle.code)) {
+        cycle.label = 'rotates ' + rotationWarning.start_date
+      }
+      return cycle
+    })
+  }
+}
+
 const compareReleaseDates = function (a, b) {
   if (a.date_release > b.date_release) {
     return -1
@@ -121,5 +138,6 @@ export default {
   sortMwlData: sortMwlData,
   addBadgesToMwl: addBadgesToMwl,
   filterCycles: filterCycles,
-  compareReleaseDates: compareReleaseDates
+  compareReleaseDates: compareReleaseDates,
+  addRotationWarning: addRotationWarning
 }

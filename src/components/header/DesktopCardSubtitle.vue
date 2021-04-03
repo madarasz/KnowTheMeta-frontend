@@ -1,6 +1,9 @@
 <template>
   <v-card-title class="card-subtitle">
-    <div class="overline">{{ subtitle }}</div>
+    <div class="overline">
+      {{ subtitle }}
+      <slot name="label"></slot>
+    </div>
   </v-card-title>
 </template>
 
