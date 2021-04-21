@@ -54,8 +54,7 @@ export default {
       this.renderChart(this.chartdata, this.options)
     },
     getFactionPopularity: function (factioncode) {
-      console.log(this.factionMetaDataOrdered.map(meta => meta.reduce((sum, current) => sum + current.used, 0)))
-      return this.factionMetaDataOrdered.map(meta => ((meta.find(faction => faction.code === factioncode).used / meta.reduce((sum, current) => sum + current.used, 0)) * 100).toFixed(1))
+      return this.factionMetaDataOrdered.map(meta => (((meta.find(faction => faction.code === factioncode) ? meta.find(faction => faction.code === factioncode).used : 0) / meta.reduce((sum, current) => sum + current.used, 0)) * 100).toFixed(1))
     }
   },
   watch: {
