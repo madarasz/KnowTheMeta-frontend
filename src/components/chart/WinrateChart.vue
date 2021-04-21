@@ -12,6 +12,8 @@ export default {
   data: () => ({
     options: {
       animation: false,
+      responsive: true,
+      maintainAspectRatio: false,
       plugins: [pluginErrorBars, pluginDataLabels],
       legend: {
         display: false
