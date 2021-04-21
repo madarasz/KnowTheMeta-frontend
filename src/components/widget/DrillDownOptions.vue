@@ -3,17 +3,17 @@
     <v-stepper :value="currentStep" class="pa-0 no-transition">
       <v-stepper-header>
         <v-stepper-step step="1" :complete="currentStep > 1">
-          <span class="d-xxs-inline">Select </span>side
+          <span class="d-xxs-hide">Select </span>side
           <small v-if="currentStep > 1" class="overline">{{sideCode}}</small>
         </v-stepper-step>
         <v-divider/>
         <v-stepper-step step="2" :complete="currentStep > 2">
-          <span class="d-xxs-inline">Select </span>faction
+          <span class="d-xxs-hide">Select </span>faction
           <small v-if="currentStep > 2" class="overline">{{factionCode}}</small>
         </v-stepper-step>
         <v-divider/>
         <v-stepper-step step="3" :complete="currentStep > 3">
-          <span class="d-xxs-inline">Go to </span>ID stats
+          <span class="d-xxs-hide">Go to </span>ID stats
         </v-stepper-step>
       </v-stepper-header>
       <v-stepper-items>

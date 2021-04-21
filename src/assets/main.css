@@ -126,6 +126,9 @@ tr.v-row-group__header > td > button {
   .d-xxs-inline {
     display: inline !important;
   }
+  .d-xxs-hide {
+    display: none !important;
+  }
 }
 /* linebreak for buttons */
 .with-linebreaks {
