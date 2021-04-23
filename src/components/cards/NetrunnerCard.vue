@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row dense>
-      <v-col class="text-center pa-1 pb-0">
+      <v-col class="text-center pa-1 pb-0" :class="card.badge ? 'mwl-highlight' : ''">
         <div class="d-inline-flex">
           <router-link :to="cardUrl" :aria-label="card.title"
               @click.native="$ga.event({ eventCategory: 'Navigation', eventAction: 'card-image', eventLabel: card.title })">

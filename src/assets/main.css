@@ -252,3 +252,10 @@ tr.v-row-group__header > td > button {
     padding-left: 4px;
   }
 }
+
+/* highlight new cards in MWL */
+.mwl-highlight {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: 1px;
+}

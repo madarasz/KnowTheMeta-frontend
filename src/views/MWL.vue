@@ -100,6 +100,24 @@ export default {
         arrayElement.title = title
         return arrayElement
       }).filter(x => { return x.runner === runner && x.legal })
+    },
+    cardSort: function (a, b) {
+      return this.cardSortByBadge(a, b) || this.cardSortIdentity(a, b) || this.cardSortByFaction(a, b)
+    },
+    cardSortByBadge: function (a, b) {
+      if ('badge' in a === 'badge' in b) return 0
+      if ('badge' in b) return 1
+      return -1
+    },
+    cardSortIdentity: function (a, b) {
+      if (a.identity === b.identity) return 0
+      if (b.identity) return 1
+      return -1
+    },
+    cardSortByFaction: function (a, b) {
+      if (a.faction.includes('neutral') === b.faction.includes('neutral')) return a.faction.localeCompare(b.faction)
+      if (b.faction.includes('neutral')) return -1
+      return 1
     }
   },
   computed: {
@@ -110,27 +128,27 @@ export default {
     },
     bannedRunner: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, true)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, true).sort(this.cardSort)
     },
     bannedCorp: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, false)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].banned, false).sort(this.cardSort)
     },
     restrictedRunner: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, true)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, true).sort(this.cardSort)
     },
     restrictedCorp: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, false)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].restricted, false).sort(this.cardSort)
     },
     removedRunner: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, true)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, true).sort(this.cardSort)
     },
     removedCorp: function () {
       if (!this.mwlLoaded) return []
-      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, false)
+      return this.cardsetToArray(this.netrunnerdb.mwl[0].removed, false).sort(this.cardSort)
     },
     isRestrictedUsed: function () {
       return this.restrictedRunner.length + this.restrictedCorp.length > 0

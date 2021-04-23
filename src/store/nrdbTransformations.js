@@ -39,12 +39,16 @@ const transformCardData = function (cardData, packData, imgUrlTemplate) {
       }
       cards[cardData[i].title].in_pack.push(cardData[i].pack_code)
       cards[cardData[i].title].legal = legal
+      cards[cardData[i].title].identity = cardData[i].type_code === 'identity'
+      cards[cardData[i].title].faction = cardData[i].faction_code
     } else {
       // new card
       cards[cardData[i].title] = {
         runner: cardData[i].side_code === 'runner',
         in_pack: [cardData[i].pack_code],
-        legal: legal
+        legal: legal,
+        identity: cardData[i].type_code === 'identity',
+        faction: cardData[i].faction_code
       }
     }
   }
